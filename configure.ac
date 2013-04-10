@@ -244,7 +244,7 @@ esac
 # ---- Check these flags do work by building a small irrLicht sample
 echo "checking for irrlicht libraries..."
 save_LIBS=$LIBS
-LIBS="$LIBS $irrlicht_LIBS $opengl_LIBS"
+LIBS="$LIBS $irrlicht_LIBS $opengl_LIBS -lpng -ljpeg -lz"
 
 irrlicht_sample_built_fine="false"
 
