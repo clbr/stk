@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 0.1 -->
+<kart name              = "Suzanne"
+      version           = "2"
+      model-file        = "suzanne.b3dz"
+      icon-file         = "icon64.png"
+      minimap-icon-file = "icon32.png"
+      shadow-file       = "shadow.png"
+      groups            = "standard"
+      rgb               = "1.0 0.53 0" >
+  <animations left = "1"
+              straight = "10"
+              right = "20"
+              start-winning = "30"
+              start-winning-loop = "50"
+              end-winning = "70"
+              start-losing = "80"
+              start-losing-loop = "100"
+              end-losing = "120"/>
+  <wheels>
+    <front-left position = "-0.363 0.158 0.366"
+                 model    = "wheel-front-left.b3d"       />
+    <front-right position = "0.363 0.158 0.366 "
+                 model    = "wheel-front-right.b3d"       />
+    <rear-left position = "-0.389 0.210 -0.392"
+                 model    = "wheel-rear-left.b3d"       />
+    <rear-right position = "0.389 0.210 -0.392"
+                 model    = "wheel-rear-right.b3d"       />
+  </wheels>
+</kart>

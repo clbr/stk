@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<materials>
+  <material name="brick1.png" backface-culling="N"/>
+  <material name="bush3.png" light="N" ignore="Y" compositing="test"/>
+  <material name="grass.jpg" max-speed="0.40"/>
+  <material name="grass2.jpg" max-speed="0.40"/>
+  <material name="leaves2.png" ignore="Y" compositing="coverage"/>
+  <material name="seabed.png" graphical-effect="water" falling-effect="Y"/>
+  <material name="tree_1.png" light="N" compositing="coverage" backface-culling="N"/>
+  <material name="water_dark.png" light="N" reset="Y" surface="Y" water-shader="Y" water-shader-speed-1="1.50" water-shader-speed-2="1.50">
+    <sfx filename="splash.ogg"/>
+    <particles base="splash.xml" condition="skid drive"/>
+  </material>
+  <material name="wooden2.png" backface-culling="N" compositing="test"/>
+  <material name="zipper_collect.png" light="N" compositing="test">
+    <zipper max-speed-increase="15.0" duration="3.5" speed-gain="4.5" fade-out-time="3.0"/>
+  </material>
+</materials>

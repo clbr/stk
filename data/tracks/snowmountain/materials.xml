@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<materials>
+  <material name="concrete.png" reset="Y"/>
+  <material name="roadway2.png">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="roadwayborder.png">
+    <particles base="smoke.xml" condition="skid drive"/>
+  </material>
+  <material name="snow2.png" max-speed="0.70"/>
+  <material name="water_light.png" reset="Y"/>
+</materials>

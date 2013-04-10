@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12280 -->
+<track  name           = "Soccer field"
+        version        = "5"
+        groups         = "standard"
+        designer       = "Funto (Lionel Fuentes) - derived from work by Thomas Oppl and Pixel_2ACF3 (Wayne Dennis)"
+        music          = "Penguin_Party.music"
+        soccer         = "Y"
+        screenshot     = "soccer_field_screenshot.png"
+        smooth-normals = "false"
+        reverse        = "N"
+>
+</track>

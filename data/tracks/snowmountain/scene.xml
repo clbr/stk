@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12125 -->
+<scene>
+  <track model="snowmountain_track.b3d" x="0" y="0" z="0"/>
+  <particle-emitter kind="black_smoke.xml" x="-122.87" y="11.93" z="-17.97" h="0.000000" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="black_smoke.xml" x="-75.36" y="15.30" z="-20.41" h="0.000000" clip_distance="200">
+  </particle-emitter>
+  <object type="animation" model="Balloon.b3d" xyz="-39.99 39.72 -180.02" hpr="-63.4 89.6 3.0" scale="7.33 7.33 7.33"  interaction="none">
+    <curve channel="LocX" interpolation="bezier" extend="cyclic">
+      <p c="0.172 -40.000" h1="-51.067 -40.000" h2="51.412 -40.000"/>
+      <p c="169.894 99.158" h1="103.758 99.158" h2="310.133 99.158"/>
+      <p c="529.782 -151.640" h1="389.314 -151.640" h2="588.448 -151.640"/>
+      <p c="680.088 -40.000" h1="632.980 -40.000" h2="727.196 -40.000"/>
+    </curve>
+    <curve channel="LocZ" interpolation="bezier" extend="cyclic">
+      <p c="0.896 -180.019" h1="-131.535 -180.008" h2="103.519 -180.027"/>
+      <p c="340.106 98.386" h1="207.675 98.386" h2="472.816 98.386"/>
+      <p c="680.029 -179.989" h1="578.468 -179.987" h2="812.522 -179.992"/>
+    </curve>
+    <curve channel="RotX" interpolation="bezier" extend="cyclic">
+      <p c="0.422 -66.375" h1="-175.490 -66.375" h2="176.334 -66.375"/>
+      <p c="451.004 -66.334" h1="275.091 -66.334" h2="626.916 -66.334"/>
+    </curve>
+    <curve channel="RotZ" interpolation="bezier" extend="cyclic">
+      <p c="0.762 0.023" h1="-142.680 0.023" h2="144.205 0.023"/>
+      <p c="368.177 0.065" h1="224.734 0.065" h2="511.620 0.065"/>
+    </curve>
+    <curve channel="RotY" interpolation="linear" extend="cyclic">
+      <p c="0.013 90.084"/>
+      <p c="679.984 -269.997"/>
+    </curve>
+    <curve channel="LocY" interpolation="bezier" extend="cyclic">
+      <p c="0.868 39.720" h1="-182.734 39.720" h2="184.471 39.720"/>
+      <p c="471.148 39.712" h1="287.546 39.712" h2="654.751 39.712"/>
+    </curve>
+  </object>
+  <weather particles="snow.xml" />
+  <banana x="-2.883005" y="-0.301474" z="39.38063" />
+  <banana x="-51.491741" y="3.660036" z="77.638718" />
+  <banana x="-64.635597" y="2.494776" z="33.101471" />
+  <banana x="-50.577358" y="-3.781858" z="-35.672104" />
+  <banana x="-64.020752" y="10.791862" z="-49.573856" />
+  <banana x="3.40361" y="11.394556" z="-49.966911" />
+  <banana x="63.348709" y="4.375498" z="37.978996" />
+  <banana x="66.79892" y="0.885199" z="-12.717157" />
+  <banana x="58.583244" y="0.885199" z="-12.704335" />
+  <banana x="60.704655" y="-1.525584" z="-57.860165" />
+  <banana x="21.502977" y="-3.279079" z="-102.923767" />
+  <banana x="-5.369586" y="-3.764242" z="-38.465591" />
+  <banana x="2.27278" y="-3.764242" z="-38.465591" />
+  <item x="-8.647099" y="1.590184" z="67.004463" />
+  <item x="-76.409302" y="4.838969" z="76.429443" />
+  <item x="-104.86425" y="5.457215" z="66.15136" />
+  <item x="-108.528564" y="5.860428" z="36.852108" />
+  <item x="-48.085533" y="-2.81884" z="-16.790302" />
+  <item x="-50.656479" y="-3.092511" z="-70.883003" />
+  <item x="-64.195549" y="10.825488" z="-42.937851" />
+  <item x="3.812442" y="11.363095" z="-54.050545" />
+  <item x="22.961117" y="9.619767" z="-3.361314" />
+  <item x="31.459064" y="9.619767" z="-2.707626" />
+  <item x="62.761356" y="1.05744" z="-12.671148" />
+  <item x="56.651665" y="-0.347618" z="-34.83329" />
+  <item x="66.424301" y="-0.347618" z="-35.20916" />
+  <item x="-2.735897" y="-3.894367" z="-68.933136" />
+  <small-nitro x="-16.308472" y="1.590184" z="62.146286" />
+  <small-nitro x="-63.9856" y="2.494776" z="36.838955" />
+  <big-nitro x="-64.3106" y="2.494776" z="28.87649" />
+  <big-nitro x="-78.669617" y="1.764351" z="-102.281944" />
+  <small-nitro x="3.544914" y="11.394556" z="-45.869102" />
+  <small-nitro x="21.644281" y="-3.279079" z="-99.470215" />
+  <small-nitro x="21.644281" y="-3.279079" z="-106.032448" />
+  <small-nitro x="-12.100289" y="1.590184" z="65.034119" />
+  <small-nitro x="-77.821793" y="1.764351" z="-110.901474" />
+  <small-nitro x="-78.387009" y="1.764351" z="-106.097145" />
+  <small-nitro x="-64.195549" y="10.825488" z="-45.880325" />
+  <small-nitro x="27.643864" y="9.619767" z="-2.84893" />
+  <small-nitro x="62.16251" y="-0.347618" z="-34.83329" />
+  <small-nitro x="-1.413081" y="-3.764242" z="-38.041679" />
+  <checks>
+    <check-lap kind="lap" same-group="0" other-ids="1" />
+    <check-line kind="activate" other-ids="2" p1="-38.92 66.44" p2="-36.26 87.42"
+                min-height="2.80" same-group="1"/>
+    <check-line kind="activate" other-ids="0" p1="-24.75 -59.18" p2="-23.79 -37.29"
+                min-height="11.35" same-group="2"/>
+  </checks>
+  <sky-box texture="winter_sky_6.jpg winter_sky_5.jpg winter_sky_2.jpg winter_sky_4.jpg winter_sky_3.jpg winter_sky_1.jpg"/>
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.50"
+                 sidewards-distance="3.00"
+                 upwards-distance  ="0.10"/>
+</scene>

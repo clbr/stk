@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12070 -->
+<track  name           = "Bovine Barnyard"
+        version        = "5"
+        groups         = "standard"
+        designer       = "Marianne Gagnon &amp; Ville Seppanen"
+        music          = "TheDeadRocks-EasyJob.music"
+        screenshot     = "farm.jpg"
+        smooth-normals = "true"
+        reverse        = "Y"
+>
+</track>

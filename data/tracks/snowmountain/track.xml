@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12125 -->
+<track  name           = "Northern Resort"
+        version        = "5"
+        groups         = "standard"
+        designer       = "Canis Lupus"
+        music          = "Snowy.music"
+        screenshot     = "sshot-mountain.jpg"
+        smooth-normals = "false"
+        reverse        = "Y"
+>
+</track>

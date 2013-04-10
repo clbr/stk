@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 0.1 -->
+<kart name              = "Tux"
+      version           = "2"
+      model-file        = "tux.b3dz"
+      icon-file         = "tuxicon.png"
+      minimap-icon-file = "tuxicon.png"
+      shadow-file       = "tuxkartshadow.png"
+      groups            = "standard"
+      rgb               = "0.7 0 0" >
+  <animations left = "0"
+              straight = "20"
+              right = "40"
+              start-winning = "80"
+              end-winning = "335"
+              start-losing = "486"
+              start-losing-loop = "832"
+              end-losing = "852"/>
+  <hat offset="0 0.2 0"/>
+  <wheels>
+    <front-left position = "-0.283304 0.101876 0.407714"
+                 model    = "wheel-front-left.b3d"       />
+    <front-right position = "0.294537 0.101876 0.407615"
+                 model    = "wheel-front-right.b3d"       />
+    <rear-left position = "-0.345336 0.140526 -0.348104"
+                 model    = "wheel-rear-left.b3d"       />
+    <rear-right position = "0.356126 0.140526 -0.348040"
+                 model    = "wheel-rear-right.b3d"       />
+  </wheels>
+</kart>

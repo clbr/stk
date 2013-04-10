@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<materials>
+  <material name="nolok_window.png" compositing="blend" backface-culling="false" />
+</materials>

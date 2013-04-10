@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<materials>
+  <material name="BlackEyedSusan.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="BurdockLeaf.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="Bush.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="Catail.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="Catail.png" compositing="test" ignore="Y"/>
+  <material name="Fern-6.png" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="Flower3.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="Flower3F.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="Flower5.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="Flower5F.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="grass-border.png" compositing="blend"/>
+  <material name="grass2.jpg" max-speed="0.70" slowdown-time="3.00">
+    <particles base="smoke_brown.xml" condition="drive"/>
+  </material>
+  <material name="GrassTall.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="GrassTall.png" compositing="test" ignore="Y"/>
+  <material name="invisible.png" fog="N" light="N" compositing="blend" graphical-effect="water" slowdown-time="0.20" max-speed="0.70">
+    <sfx filename="splash.ogg" min_speed="5.00" max_speed="15.00" min_pitch="0.80" max_pitch="1.20" positional="Y" rolloff="0.10"/>
+    <particles base="splash.xml" condition="skid drive"/>
+  </material>
+  <material name="road_dirt.jpg">
+    <particles base="smoke_brown.xml" condition="skid"/>
+  </material>
+  <material name="sheep_black.jpg" light="N"/>
+  <material name="sheep_white.jpg" light="N"/>
+  <material name="stk_road_dirt.jpg">
+    <particles base="smoke_brown.xml" condition="skid"/>
+  </material>
+  <material name="StreamPlant.png" ignore="Y"/>
+  <material name="vegetation_1.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
+  <material name="water_light2.png" compositing="blend" surface="Y" graphical-effect="water">
+    <sfx filename="splash.ogg"/>
+    <particles base="splash.xml" condition="skid drive"/>
+  </material>
+  <material name="waterfall.png" light="N" compositing="blend" disable-z-write="Y"/>
+  <material name="waterfall_particle.png" fog="N" light="N" compositing="blend"/>
+  <material name="wood_planks1.jpg">
+    <sfx positional="Y" filename="wooden_bridge.ogg"/>
+  </material>
+</materials>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<materials>
+  <material name="diffus-subsea.png" compositing="blend" ignore="Y"/>
+  <material name="eggs-subsea.png" compositing="additive"/>
+  <material name="fish-filet-subsea.png" compositing="blend" ignore="Y"/>
+  <material name="flaque-subsea.png" compositing="blend" ignore="Y"/>
+  <material name="Flower-subsea.png" compositing="blend" ignore="Y"/>
+  <material name="Grate-subsea.png" compositing="test"/>
+  <material name="light3-subsea.png" clampu="Y" compositing="additive" disable-z-write="Y" ignore="Y"/>
+  <material name="LilySmall-subsea.png" compositing="blend" ignore="Y"/>
+  <material name="organic_out-subsea.png" compositing="blend" ignore="Y"/>
+  <material name="Paving_stones_2-subsea.jpg">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="Paving_stones_3-subsea.jpg">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="Pirate_Flag_of_Rack_Rackham-subsea.png" compositing="test"/>
+  <material name="sand-subsea.jpg" falling-effect="Y" reset="Y" collision-detect="Y" collision-reaction="reset"/>
+  <material name="Transparent-Broken-1-subsea.png" compositing="blend" disable-z-write="Y">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="Transparent-Broken-2-subsea.png" compositing="blend" disable-z-write="Y">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="Transparent-door-subsea.png" compositing="blend" disable-z-write="Y" ignore="Y">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="Transparent-Particles-subsea.png" compositing="blend" disable-z-write="Y"/>
+  <material name="Transparent-subsea.png" compositing="blend" disable-z-write="Y">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="treasure_map2-subsea.png" compositing="test"/>
+  <material name="treasuremap-subsea.png" compositing="test" disable-z-write="Y"/>
+  <material name="water_dark-subsea.jpg" ignore="Y"/>
+  <material name="water_dark-transp-subsea.png" compositing="blend" collision-detect="Y" collision-reaction="reset" collision-particles="splash.xml"/>
+  <material name="waterparticles-subsea.png" compositing="blend" ignore="Y"/>
+  <material name="zipper-inverted-subsea.png" light="N" compositing="blend" disable-z-write="Y">
+    <zipper duration="3.5" max-speed-increase="15.0" fade-out-time="3.0" speed-gain="4.5"/>
+  </material>
+</materials>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<materials>
+  <material name="earthHalo.png" compositing="additive" disable-z-write="Y"/>
+  <material name="genericCloud.png" compositing="blend" disable-z-write="Y"/>
+  <material name="marsHalo.png" compositing="additive" disable-z-write="Y"/>
+  <material name="milkyway.png" light="N" compositing="additive" disable-z-write="Y"/>
+  <material name="nebula-blue-halo.png" fog="N" light="N" compositing="additive" disable-z-write="Y"/>
+  <material name="nebula-cloud-blue.png" compositing="additive" disable-z-write="Y"/>
+  <material name="nebula-cloud-redLight.png" compositing="additive" disable-z-write="Y"/>
+  <material name="nebula-cloud.png" compositing="additive" disable-z-write="Y"/>
+  <material name="nebula-halo.png" fog="N" light="N" compositing="additive" disable-z-write="Y"/>
+  <material name="nebula-red-halo.png" fog="N" light="N" compositing="additive" disable-z-write="Y"/>
+  <material name="pnumbra.png" compositing="blend" disable-z-write="Y"/>
+  <material name="Rubis-subsea.png" compositing="blend" disable-z-write="Y"/>
+  <material name="solarPanel-silicon.png" water-shader="Y" water-shader-speed-1="0.00" water-shader-speed-2="2.00"/>
+  <material name="star_sun.png" fog="N" light="N"/>
+  <material name="sunBody.png" fog="N" light="N" backface-culling="N" compositing="additive" disable-z-write="Y"/>
+  <material name="sunFlar.png" fog="N" light="N" backface-culling="N" compositing="additive" disable-z-write="Y"/>
+  <material name="sunHalo.png" fog="N" light="N" compositing="additive"/>
+  <material name="tellara-ring-alpha.png" backface-culling="N" compositing="blend"/>
+</materials>

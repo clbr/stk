@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 0.1 -->
+<kart name              = "Mozilla"
+      version           = "2"
+      model-file        = "mozilla.b3dz"
+      icon-file         = "mozillaicon.png"
+      minimap-icon-file = "mozillaicon.png"
+      shadow-file       = "mozillashadow.png"
+      groups            = "standard"
+      rgb               = "0.7 0 0" >
+  <sounds engine = "large"/>
+  <animations left = "0"
+              straight = "20"
+              right = "40"
+              start-winning = "71"
+              end-winning = "299"
+              start-losing = "338"
+              start-losing-loop = "417"
+              end-losing = "494"/>
+  <wheels>
+    <front-left position = "-0.254099 0.112440 0.404252"
+                 model    = "wheel-front-left.b3d"       />
+    <front-right position = "0.245901 0.112440 0.404252"
+                 model    = "wheel-front-right.b3d"       />
+    <rear-left position = "-0.394427 0.193826 -0.517090"
+                 model    = "wheel-rear-left.b3d"       />
+    <rear-right position = "0.399366 0.193826 -0.517090"
+                 model    = "wheel-rear-right.b3d"       />
+  </wheels>
+</kart>

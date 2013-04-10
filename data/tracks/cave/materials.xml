@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<materials>
+  <material name="bison.png" transparency="Y" ignore="Y"/>
+  <material name="edges.png" compositing="blend" ignore="Y" anisotropic="Y"/>
+  <material name="ground.ong" anisotropic="Y" />
+  <material name="plants.jpg" mask="plants_alpha.jpg" transparency="Y" ignore="Y"/>
+  <material name="rocks.png" anisotropic="Y" />
+</materials>

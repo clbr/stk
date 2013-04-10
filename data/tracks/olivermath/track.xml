@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12183 -->
+<track  name           = "Oliver's Math Class"
+        version        = "5"
+        groups         = "standard"
+        designer       = "Oliver &amp; Steve Baker"
+        music          = "Boom_boom_boom.music"
+        screenshot     = "mathclass.jpg"
+        smooth-normals = "false"
+        reverse        = "Y"
+>
+</track>

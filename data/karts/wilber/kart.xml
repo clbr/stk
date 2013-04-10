@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 10384 -->
+<kart name              = "Wilber"
+      version           = "2"
+      model-file        = "wilber.b3dz"
+      icon-file         = "wilbericon.png"
+      minimap-icon-file = "wilbericon.png"
+      shadow-file       = "wilbershadow.png"
+      groups            = "standard"
+      rgb               = "1.00 0.42 0.00" >
+  <sounds engine = "small"/>
+  <animations left = "0"
+              straight = "20"
+              right = "40"
+              start-winning = "80"
+              start-winning-loop = "221"
+              end-winning = "259"
+              start-losing = "298"
+              start-losing-loop = "516"
+              end-losing = "521"/>
+  <wheels>
+    <front-left position = "-0.322693 0.112673 0.326289"
+                 model    = "wheel-front-left.b3d"       />
+    <front-right position = "0.327468 0.112135 0.327192"
+                 model    = "wheel-front-right.b3d"       />
+    <rear-left position = "-0.386456 0.133697 -0.319886"
+                 model    = "wheel-rear-left.b3d"       />
+    <rear-right position = "0.390992 0.133159 -0.318699"
+                 model    = "wheel-rear-right.b3d"       />
+  </wheels>
+</kart>

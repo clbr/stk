@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<scene>
+  <track model="battleisland_track.b3d" x="0" y="0" z="0"/>
+  <water model="Water.b3d" xyz="0.00 -0.91 0.20" hpr="0.0 -0.0 0.0" scale="1.08 1.09 1.08" height="0.10" speed="1000.00" length="20.00"/>
+  <sun  xyz="47.41 27.04 28.28" sun-specular="255 255 255" sun-diffuse="255 255 255" ambient="255 255 255"/>
+  <sky-color rgb="77 104 255"/>
+  <item x="-0.063063" y="2" z="-25.666687" h="-43.790225" />
+  <big-nitro x="0" y="1.6" z="0" />
+  <big-nitro x="0" y="4.6" z="0" />
+  <item x="25.779047" y="2" z="-0.35698" h="-43.790225" />
+  <item x="-0.586533" y="2.14668" z="24.643604" h="-43.790225" />
+  <item x="-18" y="3" z="-18" />
+  <item x="-18.916643" y="2.14668" z="16.582838" />
+  <item x="18" y="2" z="17" />
+  <item x="17" y="2" z="-18" />
+  <item x="-25.165253" y="3" z="-1.037106" h="-43.790225" />
+
+  <sky-dome texture="sky2.jpg"
+            horizontal="20" vertical="20" 
+            texture-percent="0.5" sphere-percent="1.3"
+            speed-x="0.004999999888241291" speed-y="0.0" />
+  <camera far="1000.0"/>
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.10"
+                 sidewards-distance="1.10"
+                 upwards-distance  ="1.10"/>
+  <start x="38.40" y="2.20" z="0.00" h="-90.000037"/>
+  <start x="-38.40" y="2.20" z="0.00" h="90.000037"/>
+  <start x="0.00" y="2.20" z="38.40" h="180.000073"/>
+  <start x="0.00" y="2.20" z="-38.40" h="0.000000"/>
+</scene>

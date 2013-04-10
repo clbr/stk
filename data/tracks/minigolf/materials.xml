@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<materials>
+  <material name="_particle_sand.png" compositing="blend" clampu="Y" clampv="Y" ignore="Y"/>
+  <material name="arrow.png" compositing="blend" ignore="Y"/>
+  <material name="astro_turf.jpg">
+    <particles condition="skid" base="smoke.xml"/>
+  </material>
+  <material name="bow_tile.jpg">
+    <particles condition="skid drive" base="smoke.xml"/>
+  </material>
+  <material name="flag.jpg" backface-culling="N"/>
+  <material name="foliage.png" backface-culling="N" compositing="test" clampv="Y"/>
+  <material name="golfball_baked.jpg" use-normal-map="Y" normal-map="golfball_baked_normal.png"/>
+  <material name="grass_trim.png" backface-culling="N" compositing="blend" clampu="Y" ignore="Y"/>
+  <material name="sand.jpg" max-speed="0.30">
+    <particles condition="skid drive" base="sand.xml"/>
+  </material>
+  <material name="seabed.jpg" falling-effect="Y" reset="Y"/>
+  <material name="water.png" backface-culling="N" compositing="blend" surface="Y">
+    <sfx filename="splash.ogg" min_speed="0.00" max_speed="0.00" min_pitch="0.80" max_pitch="1.20" positional="Y" rolloff="0.30"/>
+    <particles condition="skid drive" base="splash.xml"/>
+  </material>
+</materials>

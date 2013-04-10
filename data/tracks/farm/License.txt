@@ -1,0 +1,49 @@
+Model by to Ville Seppanen and Marianne Gagnon
+    released under Creative Commons BY-SA 3.0
+    (http://creativecommons.org/licenses/by/3.0/)
+
+Well model and well texture by Sean Greene (Iconoclast)
+    released under public domain
+
+Mill model and stable by Samuncle
+    released under CC-BY-SA 3.0
+
+corn.png
+    based on image by Jonathunder with modifications by Marianne Gagnon
+    CC-BY-SA 3 unported
+
+hay.png
+    based on public domain image by Scott Bauer and TT7001749 from BurningWell,
+    with modifications by Marianne Gagnon, released under CC-BY-SA 3.0+
+
+barn_wall, barn_window, leaf.png, earth.png
+    based on burningwell.org (public domain) images modified by
+    Varivar and Marianne Gagnon, released under CC-BY-SA 3.0+
+
+leave3.png : by Krzysztof P. Jasiutowicz 
+retrieved from http://commons.wikimedia.org/wiki/File:Lisc_lipy.jpg,
+    released under CC-BY-SA 3.0
+
+mill.png, millstructure.png, wind_mill.png
+    by Samuncle, based on pictures from Burningwell
+    released under public domain
+
+clouds in skycube by nicubunu, released in public domain
+
+gnarly tools and gnarly tool texture by Clint Bellanger
+    released under CC-BY-SA 3.0
+
+Wheat picture by Tarquin
+    Released under CC-BY-SA 3.0 Unported
+
+Trail texture by Marianne Gagnon
+    based on public domain image from Burningwell
+    released under CC-BY-SA 3.0
+
+cow.ogg
+    based on sounds by "Secretlondon" (released under CC-Attribution 3) and "Buffbill84" (released under CC-BY-SA 3)
+    released under CC-BY-SA 3.0
+
+skybox.jpg by samuncle
+Based on http://commons.wikimedia.org/wiki/File:Wheat_fields_in_Ukraine-5966-98.jpg
+by Raimond Spekking released under CC-BY-SA 3.0

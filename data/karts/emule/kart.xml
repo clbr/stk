@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 0.1 -->
+<kart name              = "Emule"
+      version           = "2"
+      model-file        = "emule.b3dz"
+      icon-file         = "emule_icon128.png"
+      minimap-icon-file = "emule_icon32.png"
+      shadow-file       = "emule_shadow.png"
+      center-shift      = "1.1754943508222875e-38"
+      groups            = "standard"
+      rgb               = "255 0 0" >
+  <sounds engine = "large"/>
+  <animations left = "9"
+              straight = "19"
+              right = "29"
+              start-winning = "49"
+              start-winning-loop = "184"
+              end-winning = "204"
+              start-losing = "249"
+              start-losing-loop = "439"
+              end-losing = "479"/>
+  <wheels>
+    <front-left position = "-0.314000 0.146322 0.520000"
+                 model    = "wheel-front-left.b3d"       />
+    <front-right position = "0.314000 0.146322 0.520000"
+                 model    = "wheel-front-right.b3d"       />
+    <rear-left position = "-0.328000 0.146322 -0.375000"
+                 model    = "wheel-rear-left.b3d"       />
+    <rear-right position = "0.327887 0.146322 -0.375000"
+                 model    = "wheel-rear-right.b3d"       />
+  </wheels>
+</kart>

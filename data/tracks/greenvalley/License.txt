@@ -1,0 +1,131 @@
+sAll files created by Wolfs and licensed under Creative Commons Attribution Share-Alike 3.0 (CC BY-SA 3.0), except:
+
+- BlackEyedSusan.png and RudbeckiaHirta model
+	From dims_arboretum (http://opengameart.org/content/dims-arboretum)
+	Created by Dim
+	Licensed under Creative Commons Attribution (CC-BY) 3.0	
+- BurdockLeaf.png, StreamPlant.png and ArctinumMinus model
+	From dims_arboretum (http://opengameart.org/content/dims-arboretum)
+	Created by Dim
+	Licensed under Creative Commons Attribution (CC-BY) 3.0	
+- Bush.png, BushFlower.png and ClethraAlnifolia model
+	From dims_arboretum (http://opengameart.org/content/dims-arboretum)
+	Created by Dim
+	Licensed under Creative Commons Attribution (CC-BY) 3.0	
+- Catail.png and TyphaLatifolia model
+	From dims_arboretum (http://opengameart.org/content/dims-arboretum)
+	Created by Dim
+	Licensed under Creative Commons Attribution (CC-BY) 3.0	
+- Fern-6.png and OsmundaCinnamoneaS model
+	From the dims_arboretum (http://opengameart.org/content/dims-arboretum)
+	Created by Dim
+	Licensed under Creative Commons Attribution (CC-BY) 3.0	
+- Flower3.png, Flower3F and MyasotisScorpioides model
+	From the dims_arboretum (http://opengameart.org/content/dims-arboretum)
+	Created by Dim
+	Licensed under Creative Commons Attribution (CC-BY) 3.0	
+- Flower5.png, Flower5F and Eupatorium model
+	From the dims_arboretum (http://opengameart.org/content/dims-arboretum)
+	Created by Dim
+	Licensed under Creative Commons Attribution (CC-BY) 3.0	
+- Forest Generator Script
+	Created by Wolfs
+	Dual-licensed under GNU General Public License (GPL) 3 and
+      Creative Commons Attribution Share-Alike (CC-BY-SA) 3.0
+- grass-border.png
+	Modification of grass2.jpg, which was
+	  created by Christoph Egger, Marianne Gagnon (Auria) and MiniBjorn
+	Licensed under Creative Commons Attribution Share-Alike (CC-BY-SA) 3.0
+- GrassTall.png and GrassTall model
+	From the dims_arboretum (http://opengameart.org/content/dims-arboretum)
+	Created by Dim
+	Licensed under Creative Commons Attribution (CC-BY) 3.0
+- invisible.png
+	Created by Wolfs
+	Licensed under CC0 1.0
+- stk_road_dirt.jpg
+	Created by C.Stone (Binky), based on the images
+		road_dirt.jpg
+			from SuperTuxKart's texture-directory
+			which has been created by Marianne Gagnon (Auria) and MiniBjorn
+			and which is licensed under Creative Commons Attribution Share-Alike (CC-BY-SA) 3.0
+		and grass2.jpg
+			from SuperTuxKart's texture-directory
+			which has been created by Christoph Egger, Marianne Gagnon (Auria) and MiniBjorn
+			and which is licensed under Creative Commons Attribution Share-Alike (CC-BY-SA) 3.0.
+	Licensed under Creative Commons Attribution Share-Alike (CC-BY-SA) 3.0
+- rock_gray.jpg
+	Modification by Wolfs of a picture by jean-manuel clemençon (SamUncle)
+		which is based on an image from BurningWell and has been released
+		to public domain
+	Licensed under CC0 1.0
+- roof.jpg
+	From http://tellim.com/texture_cd/texture/building/roof/roof04.jpg
+	Released to public domain
+- Sheep models
+	From Scotland track
+	Created by Canis Lupus; animated and improved by Kinsu
+	Licensed under CC-BY-SA 3.0
+- sheep.ogg
+	From pdsounds.org
+	Created by earthcalling
+	Released to public domain
+- sheep_black.jpg
+	Created by Wolfs
+	Licensed under CC0 1.0
+- sheep_white.jpg
+	Created by Wolfs
+	Licensed under CC0 1.0
+- tree.jpg
+	From http://www.burningwell.org/gallery2/v/textures/plants/treesWood/CEP00058.jpg.html
+	Created by titus tscharntke 
+	Released to public domain
+- water_light2.png
+	Modification of water_light3.png
+- water_light3.png
+	By Marianne Gagnon and Samuncle, based on public images from Bruningwell
+- waterfall_particle.png
+	Created by Wolfs
+	Licensed under CC0 1.0
+- waterfall.png
+	Created by Auria
+	Licensed under CC-BY-SA 3.0
+- waterfall3.ogg
+	From http://opengameart.org/content/stream-sounds
+	Created by kurt
+	Licensed under Creative Commons Atrribution (CC-BY) 3.0
+- w_sky_1.jpg, w_sky_2.jpg, w_sky_3.jpg, w_sky_4.jpg, w_sky_6.jpg and sky-devel.xcf:
+	Created by Wolfs, based on a picture
+		from http://commons.wikimedia.org/wiki/File:360%C2%B0_Schadonapa%C3%9F.jpg
+		which has been created by böhringer friedrich
+		and which is licensed under Creative Commons Attribution-Share Alike 2.5.
+	Licensed under Creative Commons Attribution Share-Alike 3.0
+- Woodpile.png and woodpile model
+	From dims_arboretum (http://opengameart.org/content/dims-arboretum)
+	Created by Dim
+	Licensed under Creative Commons Attribution (CC-BY) 3.0	
+- Background music (DJ Helium - Valley.ogg)
+	"Valley" by DJ Helium
+
+
+
+
+URIs of licenses
+================
+
+Apache License 2.0:												http://www.apache.org/licenses/LICENSE-2.0.txt
+BSD 2-Clause License:											http://opensource.org/licenses/bsd-license.php
+BSD 3-Clause License:											http://opensource.org/licenses/BSD-3-Clause
+Creative Commons Zero 1.0 (CC0 1.0):							http://creativecommons.org/publicdomain/zero/1.0/
+Creative Commons Attribution 2.0 (CC BY 2.0): 					http://creativecommons.org/licenses/by/2.0/
+Creative Commons Attribution 2.5 (CC BY 2.5): 					http://creativecommons.org/licenses/by/2.5/
+Creative Commons Attribution 3.0 (CC BY 3.0): 					http://creativecommons.org/licenses/by/3.0/
+Creative Commons Attribution Share-Alike 2.0 (CC BY-SA 2.0):	http://creativecommons.org/licenses/by-sa/2.0/
+Creative Commons Attribution Share-Alike 2.5 (CC BY-SA 2.5):	http://creativecommons.org/licenses/by-sa/2.5/
+Creative Commons Attribution Share-Alike 3.0 (CC BY-SA 3.0):	http://creativecommons.org/licenses/by-sa/3.0/
+GNU Free Documentation License 1.2 (GFDL 1.2):					http://www.gnu.org/licenses/old-licenses/fdl-1.2.txt
+GNU Free Documentation License 1.3 (GFDL 1.3):					http://www.gnu.org/licenses/fdl-1.3.txt
+GNU General Public License 2.0 (GPL 2.0):						http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+GNU General Public License 3.0 (GPL 3.0):						http://www.gnu.org/licenses/gpl.txt
+MIT License:													http://opensource.org/licenses/mit-license.php
+Mozilla Public License 2.0 (MPL 2.0):							http://www.mozilla.org/MPL/2.0/index.txt

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<materials>
+  <material name="wood_planks1.jpg" backface-culling="N"/>
+  <material name="Catail.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
+  <material name="detailJapan.png" backface-culling="N" compositing="test"/>
+  <material name="fence_pagoda.png" compositing="test"/>
+  <material name="japanRedWood.png" backface-culling="N"/>
+  <material name="koiFish.png" backface-culling="N" compositing="test"/>
+  <material name="lanternDirection.png" backface-culling="N"/>
+  <material name="lanternsupport.jpg" backface-culling="N"/>
+  <material name="lightHaloY.png" light="N" compositing="blend" disable-z-write="Y"/>
+  <material name="monumentWater.png" compositing="blend" disable-z-write="Y"/>
+  <material name="monumentWater2.png" compositing="blend" disable-z-write="Y"/>
+  <material name="monumentWater3.png" compositing="blend" disable-z-write="Y"/>
+  <material name="pagoda_wall.png" backface-culling="N" compositing="test"/>
+  <material name="pix.png" compositing="test" reset="Y"/>
+  <material name="plants.jpg" backface-culling="N" compositing="blend" mask="plants_alpha.jpg"/>
+  <material name="sakura_leaves.jpg" backface-culling="N" compositing="blend" disable-z-write="Y" mask="sakura_leaves_alpha.jpg"/>
+  <material name="shintoB.jpg" backface-culling="N"/>
+  <material name="tree_1.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
+  <material name="tree_1Low.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
+  <material name="vegetation_1.png" backface-culling="N" compositing="coverage" ignore="Y"/>
+  <material name="water_light2.png" compositing="blend" disable-z-write="Y" graphical-effect="water" reset="Y" surface="Y">
+    <sfx filename="splash.ogg" min_speed="0.00" max_speed="0.00" min_pitch="0.80" max_pitch="1.20" positional="Y" rolloff="0.10"/>
+    <particles condition="skid drive" base="splash.xml"/>
+  </material>
+  <material name="water_light3.png" falling-effect="Y" graphical-effect="water"/>
+  <material name="waterlily.png" compositing="blend" disable-z-write="Y" ignore="Y"/>
+  <material name="waterparticles.png" compositing="blend" disable-z-write="Y"/>
+  <material name="wooden2.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
+</materials>

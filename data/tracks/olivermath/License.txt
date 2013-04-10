@@ -1,0 +1,3 @@
+Released under GNU GPL, by Steve and Oliver Baker.
+
+except floor texture by RaceAce, released under CC-BY-SA 3.0

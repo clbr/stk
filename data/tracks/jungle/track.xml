@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12125 -->
+<track  name           = "Amazonian Journey"
+        version        = "5"
+        groups         = "standard"
+        designer       = "Marianne Gagnon &amp; Jean-Manuel Cl&#233;men&#231;on"
+        music          = "amazon_jungle.music"
+        screenshot     = "sshot-jungle.jpg"
+        smooth-normals = "false"
+        reverse        = "Y"
+>
+</track>

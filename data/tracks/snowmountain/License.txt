@@ -1,0 +1,21 @@
+Track by Canis Lupus
+Converted by sj04736
+
+Selfmade parts and under GPL and CC-BY-SA)
+
+-rockmountain
+-window2
+-windowshutters
+
+-snowmountain.ac
+-snowmountain.blend
+
+
+winter sky textures (c) 2010 thomas oppl (toppl@fh-sbg.ac.at)
+licensed under CC BY-SA 3.0
+http://creativecommons.org/licenses/by-sa/3.0/
+
+stonesgray and roadway : under GPL, by the original (Super)TuxKart team
+roadwayborder: under GPL, based on texture by the original (Super)TuxKart team
+
+snow2 : under GPL, based on texture from Extreme Tux Racer game (http://extremetuxracer.com/)

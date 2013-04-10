@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12125 -->
+<scene>
+  <track model="lighthouse_track.b3d" x="0" y="0" z="0"/>
+  <object type="animation" model="Light.b3d" xyz="-48.25 29.67 -94.30" hpr="0.0 -0.0 0.0" scale="2.88 2.88 2.88"  interaction="ghost">
+    <curve channel="RotX" interpolation="linear" extend="cyclic">
+      <p c="1.288 -0.000"/>
+      <p c="90.640 -0.000"/>
+      <p c="184.694 -0.000"/>
+    </curve>
+    <curve channel="RotZ" interpolation="bezier" extend="cyclic">
+      <p c="1.288 -0.000" h1="-33.596 -0.000" h2="36.172 -0.000"/>
+      <p c="90.640 -0.000" h1="55.756 -0.000" h2="127.359 -0.000"/>
+      <p c="184.694 -0.000" h1="147.974 -0.000" h2="221.414 -0.000"/>
+    </curve>
+    <curve channel="RotY" interpolation="linear" extend="cyclic">
+      <p c="1.288 -0.000"/>
+      <p c="90.640 -180.000"/>
+      <p c="184.694 -360.000"/>
+    </curve>
+  </object>
+  <sun  fog="true" fog-color="110 125 139" fog-density="50" fog-start="50" fog-end="150"/>
+  <sky-color rgb="110 125 141"/>
+  <weather type="rain" />
+  <item x="-27.765064" y="1.957284" z="49.391853" />
+  <item x="-27.21554" y="1.957286" z="47.084381" />
+  <item x="-26.720949" y="1.957287" z="44.996407" />
+  <item x="-26.226444" y="1.957289" z="43.07349" />
+  <item x="-45.854069" y="1.06246" z="-46.743793" />
+  <item x="-48.68174" y="0.984951" z="-46.445847" />
+  <item x="12.371565" y="-6.87907" z="-57.734921" />
+  <item x="12.38612" y="-7.065743" z="-59.65921" />
+  <item x="12.250172" y="-7.06574" z="-62.217819" />
+  <item x="11.839122" y="-7.065737" z="-64.608177" />
+  <item x="60.041832" y="-7.065742" z="-32.400433" />
+  <item x="63.257195" y="-7.065742" z="-33.995289" />
+  <item x="54.593498" y="1.684416" z="37.709343" />
+  <item x="54.767887" y="1.684416" z="35.429962" />
+  <item x="54.783318" y="1.684416" z="33.181438" />
+  <item x="54.783318" y="1.684416" z="30.823359" />
+  <item x="30.821682" y="1.684416" z="-8.613055" />
+  <item x="29.096848" y="1.684416" z="-6.530096" />
+  <small-nitro x="-23.934258" y="0.763208" z="-4.407568" />
+  <small-nitro x="-17.353445" y="0.763208" z="2.173244" />
+  <small-nitro x="-18.127659" y="0.763208" z="-9.827062" />
+  <small-nitro x="-50.838169" y="0.763215" z="-46.21508" />
+  <small-nitro x="-43.751602" y="0.763215" z="-46.911083" />
+  <small-nitro x="66.910866" y="-6.606025" z="-35.339317" />
+  <small-nitro x="69.350883" y="-6.606025" z="-31.559687" />
+  <small-nitro x="51.268963" y="-6.606026" z="-31.976536" />
+  <big-nitro x="51.721169" y="-7.341476" z="-28.531448" />
+  <small-nitro x="27.694473" y="0.7631" z="-5.095636" />
+  <small-nitro x="26.239197" y="0.7631" z="-3.513813" />
+  <checks>
+    <check-lap kind="lap" same-group="0" other-ids="1" />
+    <check-line kind="activate" other-ids="0" p1="68.02 -45.56" p2="44.50 -31.78"
+                min-height="-9.72" same-group="1"/>
+  </checks>
+  <camera far="1000.0"/>
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.50"
+                 sidewards-distance="3.00"
+                 upwards-distance  ="0.10"/>
+  <end-cameras>
+    <camera type="static_follow_kart" xyz="0.455873 8.450116 11.882627" distance="37.0"/> <!-- Cam1.001 -->
+    <camera type="static_follow_kart" xyz="-13.950739 8.450128 56.391140" distance="37.0"/> <!-- Cam1 -->
+    <camera type="static_follow_kart" xyz="-38.672157 8.450124 -0.621475" distance="35.0"/> <!-- Cam2 -->
+    <camera type="ahead_of_kart" xyz="-43.870243 8.450124 -57.012814" distance="35.0"/> <!-- Cam3 -->
+    <camera type="static_follow_kart" xyz="74.425552 8.450123 -56.382706" distance="45.0"/> <!-- Cam4 -->
+    <camera type="static_follow_kart" xyz="56.941086 6.642035 16.232964" distance="30.0"/> <!-- Cam5 -->
+    <camera type="static_follow_kart" xyz="11.103432 6.642035 -25.351715" distance="30.0"/> <!-- Cam6 -->
+  </end-cameras>
+</scene>

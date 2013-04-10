@@ -1,0 +1,75 @@
+
+#Textures
+
+brick-subsea.jpg, brick-moss-subsea.jpg         by Fraang           CC-BY-SA 3.0
+bribk&moos.jpg				by Christoph Egger Marianne Gagnon	CC-BY-SA 3.0			Based on Grass2					
+Bronze-subsea.jpg 			from supertuxkart 			GPL license 			based on grass.jpg 
+Carapace-subsea.jpg 			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+chrome-subsea.jpg 			from supertuxkart 			GPL License
+chain-subsea.png			by p0ss, 				GPLV2. GPLV3. CCby3.0		based on metall003-new-subsea.jpg 
+chess-subsea.png			from supertuxkart 			GPL License
+coquillage-subsea.jpg			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+diffus0-subsea.png 			by yughues,				CC0 public domain 		opengameart
+dirt-subsea 				by Jeff Ottinger 			CCby3.0				opengameart 
+DragonsBed-subsea.png 			by Dm3d, 				GPLV2. GPLV3. CCbySa3.0 	opengameart
+eggs-subsea.png 			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Flower-subsea.png 			by Dim, 				CCby3.0 			opengameart
+Fish-filet-subsea.png			from fish-filet (The game)		Gnu GPL
+flaque-subsea.png			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Grate-subsea.png 			by Dim, 				CCby3.0 			opengameart
+light3-subsea.png 			from supertuxkart 			GPL License
+LilySmall-subsea.png 			by Dim, 				CCby3.0 			opengameart
+metall003-new-subsea.jpg 		by p0ss, 				GPLV2. GPLV3. CCby3.0
+Mint-subsea.png				by Dim, 				CCby3.0 			opengameart
+organic_out-subsea.png   		by Crack.com 				CC0 				based on marble_small1.jpg alien_crust2.jpg 
+organic-subsea.jpg			by Crack.com 				CC0 				based on marble_small1.jpg alien_crust2.jpg 
+Paving_stones_2-subsea.jpg		by Marianne Gagnon			CC-BY-SA 3			made from public domain images from BurningWell
+Paving_stones_3-subsea.jpg		by Marianne Gagnon			CC-BY-SA 3			made from public domain images from BurningWell
+Phoque_Plane-subsea.jpg			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Pigeon-1-subsea.jpg			by Greg Getten				CC0				modified publicdomainpictures.net
+Pigeon-2-subsea				by Greg Getten				CC0				modified publicdomainpictures.net
+Pigeon-3-subsea				by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Pirate_Flag_of_Rack_Rackham-subsea.jpg  by EugeneZelenko 	 		CC0				wikimedia
+Poisson_Plane_1-subsea.jpg		by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Rubis-subsea.png			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Requin-marteau-subsea.jpg		by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+sand2water-subsea.jpg			by MiniBjorn & supertuxkart             CC-BY-SA 3 , GPL License	based on sand2 and water_light
+sand-subsea.jpg				by MiniBjorn				CC-BY-SA 3			based on sand2
+sky-subsea.jpg				by Jean Manuel Clémençon (SamUncle) 	CC0				based on pictures from BurningWell
+snowyrock2brick-subsea.jpg		ExtremeTuxRacer & supertuxkart		GPL License			based on snowyrock and brick
+snowyrock2sand-subsea.jpg		ExtremeTuxRacer & MiniBjorn		GPL License , CC-BY-SA 3	based on snowyrock and sand2
+snowyrock-subsea.jpg			ExtremeTuxRacer				GPL License
+sub-subsea.jpg				by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+tex-subsea.jpg				by Joey Fleischman			CC0
+Tortue-dessous-subsea.jpg		by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Tortue-dessus-subsea.jpg		by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Tortue-tete-subsea.jpg			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Transparent-Broken-1-subsea.png		by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Transparent-Broken-2-subsea.png		by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Transparent-door-subsea.png		by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Transparent-subsea.png			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+treasure_map2-subsea.png		by hextrust 				CC0 				Openclipart 	
+treasuremap-subsea.png			by tzunghaor				CC0 				Openclipart 
+trumpet_diffuse-subsea.jpg		by Clint Bellanger			CCbySa3.0 GPLV2. GPLV3.		Openclipart 
+Varan-gueule-subsea.jpg			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+Varan-peau-1-subsea.jpg			by Rudy Phelippeau (STKRudy85) 		CC0 , GPL License
+water_dark-subsea.jpg			from supertuxkart 			GPL License			based water_light
+water_dark-transp-subsea.png		from supertuxkart 			GPL License			based water_light
+waterparticles-subsea.png		by MiniBjorn				CC-BY-SA 3			based on smoke
+woodBridge-subsea.jpg			by Jean Manuel Clémençon (SamUncle) 	CC0				based on pictures from BurningWell
+wood_planks2-7-subsea          		by Varivar, modified by Canis Lupus	CC-BY-SA 3
+zipper-inverted-subsea.png		by dakal				CCbySa3.0
+
+
+#Models
+
+dim_arboretum.blend			by Dim, 				CCby3.0 			opengameart
+Dragon thingy.blend 			by nazzyc 				CCby3.0 			opengameart
+DragonsBed.blend			by Dm3d, 				GPLV2. GPLV3. CCbySa3.0 	opengameart 
+grass.blend				by yughues,				CC0 public domain 		opengameart
+Orca.blend				by Joey Fleischman			CC0
+tropical_plant.blend 			by yughues,				CC0 public domain 		opengameart
+treasurechestidle.blend 		by TheKingofDemons 			CCbySa3.0		
+Trumpet.blend 				by Clint Bellanger 		 	CCbySa3.0 GPLV2. GPLV3.		opengameart 
+Boat from scotland track		by Canis Lupus				CCbySa3.0
+

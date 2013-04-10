@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 11785 -->
+<track  name           = "Fort Magma"
+        version        = "5"
+        groups         = "standard"
+        designer       = "Jean-Manuel Clemencon"
+        music          = "lava.music"
+        screenshot     = "sshot.jpg"
+        smooth-normals = "false"
+        reverse     = "Y"
+>
+</track>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12280 -->
+<graph>
+  <!-- First define all nodes of the graph, and what quads they represent -->
+  <node-list from-quad="0" to-quad="295"/>  <!-- map each quad to a node  -->
+  <!-- Define the main loop -->
+  <edge-loop from="0" to="284"/>
+  <!-- Shortcut Plane.020 -->
+  <edge from="253" to="285"/>
+  <edge-line from="285" to="287"/>
+  <edge from="287" to="281"/>
+  <!-- Shortcut Plane.019 -->
+  <edge from="101" to="288"/>
+  <edge-line from="288" to="295"/>
+  <edge from="295" to="138"/>
+</graph>

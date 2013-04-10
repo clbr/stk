@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12070 -->
+<track  name           = "Shifting Sands"
+        version        = "5"
+        groups         = "standard"
+        designer       = "ctdabomb"
+        music          = "TheDeadRocks-GreenSecretFromAmazonia.music"
+        screenshot     = "sshot-sandtrack.jpg"
+        smooth-normals = "true"
+        reverse        = "Y"
+>
+</track>

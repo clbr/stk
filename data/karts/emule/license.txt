@@ -1,0 +1,21 @@
+Emule kart v1.2 by Kinsu for SuperTuxKart
+
+Release license : CC-BY-SA 3.0 (see http://creativecommons.org/licenses/by-sa/3.0/)
+    Please contact me for any use which is not allowed by this license.
+
+Contact : Kinsu @ http://forum.freegamedev.net/
+          kinsumail[at]gmail[dot]com
+
+--
+Changelog : v1.2
+
+- Reduced tri number to 3138 (around 850 tri removed).
+- Adapted textures to the new model
+- Replaced the 64x64 icon by a 128x128 icon
+- Changed license to CC-BY-SA 3.0
+
+-- v1.1
+
+- Reduced tri number by nearly 1000
+- Improved tires look
+- Converted png textures without transparency to jpg

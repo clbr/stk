@@ -1,0 +1,14 @@
+This track, and the startrack2 / startrack3 textures are released under the GNU GPL version 2 (or later).
+~~
+all planet-texture-maps were taken from Celestia (www.shatters.net/celestia/) and are licensed under the GPL.
+~~
+purplenebula_* by Marianne Gagnon (Auria), release under CC-BY-SA 3.0
+~~
+Adding all planets and the sun and creating the Saturn-rings-Texture done by A.Billing (Needer)
+based on work from the initial (Super)TuxKart contributors.
+
+
+Metal-plate.png and Window.png by Rudy85, released under CC-BY-SA 3.0
+Light*.png by Marianne Gagnon, with modifications by Rudy85, released under CC-BY-SA 3.0
+
+Saucer model by Rudy85

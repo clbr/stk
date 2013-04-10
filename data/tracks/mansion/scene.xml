@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12416 -->
+<scene>
+  <track model="mansion_track.b3d" x="0" y="0" z="0">
+    <static-object lod_instance="true" lod_group="tombStone" xyz="-91.29 -1.13 -84.42" hpr="0.0 -87.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="70.0" lod_group="tombStone" model="BezierCurve.002.b3d" xyz="43.50 -3.04 -2.68" hpr="0.0 -87.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tombStone" xyz="-73.38 -0.41 -66.52" hpr="15.1 -29.9 -8.3" scale="0.84 0.84 0.84"/> <!-- writeStaticObjects 3 -->
+    <static-object model="tracks.b3d" xyz="-77.55 0.78 -8.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tombStone" xyz="-119.16 -0.99 -48.89" hpr="13.0 -26.8 -0.0" scale="1.35 1.35 1.35"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tombStone" xyz="-89.06 -2.79 -52.37" hpr="30.7 95.1 31.2" scale="1.35 1.35 1.35"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tombStone" xyz="-66.21 -4.32 -25.22" hpr="-74.5 106.6 -74.7" scale="1.35 1.35 1.35"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="pumpkin" xyz="-92.70 -5.29 59.42" hpr="0.0 -16.2 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="jackOlantern" xyz="-93.79 -5.44 57.39" hpr="0.0 177.2 0.0" scale="1.62 1.62 1.62"/> <!-- writeStaticObjects 3 -->
+    <static-object model="Circle.007.b3d" xyz="0.00 0.00 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="Circle.008.b3d" xyz="0.00 0.00 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="Circle.009.b3d" xyz="0.00 333.20 0.00" hpr="-0.0 135.0 -0.0" scale="1.20 1.20 1.20"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.050" />
+    </static-object>
+    <static-object model="Circle.010.b3d" xyz="0.00 333.20 0.00" hpr="-0.0 135.0 -0.0" scale="1.20 1.20 1.20"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.050" />
+    </static-object>
+    <static-object model="Circle.011.b3d" xyz="0.00 333.20 0.00" hpr="-0.0 135.0 -0.0" scale="1.20 1.20 1.20"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.050" />
+    </static-object>
+    <static-object model="Circle.012.b3d" xyz="0.00 333.20 0.00" hpr="-0.0 135.0 -0.0" scale="1.20 1.20 1.20"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.050" />
+    </static-object>
+    <static-object model="Circle.013.b3d" xyz="0.00 277.41 0.00" hpr="0.0 -10.0 0.0" scale="1.11 1.11 1.11"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.040" />
+    </static-object>
+    <static-object model="Circle.014.b3d" xyz="0.00 277.41 0.00" hpr="0.0 -10.0 0.0" scale="1.11 1.11 1.11"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.040" />
+    </static-object>
+    <static-object model="Circle.015.b3d" xyz="0.00 277.41 0.00" hpr="0.0 -10.0 0.0" scale="1.11 1.11 1.11"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.040" />
+    </static-object>
+    <static-object model="Circle.016.b3d" xyz="0.00 277.41 0.00" hpr="0.0 -10.0 0.0" scale="1.11 1.11 1.11"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.040" />
+    </static-object>
+    <static-object model="Circle.017.b3d" xyz="0.00 98.47 0.00" hpr="0.0 -76.1 -0.0" scale="1.15 1.15 1.15"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.030" />
+    </static-object>
+    <static-object model="Circle.018.b3d" xyz="0.00 98.47 0.00" hpr="0.0 -76.1 -0.0" scale="1.15 1.15 1.15"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.030" />
+    </static-object>
+    <static-object model="Circle.019.b3d" xyz="0.00 98.47 0.00" hpr="0.0 -76.1 -0.0" scale="1.15 1.15 1.15"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.030" />
+    </static-object>
+    <static-object model="Circle.020.b3d" xyz="0.00 98.47 0.00" hpr="0.0 -76.1 -0.0" scale="1.15 1.15 1.15"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="clouds.png" dx="0.030" />
+    </static-object>
+    <static-object lod_instance="true" lod_group="pumpkin" xyz="7.89 0.08 7.93" hpr="-0.0 -134.5 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="jackOlantern" xyz="10.20 0.15 7.93" hpr="0.0 -0.0 0.0" scale="1.62 1.62 1.62"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="20.0" lod_group="pumpkin" model="Circle.023.b3d" xyz="68.27 0.08 11.93" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="40.0" lod_group="pumpkin" model="Circle.024.b3d" xyz="68.27 0.08 14.93" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="80.0" lod_group="pumpkin" model="Circle.025.b3d" xyz="68.27 0.08 17.93" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="20.0" lod_group="jackOlantern" model="Circle.026.b3d" xyz="73.20 0.15 11.93" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="80.0" lod_group="jackOlantern" model="Circle.027.b3d" xyz="73.27 0.08 17.93" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="40.0" lod_group="jackOlantern" model="Circle.028.b3d" xyz="73.27 0.08 14.93" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="jackOlantern" xyz="-111.74 -3.52 -67.92" hpr="-0.0 80.1 -0.0" scale="1.62 1.62 1.62"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="jackOlantern" xyz="-111.74 -3.52 -64.66" hpr="-0.0 112.2 -0.0" scale="0.92 0.92 0.92"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-0.78 2.78 38.08" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="50.0" lod_group="lantern" model="Mesh.001.b3d" xyz="64.24 2.78 37.09" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="20.0" lod_group="lantern" model="Mesh.002.b3d" xyz="64.24 2.78 41.08" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="1.000" />
+    </static-object>
+    <static-object lod_instance="true" lod_group="lantern" xyz="2.68 1.63 68.97" hpr="-90.0 177.1 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-47.60 0.58 89.62" hpr="-90.0 -127.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-76.28 -0.20 64.30" hpr="-90.0 -145.8 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-86.48 -1.63 34.48" hpr="-90.0 -23.6 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-77.66 -2.59 25.73" hpr="-90.0 140.6 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-61.29 -2.87 -5.74" hpr="-90.0 -138.6 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-91.92 -1.03 -31.13" hpr="-90.0 34.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-91.92 -1.03 -31.13" hpr="-90.0 34.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-68.08 4.57 -81.79" hpr="-18.4 -89.6 -69.1" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="40.0" lod_group="dead_tree" model="Mesh.012.b3d" xyz="73.39 1.70 43.07" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-8.10 0.58 91.36" hpr="-90.0 86.5 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="-97.41 1.36 -62.24" hpr="-90.0 162.8 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="75.0" lod_group="dead_tree" model="Mesh.015.b3d" xyz="73.39 1.70 26.07" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="200.0" lod_group="dead_tree" model="Mesh.016.b3d" xyz="73.39 1.70 35.07" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="dead_tree" xyz="4.45 -3.93 90.58" hpr="-85.3 138.4 -1.7" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="dead_tree" xyz="-45.73 -4.27 87.81" hpr="-82.7 48.3 2.0" scale="0.88 0.88 0.88"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="dead_tree" xyz="-80.55 -8.05 -4.51" hpr="-82.7 48.3 2.0" scale="1.46 1.46 1.46"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="dead_tree" xyz="-55.32 -0.98 -67.66" hpr="-85.4 137.6 -1.8" scale="1.46 1.46 1.46"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="dead_tree" xyz="10.71 -1.87 43.07" hpr="-83.9 -167.5 -1.3" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="bugsSwamp.b3d" xyz="-78.88 -2.44 75.08" hpr="-90.0 -111.2 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="1.000" />
+    </static-object>
+    <static-object model="bugsSwamp.b3d" xyz="-74.69 -0.90 46.35" hpr="-90.0 -47.7 0.0" scale="1.47 1.47 1.47"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="1.000" />
+    </static-object>
+    <static-object model="bugsSwamp.b3d" xyz="-50.23 -0.90 99.13" hpr="-90.0 -0.0 0.0" scale="1.47 1.47 1.47"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="1.000" />
+    </static-object>
+    <static-object model="bugsSwamp.b3d" xyz="-81.80 -0.90 99.13" hpr="-90.0 -15.9 -0.0" scale="1.47 1.47 1.47"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="1.000" />
+    </static-object>
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-9.48 4.09 4.48" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="15.33 4.09 4.20" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-115.36 2.47 -92.47" hpr="-0.0 37.3 -0.0" scale="0.70 0.70 0.70"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-134.07 1.07 -56.13" hpr="-0.0 90.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-113.69 -7.44 3.28" hpr="-0.0 90.0 -0.0" scale="1.22 1.22 1.22"/> <!-- writeStaticObjects 3 -->
+    <static-object model="basicfence.b3d" xyz="-9.85 1.46 5.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-14.57 3.78 4.48" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-25.60 -0.09 5.39" hpr="-44.3 175.6 7.6" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-113.69 -4.83 77.89" hpr="-0.0 90.0 -0.0" scale="1.22 1.22 1.22"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-55.14 -4.83 118.48" hpr="0.0 178.8 0.0" scale="0.99 0.99 0.99"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-22.29 -4.83 118.48" hpr="0.0 178.8 0.0" scale="0.68 0.68 0.68"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-30.51 -4.48 68.44" hpr="-0.0 90.0 -0.0" scale="0.98 0.98 0.98"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-30.51 -4.48 42.48" hpr="0.0 143.8 0.0" scale="0.77 0.77 0.77"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-51.45 -4.48 49.98" hpr="0.0 143.8 0.0" scale="0.77 0.77 0.77"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="36.86 -2.22 49.98" hpr="0.0 143.8 0.0" scale="0.97 0.97 0.97"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-24.32 -0.09 4.10" hpr="-4.0 4.2 -6.3" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-80.91 -3.47 43.17" hpr="-17.8 177.2 2.8" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-91.66 -3.47 37.74" hpr="-17.5 -24.4 -0.7" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="60.0" lod_group="old_barrier" model="metal_barrier.b3d" xyz="58.15 4.09 41.48" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="36.86 -3.53 109.96" hpr="0.0 143.8 0.0" scale="0.73 0.73 0.73"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="13.98 3.23 5.66" hpr="-44.3 175.6 -0.7" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="18.81 2.67 5.66" hpr="-14.2 175.8 1.6" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-7.41 0.12 6.11" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-14.05 -0.54 9.37" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="14.42 0.16 9.37" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-103.73 -3.47 35.08" hpr="-17.6 161.6 0.7" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-68.92 -3.47 40.67" hpr="-17.7 -8.8 5.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-100.36 -2.32 -35.02" hpr="-4.0 4.2 -6.3" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-80.72 -2.44 -42.52" hpr="-3.7 4.5 -2.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-111.86 -1.79 -33.38" hpr="4.0 -177.6 -6.2" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-111.67 -1.86 -34.13" hpr="-4.0 4.2 -6.3" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-81.39 -2.12 -42.51" hpr="3.7 -175.8 -2.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-70.38 -2.22 -43.99" hpr="-21.3 4.5 -2.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-84.67 -2.66 85.19" hpr="-23.4 147.6 0.1" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-80.71 -2.65 87.71" hpr="-3.7 125.7 0.2" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-77.20 -2.65 91.53" hpr="-23.3 125.7 0.2" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-53.19 -2.38 105.44" hpr="-20.4 152.4 3.6" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-58.03 -2.64 103.59" hpr="-0.8 152.4 3.6" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="old_barrier" xyz="-62.69 -2.84 103.11" hpr="-20.8 174.2 2.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-6.90 1.95 -18.58" hpr="-30.8 130.7 -24.3" scale="0.49 0.49 0.49"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="14.65 9.53 -54.53" hpr="-2.7 159.4 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="4.35 2.91 -21.93" hpr="-30.8 130.7 -24.3" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="13.71 2.85 -23.42" hpr="-30.8 130.7 -24.3" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="13.71 5.67 -42.22" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="29.76 4.25 -44.20" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="29.76 1.65 -8.02" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-7.41 -1.28 25.07" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-12.14 -3.27 62.85" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-16.15 -4.45 103.24" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-36.23 -4.45 103.24" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-59.06 -4.45 96.71" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-73.48 -4.62 86.99" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-65.91 -4.62 68.25" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-94.04 -4.62 -55.02" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_branch.b3d" xyz="-64.61 -0.01 -87.47" hpr="6.0 126.6 4.8" scale="0.45 0.45 0.45"/> <!-- writeStaticObjects 3 -->
+    <static-object model="dead_tree_low.b3d" xyz="-96.13 -4.83 118.48" hpr="0.0 178.8 0.0" scale="0.99 0.99 0.99"/> <!-- writeStaticObjects 3 -->
+  </track>
+  <object type="animation" model="ghost.b3d" xyz="-67.86 -7.96 -26.49" hpr="0.0 75.1 0.0" scale="0.46 1.39 1.00"  looped="y"  interaction="ghost">
+    <curve channel="ScaleX" interpolation="bezier" extend="cyclic">
+      <p c="1.000 0.457" h1="-18.129 0.457" h2="20.129 0.457"/>
+      <p c="50.000 1.000" h1="30.870 1.000" h2="145.649 1.000"/>
+      <p c="473.000 1.000" h1="316.836 1.000" h2="504.233 1.000"/>
+      <p c="553.000 0.492" h1="521.768 0.492" h2="584.232 0.492"/>
+    </curve>
+    <curve channel="ScaleZ" interpolation="bezier" extend="cyclic">
+      <p c="1.000 1.000" h1="-18.130 1.000" h2="20.130 1.000"/>
+      <p c="50.000 1.000" h1="30.870 1.000" h2="145.651 1.000"/>
+      <p c="473.000 1.000" h1="316.835 1.000" h2="504.233 1.000"/>
+      <p c="553.000 1.000" h1="521.767 1.000" h2="584.233 1.000"/>
+    </curve>
+    <curve channel="ScaleY" interpolation="bezier" extend="cyclic">
+      <p c="1.000 1.395" h1="-18.130 1.395" h2="20.130 1.395"/>
+      <p c="50.000 1.000" h1="30.870 1.000" h2="145.650 1.000"/>
+      <p c="473.000 1.000" h1="316.836 1.000" h2="504.233 1.000"/>
+      <p c="553.000 1.581" h1="521.768 1.581" h2="584.232 1.581"/>
+    </curve>
+  </object>
+  <sun  fog="true" fog-color="7 8 11" fog-start="0.00" fog-end="75.00" xyz="0.00 118.17 0.00" sun-specular="255 255 255" sun-diffuse="85 103 103" ambient="85 103 103"/>
+  <sky-color rgb="7 7 11"/>
+  <checks>
+    <check-lap kind="lap" same-group="0" other-ids="1" />
+    <check-line kind="activate" other-ids="0" p1="-20.20 -87.10" p2="-11.93 -71.33"
+                min-height="3.81" same-group="1"/>
+  </checks>
+  <sky-box texture="SKY0006.png SKY0001.png SKY0003.png SKY0002.png SKY0005.png SKY0004.png"/>
+  <camera far="2000.0"/>
+  <default-start karts-per-row     ="3"
+                 forwards-distance ="1.10"
+                 sidewards-distance="1.10"
+                 upwards-distance  ="1.10"/>
+  <water model="waterPond.b3d" xyz="-75.02 -12.93 26.30" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.10" speed="500.00" length="5.00">
+    <animated-texture name="water_light2.png" dx="0.100" />
+  </water>
+  <water model="swamp.b3d" xyz="-72.90 -7.49 108.53" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.09" speed="500.00" length="10.00"/>
+  <particle-emitter kind="fire.xml" x="-5.13" y="19.78" z="-115.89" h="-90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" x="-5.15" y="19.78" z="-107.17" h="-90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" x="-5.15" y="19.78" z="-99.01" h="-90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" x="18.66" y="19.78" z="-99.78" h="-270.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" x="18.66" y="19.78" z="-107.81" h="-270.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" x="18.66" y="19.78" z="-116.38" h="-270.00">
+  </particle-emitter>
+  <particle-emitter kind="black_smoke.xml" x="28.42" y="46.26" z="-80.29" h="0.00">
+  </particle-emitter>
+  <particle-emitter kind="black_smoke.xml" x="5.96" y="13.58" z="-124.45" h="0.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" x="5.87" y="12.96" z="-123.87" h="0.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" x="-29.18" y="-4.23" z="108.15" h="0.00">
+  </particle-emitter>
+  <particle-emitter kind="black_smoke.xml" x="-29.09" y="-3.61" z="107.57" h="0.00">
+  </particle-emitter>
+  <banana x="-12.52" y="-2.70" z="89.47" h="-90.00" />
+  <banana x="9.54" y="13.03" z="-100.93" h="-90.00" />
+  <banana x="-15.08" y="4.85" z="-78.25" h="-90.00" />
+  <item x="2.16" y="0.44" z="1.05" />
+  <item x="-1.84" y="0.44" z="1.05" />
+  <item x="6.64" y="6.14" z="-26.80" h="-90.00" />
+  <item x="-76.70" y="-6.54" z="21.54" h="-90.00" />
+  <item x="6.58" y="6.14" z="-35.47" h="-90.00" />
+  <item x="-3.49" y="10.96" z="-100.20" h="-180.00" />
+  <item x="0.51" y="10.96" z="-100.20" h="-180.00" />
+  <item x="-63.46" y="1.35" z="-79.49" h="-90.00" />
+  <item x="-84.26" y="1.35" z="-27.78" h="-90.00" />
+  <item x="-13.68" y="-1.18" z="87.29" h="-90.00" />
+  <item x="-11.40" y="-1.18" z="91.20" h="-90.00" />
+  <item x="0.28" y="-1.27" z="41.73" />
+  <item x="4.28" y="-1.27" z="41.73" />
+  <item x="6.52" y="6.14" z="-31.21" h="-90.00" />
+  <item x="7.99" y="13.01" z="-73.26" h="-90.00" />
+  <item x="3.60" y="13.01" z="-73.26" h="-90.00" />
+  <small-nitro x="22.08" y="1.90" z="-16.81" h="-180.00" />
+  <small-nitro x="23.00" y="3.11" z="-11.56" h="-180.00" />
+  <small-nitro x="41.86" y="5.06" z="-13.04" h="-180.00" />
+  <small-nitro x="50.44" y="5.06" z="-18.49" h="-180.00" />
+  <small-nitro x="49.63" y="5.06" z="-30.40" h="-180.00" />
+  <small-nitro x="37.32" y="5.06" z="-39.07" h="-180.00" />
+  <small-nitro x="-100.88" y="-2.90" z="-66.98" h="-90.00" />
+  <small-nitro x="-85.35" y="-5.30" z="-26.87" h="-90.00" />
+  <small-nitro x="-63.44" y="1.08" z="-76.47" h="-90.00" />
+  <small-nitro x="-50.25" y="-3.67" z="89.58" h="-90.00" />
+  <small-nitro x="-82.99" y="-5.30" z="-29.14" h="-90.00" />
+  <small-nitro x="-52.31" y="-3.67" z="94.17" h="-90.00" />
+  <object type="billboard" texture="lightHaloY.png" xyz="-0.83 2.27 38.08" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-0.83 2.27 38.10" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="halo.png" xyz="2.71 1.03 68.84" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="2.71 1.03 68.82" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-8.02 0.11 91.34" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-8.02 0.11 91.38" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-47.63 0.11 89.61" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-47.71 0.11 89.59" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-76.23 -0.71 64.44" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-76.23 -0.71 64.46" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-86.49 -2.02 34.50" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-86.49 -2.02 34.48" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-77.70 -2.99 25.74" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-77.70 -2.99 25.75" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-61.27 -3.36 -5.69" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-61.27 -3.36 -5.71" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-91.94 -1.50 -31.17" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-91.94 -1.50 -31.16" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-97.47 0.94 -62.22" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-97.47 0.94 -62.24" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-68.08 4.09 -81.85" 
+             width="3.600" height="3.600" >
+  </object>
+  <object type="billboard" texture="halo.png" xyz="-68.08 4.09 -81.83" 
+             width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
+  </object>
+</scene>

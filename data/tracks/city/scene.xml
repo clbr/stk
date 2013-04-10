@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 11785 -->
+<scene>
+  <track model="city_track.b3d" x="0" y="0" z="0">
+    <static-object model="building_2.b3d" xyz="-24.00 -3.20 152.00" hpr="-0.0 70.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_2.b3d" xyz="53.00 -0.20 -27.00" hpr="-0.0 -90.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_2.b3d" xyz="16.00 -3.20 -21.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="257.00 17.00 -22.00" hpr="0.0 30.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="72.00 -4.20 -35.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="98.00 -4.20 -35.00" hpr="-0.0 180.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="85.00 -4.20 -35.00" hpr="-0.0 90.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="172.30 -1.00 49.90" hpr="-0.0 25.0 -0.0" scale="1.40 1.00 1.40"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="180.20 -4.00 33.70" hpr="-0.0 25.0 -0.0" scale="1.60 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="203.00 14.00 66.00" hpr="0.0 -35.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="248.00 13.00 -13.00" hpr="0.0 -60.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="154.50 -0.20 -68.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="-10.00 -0.20 -58.00" hpr="0.0 -25.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="84.00 -0.20 -68.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="-37.00 -4.80 -40.60" hpr="0.0 -60.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="-27.00 -4.80 -24.00" hpr="0.0 0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="72.00 -2.20 -68.00" hpr="-0.0 -180.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="224.00 29.00 89.00" hpr="-0.0 -180.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="260.00 22.00 57.00" hpr="0.0 160.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="272.00 20.00 57.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="-1.00 -4.20 142.00" hpr="-0.0 160.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="197.00 26.80 133.00" hpr="-0.0 90.0 0.0" scale="1.40 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="17.00 8.00 208.20" hpr="0.0 150.0 0.0" scale="1.40 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="222.00 31.80 100.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="60.00 -4.20 -68.00" hpr="-0.0 -180.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="25.00 -0.20 -59.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="112.00 -0.20 -52.00" hpr="0.0 -15.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="115.00 -0.20 -63.00" hpr="-0.0 -105.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="60.00 -0.20 129.00" hpr="-0.0 -180.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="-13.00 -0.20 138.00" hpr="0.0 -20.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="-16.00 -0.20 -10.00" hpr="0.0 0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="-16.00 -0.20 -24.00" hpr="-0.0 -180.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="43.00 18.00 234.20" hpr="0.0 150.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="183.40 5.00 42.40" hpr="-0.0 25.0 -0.0" scale="1.40 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="building_1.b3d" xyz="176.40 14.00 54.40" hpr="-0.0 25.0 -0.0" scale="1.00 1.00 1.40"/> <!-- writeStaticObjects 3 -->
+    <static-object model="fern.b3d" xyz="29.00 1.00 143.00" hpr="-0.0 80.0 -0.0" scale="1.80 1.80 1.80"/> <!-- writeStaticObjects 3 -->
+    <static-object model="fern.b3d" xyz="90.00 -0.20 -78.00" hpr="-0.0 90.0 0.0" scale="2.00 3.00 2.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="fern.b3d" xyz="95.00 -0.20 -85.00" hpr="-0.0 180.0 -0.0" scale="1.00 1.20 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="fern.b3d" xyz="159.00 -0.20 54.00" hpr="-0.0 -90.0 0.0" scale="1.80 1.80 1.80"/> <!-- writeStaticObjects 3 -->
+    <static-object model="fern.b3d" xyz="60.00 -0.20 -38.00" hpr="0.0 -0.0 0.0" scale="1.00 1.20 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="grass.b3d" xyz="55.10 21.60 244.10" hpr="-0.0 -0.0 10.0" scale="2.40 1.80 2.40"/> <!-- writeStaticObjects 3 -->
+    <static-object model="grass.b3d" xyz="54.70 21.20 247.30" hpr="-0.0 -0.0 10.0" scale="2.40 1.80 2.40"/> <!-- writeStaticObjects 3 -->
+    <static-object model="grass.b3d" xyz="57.00 21.80 244.20" hpr="-0.0 -0.0 10.0" scale="2.40 1.80 2.40"/> <!-- writeStaticObjects 3 -->
+    <static-object model="grass.b3d" xyz="54.00 21.20 245.20" hpr="-0.0 -0.0 10.0" scale="2.40 1.80 2.40"/> <!-- writeStaticObjects 3 -->
+    <static-object model="grass.b3d" xyz="-194.00 -0.20 13.00" hpr="0.0 -0.0 0.0" scale="2.40 1.60 2.40"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_1" xyz="-16.00 -0.20 30.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_1" xyz="175.00 -0.20 0.00" hpr="0.0 -45.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_1" xyz="195.00 39.00 82.00" hpr="-0.0 -90.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_1" xyz="56.00 21.80 246.00" hpr="-0.0 -90.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_1" xyz="264.00 22.20 32.00" hpr="-0.0 90.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_1" xyz="34.00 -0.20 -34.00" hpr="0.0 -45.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_1" xyz="15.00 -0.20 -50.00" hpr="-0.0 180.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="50.0" lod_group="tree_1" model="tree_1_LOD50.b3d" xyz="-16.00 -0.20 377.86" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="550.0" lod_group="tree_1" model="tree_1_LOD550.b3d" xyz="-50.30 -0.20 377.86" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="150.0" lod_group="tree_1" model="tree_1_LOD150.b3d" xyz="-33.71 -0.20 377.86" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_2" xyz="-14.00 -0.20 15.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_2" xyz="78.00 -0.20 114.00" hpr="0.0 -180.0 -0.0" scale="1.20 1.20 1.20"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_2" xyz="280.00 12.60 -15.00" hpr="0.0 -0.0 0.0" scale="1.20 1.20 1.20"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_2" xyz="270.00 19.60 21.00" hpr="-0.0 -90.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_2" xyz="258.00 22.00 21.00" hpr="-0.0 45.0 -0.0" scale="1.20 1.20 1.20"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_2" xyz="-22.00 -0.02 45.00" hpr="-0.0 135.0 -0.0" scale="1.20 1.20 1.20"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_2" xyz="-22.00 -0.02 142.00" hpr="0.0 -0.0 0.0" scale="0.90 0.90 0.90"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="tree_2" xyz="8.00 0.60 -33.00" hpr="0.0 -75.0 0.0" scale="0.90 0.90 0.90"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="50.0" lod_group="tree_2" model="tree_2_LOD50.b3d" xyz="78.00 -0.20 385.94" hpr="0.0 -180.0 -0.0" scale="1.20 1.20 1.20"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="150.0" lod_group="tree_2" model="tree_2_LOD150.b3d" xyz="60.89 -0.20 385.94" hpr="0.0 -180.0 -0.0" scale="1.20 1.20 1.20"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="500.0" lod_group="tree_2" model="tree_2_LOD500.b3d" xyz="45.18 -0.20 385.94" hpr="0.0 -180.0 -0.0" scale="1.20 1.20 1.20"/> <!-- writeStaticObjects 3 -->
+    <animated-texture name="canyon_conveyor_belt.png" dy="2.000" />
+    <animated-texture name="canyon_water.png" dy="0.200" />
+  </track>
+  <object type="movable" xyz="178.60 40.70 64.90" hpr="0.0 25.0 0.0" scale="1.00 1.00 1.00"
+          model="crate.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="180.60 40.70 63.90" hpr="0.0 25.0 0.0" scale="1.00 1.00 1.00"
+          model="crate.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="182.60 40.70 62.90" hpr="0.0 25.0 0.0" scale="1.00 1.00 1.00"
+          model="crate.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="181.60 40.70 60.90" hpr="0.0 25.0 0.0" scale="1.00 1.00 1.00"
+          model="crate.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="179.60 40.70 61.90" hpr="0.0 25.0 0.0" scale="1.00 1.00 1.00"
+          model="crate.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="177.60 40.70 62.90" hpr="0.0 25.0 0.0" scale="1.00 1.00 1.00"
+          model="crate.b3d" shape="box" mass="100.0"/>
+  <banana x="36" y="45.820133" z="205" />
+  <banana x="25" y="45.820133" z="187" />
+  <banana x="146.131989" y="45.820133" z="98.922821" />
+  <banana x="129.648773" y="45.820133" z="112.186798" />
+  <banana x="15" y="45.820133" z="-110" />
+  <banana x="35" y="45.820133" z="-110" />
+  <banana x="205" y="45.820133" z="47.799999" />
+  <banana x="203" y="45.820133" z="43.799999" />
+  <banana x="217.5" y="45.820133" z="29" />
+  <banana x="221.5" y="45.820133" z="31" />
+  <banana x="219.5" y="45.820133" z="30" />
+  <banana x="185" y="45.820133" z="59" />
+  <banana x="204" y="45.820133" z="45.799999" />
+  <item x="-15.304245" y="45.820133" z="-46.111362" h="-55.430507" />
+  <item x="-18.708677" y="45.820133" z="-41.170734" h="-55.430507" />
+  <item x="235" y="45.820133" z="33" />
+  <item x="136" y="45.820133" z="-76" />
+  <item x="225" y="45.820133" z="118" />
+  <item x="136" y="45.820133" z="-84" />
+  <item x="92" y="45.820133" z="138" />
+  <item x="181" y="45.820133" z="14" />
+  <item x="95" y="45.820133" z="142" />
+  <item x="17" y="45.820133" z="126" />
+  <item x="181" y="45.820133" z="11" />
+  <item x="15" y="45.820133" z="133" />
+  <item x="136" y="45.820133" z="-80.087967" />
+  <item x="225" y="45.820133" z="112.023941" />
+  <item x="237.740906" y="45.820133" z="37.282661" />
+  <big-nitro x="56" y="45.820133" z="225" />
+  <big-nitro x="62" y="45.820133" z="223" />
+  <big-nitro x="25" y="45.820133" z="-110" />
+  <big-nitro x="138.722595" y="45.820133" z="105.832214" />
+  <big-nitro x="179" y="45.820133" z="15" />
+  <big-nitro x="179" y="45.820133" z="10" />
+  <big-nitro x="154" y="45.820133" z="-61" />
+  <small-nitro x="154.651001" y="45.820133" z="91.874725" />
+  <small-nitro x="121.499634" y="45.820133" z="117.693756" />
+  <item x="267" y="45.820133" z="-14" />
+  <item x="260" y="45.820133" z="-10" />
+  <small-nitro x="20" y="45.820133" z="-110" />
+  <small-nitro x="30" y="45.820133" z="-110" />
+  <small-nitro x="69.945152" y="45.820133" z="-45.5415" />
+  <small-nitro x="70" y="45.820133" z="-51.54155" />
+  <small-nitro x="70" y="45.820133" z="-48.54155" />
+  <small-nitro x="70" y="45.820133" z="-54.54155" />
+  <small-nitro x="-5.057373" y="45.820133" z="119.923492" />
+  <small-nitro x="-7.561262" y="45.820133" z="125.111778" />
+  <small-nitro x="-7.933046" y="45.820103" z="116.831444" />
+  <small-nitro x="-12.205015" y="45.820103" z="125.867905" />
+  <small-nitro x="-10.184693" y="45.82011" z="120.70771" />
+  <checks>
+    <check-lap kind="lap" same-group="0" other-ids="1" />
+    <check-line kind="activate" other-ids="0" p1="182.13 77.71" p2="175.74 69.50"
+                min-height="40.00" same-group="1"/>
+  </checks>
+  <sky-box texture="summersky_t.jpg summersky_b.jpg summersky_e.jpg summersky_w.jpg summersky_s.jpg summersky_n.jpg"/>
+  <camera far="1000.0"/>
+  <default-start karts-per-row     ="3"
+                 forwards-distance ="2.00"
+                 sidewards-distance="2.50"
+                 upwards-distance  ="1.10"/>
+</scene>

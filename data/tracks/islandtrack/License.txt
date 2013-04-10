@@ -1,0 +1,8 @@
+rock*.jpg, road_sand*.jpg, road_sand_side.png, sky2.jpg by MiniBjorn, released under CC-BY-SA 3.0
+
+transparence.png by samuncle released under CC-By-SA 3.0
+
+islandtrack_signs.ac, turn_sharp_24med.png by Pixel (Wayne Dennis), released under Creative Commons Attribution - Share Alike 3.0
+(This has been combined with the track model)
+
+the track model itself is releasd under GPL.

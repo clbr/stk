@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<materials>
+  <material name="bigFork.png" ignore="Y" compositing="test"/>
+  <material name="cactus.png" compositing="blend" light="N" backface-culling="N" disable-z-write="Y"/>
+  <material name="sageBrush.jpg" light="N" ignore="Y" compositing="blend" backface-culling="N" disable-z-write="Y" mask="sageBrush_alpha.jpg"/>
+  <material name="grass.png" ignore="Y" compositing="blend" backface-culling="N" disable-z-write="Y"/>
+  <material name="hacienda_ground.jpg">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="hacienda_ground_dark.jpg">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="hacienda_groundTodark.jpg">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="l_lampsglass0.png" compositing="blend" disable-z-write="Y"/>
+  <material name="mill.png" ignore="Y" compositing="blend" disable-z-write="Y"/>
+  <material name="millstructure.png" ignore="Y" compositing="test"/>
+  <material name="palm_b.png" compositing="blend" backface-culling="N" disable-z-write="Y"/>
+  <material name="palmacacia.jpg" light="N" ignore="Y" compositing="blend" disable-z-write="Y" mask="palmacacia_alpha.jpg"/>
+  <material name="pix.png" reset="Y" compositing="test"/>
+  <material name="pix_2.png" compositing="test"/>
+  <material name="sageBrush.jpg" light="N" ignore="Y" compositing="coverage" mask="sageBrush_alpha.jpg"/>
+  <material name="sky.jpg" light="N"/>
+  <material name="tail.png" ignore="Y" compositing="blend" disable-z-write="Y" backface-culling="N"/>
+  <material name="traildust.jpg">
+    <particles base="smoke_brown.xml" condition="skid"/>
+  </material>
+  <material name="trailrock.jpg">
+    <particles base="smoke.xml" condition="skid"/>
+  </material>
+  <material name="trailrock2dust.jpg">
+    <particles base="smoke_brown.xml" condition="skid"/>
+  </material>
+  <material name="windmill_palm_detail.png" compositing="test"/>
+  <material name="woodBridge.jpg">
+    <sfx filename="wooden_bridge.ogg" rolloff="0.60" min_speed="9.00" max_speed="22.00" min_pitch="1.00" max_pitch="1.70" positional="Y" volume="1.00"/>
+  </material>
+  <material name="yellow_dirt.jpg" slowdown-time="2.00" max-speed="0.70">
+    <particles base="smoke_yellow.xml" condition="drive skid"/>
+  </material>
+  <material name="zipper-effect.png" light="N" compositing="blend" disable-z-write="Y"/>
+  <material name="zipper.png" light="N" compositing="blend" disable-z-write="Y"/>
+</materials>

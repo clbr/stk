@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12125 -->
+<scene>
+  <track model="xr591_track.b3d" x="0" y="0" z="0">
+    <static-object model="tube 2.b3d" xyz="-18.83 13.31 38.01" hpr="-0.0 -0.0 5.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="tube 1.b3d" xyz="48.17 19.80 12.34" hpr="-0.0 180.0 -5.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lightBeam.b3d" xyz="146.34 -30.00 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lightBeam.b3d" xyz="-0.00 102.36 277.00" hpr="-90.0 -70.0 90.0" scale="1.70 1.70 1.70"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lightBeam.b3d" xyz="-239.89 102.36 138.50" hpr="11.2 -152.0 -22.8" scale="1.70 1.70 1.70"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lightBeam.b3d" xyz="-239.89 102.36 -138.50" hpr="-11.2 152.0 -22.8" scale="1.70 1.70 1.70"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lightBeam.b3d" xyz="239.89 102.36 138.50" hpr="-11.2 -28.0 22.8" scale="1.70 1.70 1.70"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lightBeam.b3d" xyz="239.89 102.36 -138.50" hpr="11.2 28.0 22.8" scale="1.70 1.70 1.70"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lightBeam.b3d" xyz="-0.00 102.36 -277.00" hpr="90.0 70.0 90.0" scale="1.70 1.70 1.70"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="60.0" lod_group="aliens" model="aliens_hi.b3d" xyz="-48.21 7.16 98.45" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="aliens" xyz="-54.25 10.16 100.87" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="40.0" lod_group="robot1" model="robot_high.b3d" xyz="32.59 -3.73 -203.25" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="200.0" lod_group="robot1" model="robot1_low.b3d" xyz="44.10 -3.73 -201.25" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="curiosity.b3d" xyz="-94.77 6.81 143.51" hpr="-0.0 -105.0 9.2" scale="3.27 3.27 3.27"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="200.0" lod_group="aliens" model="aliens_lo.b3d" xyz="-43.74 6.51 96.24" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="curious.b3d" xyz="-94.29 8.90 142.70" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="love.b3d" xyz="-93.47 5.53 159.28" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <animated-texture name="acid_lake.jpg" dx="0.000"  dy="0.500" />
+    <animated-texture name="arc1.png" dx="0.000"  dy="0.100" />
+    <animated-texture name="arc1.png" dx="0.000"  dy="0.100" />
+    <animated-texture name="acid_lake.jpg" dx="0.000"  dy="0.500" />
+    <animated-texture name="arc1.png" dx="2.000" />
+    <animated-texture name="arc2.png" dx="-1.700" />
+  </track>
+  <water model="water2.b3d" xyz="9.52 -15.80 105.18" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.20"/>
+  <water model="water2.b3d" xyz="-45.52 -10.94 -77.94" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.20"/>
+  <object type="animation" model="monster2.b3d" xyz="-60.00 -13.14 -35.13" hpr="-90.0 0.0 20.0" scale="1.18 1.18 1.18"  interaction="ghost">
+    <curve channel="RotZ" interpolation="bezier" extend="cyclic">
+      <p c="1.000 20.000" h1="-18.067 35.565" h2="20.067 4.435"/>
+      <p c="50.000 -20.000" h1="30.870 -20.000" h2="69.521 -20.000"/>
+      <p c="100.000 20.000" h1="80.542 4.433" h2="119.458 35.567"/>
+    </curve>
+  </object>
+  <object type="animation" model="monster1.b3d" xyz="37.43 -16.93 137.83" hpr="-95.1 -0.1 -18.7" scale="1.00 1.00 1.00"  interaction="ghost">
+    <curve channel="RotX" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -95.079" h1="-18.125 -99.729" h2="20.125 -90.430"/>
+      <p c="50.000 -83.167" h1="30.870 -83.167" h2="69.521 -83.167"/>
+      <p c="100.000 -93.575" h1="80.484 -89.513" h2="119.516 -97.638"/>
+    </curve>
+    <curve channel="RotZ" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -18.712" h1="-18.092 -30.791" h2="20.092 -6.633"/>
+      <p c="50.000 12.289" h1="30.870 12.289" h2="69.521 12.289"/>
+      <p c="100.000 -17.646" h1="80.514 -5.980" h2="119.486 -29.311"/>
+    </curve>
+    <curve channel="RotY" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.078" h1="-18.129 1.587" h2="20.129 -1.743"/>
+      <p c="50.000 -4.343" h1="30.870 -4.343" h2="69.521 -4.343"/>
+      <p c="100.000 -0.163" h1="80.480 -1.795" h2="119.520 1.469"/>
+    </curve>
+  </object>
+  <sun  fog="true" fog-color="102 68 62" fog-start="25.0" fog-end="300.0"/>
+  <sky-color rgb="104 50 52"/>
+  <banana x="2.35878" y="-1.03456" z="-41.107399" />
+  <banana x="20.281183" y="-3.911712" z="-98.273308" />
+  <banana x="-39.938953" y="-6.984621" z="-35.243538" />
+  <banana x="-51.799259" y="-5.950362" z="-118.583023" />
+  <banana x="-50.092007" y="21.43276" z="60.848232" />
+  <banana x="29.67811" y="15.371954" z="35.001709" />
+  <banana x="-5.445799" y="12.573019" z="38.896061" />
+  <banana x="-31.948206" y="23.478958" z="34.513424" />
+  <banana x="-17.097889" y="-6.027263" z="130.246246" />
+  <banana x="-69.51944" y="5.976678" z="123.434349" />
+  <item x="-78.702782" y="4.402545" z="141.779465" />
+  <item x="-81.664276" y="4.402545" z="138.216705" />
+  <item x="-84.722794" y="4.402545" z="135.058884" />
+  <item x="-29.360418" y="-4.702702" z="125.769524" />
+  <item x="-24.775408" y="-4.702702" z="131.354233" />
+  <item x="-22.670769" y="-4.702702" z="133.442139" />
+  <small-nitro x="-27.07802" y="-4.702702" z="128.547867" />
+  <item x="-2.621227" y="-1.8" z="35.969509" />
+  <small-nitro x="-7.805541" y="-1.919828" z="36.225357" />
+  <item x="9.211092" y="-4.619881" z="-107.396217" />
+  <item x="14.136925" y="-4.619881" z="-111.497711" />
+  <small-nitro x="11.909933" y="-4.619881" z="-109.728043" />
+  <small-nitro x="16.038328" y="-4.619881" z="-112.900284" />
+  <item x="-65.636948" y="-8.291322" z="-97.865082" />
+  <item x="-68.459435" y="-8.291322" z="-97.37281" />
+  <item x="-74.022644" y="-8.291322" z="-97.435349" />
+  <small-nitro x="-71.204979" y="-8.291322" z="-97.566086" />
+  <small-nitro x="-33.528248" y="-5.569491" z="-107.775078" />
+  <small-nitro x="-39.149765" y="-5.631939" z="-119.535576" />
+  <item x="-95.864212" y="14.697401" z="27.40807" />
+  <small-nitro x="-98.18956" y="14.531458" z="27.405151" />
+  <item x="-100.480942" y="14.531458" z="27.281532" />
+  <item x="-103.155388" y="14.531458" z="27.132746" />
+  <item x="-52.591202" y="20.426809" z="42.375969" />
+  <item x="-49.916756" y="20.426809" z="42.524757" />
+  <small-nitro x="-47.625374" y="20.426809" z="42.648376" />
+  <item x="-45.300026" y="20.592752" z="42.651295" />
+  <item x="26.802439" y="21.827881" z="9.262803" h="-98.250251" />
+  <small-nitro x="27.13323" y="21.661938" z="11.564505" h="-98.250251" />
+  <item x="27.339697" y="21.661938" z="13.849911" h="-98.250251" />
+  <item x="27.576223" y="21.661938" z="16.51803" h="-98.250251" />
+  <item x="-36.958542" y="9.143855" z="39.580902" h="-98.250251" />
+  <item x="-36.994221" y="9.143855" z="35.506424" h="-98.250251" />
+  <item x="-37.237793" y="9.143855" z="31.326281" h="-98.250251" />
+  <banana x="-71.333054" y="5.194869" z="89.776024" />
+  <small-nitro x="-44.550083" y="-5.21029" z="-62.911774" />
+  <small-nitro x="-86.842316" y="-2.51655" z="-30.783516" />
+  <banana x="-88.192688" y="-4.471114" z="-47.288689" />
+  <small-nitro x="12.694408" y="-9.55594" z="104.460823" />
+  <small-nitro x="65.250786" y="18.134247" z="22.053024" />
+  <small-nitro x="-35.167824" y="20.993225" z="65.193352" />
+  <item x="-25.046089" y="22.117918" z="-10.092922" />
+  <small-nitro x="-27.371437" y="21.951975" z="-10.09584" />
+  <item x="-29.662819" y="21.951975" z="-10.21946" />
+  <item x="-32.337265" y="21.951975" z="-10.368248" />
+  <banana x="-50.092007" y="21.43276" z="-32.225163" />
+  <banana x="-30.195202" y="21.43276" z="-32.225163" />
+  <checks>
+    <check-lap kind="lap" same-group="0" other-ids="1" />
+    <check-line kind="activate" other-ids="2" p1="53.89 24.77" p2="69.40 21.71"
+                min-height="17.42" same-group="1"/>
+    <check-line kind="activate" other-ids="0" p1="-82.02 -82.28" p2="-65.76 -77.93"
+                min-height="-7.09" same-group="2"/>
+  </checks>
+  <sky-box texture="SKY0006.png sandred.jpg SKY0002.png SKY0004.png SKY0005.png SKY0003.png"/>
+  <camera far="1000.0"/>
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.50"
+                 sidewards-distance="3.00"
+                 upwards-distance  ="0.10"/>
+</scene>

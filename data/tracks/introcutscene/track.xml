@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 11470 -->
+<track  name           = "IntroCutscene"
+        version        = "5"
+        groups         = "standard"
+        designer       = "mmg"
+        cutscene       = "Y"
+        internal       = "Y"
+        screenshot     = "screenshot.jpg"
+        smooth-normals = "false"
+        reverse     = "Y"
+>
+</track>

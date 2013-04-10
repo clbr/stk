@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<music title    = "Dance Cleopatra"
+       composer = "ZamalSka"
+       gain     = "1.25"
+       file     = "dance_cleopatra.ogg"/>
+  
+<!-- Once multiplied with the master volume, the gain value will be clamped 
+     to 1.0; but at least we can exceed the master music volume for 
+     quieter songs -->

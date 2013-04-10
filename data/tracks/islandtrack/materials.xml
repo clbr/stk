@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev Unknown -->
+<materials>
+  <material name="road_sand.jpg">
+    <particles base="smoke_yellow.xml" condition="skid"/>
+  </material>
+  <material name="road_sand_side.jpg">
+    <particles base="smoke.xml" condition="skid drive"/>
+  </material>
+  <material name="sand2.jpg" max-speed="0.60">
+    <particles base="smoke_yellow.xml" condition="skid drive"/>
+  </material>
+  <material name="seabed.jpg" falling-effect="Y" graphical-effect="water"/>
+  <material name="transparence.png" fog="N" compositing="blend" reset="Y"/>
+  <material name="sea2.jpg" ignore="Y" surface="Y" water-shader="Y" water-shader-speed-1="4.00" water-shader-speed-2="3.00">
+    <sfx filename="splash.ogg" min_speed="5.00" max_speed="15.00" min_pitch="0.80" max_pitch="1.20" positional="Y" rolloff="0.10"/>
+    <particles base="splash.xml" condition="skid drive"/>
+  </material>
+</materials>

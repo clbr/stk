@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 0.1 -->
+<kart name              = "Pidgin"
+      version           = "2"
+      model-file        = "pidgin.b3dz"
+      icon-file         = "pidginicon.png"
+      minimap-icon-file = "pidginicon.png"
+      shadow-file       = "pidginshadow.png"
+      groups            = "standard"
+      rgb               = "0.365 0.22 0.4" >
+  <animations left = "0"
+              straight = "20"
+              right = "40"
+              start-winning = "70"
+              start-winning-loop = "158"
+              end-winning = "203"
+              start-losing = "244"
+              start-losing-loop = "291"
+              end-losing = "301"/>
+  <wheels>
+    <front-left position = "-0.256000 0.124326 0.303000"
+                 model    = "wheel-front-left.b3d"       />
+    <front-right position = "0.257000 0.124326 0.303000"
+                 model    = "wheel-front-right.b3d"       />
+    <rear-left position = "-0.237000 0.171000 -0.438000"
+                 model    = "wheel-rear-left.b3d"       />
+    <rear-right position = "0.237000 0.171000 -0.438000"
+                 model    = "wheel-rear-right.b3d"       />
+  </wheels>
+</kart>

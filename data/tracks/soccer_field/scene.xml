@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12280 -->
+<scene>
+  <track model="soccer_field_track.b3d" x="0" y="0" z="0"/>
+  <object type="movable" xyz="0.24 13.76 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          model="soccer_ball.b3d" shape="sphere" mass="100.0" soccer_ball="true" />
+  <item x="-9.436516" y="0.146487" z="-16.33383" h="-29.999995" />
+  <item x="9.424168" y="0.146487" z="-16.333828" h="30.000008" />
+  <item x="30.101673" y="0.146487" z="-54.0984" h="30.000008" />
+  <item x="-32.365795" y="0.146487" z="-54.098408" h="-29.999995" />
+  <item x="9.424164" y="0.146487" z="16.33383" h="150" />
+  <item x="-9.43652" y="0.146487" z="16.333828" h="210.000003" />
+  <item x="-32.365803" y="0.146487" z="54.0984" h="210.000003" />
+  <item x="30.101658" y="0" z="54.098408" h="150" />
+  <checks>
+    <check-line kind="lap" p1="-1.00 0.00" p2="1.00 0.00"
+                min-height="0.00"  />
+    <goal p1="9.37 0.07 39.56" p2="-9.37 0.07 39.56"  first_goal="true" />
+    <goal p1="-9.37 0.07 -39.46" p2="9.37 0.07 -39.46" />
+  </checks>
+
+  <sky-dome texture="racetrack_sky.jpg"
+            horizontal="16" vertical="16" 
+            texture-percent="0.5" sphere-percent="1.3"
+            speed-x="0" speed-y="0" />
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.50"
+                 sidewards-distance="3.00"
+                 upwards-distance  ="0.10"/>
+  <start x="-4.53" y="0.10" z="35.07" h="-179.999991"/>
+  <start x="-5.66" y="0.10" z="-35.44" h="-0.000007"/>
+  <start x="5.31" y="0.10" z="35.15" h="-179.999991"/>
+  <start x="4.56" y="0.10" z="-35.23" h="0.000000"/>
+</scene>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="256"
+   height="256"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="sunHalo.svg"
+   inkscape:export-filename="/home/jmclemencon/Documents/supertuxkart/tracks08/galaxy/sunHalo.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 128 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="256 : 128 : 1"
+       inkscape:persp3d-origin="128 : 85.333333 : 1"
+       id="perspective2985" />
+    <filter
+       inkscape:collect="always"
+       id="filter3820"
+       x="-0.25785124"
+       width="1.5157025"
+       y="-0.25785124"
+       height="1.5157025">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="14.963864"
+         id="feGaussianBlur3822" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2"
+     inkscape:cx="65.435838"
+     inkscape:cy="96.054357"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1031"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3022"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-796.36218)">
+    <path
+       sodipodi:type="arc"
+       style="opacity:0.98999999000000005;fill:#ffee90;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3020"
+       sodipodi:cx="62.803738"
+       sodipodi:cy="94.931908"
+       sodipodi:rx="69.639519"
+       sodipodi:ry="69.639519"
+       d="m 132.44326,94.931908 a 69.639519,69.639519 0 1 1 -139.2790411,0 69.639519,69.639519 0 1 1 139.2790411,0 z"
+       transform="matrix(1.0338957,0,0,1.0338957,63.067485,826.21249)" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:0.98999999000000005;fill:#ffce90;fill-opacity:1;stroke:none;filter:url(#filter3820)"
+       id="path3020-6"
+       sodipodi:cx="62.803738"
+       sodipodi:cy="94.931908"
+       sodipodi:rx="69.639519"
+       sodipodi:ry="69.639519"
+       d="m 132.44326,94.931908 a 69.639519,69.639519 0 1 1 -139.2790411,0 69.639519,69.639519 0 1 1 139.2790411,0 z"
+       transform="matrix(1.0338957,0,0,1.0338957,65.067486,826.21249)" />
+  </g>
+</svg>

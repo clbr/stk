@@ -1,0 +1,67 @@
+Beastie:
+    by Lionel Fuentes
+    released under the FreeBSD license (see beastie/License.txt)
+
+Gnu :
+    by Benjamin Arnaudet
+    released under GNU GPL license
+
+Beagle :
+    Author: Wolter Hellmund <wolterh6@gmail.com>
+    License: Creative Commons - Attribution-ShareAlike 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
+    Please read the license for more information. The text is unbelievably short, so don't back down.
+    The attribution I demand is just to entitle me always as the original creator of all the models and textures of this kart.
+    Any modifications or further distributions of this model must give credit to me.
+    The model represents the beagle search tool.
+
+Konqi:
+    Konqi character, colormap.jpg, hanky.tga
+    by basse <basse@kimppu.org | www.kimppu.org/basse>
+    With modifications by Marianne Gagnon
+    Released under Gnu LGPL
+
+    Kart by Christian Framing
+    released under Gnu GPL
+
+    KDE logo copyright the KDE project
+    released under the Gnu GPL
+
+Adiumy :
+    by abejones
+    released under CC-BY-SA 3.0
+
+Pidgin & Nolok :
+    by Cheleb
+    released under CC-BY-SA 3.0
+
+Wilber and Elephpant :
+    Wilber character, Elephpant character and Elephpant kart by Tob
+    Released under CC-BY-SA 3.0
+    
+    Wilber kart by Frederico de Oliveira, released under GPL
+
+Hexley :
+    by Frederico de Oliveira
+    released under GPL
+    
+    kart texture by S@f, released under CC-BY-SA 3.0
+
+Puffy :
+    By MiniBjorn
+    released under CC-BY-SA 3.0
+
+Gooey & Mozilla:
+    originally by (??) from original (Super)TuxKart teams, with modifications by Rudy85 and Conso
+    released under GNU GPL
+
+Tux :
+    originally by (??) from original (Super)TuxKart teams
+    released under GNU GPL
+    
+Animations :
+    by Rudy85
+
+Cartoonish character icons :
+    by Anthony Carré (yekcim), released under GPL 2
+    except Beagle icon, by Dakal, released under CC-BY-SA 3.0
+    and Beastie icon, by Lionel Fuentes, released under FreeBSD license (see beastie/License.txt)

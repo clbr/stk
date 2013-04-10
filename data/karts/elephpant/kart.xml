@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 0.1 -->
+<kart name              = "Elephpant"
+      version           = "2"
+      model-file        = "elephpant.b3dz"
+      icon-file         = "elephpanticon.png"
+      minimap-icon-file = "elephpanticon.png"
+      shadow-file       = "elephpantshadow.png"
+      groups            = "standard"
+      rgb               = "0.463 0.713 0.0235" >
+  <animations left = "0"
+              straight = "20"
+              right = "40"
+              start-winning = "61"
+              end-winning = "216"
+              start-losing = "244"
+              start-losing-loop = "420"
+              end-losing = "422"/>
+  <wheels>
+    <front-left position = "-0.245315 0.102874 0.469806"
+                 model    = "wheel-front-left.b3d"       />
+    <front-right position = "0.253327 0.102258 0.468561"
+                 model    = "wheel-front-right.b3d"       />
+    <rear-left position = "-0.372574 0.139018 -0.470285"
+                 model    = "wheel-rear-left.b3d"       />
+    <rear-right position = "0.377162 0.139018 -0.470212"
+                 model    = "wheel-rear-right.b3d"       />
+  </wheels>
+</kart>

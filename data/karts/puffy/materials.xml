@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<materials>
+<material name="water-P.png" alpha="Y" />
+<material name="fog.png" transparency="Y" />
+<material name="window.png" transparency="Y" />
+</materials>

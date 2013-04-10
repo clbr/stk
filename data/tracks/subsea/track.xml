@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 11144 -->
+<track  name        = "Subsea"
+        version     = "5"
+        groups      = "standard"
+        designer    = "R.Phelippeau"
+        music       = "subsea.music"
+        screenshot  = "subsea-sshot.jpg"
+        reverse     = "Y"
+>
+</track>

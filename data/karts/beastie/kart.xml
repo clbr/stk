@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 8870 -->
+<kart name              = "Beastie"
+      version           = "2"
+      model-file        = "beastie.b3dz"
+      icon-file         = "beastie-icon.png"
+      minimap-icon-file = "beastie-icon.png"
+      shadow-file       = "beastie-shadow.png"
+      groups            = "standard"
+      rgb               = "0.7 0 0" >
+  <sounds engine = "large"/>
+  <animations left = "20"
+              straight = "40"
+              right = "60"
+              start-winning = "80"
+              start-winning-loop = "90"
+              end-winning = "130"
+              start-losing = "140"
+              start-losing-loop = "150"
+              end-losing = "220"/>
+  <wheels>
+    <front-left position = "-0.336000 0.182370 0.363336"
+                 model    = "wheel-front-left.b3d"       />
+    <front-right position = "0.336000 0.182370 0.363336"
+                 model    = "wheel-front-right.b3d"       />
+    <rear-left position = "-0.336000 0.182370 -0.480000"
+                 model    = "wheel-rear-left.b3d"       />
+    <rear-right position = "0.336000 0.182370 -0.480000"
+                 model    = "wheel-rear-right.b3d"       />
+  </wheels>
+</kart>

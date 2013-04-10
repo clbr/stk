@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 12070 -->
+<scene>
+  <track model="islandtrack_track.b3d" x="0" y="0" z="0"/>
+  <water model="Water.b3d" xyz="10.00 0.00 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.60" speed="300.00" length="10.00"/>
+  <banana x="-67.241928" y="-1.299122" z="-85.758522" />
+  <item x="-10.770379" y="0.895445" z="57.934975" />
+  <item x="-44.486229" y="25" z="27.902454" />
+  <item x="-45.33086" y="25" z="26.072418" />
+  <item x="-145.920151" y="-2.828203" z="-13.345998" />
+  <item x="-46.069912" y="25" z="24.418346" />
+  <item x="-157.791183" y="8.241491" z="71.256561" />
+  <item x="-159.840088" y="8.241491" z="68.273735" />
+  <item x="-207.770599" y="9.676691" z="31.222069" />
+  <item x="-206.719437" y="9.676691" z="32.933277" />
+  <item x="-9.528656" y="0.895445" z="60.141273" />
+  <item x="-12.006065" y="0.895445" z="55.772522" />
+  <item x="-69.512611" y="-1.299122" z="-87.515366" />
+  <item x="-69.451797" y="-1.299122" z="-83.501801" />
+  <item x="-205.521591" y="9.676691" z="34.5467" />
+  <small-nitro x="-67.756111" y="1.415705" z="61.211277" />
+  <small-nitro x="-32.469292" y="6.765142" z="36.07402" />
+  <small-nitro x="42.240871" y="25" z="-60.86517" />
+  <small-nitro x="45.745564" y="25" z="-60.69627" />
+  <small-nitro x="-71.190697" y="-1.299122" z="-85.880371" />
+  <small-nitro x="-67.113632" y="1.415705" z="59.481522" />
+  <small-nitro x="-31.202278" y="6.765142" z="38.080128" />
+  <small-nitro x="-30.146433" y="6.765142" z="39.980648" />
+  <small-nitro x="-147.215057" y="-2.828203" z="-15.463158" />
+  <small-nitro x="-218.634979" y="1.15201" z="85.491348" />
+  <small-nitro x="-68.497437" y="1.415705" z="63.583511" />
+  <small-nitro x="-214.539719" y="1.15201" z="83.09169" />
+  <small-nitro x="-92.433601" y="25" z="-24.74608" />
+  <small-nitro x="-89.96936" y="25" z="-25.275589" />
+  <small-nitro x="-216.358521" y="1.15201" z="84.235779" />
+  <small-nitro x="-144.630096" y="-2.828203" z="-11.915179" />
+  <small-nitro x="-87.830963" y="25" z="-25.784731" />
+  <small-nitro x="38.862854" y="25" z="-60.991844" />
+  <item x="40.509636" y="25" z="-60.86517" />
+  <item x="44.077232" y="25" z="-60.694118" />
+  <small-nitro x="8.015705" y="0" z="-0.728317" />
+  <small-nitro x="10.046886" y="0" z="-0.728317" />
+  <small-nitro x="6.156173" y="0" z="-0.728317" />
+  <small-nitro x="11.935026" y="0" z="-0.728317" />
+  <checks>
+    <check-lap kind="lap" same-group="0" other-ids="1" />
+    <check-line kind="activate" other-ids="2" p1="-172.28 81.22" p2="-173.60 68.84"
+                min-height="3.67" same-group="1"/>
+    <check-line kind="activate" other-ids="3" p1="-83.12 -42.99" p2="-80.03 -31.79"
+                min-height="-1.35" same-group="2"/>
+    <check-line kind="activate" other-ids="0" p1="-98.94 -38.13" p2="-89.46 -41.28"
+                min-height="7.53" same-group="3"/>
+  </checks>
+
+  <sky-dome texture="sky2.jpg"
+            horizontal="16" vertical="16" 
+            texture-percent="1.0" sphere-percent="2.0"
+            speed-x="0.0" speed-y="0.0" />
+  <camera far="1000.0"/>
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.50"
+                 sidewards-distance="3.00"
+                 upwards-distance  ="0.10"/>
+  <end-cameras>
+    <camera type="static_follow_kart" xyz="-170.343643 3.373950 111.604774" distance="15"/> <!-- EndCam1 -->
+    <camera type="static_follow_kart" xyz="-239.978836 11.263998 88.137695" distance="35"/> <!-- EndCam2 -->
+    <camera type="static_follow_kart" xyz="-172.593246 30.054396 51.266113" distance="35"/> <!-- EndCam3 -->
+    <camera type="static_follow_kart" xyz="-188.394852 4.461543 -10.564974" distance="30.0"/> <!-- EndCam4 -->
+    <camera type="static_follow_kart" xyz="-129.716629 4.461542 -35.218102" distance="25.0"/> <!-- EndCam5 -->
+    <camera type="ahead_of_kart" xyz="-52.360519 4.461546 -39.665741" distance="25.0"/> <!-- EndCam6 -->
+    <camera type="static_follow_kart" xyz="-84.049606 32.552750 26.343983" distance="25.0"/> <!-- EndCam7 -->
+    <camera type="static_follow_kart" xyz="-73.970406 7.255007 -68.454987" distance="35.0"/> <!-- EndCam8 -->
+    <camera type="static_follow_kart" xyz="-24.391632 7.255007 -65.730881" distance="35.0"/> <!-- EndCam9 -->
+    <camera type="ahead_of_kart" xyz="28.764820 7.255023 -91.457855" distance="35.0"/> <!-- EndCam10 -->
+  </end-cameras>
+</scene>

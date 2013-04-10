@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- Generated with script from SVN rev 9075 -->
+<kart name              = "Nolok"
+      version           = "2"
+      model-file        = "nolok.b3dz"
+      icon-file         = "nolokicon.png"
+      minimap-icon-file = "nolokicon.png"
+      shadow-file       = "nolokshadow.png"
+      groups            = "standard"
+      rgb               = "0.12 0.17 0.05" >
+  <sounds engine = "large"/>
+  <animations left = "0"
+              straight = "20"
+              right = "40"
+              start-winning = "80"
+              end-winning = "308"
+              start-losing = "386"
+              start-losing-loop = "414"
+              end-losing = "516"/>
+  <hat offset="0 0.18 0.05"/>
+  <wheels>
+    <front-left position = "-0.191663 0.113000 0.431415"
+                 model    = "wheel-front-left.b3d"       />
+    <front-right position = "0.192337 0.113000 0.433317"
+                 model    = "wheel-front-right.b3d"       />
+    <rear-left position = "-0.195663 0.146000 -0.421683"
+                 model    = "wheel-rear-left.b3d"       />
+    <rear-right position = "0.302984 0.146000 -0.424683"
+                 model    = "wheel-rear-right.b3d"       />
+  </wheels>
+</kart>

@@ -1,0 +1,3 @@
+This Adiumy kart is released under a Creative Commons sharealike 3.0 License.  This entitles you to modify and use the file as you wish, provided your work is also released under a compatible license and attribution is given to the original author or team.
+
+Additional information at http://creativecommons.org/licenses/by-sa/3.0/
