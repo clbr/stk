@@ -1,1 +1,15 @@
-*.o
+*.[ao]
+Makefile
+configure
+Makefile.in
+autom4te.cache
+config.*
+depcomp
+missing
+install-sh
+aclocal.m4
+*.d
+.deps
+.libs
+supertuxkart
+*.desktop
