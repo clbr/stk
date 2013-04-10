@@ -57,8 +57,8 @@ AC_ARG_ENABLE(optimization, [AS_HELP_STRING(--disable-optimization,
                                             [disable compiler optimizations])],,
     enable_optimization=yes)
 if test x$enable_optimization = xyes; then
-    CFLAGS="$CFLAGS -O2"
-    CXXFLAGS="$CXXFLAGS -O2"
+    CFLAGS="$CFLAGS -O3"
+    CXXFLAGS="$CXXFLAGS -O3"
 else
     SUMMARY="$SUMMARY\nDisabled compiler optimizations."
 fi
