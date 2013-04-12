@@ -856,8 +856,9 @@ bool Track::loadMainTrack(const XMLNode &root)
             const ChallengeData* challenge = unlock_manager->getChallenge(s);
             if (challenge == NULL)
             {
-                Log::error("track", "Cannot find challenge named '%s'\n",
-                    m_challenges[closest_challenge_id].m_challenge_id.c_str());
+                if (s != "tutorial")
+                    Log::error("track", "Cannot find challenge named '%s'\n",
+                        m_challenges[closest_challenge_id].m_challenge_id.c_str());
                 continue;
             }
             
@@ -1109,6 +1110,7 @@ bool Track::loadMainTrack(const XMLNode &root)
                 LODNode* lod_node = new LODNode("challenge_orb",
                                                 irr_driver->getSceneManager()->getRootSceneNode(),
                                                 irr_driver->getSceneManager());
+                lod_node->setPosition(xyz);
                 lod_node->add(50, scene_node, true /* reparent */);
                                 
                 m_all_nodes.push_back( lod_node );

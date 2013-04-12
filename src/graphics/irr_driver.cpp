@@ -549,8 +549,8 @@ core::position2di IrrDriver::getMouseLocation()
  */
 bool IrrDriver::moveWindow(const int x, const int y)
 {
-    const SExposedVideoData& videoData = m_video_driver->getExposedVideoData();
 #ifdef WIN32
+    const SExposedVideoData& videoData = m_video_driver->getExposedVideoData();
     // this should work even if using DirectX in theory,
     // because the HWnd is always third pointer in the struct,
     // no matter which union is used
@@ -568,7 +568,7 @@ bool IrrDriver::moveWindow(const int x, const int y)
     }
 #elif defined(__linux__) && !defined(ANDROID)
     using namespace X11;
-
+    const SExposedVideoData& videoData = m_video_driver->getExposedVideoData();
     // TODO: Actually handle possible failure
     XMoveWindow((Display*)videoData.OpenGLLinux.X11Display,
                 videoData.OpenGLLinux.X11Window,
@@ -1640,6 +1640,17 @@ void IrrDriver::update(float dt)
     {
         m_video_driver->beginScene(/*backBuffer clear*/false, /*zBuffer*/true,
                                    world->getClearColor());
+        m_scene_manager->drawAll();
+        GUIEngine::render(dt);
+        m_video_driver->endScene();
+        return;
+    }
+    else if (GUIEngine::getCurrentScreen() != NULL &&
+             GUIEngine::getCurrentScreen()->needs3D())
+    {
+        //printf("Screen that needs 3D\n");
+        m_video_driver->beginScene(/*backBuffer clear*/false, /*zBuffer*/true,
+                                   video::SColor(0,0,0,255));
         m_scene_manager->drawAll();
         GUIEngine::render(dt);
         m_video_driver->endScene();

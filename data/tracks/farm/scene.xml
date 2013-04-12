@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12070 -->
+<!-- Generated with script from SVN rev 12583 -->
 <scene>
   <track model="farm_track.b3d" x="0" y="0" z="0">
     <static-object lod_instance="true" lod_group="skull" xyz="0.86 9.55 -2.36" hpr="-52.6 -0.0 -0.0" scale="0.49 0.49 0.49"/> <!-- writeStaticObjects 3 -->
@@ -16,10 +16,6 @@
     <static-object lod_instance="true" lod_group="well" xyz="-50.31 6.00 -89.63" hpr="0.0 64.7 0.0" scale="1.91 1.91 1.91"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="60.0" lod_group="well" model="well60.b3d" xyz="-143.85 6.00 -89.63" hpr="0.0 64.7 0.0" scale="1.91 1.91 1.91"/> <!-- writeStaticObjects 3 -->
   </track>
-  <particle-emitter kind="smoke.xml" x="173.61" y="13.57" z="48.27" h="0.000000">
-  </particle-emitter>
-  <object type="sfx-emitter" sound="cow.ogg" rolloff="0.100" volume="1.0" max_dist="500.0" xyz="-54.27 9.67 -126.15" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
-  </object>
   <object type="animation" model="hayBail.b3d" xyz="69.97 8.08 -107.84" hpr="-83.2 1.1 97.7" scale="1.00 1.00 1.00" shape="box" explode="y" interaction="explode">
     <curve channel="LocX" interpolation="bezier" extend="cyclic">
       <p c="60.000 115.124" h1="58.438 115.124" h2="61.562 115.124"/>
@@ -1174,43 +1170,7 @@
     </curve>
   </object>
   <sky-color rgb="77 104 255"/>
-  <banana x="55.80994" y="10.198599" z="-53.407703" />
-  <banana x="-60.65596" y="10.198599" z="-80.50531" />
-  <banana x="-55.320572" y="10.198599" z="-84.301643" />
-  <banana x="-1.20969" y="10.1986" z="-45.362804" />
-  <banana x="2.474755" y="10.1986" z="-45.362804" />
-  <banana x="40.138775" y="10.1986" z="54.013351" />
-  <banana x="139.864212" y="10.1986" z="80.944107" />
-  <banana x="138.790741" y="10.1986" z="75.92939" />
-  <banana x="100.36203" y="10.1986" z="-21.734674" />
-  <banana x="100.72094" y="10.1986" z="-26.221035" />
-  <big-nitro x="56.822254" y="10.198599" z="-51.144882" />
-  <big-nitro x="-1.361784" y="10.198599" z="-42.192459" />
-  <big-nitro x="2.418322" y="10.198599" z="-42.192459" />
-  <item x="70.348564" y="10.198595" z="-123.05497" />
-  <item x="73.610748" y="10.198595" z="-123.572777" />
-  <item x="76.562248" y="10.198595" z="-123.83168" />
-  <item x="-7.864044" y="10.198595" z="-118.802223" />
-  <item x="-7.274373" y="10.198595" z="-124.220772" />
-  <item x="-21.411123" y="10.198596" z="-69.156532" />
-  <item x="-2.5001" y="10.198598" z="30.095116" />
-  <item x="3.177184" y="10.198598" z="30.095116" />
-  <item x="149.465836" y="10.198598" z="32.849411" />
-  <item x="154.464539" y="10.198598" z="28.844704" />
-  <small-nitro x="53.308926" y="10.198599" z="-51.025787" />
-  <small-nitro x="59.085072" y="10.198599" z="-53.705441" />
-  <small-nitro x="-7.859505" y="10.198599" z="-121.896835" />
-  <small-nitro x="-59.755657" y="10.198599" z="-107.64962" />
-  <small-nitro x="-56.857582" y="10.198599" z="-106.381714" />
-  <small-nitro x="-54.412331" y="10.198599" z="-105.113808" />
-  <small-nitro x="-22.070684" y="10.198598" z="-66.40596" />
-  <small-nitro x="-21.123299" y="10.198598" z="-72.652786" />
-  <small-nitro x="0.208377" y="10.198598" z="29.587049" />
-  <small-nitro x="73.96431" y="10.198597" z="75.459076" />
-  <small-nitro x="74.922249" y="10.198597" z="73.248039" />
-  <small-nitro x="76.364342" y="10.198597" z="70.933441" />
-  <small-nitro x="153.650787" y="10.198598" z="32.202042" />
-  <small-nitro x="149.030655" y="10.198598" z="28.482445" />
+  <camera far="5000.0"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
     <check-line kind="activate" other-ids="2" p1="123.17 48.42" p2="167.90 93.77"
@@ -1218,7 +1178,47 @@
     <check-line kind="activate" other-ids="0" p1="65.87 -162.54" p2="49.31 -122.74"
                 min-height="6.84" same-group="2"/>
   </checks>
-  <camera far="5000.0"/>
+  <particle-emitter kind="smoke.xml" xyz="173.61 13.57 48.27" h="0.00">
+  </particle-emitter>
+  <object type="sfx-emitter" sound="cow.ogg" rolloff="0.100" volume="1.0" max_dist="500.0" xyz="-54.27 9.67 -126.15" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
+  </object>
+  <banana x="55.81" y="10.20" z="-53.41" />
+  <banana x="-60.66" y="10.20" z="-80.51" />
+  <banana x="-55.32" y="10.20" z="-84.30" />
+  <banana x="-1.21" y="10.20" z="-45.36" />
+  <banana x="2.47" y="10.20" z="-45.36" />
+  <banana x="40.14" y="10.20" z="54.01" />
+  <banana x="139.86" y="10.20" z="80.94" />
+  <banana x="138.79" y="10.20" z="75.93" />
+  <banana x="100.36" y="10.20" z="-21.73" />
+  <banana x="100.72" y="10.20" z="-26.22" />
+  <big-nitro x="56.82" y="10.20" z="-51.14" />
+  <big-nitro x="-1.36" y="10.20" z="-42.19" />
+  <big-nitro x="2.42" y="10.20" z="-42.19" />
+  <item x="70.35" y="10.20" z="-123.05" />
+  <item x="73.61" y="10.20" z="-123.57" />
+  <item x="76.56" y="10.20" z="-123.83" />
+  <item x="-7.86" y="10.20" z="-118.80" />
+  <item x="-7.27" y="10.20" z="-124.22" />
+  <item x="-21.41" y="10.20" z="-69.16" />
+  <item x="-2.50" y="10.20" z="30.10" />
+  <item x="3.18" y="10.20" z="30.10" />
+  <item x="149.47" y="10.20" z="32.85" />
+  <item x="154.46" y="10.20" z="28.84" />
+  <small-nitro x="53.31" y="10.20" z="-51.03" />
+  <small-nitro x="59.09" y="10.20" z="-53.71" />
+  <small-nitro x="-7.86" y="10.20" z="-121.90" />
+  <small-nitro x="-59.76" y="10.20" z="-107.65" />
+  <small-nitro x="-56.86" y="10.20" z="-106.38" />
+  <small-nitro x="-54.41" y="10.20" z="-105.11" />
+  <small-nitro x="-22.07" y="10.20" z="-66.41" />
+  <small-nitro x="-21.12" y="10.20" z="-72.65" />
+  <small-nitro x="0.21" y="10.20" z="29.59" />
+  <small-nitro x="73.96" y="10.20" z="75.46" />
+  <small-nitro x="74.92" y="10.20" z="73.25" />
+  <small-nitro x="76.36" y="10.20" z="70.93" />
+  <small-nitro x="153.65" y="10.20" z="32.20" />
+  <small-nitro x="149.03" y="10.20" z="28.48" />
   <default-start karts-per-row     ="3"
                  forwards-distance ="1.50"
                  sidewards-distance="3.00"
