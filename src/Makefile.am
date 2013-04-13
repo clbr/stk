@@ -1,7 +1,5 @@
 # src/
 
-SUBDIRS = ide
-
 bindir=$(prefix)/games
 bin_PROGRAMS = supertuxkart
 
