@@ -451,7 +451,6 @@ AC_CONFIG_FILES([                   \
  data/tracks/Makefile               \
  doc/Makefile                       \
  src/Makefile                       \
- src/ide/Makefile                   \
  lib/bullet/Makefile                \
  lib/bullet/src/Makefile            \
  lib/enet/Makefile                  \
