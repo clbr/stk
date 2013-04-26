@@ -1,11 +1,7 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12125 -->
+<!-- Generated with script from SVN rev 12633 -->
 <scene>
   <track model="snowmountain_track.b3d" x="0" y="0" z="0"/>
-  <particle-emitter kind="black_smoke.xml" x="-122.87" y="11.93" z="-17.97" h="0.000000" clip_distance="200">
-  </particle-emitter>
-  <particle-emitter kind="black_smoke.xml" x="-75.36" y="15.30" z="-20.41" h="0.000000" clip_distance="200">
-  </particle-emitter>
   <object type="animation" model="Balloon.b3d" xyz="-39.99 39.72 -180.02" hpr="-63.4 89.6 3.0" scale="7.33 7.33 7.33"  interaction="none">
     <curve channel="LocX" interpolation="bezier" extend="cyclic">
       <p c="0.172 -40.000" h1="-51.067 -40.000" h2="51.412 -40.000"/>
@@ -36,47 +32,7 @@
     </curve>
   </object>
   <weather particles="snow.xml" />
-  <banana x="-2.883005" y="-0.301474" z="39.38063" />
-  <banana x="-51.491741" y="3.660036" z="77.638718" />
-  <banana x="-64.635597" y="2.494776" z="33.101471" />
-  <banana x="-50.577358" y="-3.781858" z="-35.672104" />
-  <banana x="-64.020752" y="10.791862" z="-49.573856" />
-  <banana x="3.40361" y="11.394556" z="-49.966911" />
-  <banana x="63.348709" y="4.375498" z="37.978996" />
-  <banana x="66.79892" y="0.885199" z="-12.717157" />
-  <banana x="58.583244" y="0.885199" z="-12.704335" />
-  <banana x="60.704655" y="-1.525584" z="-57.860165" />
-  <banana x="21.502977" y="-3.279079" z="-102.923767" />
-  <banana x="-5.369586" y="-3.764242" z="-38.465591" />
-  <banana x="2.27278" y="-3.764242" z="-38.465591" />
-  <item x="-8.647099" y="1.590184" z="67.004463" />
-  <item x="-76.409302" y="4.838969" z="76.429443" />
-  <item x="-104.86425" y="5.457215" z="66.15136" />
-  <item x="-108.528564" y="5.860428" z="36.852108" />
-  <item x="-48.085533" y="-2.81884" z="-16.790302" />
-  <item x="-50.656479" y="-3.092511" z="-70.883003" />
-  <item x="-64.195549" y="10.825488" z="-42.937851" />
-  <item x="3.812442" y="11.363095" z="-54.050545" />
-  <item x="22.961117" y="9.619767" z="-3.361314" />
-  <item x="31.459064" y="9.619767" z="-2.707626" />
-  <item x="62.761356" y="1.05744" z="-12.671148" />
-  <item x="56.651665" y="-0.347618" z="-34.83329" />
-  <item x="66.424301" y="-0.347618" z="-35.20916" />
-  <item x="-2.735897" y="-3.894367" z="-68.933136" />
-  <small-nitro x="-16.308472" y="1.590184" z="62.146286" />
-  <small-nitro x="-63.9856" y="2.494776" z="36.838955" />
-  <big-nitro x="-64.3106" y="2.494776" z="28.87649" />
-  <big-nitro x="-78.669617" y="1.764351" z="-102.281944" />
-  <small-nitro x="3.544914" y="11.394556" z="-45.869102" />
-  <small-nitro x="21.644281" y="-3.279079" z="-99.470215" />
-  <small-nitro x="21.644281" y="-3.279079" z="-106.032448" />
-  <small-nitro x="-12.100289" y="1.590184" z="65.034119" />
-  <small-nitro x="-77.821793" y="1.764351" z="-110.901474" />
-  <small-nitro x="-78.387009" y="1.764351" z="-106.097145" />
-  <small-nitro x="-64.195549" y="10.825488" z="-45.880325" />
-  <small-nitro x="27.643864" y="9.619767" z="-2.84893" />
-  <small-nitro x="62.16251" y="-0.347618" z="-34.83329" />
-  <small-nitro x="-1.413081" y="-3.764242" z="-38.041679" />
+  <sky-box texture="winter_sky_6.jpg winter_sky_5.jpg winter_sky_2.jpg winter_sky_4.jpg winter_sky_3.jpg winter_sky_1.jpg"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
     <check-line kind="activate" other-ids="2" p1="-38.92 66.44" p2="-36.26 87.42"
@@ -84,7 +40,51 @@
     <check-line kind="activate" other-ids="0" p1="-24.75 -59.18" p2="-23.79 -37.29"
                 min-height="11.35" same-group="2"/>
   </checks>
-  <sky-box texture="winter_sky_6.jpg winter_sky_5.jpg winter_sky_2.jpg winter_sky_4.jpg winter_sky_3.jpg winter_sky_1.jpg"/>
+  <particle-emitter kind="black_smoke.xml" xyz="-122.87 11.93 -17.97" h="0.00" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="black_smoke.xml" xyz="-75.36 15.30 -20.41" h="0.00" clip_distance="200">
+  </particle-emitter>
+  <banana x="-2.88" y="-0.30" z="39.38" />
+  <banana x="-51.49" y="3.66" z="77.64" />
+  <banana x="-64.64" y="2.49" z="33.10" />
+  <banana x="-50.58" y="-3.78" z="-35.67" />
+  <banana x="-64.02" y="10.79" z="-49.57" />
+  <banana x="3.40" y="11.39" z="-49.97" />
+  <banana x="63.35" y="4.38" z="37.98" />
+  <banana x="66.80" y="0.89" z="-12.72" />
+  <banana x="58.58" y="0.89" z="-12.70" />
+  <banana x="60.70" y="-1.53" z="-57.86" />
+  <banana x="21.50" y="-3.28" z="-102.92" />
+  <banana x="-5.37" y="-3.76" z="-38.47" />
+  <banana x="2.27" y="-3.76" z="-38.47" />
+  <item x="-8.65" y="1.59" z="67.00" />
+  <item x="-76.41" y="4.84" z="76.43" />
+  <item x="-104.86" y="5.46" z="66.15" />
+  <item x="-108.53" y="5.86" z="36.85" />
+  <item x="-48.09" y="-2.82" z="-16.79" />
+  <item x="-50.66" y="-3.09" z="-70.88" />
+  <item x="-64.20" y="10.83" z="-42.94" />
+  <item x="3.81" y="11.36" z="-54.05" />
+  <item x="22.96" y="9.62" z="-3.36" />
+  <item x="31.46" y="9.62" z="-2.71" />
+  <item x="62.76" y="1.06" z="-12.67" />
+  <item x="56.65" y="-0.35" z="-34.83" />
+  <item x="66.42" y="-0.35" z="-35.21" />
+  <item x="-2.74" y="-3.89" z="-68.93" />
+  <small-nitro x="-16.31" y="1.59" z="62.15" />
+  <small-nitro x="-63.99" y="2.49" z="36.84" />
+  <big-nitro x="-64.31" y="2.49" z="28.88" />
+  <big-nitro x="-78.67" y="1.76" z="-102.28" />
+  <small-nitro x="3.54" y="11.39" z="-45.87" />
+  <small-nitro x="21.64" y="-3.28" z="-99.47" />
+  <small-nitro x="21.64" y="-3.28" z="-106.03" />
+  <small-nitro x="-12.10" y="1.59" z="65.03" />
+  <small-nitro x="-77.82" y="1.76" z="-110.90" />
+  <small-nitro x="-78.39" y="1.76" z="-106.10" />
+  <small-nitro x="-64.20" y="10.83" z="-45.88" />
+  <small-nitro x="27.64" y="9.62" z="-2.85" />
+  <small-nitro x="62.16" y="-0.35" z="-34.83" />
+  <small-nitro x="-1.41" y="-3.76" z="-38.04" />
   <default-start karts-per-row     ="2"
                  forwards-distance ="1.50"
                  sidewards-distance="3.00"

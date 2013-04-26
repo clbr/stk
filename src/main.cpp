@@ -517,7 +517,8 @@ int handleCmdLinePreliminary(int argc, char **argv)
             KartPropertiesManager::addKartSearchDir(argv[i+1]);
             i++;
         }
-        else if( !strcmp(argv[i], "--no-graphics") )
+        else if( !strcmp(argv[i], "--no-graphics") || !strncmp(argv[i], "--list-", 7) ||
+                 !strcmp(argv[i], "-l" ))
         {
             ProfileWorld::disableGraphics();
         }
@@ -737,10 +738,10 @@ int handleCmdLine(int argc, char **argv)
         }
         else if( (!strcmp(argv[i], "--kart") && i+1<argc ))
         {
-            // This doesn't work anymore because now we support multiple players
-            // and currently do not know which player profile to use since it
-            // wasn't selected yet
-            //if (!unlock_manager->getCurrentSlot()->isLocked(argv[i+1]))
+            unlock_manager->setCurrentSlot(UserConfigParams::m_all_players[0]
+                                           .getUniqueID()                    );
+
+            if (!unlock_manager->getCurrentSlot()->isLocked(argv[i+1]))
             {
                 const KartProperties *prop = 
                     kart_properties_manager->getKart(argv[i+1]);
@@ -765,16 +766,14 @@ int handleCmdLine(int argc, char **argv)
                               argv[i+1]);
                 }
             }
-            /*
-            else
+            else   // kart locked
             {
-                Log::warn("main", "Kart %s has not been unlocked yet.",
+                Log::warn("main", "Kart '%s' has not been unlocked yet.",
                           argv[i+1]);
                 Log::warn("main",
                           "Use --list-karts to list available karts.");
                 return 0;
-            }
-             */
+            }   // if kart locked
         }
         else if( sscanf(argv[i], "--ai=%1023s", s)==1)
         {
@@ -820,19 +819,18 @@ int handleCmdLine(int argc, char **argv)
         else if( (!strcmp(argv[i], "--track") || !strcmp(argv[i], "-t"))
                  && i+1<argc                                              )
         {
-            // This doesn't work anymore because now we support multiple players
-            // and currently do not know which player profile to use since it
-            // wasn't selected yet
-            //if (!unlock_manager->getCurrentSlot()->isLocked(argv[i+1]))
+            unlock_manager->setCurrentSlot(UserConfigParams::m_all_players[0]
+                                           .getUniqueID()                    );
+            if (!unlock_manager->getCurrentSlot()->isLocked(argv[i+1]))
             {
                 race_manager->setTrack(argv[i+1]);
-                Log::verbose("main", "You choose to start in track \"%s\".",
+                Log::verbose("main", "You choose to start in track '%s'.",
                              argv[i+1] );
                 
                 Track* t = track_manager->getTrack(argv[i+1]);
                 if (t == NULL)
                 {
-                    Log::warn("main", "Can't find track named \"%s\".",
+                    Log::warn("main", "Can't find track named '%s'.",
                               argv[i+1]);
                 }
                 else if (t->isArena())
@@ -840,16 +838,14 @@ int handleCmdLine(int argc, char **argv)
                 else if(t->isSoccer())
                     race_manager->setMinorMode(RaceManager::MINOR_MODE_SOCCER);
             }
-            /*
             else
             {
-                Log::warn("main", "Track %s has not been unlocked yet.",
+                Log::warn("main", "Track '%s' has not been unlocked yet.",
                          argv[i+1]);
                 Log::warn("main", "Use --list-tracks to list available "
                                   "tracks.");
                 return 0;
             }
-             */
             i++;
         }
         else if( (!strcmp(argv[i], "--gp")) && i+1<argc)
@@ -887,35 +883,47 @@ int handleCmdLine(int argc, char **argv)
         {
 
             Log::info("main", "  Available tracks:" );
+            unlock_manager->setCurrentSlot(UserConfigParams::m_all_players[0]
+                                           .getUniqueID()                    );
+
             for (size_t i = 0; i != track_manager->getNumberOfTracks(); i++)
             {
                 const Track *track = track_manager->getTrack(i);
-                // FIXME: crashes
-                //if (!unlock_manager->getCurrentSlot()->isLocked(track->getIdent()))
-                //{
-                    Log::info("main", "\t%14s: %ls",
+                std::string locked="";
+                if ( unlock_manager->getCurrentSlot()
+                                   ->isLocked(track->getIdent()) )
+                {
+                    locked=" (locked)";
+                }
+                Log::info("main", "%-18s: %ls %s",
                               track->getIdent().c_str(),
-                              track->getName());
+                              track->getName(), locked.c_str());
                 //}
             }
 
             Log::info("main", "Use --track N to choose track.");
+
+            exit(0);
         }
         else if( !strcmp(argv[i], "--list-karts") )
         {
             Log::info("main", "  Available karts:");
             for (unsigned int i = 0; 
-                 NULL != kart_properties_manager->getKartById(i); i++)
+                 i < kart_properties_manager->getNumberOfKarts(); i++)
             {
                 const KartProperties* KP =
                     kart_properties_manager->getKartById(i);
-                // FIXME: crashes
-                //if (!unlock_manager->getCurrentSlot()->isLocked(KP->getIdent()))
-                //{
-                    Log::info("main", "\t%10s: %ls", KP->getIdent().c_str(),
-                             KP->getName());
-                //}
+                unlock_manager->setCurrentSlot(UserConfigParams::m_all_players[0]
+                                              .getUniqueID()                    );
+                std::string locked = "";
+                if (unlock_manager->getCurrentSlot()->isLocked(KP->getIdent()))
+                    locked="(locked)";
+
+                Log::info("main", " %-10s: %ls %s", KP->getIdent().c_str(),
+                         KP->getName(), locked.c_str());
             }
+
+            exit(0);
         }
         else if (    !strcmp(argv[i], "--no-start-screen")
                      || !strcmp(argv[i], "-N")                )
@@ -1206,6 +1214,18 @@ void cleanSuperTuxKart()
     if(music_manager)           delete music_manager;
     delete ParticleKindManager::get();
     if(stk_config)              delete stk_config;
+
+#ifndef WIN32
+    if (user_config && UserConfigParams::m_log_errors) //close logfiles
+    {
+#endif
+        fclose(stderr);
+        fclose(stdout);
+#ifndef WIN32
+    }
+#endif
+
+
     if(user_config)             delete user_config;
     if(unlock_manager)          delete unlock_manager;
     if(translations)            delete translations;
@@ -1260,25 +1280,13 @@ int main(int argc, char *argv[] )
 
         initRest();
 
+        // Windows 32 always redirects output
+#ifndef WIN32
         if (UserConfigParams::m_log_errors)
         {
-             //Enable logging of stdout and stderr to logfile
-            std::string logoutfile = file_manager->getLogFile("stdout.log");
-            std::string logerrfile = file_manager->getLogFile("stderr.log");
-            Log::verbose("main", "Error messages and other text output will "
-                         "be logged to %s and %s.", logoutfile.c_str(),
-                         logerrfile.c_str());
-            if(freopen (logoutfile.c_str(),"w",stdout)!=stdout)
-            {
-                Log::error("main", "Can not open log file '%s'. Writing to "
-                                "stdout instead.", logoutfile.c_str());
-            }
-            if(freopen (logerrfile.c_str(),"w",stderr)!=stderr)
-            {
-                Log::error("main", "Can not open log file '%s'. Writing to "
-                           "stderr instead.", logerrfile.c_str());
-            }
+            file_manager->redirectOutput();
         }
+#endif
 
         input_manager = new InputManager ();
         
@@ -1516,12 +1524,6 @@ int main(int argc, char *argv[] )
     
     if(input_manager) delete input_manager; // if early crash avoid delete NULL
 
-    if (user_config && UserConfigParams::m_log_errors) //close logfiles
-    {
-        fclose(stderr);
-        fclose(stdout);
-    }
-
     cleanSuperTuxKart();
 
 #ifdef DEBUG
@@ -1531,3 +1533,10 @@ int main(int argc, char *argv[] )
     return 0 ;
 }
 
+#ifdef WIN32
+//routine for running under windows
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
+{
+    return main(__argc, __argv);
+}
+#endif

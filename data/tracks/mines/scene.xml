@@ -1,18 +1,30 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12416 -->
+<!-- Generated with script from SVN rev 12633 -->
 <scene>
   <track model="mines_track.b3d" x="0" y="0" z="0">
     <static-object lod_distance="70.0" lod_group="transfo" model="Circle.036_Circle.000.b3d" xyz="-17.36 2.09 -22.06" hpr="-90.0 115.4 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="transfo" xyz="167.38 2.09 -91.75" hpr="-90.0 115.4 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="143.33 14.06 12.37" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="-13.76 9.71 -36.87" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="-26.68 11.41 -65.20" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="-0.11 10.45 -261.09" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="116.92 13.11 28.86" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="-0.77 11.68 -65.34" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="108.44 14.50 -103.19" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="88.35 11.17 -122.72" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="71.06 12.08 -147.19" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="73.20 9.99 -178.62" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="85.96 15.56 30.93" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="146.22 7.20 -251.08" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="168.97 11.38 -50.46" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="170.70 10.78 -63.89" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="168.84 9.32 -79.71" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="111.19 9.76 -257.26" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="74.56 13.58 -236.25" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="30.79 6.54 -260.73" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="24.55 6.17 -235.37" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="-5.76 5.27 -232.09" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="-14.38 11.32 -65.48" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="60.0" lod_group="lamp2" model="lamp_2.b3d" xyz="-15.48 12.01 -18.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="73.48 13.11 48.16" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="104.96 13.11 4.66" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -20,18 +32,14 @@
     <static-object lod_instance="true" lod_group="lamp2" xyz="159.83 8.51 -98.24" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="161.51 7.47 -107.88" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lamp2" xyz="143.94 6.66 -100.19" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="-35.11 6.67 -263.82" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="-20.49 10.03 -87.31" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="-0.47 9.71 -36.44" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lamp2" xyz="63.94 8.28 -286.93" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object model="lamp1.b3d" xyz="109.25 9.69 -190.29" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
-    <static-object model="lamp1.b3d" xyz="146.22 5.58 -251.09" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
-    <static-object model="lamp1.b3d" xyz="73.82 11.13 -236.80" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
-    <static-object model="lamp1.b3d" xyz="24.57 6.14 -235.44" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
-    <static-object model="lamp1.b3d" xyz="30.79 6.63 -260.64" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
-    <static-object model="lamp1.b3d" xyz="63.88 9.69 -286.84" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
-    <static-object model="lamp1.b3d" xyz="-0.06 7.57 -261.06" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
-    <static-object model="lamp1.b3d" xyz="-5.87 5.20 -232.11" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
-    <static-object model="lamp1.b3d" xyz="-35.01 6.62 -263.78" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
-    <static-object model="lamp1.b3d" xyz="111.17 9.73 -257.25" hpr="0.0 -0.0 0.0" scale="0.81 0.21 0.81"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="39.44 3.63 48.53" hpr="-90.0 91.7 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lantern" xyz="0.80 3.95 -21.28" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_distance="50" lod_group="lantern" model="lantern_LOD50.b3d" xyz="-10.20 3.95 -21.28" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="80" lod_group="lantern" model="lantern_LOD50.b3d" xyz="-10.20 3.95 -21.28" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="20" lod_group="lantern" model="lantern_LOD20.b3d" xyz="-9.20 3.95 -21.28" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lantern" xyz="-0.14 5.24 8.40" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lantern" xyz="0.58 4.88 21.84" hpr="-90.0 1.7 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -45,146 +53,221 @@
     <static-object lod_instance="true" lod_group="lantern" xyz="43.35 -6.31 -258.59" hpr="-96.5 158.6 -1.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lantern" xyz="34.23 -4.70 -230.46" hpr="-98.5 -61.3 2.9" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lantern" xyz="-32.91 -2.99 -237.75" hpr="-94.6 43.6 1.9" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_instance="true" lod_group="lantern" xyz="15.69 -1.20 -214.72" hpr="-94.6 43.6 1.9" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="15.39 -0.30 -214.72" hpr="-94.6 43.6 1.9" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lantern" xyz="26.35 0.21 -180.83" hpr="-95.7 7.2 1.4" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_instance="true" lod_group="lantern" xyz="21.87 2.14 -157.02" hpr="-96.6 -24.9 1.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_instance="true" lod_group="lantern" xyz="9.47 2.86 -142.58" hpr="-96.6 -24.9 1.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="21.96 3.45 -156.64" hpr="-96.6 -24.9 1.5" scale="1.09 1.09 1.09"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="lantern" xyz="11.93 3.19 -143.25" hpr="-96.6 -24.9 1.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lantern" xyz="0.20 2.14 -129.53" hpr="-96.6 -24.9 1.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="lantern" xyz="-18.37 2.05 -99.04" hpr="-96.6 -24.9 1.5" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <animated-texture name="mine_water_alpha.png" dy="0.500" />
     <animated-texture name="mine_water_alpha.png" dy="0.500" />
+    <animated-texture name="roller.png" dy="0.500" />
+    <animated-texture name="roller.png" dy="0.500" />
+    <animated-texture name="roller.png" dy="0.500" />
+    <animated-texture name="roller.png" dy="0.500" />
   </track>
+  <object type="animation" model="crossbirdge.b3d" xyz="24.46 -6.94 -196.64" hpr="0.0 -11.8 0.0" scale="1.00 1.00 1.00"  interaction="ghost">
+  </object>
   <object type="animation" model="woodbridge.b3d" xyz="7.07 -6.48 -230.94" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"  interaction="ghost">
   </object>
   <object type="animation" model="cart.b3d" xyz="34.09 1.35 60.89" hpr="0.0 33.6 0.0" scale="1.00 1.00 1.00"  interaction="ghost">
+  </object>
+  <object type="animation" model="cart_hit.b3d" xyz="-1.93 -4.14 -196.66" hpr="0.0 33.6 0.0" scale="1.00 1.00 1.00" shape="box" explode="y" interaction="explode">
     <curve channel="LocX" interpolation="bezier" extend="cyclic">
-      <p c="1.000 34.091" h1="-1.312 34.091" h2="3.312 34.091"/>
-      <p c="12.000 51.310" h1="9.698 47.684" h2="14.720 55.594"/>
-      <p c="25.000 71.917" h1="22.361 67.582" h2="30.076 80.254"/>
-      <p c="50.000 114.414" h1="44.451 106.385" h2="55.549 122.444"/>
-      <p c="75.000 144.270" h1="68.178 137.290" h2="81.822 151.250"/>
-      <p c="100.000 165.570" h1="91.779 160.309" h2="108.221 170.831"/>
-      <p c="125.000 176.264" h1="115.990 172.510" h2="128.604 177.765"/>
-      <p c="135.000 180.318" h1="131.943 177.889" h2="139.585 183.961"/>
-      <p c="150.000 198.073" h1="146.221 198.073" h2="153.779 198.073"/>
+      <p c="1.000 -1.931" h1="-20.160 -1.931" h2="22.160 -1.931"/>
+      <p c="55.535 -8.025" h1="36.200 -8.025" h2="76.453 -8.025"/>
+      <p c="114.535 52.975" h1="94.073 52.975" h2="128.408 52.975"/>
+      <p c="154.535 52.975" h1="138.919 52.975" h2="170.152 52.975"/>
     </curve>
     <curve channel="LocZ" interpolation="bezier" extend="cyclic">
-      <p c="1.000 60.886" h1="-2.939 60.886" h2="4.939 60.886"/>
-      <p c="12.000 56.111" h1="7.974 57.607" h2="16.758 54.345"/>
-      <p c="25.000 52.098" h1="20.233 53.842" h2="34.167 48.746"/>
-      <p c="50.000 41.531" h1="41.358 46.067" h2="58.642 36.994"/>
-      <p c="75.000 25.852" h1="67.013 31.462" h2="82.987 20.243"/>
-      <p c="100.000 6.418" h1="93.387 13.596" h2="106.613 -0.760"/>
-      <p c="125.000 -28.417" h1="119.749 -20.190" h2="127.100 -31.708"/>
-      <p c="135.000 -45.819" h1="132.475 -42.841" h2="138.787 -50.286"/>
-      <p c="150.000 -55.106" h1="145.021 -55.106" h2="154.979 -55.106"/>
+      <p c="1.000 -196.665" h1="-20.291 -196.665" h2="22.291 -196.665"/>
+      <p c="55.535 -196.665" h1="34.244 -196.665" h2="78.570 -196.665"/>
+      <p c="114.535 -196.665" h1="91.501 -196.665" h2="130.152 -196.665"/>
+      <p c="154.535 -196.665" h1="138.919 -196.665" h2="170.152 -196.665"/>
     </curve>
     <curve channel="LocY" interpolation="bezier" extend="cyclic">
-      <p c="0.678 1.354" h1="-3.617 1.354" h2="4.972 1.354"/>
-      <p c="11.678 1.363" h1="7.385 1.354" h2="16.751 1.374"/>
-      <p c="24.678 2.090" h1="19.608 1.851" h2="34.427 2.549"/>
-      <p c="49.678 3.048" h1="39.917 3.048" h2="59.438 3.048"/>
-      <p c="74.678 2.188" h1="64.922 2.474" h2="84.434 1.902"/>
-      <p c="99.678 1.583" h1="89.918 1.583" h2="109.438 1.583"/>
-      <p c="124.678 2.600" h1="114.924 2.243" h2="128.579 2.743"/>
-      <p c="134.678 2.927" h1="130.774 2.853" h2="140.533 3.037"/>
-      <p c="149.678 3.037" h1="143.822 3.037" h2="155.534 3.037"/>
+      <p c="55.535 -4.136" h1="32.501 -4.136" h2="78.570 -4.136"/>
+      <p c="114.535 -4.136" h1="91.501 -4.136" h2="130.333 -4.136"/>
+      <p c="155.000 -4.136" h1="139.202 -4.136" h2="170.798 -4.136"/>
     </curve>
-    <curve channel="RotX" interpolation="bezier" extend="cyclic">
-      <p c="1.000 -0.000" h1="-3.294 -0.000" h2="5.294 -0.000"/>
-      <p c="12.000 3.287" h1="7.705 3.287" h2="17.075 3.287"/>
-      <p c="25.000 -1.814" h1="19.925 -1.814" h2="34.760 -1.814"/>
-      <p c="50.000 -1.814" h1="40.240 -1.814" h2="59.760 -1.814"/>
-      <p c="75.000 -3.949" h1="65.240 -3.949" h2="84.760 -3.949"/>
-      <p c="100.000 -3.128" h1="90.240 -3.389" h2="109.760 -2.867"/>
-      <p c="125.000 -2.612" h1="115.240 -2.612" h2="128.904 -2.612"/>
-      <p c="135.000 -2.612" h1="131.096 -2.612" h2="140.856 -2.612"/>
-      <p c="150.000 -2.612" h1="144.144 -2.612" h2="155.856 -2.612"/>
+  </object>
+  <object type="animation" model="redSpot.b3d" xyz="11.01 -4.60 -203.21" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"  interaction="ghost">
+    <curve channel="LocX" interpolation="bezier" extend="cyclic">
+      <p c="1.000 11.010" h1="0.998 11.010" h2="1.002 11.010"/>
+      <p c="40.500 11.010" h1="40.500 11.010" h2="40.500 11.010"/>
+      <p c="40.500 16.010" h1="40.500 16.010" h2="40.500 16.010"/>
+      <p c="99.500 16.010" h1="99.500 16.010" h2="99.500 16.010"/>
+      <p c="99.500 11.010" h1="99.500 11.010" h2="99.500 11.010"/>
+      <p c="155.000 10.975" h1="133.332 10.975" h2="176.668 10.975"/>
     </curve>
-    <curve channel="RotZ" interpolation="bezier" extend="cyclic">
-      <p c="1.000 0.000" h1="-3.295 0.000" h2="5.295 0.000"/>
-      <p c="12.000 0.681" h1="7.705 0.681" h2="17.075 0.681"/>
-      <p c="25.000 -0.154" h1="19.925 -0.154" h2="34.760 -0.154"/>
-      <p c="50.000 -0.154" h1="40.240 -0.154" h2="59.760 -0.154"/>
-      <p c="75.000 -1.426" h1="65.240 -1.061" h2="84.760 -1.792"/>
-      <p c="100.000 -2.026" h1="90.240 -2.026" h2="109.760 -2.026"/>
-      <p c="125.000 -0.570" h1="115.240 -0.570" h2="128.904 -0.570"/>
-      <p c="135.000 -0.570" h1="131.096 -0.570" h2="140.856 -0.570"/>
-      <p c="150.000 -0.570" h1="144.144 -0.570" h2="155.856 -0.570"/>
+    <curve channel="LocZ" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -203.210" h1="-14.226 -203.210" h2="16.226 -203.210"/>
+      <p c="40.000 -203.210" h1="38.048 -203.210" h2="40.390 -203.210"/>
+      <p c="41.000 -203.210" h1="40.610 -203.210" h2="42.952 -203.210"/>
+      <p c="99.000 -203.210" h1="97.048 -203.210" h2="99.390 -203.210"/>
+      <p c="100.000 -203.210" h1="99.610 -203.210" h2="101.952 -203.210"/>
+      <p c="155.000 -203.210" h1="133.527 -203.210" h2="176.473 -203.210"/>
     </curve>
-    <curve channel="RotY" interpolation="bezier" extend="cyclic">
-      <p c="1.000 33.594" h1="-3.292 33.594" h2="5.292 33.594"/>
-      <p c="12.000 11.691" h1="7.706 14.389" h2="17.074 8.504"/>
-      <p c="25.000 8.504" h1="19.925 8.504" h2="34.760 8.504"/>
-      <p c="50.000 17.733" h1="40.240 13.383" h2="59.760 22.082"/>
-      <p c="75.000 30.785" h1="65.240 23.735" h2="84.760 37.834"/>
-      <p c="100.000 53.849" h1="90.241 44.568" h2="109.759 63.130"/>
-      <p c="125.000 78.338" h1="115.240 78.338" h2="128.904 78.338"/>
-      <p c="135.000 57.839" h1="131.102 70.201" h2="140.847 39.296"/>
-      <p c="150.000 -6.553" h1="144.160 -6.553" h2="155.840 -6.553"/>
+    <curve channel="LocY" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -4.595" h1="-14.226 -4.595" h2="16.226 -4.595"/>
+      <p c="40.000 -4.595" h1="38.048 -4.595" h2="40.390 -4.595"/>
+      <p c="41.000 -4.595" h1="40.610 -4.595" h2="42.952 -4.595"/>
+      <p c="99.000 -4.595" h1="97.048 -4.595" h2="99.390 -4.595"/>
+      <p c="100.000 -4.595" h1="99.610 -4.595" h2="101.952 -4.595"/>
+      <p c="155.000 -4.595" h1="133.527 -4.595" h2="176.473 -4.595"/>
     </curve>
   </object>
   <object type="animation" model="SomeModel.b3d" xyz="62.98 -5.40 -248.68" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" shape="box" interaction="static">
-    <curve channel="LocX" interpolation="bezier" extend="cyclic">
-      <p c="1.000 62.979" h1="-37.651 62.979" h2="39.651 62.979"/>
-      <p c="100.000 62.979" h1="61.349 62.979" h2="138.651 62.979"/>
-    </curve>
-    <curve channel="LocZ" interpolation="bezier" extend="cyclic">
-      <p c="1.000 -248.676" h1="-37.651 -248.676" h2="39.651 -248.676"/>
-      <p c="100.000 -248.676" h1="61.349 -248.676" h2="138.651 -248.676"/>
-    </curve>
-    <curve channel="LocY" interpolation="bezier" extend="cyclic">
-      <p c="1.000 -5.395" h1="-37.651 -5.395" h2="39.651 -5.395"/>
-      <p c="100.000 -5.395" h1="61.349 -5.395" h2="138.651 -5.395"/>
-    </curve>
     <curve channel="RotX" interpolation="bezier" extend="cyclic">
       <p c="1.000 -0.000" h1="-37.573 140.266" h2="39.573 -140.266"/>
       <p c="100.000 -360.000" h1="61.427 -219.734" h2="138.573 -500.266"/>
     </curve>
     <curve channel="RotZ" interpolation="bezier" extend="cyclic">
-      <p c="1.000 -0.000" h1="-37.651 -0.000" h2="39.651 -0.000"/>
-      <p c="100.000 -0.000" h1="61.349 -0.000" h2="138.651 -0.000"/>
+      <p c="1.000 0.000" h1="-37.651 0.000" h2="39.651 -0.000"/>
+      <p c="100.000 0.000" h1="61.349 0.000" h2="138.651 -0.000"/>
     </curve>
     <curve channel="RotY" interpolation="bezier" extend="cyclic">
       <p c="1.000 -0.000" h1="-37.651 -0.000" h2="39.651 -0.000"/>
       <p c="100.000 -0.000" h1="61.349 -0.000" h2="138.651 -0.000"/>
     </curve>
   </object>
-  <object type="animation" model="cogwheel1.b3d" xyz="153.40 -4.63 -105.63" hpr="90.0 -0.0 0.0" scale="1.23 1.23 1.23"  interaction="ghost">
+  <object type="animation" model="cogwheel1.b3d" xyz="153.40 -4.63 -105.63" hpr="0.0 -0.0 0.0" scale="1.23 1.23 1.23"  interaction="ghost">
+    <curve channel="RotX" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-18.130 -0.000" h2="20.130 -0.000"/>
+      <p c="50.000 -0.000" h1="30.870 -0.000" h2="69.130 -0.000"/>
+    </curve>
     <curve channel="RotZ" interpolation="bezier" extend="cyclic">
-      <p c="1.000 0.000" h1="-8.291 0.000" h2="10.291 0.000"/>
-      <p c="25.000 -180.000" h1="15.706 -111.691" h2="34.681 -251.155"/>
-      <p c="50.000 -360.000" h1="40.316 -360.000" h2="59.684 -360.000"/>
+      <p c="1.000 -0.000" h1="-17.975 139.407" h2="19.975 -139.407"/>
+      <p c="50.000 -360.000" h1="31.025 -220.593" h2="68.975 -499.407"/>
+    </curve>
+    <curve channel="RotY" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-18.130 -0.000" h2="20.130 -0.000"/>
+      <p c="50.000 -0.000" h1="30.870 -0.000" h2="69.130 -0.000"/>
     </curve>
   </object>
-  <object type="animation" model="cogwheel3.b3d" xyz="97.25 -6.80 -209.37" hpr="90.0 -0.0 0.0" scale="1.94 1.94 1.94"  interaction="ghost">
-    <curve channel="RotZ" interpolation="bezier" extend="cyclic">
-      <p c="1.000 0.000" h1="-8.291 0.000" h2="10.291 0.000"/>
-      <p c="25.000 -180.000" h1="15.706 -111.691" h2="34.681 -251.155"/>
-      <p c="50.000 -360.000" h1="40.316 -360.000" h2="59.684 -360.000"/>
+  <object type="movable" xyz="-7.49 -2.31 -74.06" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          model="phys_box.b3d" shape="box" mass="50.0"/>
+  <object type="movable" xyz="-4.49 -2.31 -74.06" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          model="phys_box_tnt.b3d" shape="box" mass="50.0"/>
+  <object type="movable" xyz="-1.49 -2.31 -74.06" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          model="phys_box_dark.b3d" shape="box" mass="50.0"/>
+  <object type="movable" xyz="-23.91 -1.91 -89.71" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          model="phys_box_dark.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="-21.03 -1.91 -86.72" hpr="0.0 -28.7 0.0" scale="1.00 1.00 1.00"
+          model="phys_box_tnt.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="-24.03 -1.91 -86.72" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          model="phys_box.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="3.66 -1.38 -35.64" hpr="5.3 -0.0 0.0" scale="1.00 1.00 1.00"
+          model="phys_box.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="46.54 -0.63 41.29" hpr="0.0 -28.7 0.0" scale="1.00 1.00 1.00"
+          model="phys_box_tnt.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="140.79 -0.77 12.04" hpr="0.0 30.8 0.0" scale="0.51 0.51 0.51"
+          model="phys_box_dark.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="-18.54 -3.99 -267.44" hpr="0.0 -16.2 0.0" scale="1.00 1.00 1.00"
+          model="phys_box_tnt.b3d" shape="box" mass="100.0"/>
+  <object type="animation" model="floatingObject.b3d" xyz="-15.53 -5.01 -45.35" hpr="-37.9 -52.9 54.9" scale="0.85 0.85 0.85"  interaction="ghost">
+    <curve channel="LocX" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -15.533" h1="-18.521 -15.533" h2="20.521 -15.533"/>
+      <p c="51.000 -15.533" h1="31.479 -15.533" h2="68.959 -15.533"/>
+      <p c="97.000 -15.533" h1="79.041 -15.533" h2="114.959 -15.533"/>
+    </curve>
+    <curve channel="LocZ" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -45.347" h1="-18.521 -45.347" h2="20.521 -45.347"/>
+      <p c="51.000 -45.347" h1="31.479 -45.347" h2="68.959 -45.347"/>
+      <p c="97.000 -45.347" h1="79.041 -45.347" h2="114.959 -45.347"/>
+    </curve>
+    <curve channel="LocY" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -5.012" h1="-18.521 -5.012" h2="20.521 -5.012"/>
+      <p c="51.000 -4.912" h1="31.479 -4.912" h2="68.959 -4.912"/>
+      <p c="97.000 -5.012" h1="79.041 -5.012" h2="114.959 -5.012"/>
     </curve>
   </object>
-  <object type="animation" model="cogwheel4.b3d" xyz="98.50 1.34 -209.37" hpr="90.0 0.0 90.0" scale="1.48 1.48 1.48"  interaction="ghost">
+  <object type="movable" xyz="144.58 -0.77 16.79" hpr="0.0 30.8 0.0" scale="0.51 0.51 0.51"
+          model="phys_box_dark.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="87.58 -11.83 -261.04" hpr="0.0 -16.2 0.0" scale="1.00 1.00 1.00"
+          model="phys_box_tnt.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="100.02 -6.31 -181.48" hpr="0.0 155.3 0.7" scale="0.51 0.51 0.51"
+          model="phys_box.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="133.65 -5.80 -103.62" hpr="1.4 154.8 1.9" scale="0.51 0.51 0.51"
+          model="phys_box_dark.b3d" shape="box" mass="100.0"/>
+  <object type="movable" xyz="82.81 -7.19 -122.07" hpr="0.0 154.1 0.7" scale="0.51 0.51 0.51"
+          model="phys_box_dark.b3d" shape="box" mass="100.0"/>
+  <object type="animation" model="cogwheel3.b3d" xyz="97.25 -6.80 -209.37" hpr="0.0 -0.0 0.0" scale="1.94 1.94 1.94"  interaction="ghost">
+    <curve channel="RotX" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-18.130 -0.000" h2="20.130 -0.000"/>
+      <p c="50.000 -0.000" h1="30.870 -0.000" h2="69.130 -0.000"/>
+    </curve>
     <curve channel="RotZ" interpolation="bezier" extend="cyclic">
-      <p c="1.000 -270.000" h1="-8.291 -270.000" h2="10.291 -270.000"/>
-      <p c="25.000 -90.000" h1="15.706 -158.309" h2="34.681 -18.845"/>
-      <p c="50.000 90.000" h1="40.316 90.000" h2="59.684 90.000"/>
+      <p c="1.000 -0.000" h1="-17.975 139.407" h2="19.975 -139.407"/>
+      <p c="50.000 -360.000" h1="31.025 -220.593" h2="68.975 -499.407"/>
+    </curve>
+    <curve channel="RotY" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-18.130 -0.000" h2="20.130 -0.000"/>
+      <p c="50.000 -0.000" h1="30.870 -0.000" h2="69.130 -0.000"/>
     </curve>
   </object>
-  <object type="animation" model="cogwheel2.b3d" xyz="97.25 9.39 -209.37" hpr="90.0 -0.0 -0.0" scale="1.92 1.92 1.92"  interaction="ghost">
+  <object type="animation" model="cogwheel4.b3d" xyz="98.50 1.34 -209.37" hpr="0.0 -0.0 0.0" scale="1.48 1.48 1.48"  interaction="ghost">
+    <curve channel="RotX" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-25.938 -0.000" h2="27.938 -0.000"/>
+      <p c="70.000 -0.000" h1="43.062 -0.000" h2="96.938 -0.000"/>
+    </curve>
+    <curve channel="RotZ" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-25.827 -139.969" h2="27.827 139.969"/>
+      <p c="70.000 360.000" h1="43.173 220.031" h2="96.827 499.969"/>
+    </curve>
+    <curve channel="RotY" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-25.938 -0.000" h2="27.938 -0.000"/>
+      <p c="70.000 -0.000" h1="43.062 -0.000" h2="96.938 -0.000"/>
+    </curve>
   </object>
-  <sun  fog="true" fog-color="12 6 0" fog-end="60.00"/>
-  <sky-color rgb="12 6 0"/>
+  <object type="animation" model="cogwheel2.b3d" xyz="97.25 9.39 -209.37" hpr="0.0 -0.0 0.0" scale="1.92 1.92 1.92"  interaction="ghost">
+    <curve channel="RotX" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-37.651 -0.000" h2="39.651 -0.000"/>
+      <p c="100.000 -0.000" h1="61.349 -0.000" h2="138.651 -0.000"/>
+    </curve>
+    <curve channel="RotZ" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-37.573 140.266" h2="39.573 -140.266"/>
+      <p c="100.000 -360.000" h1="61.427 -219.734" h2="138.573 -500.266"/>
+    </curve>
+    <curve channel="RotY" interpolation="bezier" extend="cyclic">
+      <p c="1.000 -0.000" h1="-37.651 -0.000" h2="39.651 -0.000"/>
+      <p c="100.000 -0.000" h1="61.349 -0.000" h2="138.651 -0.000"/>
+    </curve>
+  </object>
+  <object type="animation" model="greenSpot.b3d" xyz="16.01 -4.60 -203.21" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"  interaction="ghost">
+    <curve channel="LocX" interpolation="linear" extend="cyclic">
+      <p c="1.000 16.010"/>
+      <p c="40.500 16.010"/>
+      <p c="40.500 12.010"/>
+      <p c="99.500 12.010"/>
+      <p c="99.500 16.010"/>
+      <p c="155.000 16.013"/>
+    </curve>
+    <curve channel="LocZ" interpolation="linear" extend="cyclic">
+      <p c="1.000 -203.210"/>
+      <p c="40.000 -203.210"/>
+      <p c="41.000 -203.210"/>
+      <p c="99.000 -203.210"/>
+      <p c="100.000 -203.210"/>
+      <p c="155.000 -203.210"/>
+    </curve>
+    <curve channel="LocY" interpolation="linear" extend="cyclic">
+      <p c="1.000 -4.595"/>
+      <p c="40.000 -4.595"/>
+      <p c="41.000 -4.595"/>
+      <p c="99.000 -4.595"/>
+      <p c="100.000 -4.595"/>
+      <p c="155.000 -4.595"/>
+    </curve>
+  </object>
+  <sun  fog="true" fog-color="0 0 0" fog-start="10.00" fog-end="80.00" xyz="0.00 58.23 0.00" sun-specular="40 40 40" sun-diffuse="40 40 40" ambient="40 40 40"/>
+  <sky-color rgb="0 0 0"/>
+  <camera far="180.0"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
     <check-line kind="activate" other-ids="0" p1="162.62 -238.25" p2="145.04 -233.54"
                 min-height="-6.72" same-group="1"/>
   </checks>
-  <camera far="120.0"/>
-  <default-start karts-per-row     ="3"
-                 forwards-distance ="1.50"
-                 sidewards-distance="3.00"
-                 upwards-distance  ="0.10"/>
   <water model="water.b3d" xyz="99.24 -14.06 -150.55" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.25" speed="200.00" length="10.00"/>
   <banana x="100.78" y="-0.40" z="25.30" />
   <small-nitro x="86.89" y="-8.43" z="-119.35" h="-106.30" />
@@ -244,6 +327,9 @@
   <object type="billboard" texture="lightHaloY.png" xyz="0.58 4.11 21.84" 
              width="5.113" height="5.113" >
   </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="63.97 1.33 -286.94" 
+             width="0.750" height="0.750" >
+  </object>
   <object type="billboard" texture="lightHaloY.png" xyz="6.09 3.79 37.57" 
              width="5.113" height="5.113" >
   </object>
@@ -274,16 +360,16 @@
   <object type="billboard" texture="lightHaloY.png" xyz="-32.84 -3.75 -237.70" 
              width="5.113" height="5.113" >
   </object>
-  <object type="billboard" texture="lightHaloY.png" xyz="15.76 -1.96 -214.67" 
+  <object type="billboard" texture="lightHaloY.png" xyz="15.46 -1.06 -214.67" 
              width="5.113" height="5.113" >
   </object>
   <object type="billboard" texture="lightHaloY.png" xyz="26.37 -0.55 -180.75" 
              width="5.113" height="5.113" >
   </object>
-  <object type="billboard" texture="lightHaloY.png" xyz="21.85 1.38 -156.95" 
+  <object type="billboard" texture="lightHaloY.png" xyz="21.94 2.62 -156.56" 
              width="5.113" height="5.113" >
   </object>
-  <object type="billboard" texture="lightHaloY.png" xyz="9.45 2.10 -142.50" 
+  <object type="billboard" texture="lightHaloY.png" xyz="11.91 2.43 -143.17" 
              width="5.113" height="5.113" >
   </object>
   <object type="billboard" texture="lightHaloY.png" xyz="0.18 1.37 -129.45" 
@@ -358,6 +444,9 @@
   <object type="billboard" texture="halo_lamp.png" xyz="104.98 2.74 4.69" 
              width="7.160" height="9.356" fadeout="true" start="5.00" end="20.00">
   </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="146.25 0.25 -251.10" 
+             width="0.750" height="0.750" >
+  </object>
   <object type="billboard" texture="lightHaloY.png" xyz="108.47 7.55 -103.21" 
              width="0.750" height="0.750" >
   </object>
@@ -388,4 +477,101 @@
   <object type="billboard" texture="halo_lamp.png" xyz="109.26 -3.27 -190.29" 
              width="9.758" height="12.750" fadeout="true" start="1.00" end="15.00">
   </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="146.26 -3.45 -251.08" 
+             width="6.994" height="9.139" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="111.23 -4.27 -257.26" 
+             width="11.240" height="14.686" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="111.22 2.81 -257.27" 
+             width="0.750" height="0.750" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="74.59 6.63 -236.26" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="74.60 -2.91 -236.25" 
+             width="15.560" height="20.331" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="30.83 -6.04 -260.73" 
+             width="10.408" height="13.599" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="30.82 -0.41 -260.74" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="24.58 -0.78 -235.39" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="24.59 -6.40 -235.37" 
+             width="10.408" height="13.599" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="-5.72 -7.31 -232.09" 
+             width="10.408" height="13.599" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-5.73 -1.68 -232.11" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-35.08 -0.28 -263.83" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="-35.07 -3.67 -263.82" 
+             width="5.947" height="7.770" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-20.46 3.08 -87.32" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="-20.45 0.51 -87.31" 
+             width="5.691" height="7.436" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="-26.64 1.53 -65.20" 
+             width="7.406" height="9.677" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-26.65 4.46 -65.21" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-14.35 4.37 -65.50" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="-14.34 1.45 -65.48" 
+             width="7.406" height="9.677" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="-0.73 1.80 -65.34" 
+             width="7.406" height="9.677" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-0.74 4.73 -65.35" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="-13.72 -0.17 -36.87" 
+             width="7.406" height="9.677" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-13.73 2.76 -36.89" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-0.44 2.76 -36.45" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="-0.43 -0.17 -36.44" 
+             width="7.406" height="9.677" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-0.08 3.50 -261.10" 
+             width="1.520" height="1.520" >
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="-0.07 -0.46 -261.09" 
+             width="10.408" height="13.599" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="63.98 -5.75 -286.93" 
+             width="11.240" height="14.686" fadeout="true" start="1.00" end="15.00">
+  </object>
+  <object type="billboard" texture="halo_lamp.png" xyz="143.31 3.69 12.40" 
+             width="7.160" height="9.356" fadeout="true" start="5.00" end="20.00">
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="143.36 7.11 12.35" 
+             width="0.750" height="0.750" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="39.44 2.86 48.53" 
+             width="5.113" height="5.113" >
+  </object>
+  <default-start karts-per-row     ="3"
+                 forwards-distance ="1.50"
+                 sidewards-distance="3.00"
+                 upwards-distance  ="0.10"/>
 </scene>

@@ -38,25 +38,7 @@ OverWorld::OverWorld() : LinearWorld()
 {
     m_return_to_garage = false;
     m_stop_music_when_dialog_open = false;
-}
-
-// ----------------------------------------------------------------------------
-/** Actually initialises the world, i.e. creates all data structures to
- *  for all karts etc. In init functions can be called that use
- *  World::getWorld().
- */
-void OverWorld::init()
-{
-    LinearWorld::init();
-    
-        
-    if (race_manager->haveKartLastPositionOnOverworld())
-    {
-        AbstractKart* kart = m_karts[0];
-        kart->setXYZ(race_manager->getKartLastPositionOnOverworld());
-        moveKartAfterRescue(kart);
-    }
-}   // init
+}   // Overworld
 
 //-----------------------------------------------------------------------------
 OverWorld::~OverWorld()
@@ -86,9 +68,10 @@ void OverWorld::enterOverWorld()
     
     if (!kart_properties_manager->getKart(UserConfigParams::m_default_kart))
     {
-        fprintf(stderr, "[MainMenuScreen] WARNING: cannot find kart '%s', "
-                        "will revert to default\n",
-                UserConfigParams::m_default_kart.c_str());
+        Log::warn("overworld", "cannot find kart '%s', "
+                  "will revert to default\n", 
+                  UserConfigParams::m_default_kart.c_str());
+
         UserConfigParams::m_default_kart.revertToDefaults();
     }
     race_manager->setLocalKartInfo(0, UserConfigParams::m_default_kart);
@@ -102,8 +85,13 @@ void OverWorld::enterOverWorld()
     StateManager::get()->enterGameState();
     network_manager->setupPlayerKartInfo();
     race_manager->startNew(false);
-    
+    if(race_manager->haveKartLastPositionOnOverworld()){
+			OverWorld *ow = (OverWorld*)World::getWorld();
+			ow->getKart(0)->setXYZ(race_manager->getKartLastPositionOnOverworld());
+			ow->moveKartAfterRescue(ow->getKart(0));
+		}
     irr_driver->showPointer(); // User should be able to click on the minimap
+
 }   // enterOverWorld
 
 //-----------------------------------------------------------------------------
@@ -128,7 +116,6 @@ void OverWorld::update(float dt)
         m_karts[0]->startEngineSFX();
     }
     LinearWorld::update(dt);
-    
     const unsigned int kart_amount  = m_karts.size();
 
     // isn't it cool, on the overworld nitro is free!
@@ -288,9 +275,9 @@ void OverWorld::moveKartAfterRescue(AbstractKart* kart, float angle)
     }
     else
     {
-        fprintf(stderr, "WARNING: invalid position after rescue for kart %s "
-                        "on track %s.\n",
-                (kart->getIdent().c_str()), m_track->getIdent().c_str());
+        Log::warn("overworld", "Invalid position after rescue for kart %s "
+        						"on track %s.", (kart->getIdent().c_str()), 
+                                m_track->getIdent().c_str());
     }
 }   // moveKartAfterRescue
 
@@ -304,7 +291,7 @@ void OverWorld::onMouseClick(int x, int y)
 {
     const OverworldChallenge *challenge = 
         ((RaceGUIOverworld*)getRaceGUI())->getCurrentChallenge();
- 
+
     if(challenge)
     {
         AbstractKart* kart = getKart(0);

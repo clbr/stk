@@ -3,7 +3,7 @@
 <kart name              = "Suzanne"
       version           = "2"
       model-file        = "suzanne.b3dz"
-      icon-file         = "icon64.png"
+      icon-file         = "icon_large.png"
       minimap-icon-file = "icon32.png"
       shadow-file       = "shadow.png"
       groups            = "standard"

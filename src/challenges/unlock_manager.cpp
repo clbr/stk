@@ -34,8 +34,8 @@
 #include "karts/kart_properties_manager.hpp"
 #include "race/race_manager.hpp"
 #include "tracks/track_manager.hpp"
-#include "utils/string_utils.hpp"
 #include "utils/log.hpp"
+#include "utils/string_utils.hpp"
 
 UnlockManager* unlock_manager=0;
 //-----------------------------------------------------------------------------

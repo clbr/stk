@@ -83,6 +83,7 @@ RaceGUIBase::RaceGUIBase()
                                                             /*permanent*/true);
     const std::string &guid = file_manager->getGUIDir();
     m_gauge_full            = irr_driver->getTexture(guid+"gauge_full.png" );
+    m_gauge_full_bright     = irr_driver->getTexture(guid+"gauge_full_bright.png" );
     m_gauge_empty           = irr_driver->getTexture(guid+"gauge_empty.png");
     m_gauge_goal            = irr_driver->getTexture(guid+"gauge_goal.png" );
 
@@ -101,12 +102,28 @@ RaceGUIBase::RaceGUIBase()
  *  gui. This is called after the world has been initialised, e.g. all karts
  *  do exist (while the constructor is called before the karts are created).
  *  In the base gui this is used to initialise the referee data (which needs
- *  the start positions of the karts).
+ *  the start positions of the karts). Note that this function is (and must 
+ *  be called only once, after its constructor).
+ *  \pre All karts must be created, since this object defines the
+ *       positions for the referees based on the karts.
  */
 void RaceGUIBase::init()
 {
     m_kart_display_infos.resize(race_manager->getNumberOfKarts());
 
+    // Do everything else required at a race restart as well, esp. 
+    // resetting the height of the referee.
+    m_referee = new Referee();
+    m_referee_pos.resize(race_manager->getNumberOfKarts());
+    m_referee_rotation.resize(race_manager->getNumberOfKarts());
+}   // init
+
+//-----------------------------------------------------------------------------
+/** This is called when restarting a race. In the race gui base it resets
+ *  height of the referee, so that it can start flying down again.
+ */
+void RaceGUIBase::reset()
+{
     // While we actually only need the positions for local players,
     // we add all karts, since it's easier to get a world kart id from
     // the kart then the local player id (and it avoids problems in 
@@ -114,32 +131,20 @@ void RaceGUIBase::init()
     for(unsigned int i=0; i<race_manager->getNumberOfKarts(); i++)
     {
         const AbstractKart *kart = World::getWorld()->getKart(i);
-        m_referee_pos.push_back(kart->getTrans()(Referee::getStartOffset()));
-        Vec3 hpr = Referee::getStartRotation() 
-                 + Vec3(0, kart->getHeading()*RAD_TO_DEGREE, 0);
-        m_referee_rotation.push_back(hpr);
+        m_referee_pos[i] = kart->getTrans()(Referee::getStartOffset());
+        m_referee_rotation[i] = Referee::getStartRotation() 
+                              + Vec3(0, kart->getHeading()*RAD_TO_DEGREE, 0);
     }
 
-    m_referee = new Referee();
 
-    // Do everything else required at a race restart as well, esp. 
-    // resetting the height of the referee.
-    restartRace();
-}   // init
-
-//-----------------------------------------------------------------------------
-/** This is called when restarting a race. In the race gui base it resets
- *  height of the referee, so that it can start flying down again.
- */
-void RaceGUIBase::restartRace()
-{
     m_referee_height = 10.0f;
     m_referee->attachToSceneNode();
     m_plunger_move_time = 0;
     m_plunger_offset    = core::vector2di(0,0);
     m_plunger_speed     = core::vector2df(0,0);
     m_plunger_state     = PLUNGER_STATE_INIT;
-}   // restartRace
+    clearAllMessages();
+}   // reset
 
 //-----------------------------------------------------------------------------
 /** The destructor removes the marker texture and the referee scene node.

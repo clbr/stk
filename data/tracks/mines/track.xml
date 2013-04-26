@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12416 -->
+<!-- Generated with script from SVN rev 12633 -->
 <track  name           = "Old Mine"
         version        = "5"
         groups         = "standard"
-        designer       = "Ivar ten cate"
+        designer       = "Jean-manuel Clemen&#231;on and Ivar ten cate"
         music          = "West.music"
         screenshot     = "sshot-mines.jpg"
         smooth-normals = "true"

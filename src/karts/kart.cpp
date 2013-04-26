@@ -184,7 +184,7 @@ void Kart::init(RaceManager::KartType type)
     
     if(!m_engine_sound)
     {
-        fprintf(stdout, "Error: Could not allocate a sfx object for the kart. Further errors may ensue!\n");
+        Log::error("Kart","Could not allocate a sfx object for the kart. Further errors may ensue!\n");
     }
 
 
@@ -774,8 +774,7 @@ void Kart::finishedRace(float time)
         const Challenge *challenge = slot->getCurrentChallenge();
         // In case of a GP challenge don't make the end animation depend
         // on if the challenge is fulfilled
-        if(challenge && !challenge->getData()->getMajorMode()
-                          ==RaceManager::MAJOR_MODE_GRAND_PRIX)
+        if(challenge && !challenge->getData()->isGrandPrix())
         {
             if(challenge->getData()->isChallengeFulfilled())
                 m_kart_model->setAnimation(KartModel::AF_WIN_START);
@@ -1003,7 +1002,10 @@ void Kart::update(float dt)
     if(m_view_blocked_by_plunger > 0) m_view_blocked_by_plunger -= dt;
 
     // Decrease remaining invulnerability time
-    if(m_invulnerable_time>0) m_invulnerable_time-=dt;
+    if(m_invulnerable_time>0)
+    {
+        m_invulnerable_time-=dt;
+    }
 
     m_slipstream->update(dt);
 
@@ -1140,7 +1142,7 @@ void Kart::update(float dt)
 #ifdef DEBUG
             if(UserConfigParams::m_material_debug)
             {
-                printf("%s\tfraction %f\ttime %f.\n",
+                Log::info("Kart","%s\tfraction %f\ttime %f.\n",
                        material->getTexFname().c_str(),
                        material->getMaxSpeedFraction(),
                        material->getSlowDownTime()       );
@@ -1541,7 +1543,7 @@ void Kart::crashed(const Material *m, const Vec3 &normal)
         // Add a counter to make it easier to see if a new line of
         // output was added.
         static int counter=0;
-        printf("Kart %s hit track: %d material %s.\n", 
+        Log::info("Kart","Kart %s hit track: %d material %s.\n",
                getIdent().c_str(), counter++,
                m ? m->getTexFname().c_str() : "None");
     }
@@ -1624,7 +1626,7 @@ void Kart::crashed(const Material *m, const Vec3 &normal)
             }
             else
             {
-                fprintf(stderr, "Unknown particles kind <%s> in material "
+                Log::error("Kart","Unknown particles kind <%s> in material "
                                 "crash-reset properties\n", particles.c_str());
             }
         }
@@ -1856,7 +1858,7 @@ void Kart::updatePhysics(float dt)
          m_speed = 0;
     updateEngineSFX();
 #ifdef XX
-    printf("forward %f %f %f %f  side %f %f %f %f angVel %f %f %f heading %f\n"
+    Log::info("Kart","forward %f %f %f %f  side %f %f %f %f angVel %f %f %f heading %f\n"
        ,m_vehicle->m_forwardImpulse[0]
        ,m_vehicle->m_forwardImpulse[1]
        ,m_vehicle->m_forwardImpulse[2]

@@ -175,7 +175,11 @@ protected:
     /** A texture with all mini dots to be displayed in the minimap for all karts. */
     video::ITexture *m_marker;
     video::ITexture *m_gauge_empty;
+    /** Default texture for nitro gauge. */
     video::ITexture *m_gauge_full;
+    /** Highlight gauge, used when a kart uses nitro. */
+    video::ITexture *m_gauge_full_bright;
+
     video::ITexture *m_gauge_goal;
 
     /** The frame around player karts in the mini map. */
@@ -220,7 +224,7 @@ public:
     virtual      ~RaceGUIBase();
     virtual void renderGlobal(float dt);
     virtual void init();
-    virtual void restartRace();
+    virtual void reset();
     virtual void renderPlayerView(const Camera *camera, float dt);
     virtual void addMessage(const irr::core::stringw &m, 
                             const AbstractKart *kart, float time,
