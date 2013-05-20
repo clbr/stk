@@ -1,248 +1,33 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12416 -->
+<!-- Generated with script from SVN rev 12633 -->
 <scene>
-  <track model="galaxy_track.b3d" x="0" y="0" z="0">
-    <static-object model="saturn ring.b3d" xyz="-123.62 -0.12 359.04" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object model="neptun ring (arc).b3d" xyz="287.15 -3.58 444.14" hpr="-55.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object model="neptun ring (arc).b3d" xyz="287.15 -856.74 444.14" hpr="-55.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object model="milkyway0.b3d" xyz="-62.39 184.63 617.26" hpr="-14.1 -5.1 2.1" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
-    <animated-texture name="milkyway.png" dx="0.001" />
-    </static-object>
-    <static-object model="milkyway1.b3d" xyz="-18.56 -14.00 -831.87" hpr="-14.1 -5.1 2.1" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
-    <animated-texture name="milkyway.png" dx="0.001" />
-    </static-object>
-    <static-object model="generic clouds.b3d" xyz="-236.50 -0.03 -99.76" hpr="0.0 -0.0 0.0" scale="0.76 0.76 0.76"> <!-- writeStaticObjects 2 -->
-    <animated-texture name="genericCloud.png" dx="0.010" />
-    </static-object>
-    <static-object model="mars clouds.b3d" xyz="-223.13 -0.03 -5.68" hpr="0.0 -0.0 0.0" scale="0.69 0.69 0.69"> <!-- writeStaticObjects 2 -->
-    <animated-texture name="genericCloud.png" dx="0.010" />
-    </static-object>
-    <static-object model="ruby.b3d" xyz="307.77 7.43 182.59" hpr="-98.3 97.3 0.0" scale="0.53 0.53 0.53"/> <!-- writeStaticObjects 3 -->
-    <static-object model="ruby.b3d" xyz="305.17 6.47 177.93" hpr="-98.3 97.3 0.0" scale="0.68 0.68 0.68"/> <!-- writeStaticObjects 3 -->
-    <static-object model="ruby.b3d" xyz="317.42 29.44 176.08" hpr="-77.4 97.3 0.0" scale="0.36 0.36 0.36"/> <!-- writeStaticObjects 3 -->
-    <static-object model="ruby.b3d" xyz="317.42 28.95 178.84" hpr="24.8 58.8 104.2" scale="0.28 0.28 0.28"/> <!-- writeStaticObjects 3 -->
-    <static-object model="ruby.b3d" xyz="320.75 18.90 194.16" hpr="-77.4 97.3 0.0" scale="0.36 0.36 0.36"/> <!-- writeStaticObjects 3 -->
-    <static-object model="ruby.b3d" xyz="314.75 21.29 182.59" hpr="-98.3 97.3 0.0" scale="0.53 0.53 0.53"/> <!-- writeStaticObjects 3 -->
-    <static-object model="sunHalo.b3d" xyz="0.00 0.00 -563.01" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object model="earthHalo.b3d" xyz="-236.50 -0.03 -99.76" hpr="0.0 -0.0 0.0" scale="0.76 0.76 0.76"/> <!-- writeStaticObjects 3 -->
-    <static-object model="marsHalo.b3d" xyz="-223.13 -0.03 -4.80" hpr="0.0 -0.0 0.0" scale="0.72 0.72 0.72"/> <!-- writeStaticObjects 3 -->
-    <static-object model="marsHalo.b3d" xyz="-223.20 0.99 152.39" hpr="0.0 12.2 0.0" scale="2.85 2.85 2.85"/> <!-- writeStaticObjects 3 -->
-    <static-object model="siliconSolarPanel.b3d" xyz="0.00 -1.85 0.51" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" tangents="true"/> <!-- writeStaticObjects 3 -->
-    <static-object model="penumbra.b3d" xyz="-236.03 -0.03 -99.76" hpr="0.0 -0.0 0.0" scale="0.76 0.76 0.76"/> <!-- writeStaticObjects 3 -->
-    <static-object model="penumbra.b3d" xyz="-222.71 -0.03 -5.66" hpr="0.0 -0.0 0.0" scale="0.69 0.69 0.69"/> <!-- writeStaticObjects 3 -->
-    <static-object model="penumbra.b3d" xyz="-236.45 0.49 -189.29" hpr="0.0 -0.0 0.0" scale="0.21 0.21 0.21"/> <!-- writeStaticObjects 3 -->
-    <static-object model="penumbra.b3d" xyz="-222.64 -0.12 149.33" hpr="0.0 32.6 0.0" scale="2.65 2.65 2.65"/> <!-- writeStaticObjects 3 -->
-    <static-object model="penumbra.b3d" xyz="-123.62 -0.12 359.04" hpr="0.0 30.3 0.0" scale="2.12 2.12 2.12"/> <!-- writeStaticObjects 3 -->
-    <static-object model="penumbra.b3d" xyz="116.14 10.98 426.93" hpr="0.0 42.6 0.0" scale="1.33 1.33 1.33"/> <!-- writeStaticObjects 3 -->
-    <static-object model="penumbra.b3d" xyz="286.96 -0.12 445.52" hpr="0.0 52.2 0.0" scale="1.37 1.37 1.37"/> <!-- writeStaticObjects 3 -->
-    <static-object model="penumbra.b3d" xyz="-139.55 -0.23 -358.49" hpr="0.0 -0.0 0.0" scale="0.54 0.54 0.54"/> <!-- writeStaticObjects 3 -->
-    <static-object model="penumbra.b3d" xyz="-205.58 0.08 -264.99" hpr="0.0 -0.0 0.0" scale="0.70 0.70 0.70"/> <!-- writeStaticObjects 3 -->
-    <animated-texture name="mov.png" dy="0.250" />
-    <animated-texture name="mov.png" dy="0.250" />
-    <animated-texture name="water-animation.png" dy="0.125" />
+  <track model="planetarium_track.b3d" x="0" y="0" z="0">
+    <static-object model="windows_glass.b3d" xyz="18.39 19.25 -68.65" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="-18.40 19.25 -68.65" hpr="0.0 30.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="-68.65 19.25 -18.39" hpr="-0.0 90.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="-50.26 19.25 -50.25" hpr="0.0 60.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="-68.65 19.25 18.40" hpr="-0.0 120.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="-50.25 19.25 50.26" hpr="0.0 150.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="18.40 19.25 68.65" hpr="-0.0 -150.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="-18.39 19.25 68.65" hpr="-0.0 -180.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="50.26 19.25 50.25" hpr="0.0 -120.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="68.65 19.25 18.39" hpr="-0.0 -90.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="50.25 19.25 -50.26" hpr="-0.0 -30.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="windows_glass.b3d" xyz="68.65 19.25 -18.40" hpr="-0.0 -60.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <animated-texture name="sunFlar.png" dy="-0.100" />
   </track>
-  <object type="animation" model="bucketW.b3d" xyz="304.30 23.44 176.65" hpr="-0.0 -0.0 39.5" scale="1.00 1.00 1.00" shape="box" interaction="static">
-    <curve channel="LocX" interpolation="linear" extend="cyclic">
-      <p c="1.000 304.299"/>
-      <p c="100.000 304.299"/>
-    </curve>
-    <curve channel="LocZ" interpolation="linear" extend="cyclic">
-      <p c="1.000 176.651"/>
-      <p c="100.000 176.651"/>
-    </curve>
-    <curve channel="LocY" interpolation="linear" extend="cyclic">
-      <p c="1.000 23.441"/>
-      <p c="100.000 23.441"/>
-    </curve>
-    <curve channel="RotX" interpolation="linear" extend="cyclic">
-      <p c="1.000 -0.000"/>
-      <p c="100.000 -0.000"/>
-    </curve>
-    <curve channel="RotZ" interpolation="linear" extend="cyclic">
-      <p c="1.000 1119.524"/>
-      <p c="100.000 1479.524"/>
-    </curve>
-    <curve channel="RotY" interpolation="linear" extend="cyclic">
-      <p c="1.000 -0.000"/>
-      <p c="100.000 -0.000"/>
-    </curve>
-  </object>
-  <sun  fog="true" fog-color="0 0 0" fog-end="1500.00" xyz="0.00 0.00 -563.01" ambient="120 120 120"/>
-  <sky-color rgb="6 13 23"/>
+  <sky-box texture="star-back.png star-back.png star-back.png star-back.png star-back.png star-back.png"/>
+  <camera far="5000.0"/>
   <checks>
     <check-lap kind="lap" same-group="0"  />
   </checks>
-  <sky-box texture="star-back.png star-back.png star-back.png star-back.png star-back.png star-back.png"/>
-  <camera far="2000.0"/>
+  <water model="sun.b3d" xyz="0.00 0.00 1083.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="1.00" speed="200.00" length="10.00"/>
+  <water model="sun_2.b3d" xyz="0.00 0.00 1083.00" hpr="0.0 0.0 -90.0" scale="1.00 1.00 1.00" height="1.00" speed="200.00" length="10.00"/>
+  <object type="billboard" texture="sunHalo.png" xyz="0.00 0.00 1083.00" 
+             width="255.959" height="255.959" >
+  </object>
   <default-start karts-per-row     ="2"
                  forwards-distance ="1.10"
                  sidewards-distance="1.10"
                  upwards-distance  ="1.10"/>
-  <water model="sunFlare.b3d" xyz="-0.00 0.00 -563.01" hpr="0.0 -0.0 0.0" scale="0.91 0.91 0.91" height="1.00" speed="300.00" length="10.00">
-    <animated-texture name="sunFlar.png" dy="-0.100" />
-  </water>
-  <water model="sunFlare.b3d" xyz="396.00 0.00 -563.01" hpr="0.0 -0.0 0.0" scale="0.91 0.91 0.91" height="1.00" speed="300.00" length="10.00">
-    <animated-texture name="sunFlar.png" dy="-0.100" />
-  </water>
-  <water model="sunFlare3.b3d" xyz="-0.00 0.00 -563.01" hpr="2.3 -12.2 143.2" scale="0.91 0.91 0.91" height="1.00" speed="400.00" length="10.00">
-    <animated-texture name="sunFlar.png" dy="-0.100" />
-  </water>
-  <water model="sunFlare.b3d" xyz="-0.00 0.00 -563.01" hpr="25.5 2.4 100.6" scale="0.91 0.91 0.91" height="1.00" speed="300.00" length="10.00">
-    <animated-texture name="sunFlar.png" dy="-0.100" />
-  </water>
-  <water model="sunFlare.b3d" xyz="-0.00 0.00 -563.01" hpr="0.0 0.0 -164.4" scale="0.91 0.91 0.91" height="1.00" speed="300.00" length="10.00">
-    <animated-texture name="sunFlar.png" dy="-0.100" />
-  </water>
-  <water model="sunFlare.b3d" xyz="-0.00 0.00 -563.01" hpr="3.8 0.2 -93.1" scale="0.91 0.91 0.91" height="1.00" speed="300.00" length="10.00">
-    <animated-texture name="sunFlar.png" dy="-0.100" />
-  </water>
-  <water model="sunFlare3.b3d" xyz="-0.00 0.00 -563.01" hpr="2.3 -12.2 57.3" scale="0.91 0.91 0.91" height="1.00" speed="400.00" length="10.00">
-    <animated-texture name="sunFlar.png" dy="-0.100" />
-  </water>
-  <water model="sunFlare3.b3d" xyz="-0.00 0.00 -563.01" hpr="10.5 -6.8 -57.3" scale="0.91 0.91 0.91" height="1.00" speed="400.00" length="10.00">
-    <animated-texture name="sunFlar.png" dy="-0.100" />
-  </water>
-  <water model="sunBody2.b3d" xyz="0.00 0.00 -563.01" hpr="-0.0 -0.0 90.0" scale="1.00 1.00 1.00" height="1.50" speed="500.00" length="1.00"/>
-  <water model="sunBody2.b3d" xyz="0.00 0.00 -563.01" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="1.50" speed="500.00" length="1.00"/>
-  <object type="billboard" texture="nebula-cloud.png" xyz="281.80 34.89 -153.25" 
-             width="196.830" height="196.830" >
-  </object>
-  <object type="billboard" texture="nebula-halo.png" xyz="296.87 81.81 -191.16" 
-             width="52.080" height="52.080" >
-  </object>
-  <object type="billboard" texture="nebula-halo.png" xyz="285.85 18.50 -160.15" 
-             width="52.080" height="52.080" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="270.34 -37.47 -158.99" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="280.93 100.15 -188.66" 
-             width="172.398" height="172.398" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="338.04 -77.02 -127.97" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="382.54 -40.50 -62.12" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-red-halo.png" xyz="278.34 -1.69 -130.75" 
-             width="48.488" height="48.488" >
-  </object>
-  <object type="billboard" texture="nebula-red-halo.png" xyz="273.81 92.30 -61.05" 
-             width="25.890" height="25.890" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="341.44 -37.16 -88.57" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="577.26 -39.58 136.56" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-red-halo.png" xyz="517.71 160.03 187.40" 
-             width="30.818" height="30.818" >
-  </object>
-  <object type="billboard" texture="nebula-red-halo.png" xyz="509.02 -25.25 73.11" 
-             width="50.087" height="50.087" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="621.49 -27.08 140.40" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="550.44 -111.47 85.02" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="506.11 88.63 0.55" 
-             width="172.398" height="172.398" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="539.05 -11.81 54.26" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud.png" xyz="530.65 24.62 68.28" 
-             width="196.830" height="196.830" >
-  </object>
-  <object type="billboard" texture="nebula-halo.png" xyz="487.95 -3.42 17.07" 
-             width="48.036" height="48.036" >
-  </object>
-  <object type="billboard" texture="nebula-halo.png" xyz="554.91 82.06 65.44" 
-             width="77.683" height="77.683" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-blue.png" xyz="550.44 -111.47 115.40" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-blue.png" xyz="550.44 -141.44 88.26" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-blue.png" xyz="550.44 -173.43 -40.19" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-blue.png" xyz="550.44 -108.10 -60.93" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-blue.png" xyz="318.44 118.28 -163.10" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-blue.png" xyz="318.44 118.28 -230.60" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-blue.png" xyz="550.44 -138.36 11.51" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-blue.png" xyz="550.44 -165.02 45.95" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-blue.png" xyz="318.44 162.03 -194.01" 
-             width="115.309" height="115.309" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 88.83 401.43" 
-             width="91.820" height="91.820" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 108.22 407.18" 
-             width="91.820" height="91.820" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 172.60 209.51" 
-             width="30.832" height="30.832" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 172.60 199.76" 
-             width="69.867" height="69.867" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="272.64 105.97 -54.19" 
-             width="69.867" height="69.867" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="272.64 105.97 -44.44" 
-             width="30.832" height="30.832" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="272.64 93.39 -62.23" 
-             width="30.832" height="30.832" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="272.64 93.39 -71.98" 
-             width="69.867" height="69.867" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 160.03 181.98" 
-             width="69.867" height="69.867" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 160.03 186.79" 
-             width="35.260" height="35.260" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 160.03 191.72" 
-             width="30.832" height="30.832" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 88.83 388.73" 
-             width="40.521" height="40.521" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 88.83 383.80" 
-             width="61.788" height="61.788" >
-  </object>
-  <object type="billboard" texture="nebula-cloud-redLight.png" xyz="517.71 81.11 378.99" 
-             width="91.820" height="91.820" >
-  </object>
-  <object type="billboard" texture="nebula-red-halo.png" xyz="517.71 88.83 384.41" 
-             width="30.818" height="30.818" >
-  </object>
-  <object type="billboard" texture="nebula-blue-halo.png" xyz="305.46 121.17 -149.04" 
-             width="47.198" height="47.198" >
-  </object>
-  <object type="billboard" texture="nebula-blue-halo.png" xyz="557.02 -149.08 60.76" 
-             width="93.377" height="93.377" >
-  </object>
-  <object type="billboard" texture="nebula-blue-halo.png" xyz="557.02 -164.63 0.53" 
-             width="119.874" height="119.874" >
-  </object>
 </scene>

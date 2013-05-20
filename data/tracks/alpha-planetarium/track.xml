@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 11785 -->
+<!-- Generated with script from SVN rev 12633 -->
 <track  name           = "planetarium"
         version        = "5"
-        groups         = "alpha"
-        designer       = "jmclemencon"
+        groups         = "standard"
+        designer       = "Jean-Manuel Clemen&#231;on and Rubberduck"
         music          = "kart_grand_prix.music"
-        screenshot     = "screenshot.png"
+        screenshot     = "screenshot.jpg"
         smooth-normals = "false"
+        reverse        = "N"
 >
 </track>

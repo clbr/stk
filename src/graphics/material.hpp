@@ -21,8 +21,9 @@
 
 #include "utils/no_copy.hpp"
 
-#include <string>
 #include <map>
+#include <string>
+#include <vector>
 
 #include <IShaderConstantSetCallBack.h>
 
@@ -51,10 +52,14 @@ class Material : public NoCopy
 {
 public:
     enum GraphicalEffect {GE_NONE,
-                          /** Water splash effect. This is set on the seabed material. */
-                          GE_WATER,
                           /** Effect where the UV texture is moved in a wave pattern */
-                          GE_BUBBLE};
+                          GE_BUBBLE,
+                          /** Effect that makes grass wave as in the wind */
+                          GE_GRASS,
+                          GE_WATER_SHADER,
+                          GE_SPHERE_MAP,
+                          GE_SPLATTING,
+                          GE_NORMAL_MAP};
 
     enum ParticleConditions
     {
@@ -75,13 +80,14 @@ private:
     
     enum Shaders
     {
-        NORMAL_MAP,
-        NORMAL_MAP_WITH_LIGHTMAP,
-        SPLATTING,
-        WATER_SHADER,
-        SPHERE_MAP,
-        SHADER_COUNT,
-        SPLATTING_LIGHTMAP
+        SHADER_NORMAL_MAP,
+        SHADER_NORMAL_MAP_WITH_LIGHTMAP,
+        SHADER_SPLATTING,
+        SHADER_WATER,
+        SHADER_SPHERE_MAP,
+        SHADER_SPLATTING_LIGHTMAP,
+        SHADER_GRASS,
+        SHADER_COUNT
     };
     
     video::ITexture *m_texture;
@@ -97,6 +103,8 @@ private:
      *  up to find the position of the actual water surface. */
     bool             m_below_surface;
 
+    bool             m_water_splash;
+
     /** If a kart is falling over a material with this flag set, it
      *  will trigger the special camera fall effect. */
     bool             m_falling_effect;
@@ -111,15 +119,13 @@ private:
     /** If a kart is rescued when driving on this surface. */
     bool             m_drive_reset;
     
-    /** If the water shader (simulating wave effects and reflexions) is enabled */
-    bool             m_water_shader;
     
     /** Speed of the 'main' wave in the water shader. Only used if
-        m_water_shader is true */
+        m_graphical_effect == WATER_SHADER */
     float            m_water_shader_speed_1;
     
     /** Speed of the 'secondary' waves in the water shader. Only used if
-     m_water_shader is true */
+        m_graphical_effect == WATER_SHADER */
     float            m_water_shader_speed_2;
     
     /** If a kart is rescued when crashing into this surface. */
@@ -127,6 +133,9 @@ private:
     
     /** Particles to show on touch */
     std::string      m_collision_particles;
+    
+    float            m_grass_speed;
+    float            m_grass_amplitude;
     
     /** If the property should be ignored in the physics. Example would be
      *  plants that a kart can just drive through. */
@@ -138,7 +147,6 @@ private:
     ParticleKind*    m_particles_effects[EMIT_KINDS_COUNT];
     
     /** For normal maps */
-    bool             m_normal_map;
     std::string      m_normal_map_tex;
     std::string      m_normal_map_shader_lightmap;
     
@@ -151,7 +159,6 @@ private:
     unsigned int     m_clamp_tex;
     
     bool             m_lighting;
-    bool             m_sphere_map;
     bool             m_smooth_reflection_shader;
     bool             m_alpha_testing;
     bool             m_alpha_blending;
@@ -208,9 +215,6 @@ private:
 
     std::string      m_mask;
     
-    /** Whether to use splatting */
-    bool             m_splatting;
-    
     /** If m_splatting is true, indicates the first splatting texture */
     std::string      m_splatting_texture_1;
     
@@ -225,7 +229,7 @@ private:
     
     std::string      m_splatting_lightmap;
     
-    irr::video::IShaderConstantSetCallBack* m_shaders[SHADER_COUNT];
+    std::vector<irr::video::IShaderConstantSetCallBack*> m_shaders;
 
     /** Only used if bubble effect is enabled */
     std::map<scene::IMeshBuffer*, BubbleEffectProvider*> m_bubble_provider;
@@ -253,7 +257,7 @@ public:
     bool  isIgnore           () const { return m_ignore;             }
     /** Returns true if this material is a zipper. */
     bool  isZipper           () const { return m_zipper;             }
-    bool  isSphereMap        () const { return m_sphere_map;         }
+    bool  isSphereMap        () const { return m_graphical_effect == GE_SPHERE_MAP; }
     /** Returns if this material should trigger a rescue if a kart
      *  is driving on it. */
     bool  isDriveReset       () const { return m_drive_reset;        }
@@ -331,7 +335,7 @@ public:
         *zipper_engine_force       = m_zipper_engine_force;
     }   // getZipperParameter
 
-    bool isNormalMap() const { return m_normal_map; }
+    bool isNormalMap() const { return m_graphical_effect == GE_NORMAL_MAP; }
     
     void onMadeVisible(scene::IMeshBuffer* who);
     void onHidden(scene::IMeshBuffer* who);

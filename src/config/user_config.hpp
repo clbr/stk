@@ -425,7 +425,11 @@ namespace UserConfigParams
     // ---- Debug - not saved to config file
     /** If gamepad debugging is enabled. */
     PARAM_PREFIX bool m_gamepad_debug PARAM_DEFAULT( false );
+
+    /** Wiimote debugging. */
+    PARAM_PREFIX bool m_wiimote_debug PARAM_DEFAULT( false );
     
+    /** Debug gamepads  by visualising their values. */
     PARAM_PREFIX bool m_gamepad_visualisation PARAM_DEFAULT( false );
     
     /** If material debugging (printing terrain specific slowdown) 
@@ -553,9 +557,17 @@ namespace UserConfigParams
     // TODO : is this used with new code? does it still work?
     PARAM_PREFIX BoolUserConfigParam        m_crashed
             PARAM_DEFAULT(  BoolUserConfigParam(false, "crashed") ); 
-    PARAM_PREFIX BoolUserConfigParam        m_log_errors
-            PARAM_DEFAULT(  BoolUserConfigParam(false, "log_errors", 
-                           "Enable logging of stdout and stderr to logfile") );
+            
+#if defined(WIN32) && !defined(__CYGWIN__)
+    // No console on windows
+#  define CONSOLE_DEFAULT false
+#else
+#  define CONSOLE_DEFAULT true
+#endif
+    // No console on windows
+    PARAM_PREFIX BoolUserConfigParam        m_log_errors_to_console
+            PARAM_DEFAULT(  BoolUserConfigParam(
+            CONSOLE_DEFAULT, "log_errors", "Enable logging to console.") );
     
     PARAM_PREFIX IntUserConfigParam         m_reverse_look_threshold
             PARAM_DEFAULT(  IntUserConfigParam(0, "reverse_look_threshold", 

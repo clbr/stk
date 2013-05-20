@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12125 -->
-<track  name           = "Around the Lighthouse"
+<!-- Generated with script from SVN rev 12731 -->
+<track  name           = "Around the lighthouse"
         version        = "5"
         groups         = "standard"
-        designer       = "Ingo Ruhnke &amp; Marianne Gagnon &amp; Stephen Dunn"
+        designer       = "jean-manuel clemen&#231;on"
         music          = "OnTheRiver.music"
-        screenshot     = "sshot-lighthouse.jpg"
+        screenshot     = "screenshot.jpg"
         smooth-normals = "false"
         reverse        = "Y"
 >

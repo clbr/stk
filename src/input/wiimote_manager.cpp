@@ -162,18 +162,17 @@ void Wiimote::updateIrrEvent()
     
     // Simulate an Irrlicht joystick event
     resetIrrEvent(&m_irr_event, wiimoteIdToIrrId(m_wiimote_id));
-    
-    // --------------------- Wiimote accelerometers --------------------
-    //printf("yaw: %f\n", m_wiimote_handle->orient.yaw);
-    //printf("pitch: %f\n", m_wiimote_handle->orient.pitch);
-    //printf("roll: %f\n", m_wiimote_handle->orient.roll);
-    
-    // --- Linear response version ---
-    //const float wiimote_to_joystick = -JOYSTICK_ABS_MAX_ANGLE / float(UserConfigParams::m_wiimote_max);
-    //const float angle = wiimote_to_joystick * m_wiimote_handle->orient.pitch;
-    
-    // --- Quadratic response version ---
-	float normalized_angle = -m_wiimote_handle->orient.pitch / UserConfigParams::m_wiimote_max;
+#ifdef DEBUG
+    if(UserConfigParams::m_wiimote_debug)
+    {
+        Log::verbose("wiimote", "pitch: %f yaw %f roll %f",
+                     m_wiimote_handle->orient.pitch, 
+                     m_wiimote_handle->orient.yaw, 
+                     m_wiimote_handle->orient.roll);
+    }
+#endif
+
+    float normalized_angle = -m_wiimote_handle->orient.pitch / UserConfigParams::m_wiimote_max;
     if(normalized_angle<-1.0f)
         normalized_angle = -1.0f;
     else if(normalized_angle>1.0f)
@@ -202,10 +201,13 @@ void Wiimote::updateIrrEvent()
     {
         if(IS_PRESSED(m_wiimote_handle, wiimote_actions[i].wiimote_action_id))
         {
-            //printf("wiimote %d: pressed button %s -> button id: %d\n",
-            //       m_wiimote_id,
-            //       wiimote_actions[i].wiimote_action_name,
-            //       wiimote_actions[i].button_id);
+#ifdef DEBUG
+            if(UserConfigParams::m_wiimote_debug)
+                Log::verbose("wiimote", "%d: pressed button %s -> button id: %d\n",
+                             m_wiimote_id,
+                             wiimote_actions[i].wiimote_action_name,
+                             wiimote_actions[i].button_id);
+#endif
             m_irr_event.JoystickEvent.ButtonStates |= (1<<(wiimote_actions[i].button_id));
         }
     }
@@ -266,9 +268,10 @@ WiimoteManager::~WiimoteManager()
 
 // -----------------------------------------------------------------------------
 /**
-  * Launch wiimote detection and add the corresponding gamepad devices to the device manager
-  * TODO: this should be done in a separate thread, to not block the UI...
-  */
+ * Launch wiimote detection and add the corresponding gamepad devices to the 
+ * device manager.
+ * TODO: this should be done in a separate thread, to not block the UI...
+ */
 void WiimoteManager::launchDetection(int timeout)
 {
     // Stop WiiUse, remove wiimotes, gamepads, gamepad configs.
@@ -376,6 +379,17 @@ void WiimoteManager::update()
 /** Thread update method - wiimotes state is updated in another thread to avoid latency problems */
 void WiimoteManager::threadFunc()
 {
+    // Enable accelerometer reporting
+    // TODO: this should only be done when needed (i.e when racing)
+    // so as to avoid wasting wiimote batteries.
+    // TODO: this should only be done once, but there have been reports that it didn't
+    // work for some people -> need to find a better fix
+    for (int i=0; i < MAX_WIIMOTES; ++i)
+    {
+        if(m_wiimotes[i].isConnected())
+            wiiuse_motion_sensing(m_wiimotes[i].getWiimoteHandle(), 1);
+    }
+        
     while(!m_shut)
     {
         if(wiiuse_poll(m_all_wiimote_handles, MAX_WIIMOTES))
@@ -385,12 +399,6 @@ void WiimoteManager::threadFunc()
                 if(!m_wiimotes[i].isConnected())
                     continue;
                 
-                // Enable accelerometer reporting
-                // TODO: this should only be done when needed (i.e when racing)
-                // so as to avoid wasting wiimote batteries.
-                // TODO: this should only be done once, but there have been reports that it didn't
-                // work for some people -> need to find a better fix
-                wiiuse_motion_sensing(m_wiimotes[i].getWiimoteHandle(), 1);
                 /*
                 if(WIIUSE_USING_EXP(m_wiimotes[i].getWiimoteHandle()))
                 {

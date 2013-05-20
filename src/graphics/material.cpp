@@ -168,6 +168,78 @@ public:
     }
 };
 
+//-----------------------------------------------------------------------------
+
+// FIXME: refactor this hack to get per-instance properties, and apply the
+//        clean fix to all shaders why we're at it......
+std::map<int, float> grass_shaders_times;
+int grass_shaders_times_index = 0;
+
+class GrassShaderProvider : public video::IShaderConstantSetCallBack
+{    
+    bool m_fog;
+    float m_angle;
+    float m_amplitude;
+    float m_speed;
+    
+public:
+    LEAK_CHECK()
+    
+        
+    GrassShaderProvider(float amplitude, float speed)
+    {
+        m_fog = false;
+        m_angle = 0.0f;
+        m_amplitude = amplitude;
+        m_speed = speed;
+    }
+    
+    
+    void enableFog(bool enable)
+    {
+        m_fog = enable;
+    }
+    
+    void update(float dt)
+    {
+        m_angle += GUIEngine::getLatestDt()*m_speed;
+        if (m_angle > M_PI*2) m_angle -= M_PI*2;
+    }
+    
+    virtual void OnSetConstants(irr::video::IMaterialRendererServices *services,
+                                s32 userData)
+    {
+        grass_shaders_times[userData] += GUIEngine::getLatestDt()*m_speed;
+        if (grass_shaders_times[userData] > M_PI*2) grass_shaders_times[userData] -= M_PI*2;
+        
+        services->setVertexShaderConstant("angle", &grass_shaders_times[userData], 1);
+        
+        int fog = (m_fog ? 1 : 0);
+        services->setVertexShaderConstant("fog", &fog, 1);
+        
+        s32 tex = 0;
+        services->setVertexShaderConstant("tex", &tex, 1);
+        
+        services->setVertexShaderConstant("amplitude", &m_amplitude, 1);
+        
+        if (m_fog)
+        {
+            Track* t = World::getWorld()->getTrack();
+            
+            float fogStart = t->getFogStart();
+            services->setPixelShaderConstant("fogFrom", &fogStart, 1);
+            
+            float fogEnd = t->getFogEnd();
+            services->setPixelShaderConstant("fogTo", &fogEnd, 1);
+            
+            video::SColor fogColor = t->getFogColor();
+            float fogColorVec[] = {fogColor.getRed()/255.0f,
+                                   fogColor.getGreen()/255.0f,
+                                   fogColor.getBlue()/255.0f, 1.0f};
+            services->setVertexShaderConstant("fogColor", fogColorVec, 4);
+        }
+    }
+};
 
 //-----------------------------------------------------------------------------
 
@@ -361,7 +433,7 @@ Material::Material(const XMLNode *node, int index, bool deprecated)
                s.c_str());
     node->get("alpha",            &m_alpha_blending    );
     node->get("light",            &m_lighting          );
-    node->get("sphere",           &m_sphere_map        );
+
     node->get("smooth-reflection",&m_smooth_reflection_shader);
     node->get("high-adhesion",    &m_high_tire_adhesion);
     node->get("reset",            &m_drive_reset       );
@@ -407,7 +479,9 @@ Material::Material(const XMLNode *node, int index, bool deprecated)
     node->get("disable-z-write",  &m_disable_z_write   );
     node->get("fog",              &m_fog               );
     
-    node->get("mask",             &m_mask);
+    node->get("mask",             &m_mask              );
+    
+    node->get("water-splash",     &m_water_splash      );
     
     if (m_collision_reaction != NORMAL)
     {
@@ -420,28 +494,40 @@ Material::Material(const XMLNode *node, int index, bool deprecated)
         }
     }
     
-    bool use_normal_map = false;
-    node->get("use-normal-map",  &use_normal_map);
     
-    if (use_normal_map)
+    s="";
+    node->get("graphical-effect", &s);
+    
+    if (s == "water")
     {
-        if (node->get("normal-map",  &m_normal_map_tex))
-        {
-            m_normal_map = true;
-        }
-        else
-        {
-            fprintf(stderr, "[Material] WARNING: could not find normal map image in materials.xml\n");
-        }
-        
+        // For backwards compatibility only, eventually remove
+        m_water_splash = true;
+    }
+    else if (s == "bubble")
+    {
+        m_graphical_effect = GE_BUBBLE;
+    }
+    else if (s == "grass")
+    {
+        m_graphical_effect = GE_GRASS;
+        m_grass_speed = 1.5f;
+        m_grass_amplitude = 0.25f;
+        node->get("grass-speed", &m_grass_speed);
+        node->get("grass-amplitude", &m_grass_amplitude);
+    }
+    else if (s == "water_shader")
+    {
+        m_graphical_effect = GE_WATER_SHADER;
+        node->get("water-shader-speed-1", &m_water_shader_speed_1);
+        node->get("water-shader-speed-2", &m_water_shader_speed_2);
+    }
+    else if (s == "normal_map")
+    {
+        m_graphical_effect = GE_NORMAL_MAP;
+        node->get("normal-map",  &m_normal_map_tex);
         node->get("normal-light-map", &m_normal_map_shader_lightmap);
         
-        // not supported by irrlicht
-        //m_normal_map_uv2 = false;
-        //node->get("normal-map-uv2",  &m_normal_map_uv2);
-
-        
-        // TODO: add support for parallax maps?
+        // TODO: add support for parallax and height maps?
         /*
         else if (node->get("normal-heightmap",  &m_normal_map_tex))
         {
@@ -463,17 +549,18 @@ Material::Material(const XMLNode *node, int index, bool deprecated)
         }
          */
     }
-    
-    s="";
-    node->get("graphical-effect", &s);
-    
-    if (s == "water")
+    else if (s == "spheremap")
     {
-        m_graphical_effect = GE_WATER;
+        m_graphical_effect = GE_SPHERE_MAP;
     }
-    else if (s == "bubble")
+    else if (s == "splatting")
     {
-        m_graphical_effect = GE_BUBBLE;
+        m_graphical_effect = GE_SPLATTING;
+        node->get("splatting-texture-1", &m_splatting_texture_1);
+        node->get("splatting-texture-2", &m_splatting_texture_2);
+        node->get("splatting-texture-3", &m_splatting_texture_3);
+        node->get("splatting-texture-4", &m_splatting_texture_4);
+        node->get("splatting-lightmap", &m_splatting_lightmap);
     }
     else if (s == "none")
     {
@@ -489,6 +576,35 @@ Material::Material(const XMLNode *node, int index, bool deprecated)
         m_graphical_effect = GE_NONE;
     }
     
+    
+    // BACKWARDS COMPATIBILITY, remove eventually
+    bool use_normal_map = false;
+    node->get("use-normal-map",  &use_normal_map);
+    
+    if (use_normal_map)
+    {
+        if (node->get("normal-map",  &m_normal_map_tex))
+        {
+            m_graphical_effect = GE_NORMAL_MAP;
+        }
+        else
+        {
+            fprintf(stderr, "[Material] WARNING: could not find normal map image in materials.xml\n");
+        }
+        
+        node->get("normal-light-map", &m_normal_map_shader_lightmap);
+    }
+    
+    
+    // BACKWARDS COMPATIBILITY, remove eventually
+    bool sphere_map = false;
+    node->get("sphere",           &sphere_map          );
+    if (sphere_map)
+    {
+        m_graphical_effect = GE_SPHERE_MAP;
+    }
+    
+    
     if (node->get("compositing", &s))
     {
         if      (s == "blend")    m_alpha_blending = true;
@@ -501,19 +617,13 @@ Material::Material(const XMLNode *node, int index, bool deprecated)
                     s.c_str());
     }
     
-    node->get("splatting", &m_splatting);
-    if (m_splatting)
-    {
-        node->get("splatting-texture-1", &m_splatting_texture_1);
-        node->get("splatting-texture-2", &m_splatting_texture_2);
-        node->get("splatting-texture-3", &m_splatting_texture_3);
-        node->get("splatting-texture-4", &m_splatting_texture_4);
-        node->get("splatting-lightmap", &m_splatting_lightmap);
-    }
     
-    node->get("water-shader", &m_water_shader);
-    if (m_water_shader)
+    bool water_shader = false;
+    node->get("water-shader", &water_shader);
+    if (water_shader)
     {
+        // BACKWARDS COMPATIBILITY, eventually remove
+        m_graphical_effect = GE_WATER_SHADER;
         node->get("water-shader-speed-1", &m_water_shader_speed_1);
         node->get("water-shader-speed-2", &m_water_shader_speed_2);
     }
@@ -590,7 +700,6 @@ void Material::init(unsigned int index)
     m_alpha_blending            = false;
     m_lighting                  = true;
     m_backface_culling          = true;
-    m_sphere_map                = false;
     m_smooth_reflection_shader  = false;
     m_high_tire_adhesion        = false;
     m_below_surface             = false;
@@ -601,7 +710,6 @@ void Material::init(unsigned int index)
     m_collision_reaction        = NORMAL;
     m_add                       = false;
     m_disable_z_write           = false;
-    m_water_shader              = false;
     m_water_shader_speed_1      = 6.6667f;
     m_water_shader_speed_2      = 4.0f;
     m_fog                       = true;
@@ -619,17 +727,12 @@ void Material::init(unsigned int index)
     m_zipper_max_speed_increase = -1.0f;
     m_zipper_speed_gain         = -1.0f;
     m_zipper_engine_force       = -1.0f;
-    m_normal_map                = false;
-    //m_normal_map_uv2            = false;
     m_parallax_map              = false;
     m_is_heightmap              = false;
     m_alpha_to_coverage         = false;
-    m_splatting                 = false;
+    m_water_splash              = false;
     
-    for (int n=0; n<SHADER_COUNT; n++)
-    {
-        m_shaders[n] = NULL;
-    }
+    m_shaders.resize(SHADER_COUNT, NULL);
     
     for (int n=0; n<EMIT_KINDS_COUNT; n++)
     {
@@ -688,9 +791,9 @@ Material::~Material()
             irr_driver->removeTexture(m_texture);
     }
     
-    for (int n=0; n<SHADER_COUNT; n++)
+    for (unsigned int n=0; n<m_shaders.size(); n++)
     {
-        if (m_shaders[n] != NULL)
+        if (m_shaders[n])
         {
             m_shaders[n]->drop();
         }
@@ -914,9 +1017,9 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             video_driver->queryFeature(video::EVDF_ARB_GLSL) &&
             video_driver->queryFeature(video::EVDF_PIXEL_SHADER_2_0))
         {
-            if (m_shaders[SPHERE_MAP] == NULL)
+            if (m_shaders[SHADER_SPHERE_MAP] == NULL)
             {
-                m_shaders[SPHERE_MAP] = new SphereMapProvider();
+                m_shaders[SHADER_SPHERE_MAP] = new SphereMapProvider();
             }
             // Material and shaders
             IGPUProgrammingServices* gpu = 
@@ -926,7 +1029,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
                      "main", video::EVST_VS_2_0,
                      (file_manager->getShaderDir() + "spheremap.frag").c_str(),
                      "main", video::EPST_PS_2_0,
-                     m_shaders[SPHERE_MAP], video::EMT_SOLID_2_LAYER );
+                     m_shaders[SHADER_SPHERE_MAP], video::EMT_SOLID_2_LAYER );
             m->MaterialType = (E_MATERIAL_TYPE)material_type;
         }
         else
@@ -945,7 +1048,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             }
         }
     }
-    if (m_sphere_map) 
+    if (m_graphical_effect == GE_SPHERE_MAP) 
     {
         m->MaterialType = video::EMT_SPHERE_MAP;
 
@@ -987,7 +1090,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
                                                       video::EAS_VERTEX_COLOR);
         modes++;
     }
-    if (m_normal_map)
+    if (m_graphical_effect == GE_NORMAL_MAP)
     {
         IVideoDriver* video_driver = irr_driver->getVideoDriver();
         if (UserConfigParams::m_pixel_shaders &&
@@ -1012,16 +1115,17 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             
             if (with_lightmap)
             {
-                if (m_shaders[NORMAL_MAP_WITH_LIGHTMAP] == NULL)
+                if (m_shaders[SHADER_NORMAL_MAP_WITH_LIGHTMAP] == NULL)
                 {
-                    m_shaders[NORMAL_MAP_WITH_LIGHTMAP] = new NormalMapProvider(true);
+                    m_shaders[SHADER_NORMAL_MAP_WITH_LIGHTMAP] = 
+                                                   new NormalMapProvider(true);
                 }
             }
             else
             {
-                if (m_shaders[NORMAL_MAP] == NULL)
+                if (m_shaders[SHADER_NORMAL_MAP] == NULL)
                 {
-                    m_shaders[NORMAL_MAP] = new NormalMapProvider(false);
+                    m_shaders[SHADER_NORMAL_MAP] = new NormalMapProvider(false);
                 }
             }
             
@@ -1036,8 +1140,8 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
                         "main", video::EVST_VS_2_0,
                         (file_manager->getShaderDir() + pixel_shader).c_str(), 
                         "main", video::EPST_PS_2_0,
-                        m_shaders[with_lightmap ? NORMAL_MAP_WITH_LIGHTMAP 
-                                                : NORMAL_MAP],
+                        m_shaders[with_lightmap ? SHADER_NORMAL_MAP_WITH_LIGHTMAP
+                                                : SHADER_NORMAL_MAP],
                         video::EMT_SOLID_2_LAYER );
             m->MaterialType = (E_MATERIAL_TYPE)material_type;
             m->Lighting = false;
@@ -1064,7 +1168,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
         m->SpecularColor.set(0,0,0,0);
         modes++;
     }
-    if (m_splatting)
+    if (m_graphical_effect == GE_SPLATTING)
     {
         if (irr_driver->supportsSplatting())
         {
@@ -1097,16 +1201,17 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             
             if (m_splatting_lightmap.size() > 0)
             {
-                if (m_shaders[SPLATTING_LIGHTMAP] == NULL)
+                if (m_shaders[SHADER_SPLATTING_LIGHTMAP] == NULL)
                 {
-                    m_shaders[SPLATTING_LIGHTMAP] = new SplattingProvider(true);
+                    m_shaders[SHADER_SPLATTING_LIGHTMAP] = 
+                                          new SplattingProvider(true);
                 }
             }
             else
             {
-                if (m_shaders[SPLATTING] == NULL)
+                if (m_shaders[SHADER_SPLATTING] == NULL)
                 {
-                    m_shaders[SPLATTING] = new SplattingProvider(false);
+                    m_shaders[SHADER_SPLATTING] = new SplattingProvider(false);
                 }
             }
 
@@ -1118,21 +1223,26 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             if (m_splatting_lightmap.size() > 0)
             {
                 s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                            (file_manager->getShaderDir() + "splatting_lightmap.vert").c_str(),
+                            (file_manager->getShaderDir() 
+                                + "splatting_lightmap.vert").c_str(),
                             "main",video::EVST_VS_2_0,
-                            (file_manager->getShaderDir() + "splatting_lightmap.frag").c_str(), 
+                            (file_manager->getShaderDir() 
+                                + "splatting_lightmap.frag").c_str(), 
                             "main",video::EPST_PS_2_0,
-                            m_shaders[SPLATTING_LIGHTMAP], video::EMT_SOLID );
+                            m_shaders[SHADER_SPLATTING_LIGHTMAP], 
+                            video::EMT_SOLID );
                 m->MaterialType = (E_MATERIAL_TYPE)material_type;
             }
             else
             {
                 s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                        (file_manager->getShaderDir() + "splatting.vert").c_str(),
+                        (file_manager->getShaderDir() 
+                            + "splatting.vert").c_str(),
                         "main",video::EVST_VS_2_0,
-                        (file_manager->getShaderDir() + "splatting.frag").c_str(), 
+                        (file_manager->getShaderDir() 
+                            + "splatting.frag").c_str(), 
                         "main",video::EPST_PS_2_0,
-                        m_shaders[SPLATTING], video::EMT_SOLID );
+                        m_shaders[SHADER_SPLATTING], video::EMT_SOLID );
                 m->MaterialType = (E_MATERIAL_TYPE)material_type;
             }
         }
@@ -1189,17 +1299,18 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
     }
     
     
-    if (m_water_shader)
+    if (m_graphical_effect == GE_WATER_SHADER)
     {
         IVideoDriver* video_driver = irr_driver->getVideoDriver();
         if (UserConfigParams::m_pixel_shaders &&
             video_driver->queryFeature(video::EVDF_ARB_GLSL) &&
             video_driver->queryFeature(video::EVDF_PIXEL_SHADER_2_0))
         {
-            if (m_shaders[WATER_SHADER] == NULL)
+            if (m_shaders[SHADER_WATER] == NULL)
             {
-                m_shaders[WATER_SHADER] = new WaterShaderProvider(m_water_shader_speed_1,
-                                                                  m_water_shader_speed_2);
+                m_shaders[SHADER_WATER] = 
+                    new WaterShaderProvider(m_water_shader_speed_1,
+                                            m_water_shader_speed_2);
             }
             
             m->setTexture(1, irr_driver->getTexture(file_manager->getTextureFile("waternormals.jpg")));
@@ -1209,7 +1320,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             const char* vertex_shader = (fog ? "water_fog.vert" : "water.vert");
             const char* pixel_shader  = (fog ? "water_fog.frag" : "water.frag");
             
-            ((WaterShaderProvider*)m_shaders[WATER_SHADER])->enableFog(fog);
+            ((WaterShaderProvider*)m_shaders[SHADER_WATER])->enableFog(fog);
             
             // Material and shaders
             IGPUProgrammingServices* gpu = 
@@ -1219,11 +1330,46 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
                         "main", video::EVST_VS_2_0,
                         (file_manager->getShaderDir() + pixel_shader ).c_str(),
                         "main", video::EPST_PS_2_0,
-                        m_shaders[WATER_SHADER],
+                        m_shaders[SHADER_WATER],
                         video::EMT_TRANSPARENT_ALPHA_CHANNEL);
             m->MaterialType = (E_MATERIAL_TYPE)material_type;
         }
         modes++;
+    }
+    
+    if (m_graphical_effect == GE_GRASS)
+    {
+        IVideoDriver* video_driver = irr_driver->getVideoDriver();
+        if (UserConfigParams::m_pixel_shaders &&
+            video_driver->queryFeature(video::EVDF_ARB_GLSL) &&
+            video_driver->queryFeature(video::EVDF_PIXEL_SHADER_2_0))
+        {
+            if (m_shaders[SHADER_GRASS] == NULL)
+            {
+                m_shaders[SHADER_GRASS] = 
+                    new GrassShaderProvider(m_grass_amplitude, m_grass_speed);
+            }
+            
+            bool fog = World::getWorld()->getTrack()->isFogEnabled();
+            ((GrassShaderProvider*)m_shaders[SHADER_GRASS])->enableFog(fog);
+
+            grass_shaders_times[grass_shaders_times_index] = (rand() % 500)/500.0f * M_PI * 2.0f;
+
+            // Material and shaders
+            IGPUProgrammingServices* gpu = 
+                irr_driver->getVideoDriver()->getGPUProgrammingServices();
+            s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
+                        (file_manager->getShaderDir() + "grass.vert").c_str(),
+                        "main", video::EVST_VS_2_0,
+                        (file_manager->getShaderDir() + "grass.frag").c_str(),
+                        "main", video::EPST_PS_2_0,
+                        m_shaders[SHADER_GRASS],
+                        video::EMT_TRANSPARENT_ALPHA_CHANNEL,
+                        grass_shaders_times_index);
+            m->MaterialType = (E_MATERIAL_TYPE)material_type;
+            
+            grass_shaders_times_index++;
+        }
     }
     
     if (modes > 1)

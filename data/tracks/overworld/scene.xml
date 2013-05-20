@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12405 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="overworld_track.b3d" x="0" y="0" z="0">
     <static-object lod_instance="true" lod_group="bubble_desert2" xyz="-89.49 -0.83 206.32" hpr="3.9 -15.9 -2.7" scale="8.70 8.70 8.70"/> <!-- writeStaticObjects 3 -->
@@ -198,36 +198,15 @@
           model="skull.b3d" shape="box" mass="100.0"/>
   <object type="animation" model="Light.b3d" xyz="206.91 -7.93 298.80" hpr="0.0 -0.0 0.0" scale="0.47 0.47 0.47"  interaction="ghost">
   </object>
-  <checks>
-    <check-lap kind="lap" same-group="0"  />
-  </checks>
 
   <sky-dome texture="sky2.jpg"
             horizontal="20" vertical="20" 
             texture-percent="1.0" sphere-percent="2.0"
             speed-x="0.0" speed-y="0.0" />
   <camera far="1000.0"/>
-  <default-start karts-per-row     ="2"
-                 forwards-distance ="1.10"
-                 sidewards-distance="1.10"
-                 upwards-distance  ="1.10"/>
-  <start x="7.30" y="-0.98" z="-3.24" h="0.00"/>
-  <start x="-70.14" y="-6.05" z="258.40" h="0.00"/>
-  <start x="-65.55" y="-6.05" z="289.89" h="0.00"/>
-  <start x="27.59" y="-8.50" z="340.96" h="0.00"/>
-  <start x="114.02" y="-7.36" z="270.69" h="0.00"/>
-  <start x="116.77" y="-8.35" z="237.61" h="0.00"/>
-  <start x="120.43" y="-6.05" z="125.26" h="0.00"/>
-  <start x="111.43" y="-2.05" z="37.45" h="0.00"/>
-  <start x="111.75" y="-0.02" z="2.62" h="0.00"/>
-  <start x="115.77" y="4.14" z="-25.01" h="0.00"/>
-  <start x="8.98" y="-4.06" z="17.96" h="0.00"/>
-  <start x="-66.26" y="-6.05" z="206.88" h="0.00"/>
-  <start x="29.94" y="-5.04" z="139.77" h="0.00"/>
-  <start x="23.14" y="-5.04" z="230.20" h="0.00"/>
-  <start x="20.91" y="-5.04" z="255.40" h="0.00"/>
-  <start x="30.66" y="-15.49" z="408.42" h="0.00"/>
-  <start x="31.02" y="-19.51" z="450.31" h="0.00"/>
+  <checks>
+    <check-lap kind="lap" same-group="0"  />
+  </checks>
   <water model="lava.b3d" xyz="55.42 -37.69 589.97" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.30" speed="200.00" length="10.00">
     <animated-texture name="lava.png" dx="0.100" />
   </water>
@@ -335,4 +314,25 @@
   <object type="billboard" texture="crystal_ball_halo.png" xyz="146.39 3.20 -19.87" 
              width="1.560" height="1.562" >
   </object>
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.10"
+                 sidewards-distance="1.10"
+                 upwards-distance  ="1.10"/>
+  <start x="7.30" y="-0.98" z="-3.24" h="0.00"/>
+  <start x="-70.14" y="-6.05" z="258.40" h="0.00"/>
+  <start x="-65.55" y="-6.05" z="289.89" h="0.00"/>
+  <start x="27.59" y="-8.50" z="340.96" h="0.00"/>
+  <start x="114.02" y="-7.36" z="270.69" h="0.00"/>
+  <start x="116.77" y="-8.35" z="237.61" h="0.00"/>
+  <start x="120.43" y="-6.05" z="125.26" h="0.00"/>
+  <start x="111.43" y="-2.05" z="37.45" h="0.00"/>
+  <start x="111.75" y="-0.02" z="2.62" h="0.00"/>
+  <start x="115.77" y="4.14" z="-25.01" h="0.00"/>
+  <start x="8.98" y="-4.06" z="17.96" h="0.00"/>
+  <start x="-66.26" y="-6.05" z="206.88" h="0.00"/>
+  <start x="29.94" y="-5.04" z="139.77" h="0.00"/>
+  <start x="23.14" y="-5.04" z="230.20" h="0.00"/>
+  <start x="20.91" y="-5.04" z="255.40" h="0.00"/>
+  <start x="30.66" y="-15.49" z="408.42" h="0.00"/>
+  <start x="31.02" y="-19.51" z="450.31" h="0.00"/>
 </scene>
