@@ -1582,7 +1582,7 @@ void IrrDriver::doScreenShot()
     time ( &rawtime );
     tm* timeInfo = localtime( &rawtime );
     char time_buffer[256];
-    sprintf(time_buffer, "%i.%02i.%02i %02i.%02i.%02i",
+    sprintf(time_buffer, "%i.%02i.%02i_%02i.%02i.%02i",
             timeInfo->tm_year + 1900, timeInfo->tm_mon+1, 
             timeInfo->tm_mday, timeInfo->tm_hour, 
             timeInfo->tm_min, timeInfo->tm_sec);
@@ -1876,6 +1876,7 @@ void IrrDriver::RTTProvider::setupRTTScene(PtrVector<scene::IMesh, REF>& mesh,
             irr_driver->getSceneManager()->addMeshSceneNode(mesh.get(0), NULL);
         node->setPosition( mesh_location[0].toIrrVector() );
         node->setScale( mesh_scale[0].toIrrVector() );
+        node->setMaterialFlag(video::EMF_FOG_ENABLE, false);
         m_rtt_main_node = node;
     }
     else
@@ -1887,6 +1888,7 @@ void IrrDriver::RTTProvider::setupRTTScene(PtrVector<scene::IMesh, REF>& mesh,
         node->setFrameLoop(model_frames[0], model_frames[0]);
         node->setAnimationSpeed(0);
         node->setScale( mesh_scale[0].toIrrVector() );
+        node->setMaterialFlag(video::EMF_FOG_ENABLE, false);
         
         m_rtt_main_node = node;
     }
