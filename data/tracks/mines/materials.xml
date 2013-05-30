@@ -2,7 +2,7 @@
 <!-- Generated with script from SVN rev Unknown -->
 <materials>
   <material name="bulb.png" fog="N" light="N" compositing="additive" disable-z-write="Y"/>
-  <material name="chrome.png" fog="N" light="N" sphere="Y"/>
+  <material name="chrome.png" fog="N" light="N" graphical-effect="spheremap"/>
   <material name="clip.png" compositing="test"/>
   <material name="emerald.png" fog="N" light="N" compositing="blend"/>
   <material name="fence_chain.png" compositing="test"/>
@@ -14,11 +14,11 @@
   <material name="mine_road.jpg">
     <particles base="smoke.xml" condition="skid"/>
   </material>
-  <material name="mine_water_alpha.png" compositing="blend" surface="Y" water-shader="Y" water-shader-speed-1="0.50" water-shader-speed-2="1.00">
+  <material name="mine_water_alpha.png" compositing="blend" surface="Y" graphical-effect="water_shader" water-shader-speed-1="0.50" water-shader-speed-2="1.00">
     <sfx filename="splash.ogg"/>
     <particles base="splash.xml" condition="skid drive"/>
   </material>
-  <material name="mine_water_reset.png" reset="Y" water-shader="Y" water-shader-speed-1="0.50" water-shader-speed-2="1.00"/>
+  <material name="mine_water_reset.png" graphical-effect="water_shader" reset="Y" water-shader-speed-1="0.50" water-shader-speed-2="1.00"/>
   <material name="plants.png" backface-culling="N" compositing="coverage"/>
   <material name="roller.png" backface-culling="N"/>
   <material name="wall_wood1.jpg">

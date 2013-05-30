@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12731 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="lighthouse-terrain_track.b3d" x="0" y="0" z="0">
     <static-object model="vineUnderCave.b3d" xyz="-86.86 -17.34 -87.70" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -305,7 +305,11 @@
   <sky-box texture="sky.jpg sky.jpg sky.jpg sky.jpg sky-m.jpg sky-m.jpg"/>
   <camera far="1000.0"/>
   <checks>
-    <check-lap kind="lap" same-group="0"  />
+    <check-lap kind="lap" same-group="0" other-ids="1" />
+    <check-line kind="activate" other-ids="2" p1="-70.77 -90.29" p2="-101.92 -90.29"
+                min-height="-29.57" same-group="1"/>
+    <check-line kind="activate" other-ids="0" p1="-28.25 -73.00" p2="-59.39 -73.00"
+                min-height="-11.37" same-group="2"/>
   </checks>
   <water model="seaAnimation.b3d" xyz="0.00 6.60 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="1.00" speed="200.00" length="10.00"/>
   <water model="fishing_net.b3d" xyz="72.02 -14.19 -180.01" hpr="-45.0 0.0 90.0" scale="1.00 1.00 1.00" height="0.10" speed="100.00" length="10.00"/>

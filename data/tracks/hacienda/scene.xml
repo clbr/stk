@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12405 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="hacienda_track.b3d" x="0" y="0" z="0">
     <static-object lod_distance="50.0" lod_group="lantern" model="Mesh.b3d" xyz="-14.00 3.85 0.00" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -67,6 +67,7 @@
           model="pot.b3d" shape="cylinderY" mass="15.0"/>
   <object type="movable" xyz="103.95 0.07 100.65" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
           model="pot.b3d" shape="cylinderY" mass="15.0"/>
+  <camera far="1000.0"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
     <check-line kind="activate" other-ids="2" p1="227.98 109.13" p2="229.34 90.07"
@@ -74,11 +75,6 @@
     <check-line kind="activate" other-ids="0" p1="92.13 -117.80" p2="79.18 -140.23"
                 min-height="-13.23" same-group="2"/>
   </checks>
-  <camera far="1000.0"/>
-  <default-start karts-per-row     ="2"
-                 forwards-distance ="1.50"
-                 sidewards-distance="3.00"
-                 upwards-distance  ="0.10"/>
   <item x="-2.48" y="-0.04" z="47.00" />
   <item x="0.62" y="-0.04" z="47.00" />
   <item x="74.00" y="-0.13" z="100.24" />
@@ -111,4 +107,8 @@
   <item x="3.61" y="-0.04" z="47.00" />
   <item x="96.33" y="-2.90" z="-133.49" h="-86.48" />
   <item x="96.64" y="-2.90" z="-138.48" h="-86.48" />
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.50"
+                 sidewards-distance="3.00"
+                 upwards-distance  ="0.10"/>
 </scene>

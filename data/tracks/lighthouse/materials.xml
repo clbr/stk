@@ -13,8 +13,8 @@
   <material name="metaldirt_diff.png" backface-culling="N"/>
   <material name="plants.png" backface-culling="N" compositing="additive" disable-z-write="Y" graphical-effect="grass"/>
   <material name="racetrack_blend.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
-  <material name="sea.png" compositing="blend" disable-z-write="Y" water-shader="Y"/>
+  <material name="sea.png" compositing="blend" disable-z-write="Y" graphical-effect="water_shader"/>
   <material name="trail_diff.png" compositing="blend" disable-z-write="Y"/>
   <material name="tree_1.png" backface-culling="N" compositing="blend" disable-z-write="Y" graphical-effect="grass"/>
-  <material name="tree_noanim.png" backface-culling="N" compositing="blend" disable-z-write="Y" graphical-effect="grass"/>
+  <material name="tree_noanim.png" backface-culling="N" compositing="blend" disable-z-write="Y"/>
 </materials>

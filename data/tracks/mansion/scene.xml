@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12416 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="mansion_track.b3d" x="0" y="0" z="0">
     <static-object lod_instance="true" lod_group="tombStone" xyz="-91.29 -1.13 -84.42" hpr="0.0 -87.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -174,42 +174,38 @@
   </object>
   <sun  fog="true" fog-color="7 8 11" fog-start="0.00" fog-end="75.00" xyz="0.00 118.17 0.00" sun-specular="255 255 255" sun-diffuse="85 103 103" ambient="85 103 103"/>
   <sky-color rgb="7 7 11"/>
+  <sky-box texture="SKY0006.png SKY0001.png SKY0003.png SKY0002.png SKY0005.png SKY0004.png"/>
+  <camera far="2000.0"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
     <check-line kind="activate" other-ids="0" p1="-20.20 -87.10" p2="-11.93 -71.33"
                 min-height="3.81" same-group="1"/>
   </checks>
-  <sky-box texture="SKY0006.png SKY0001.png SKY0003.png SKY0002.png SKY0005.png SKY0004.png"/>
-  <camera far="2000.0"/>
-  <default-start karts-per-row     ="3"
-                 forwards-distance ="1.10"
-                 sidewards-distance="1.10"
-                 upwards-distance  ="1.10"/>
   <water model="waterPond.b3d" xyz="-75.02 -12.93 26.30" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.10" speed="500.00" length="5.00">
     <animated-texture name="water_light2.png" dx="0.100" />
   </water>
   <water model="swamp.b3d" xyz="-72.90 -7.49 108.53" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.09" speed="500.00" length="10.00"/>
-  <particle-emitter kind="fire.xml" x="-5.13" y="19.78" z="-115.89" h="-90.00">
+  <particle-emitter kind="fire.xml" xyz="-5.13 19.78 -115.89" h="-90.00">
   </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-5.15" y="19.78" z="-107.17" h="-90.00">
+  <particle-emitter kind="fire.xml" xyz="-5.15 19.78 -107.17" h="-90.00">
   </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-5.15" y="19.78" z="-99.01" h="-90.00">
+  <particle-emitter kind="fire.xml" xyz="-5.15 19.78 -99.01" h="-90.00">
   </particle-emitter>
-  <particle-emitter kind="fire.xml" x="18.66" y="19.78" z="-99.78" h="-270.00">
+  <particle-emitter kind="fire.xml" xyz="18.66 19.78 -99.78" h="-270.00">
   </particle-emitter>
-  <particle-emitter kind="fire.xml" x="18.66" y="19.78" z="-107.81" h="-270.00">
+  <particle-emitter kind="fire.xml" xyz="18.66 19.78 -107.81" h="-270.00">
   </particle-emitter>
-  <particle-emitter kind="fire.xml" x="18.66" y="19.78" z="-116.38" h="-270.00">
+  <particle-emitter kind="fire.xml" xyz="18.66 19.78 -116.38" h="-270.00">
   </particle-emitter>
-  <particle-emitter kind="black_smoke.xml" x="28.42" y="46.26" z="-80.29" h="0.00">
+  <particle-emitter kind="black_smoke.xml" xyz="28.42 46.26 -80.29" h="0.00">
   </particle-emitter>
-  <particle-emitter kind="black_smoke.xml" x="5.96" y="13.58" z="-124.45" h="0.00">
+  <particle-emitter kind="black_smoke.xml" xyz="5.96 13.58 -124.45" h="0.00">
   </particle-emitter>
-  <particle-emitter kind="fire.xml" x="5.87" y="12.96" z="-123.87" h="0.00">
+  <particle-emitter kind="fire.xml" xyz="5.87 12.96 -123.87" h="0.00">
   </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-29.18" y="-4.23" z="108.15" h="0.00">
+  <particle-emitter kind="fire.xml" xyz="-29.18 -4.23 108.15" h="0.00">
   </particle-emitter>
-  <particle-emitter kind="black_smoke.xml" x="-29.09" y="-3.61" z="107.57" h="0.00">
+  <particle-emitter kind="black_smoke.xml" xyz="-29.09 -3.61 107.57" h="0.00">
   </particle-emitter>
   <banana x="-12.52" y="-2.70" z="89.47" h="-90.00" />
   <banana x="9.54" y="13.03" z="-100.93" h="-90.00" />
@@ -308,4 +304,8 @@
   <object type="billboard" texture="halo.png" xyz="-68.08 4.09 -81.83" 
              width="2.000" height="2.000" fadeout="true" start="10.00" end="20.00">
   </object>
+  <default-start karts-per-row     ="3"
+                 forwards-distance ="1.10"
+                 sidewards-distance="1.10"
+                 upwards-distance  ="1.10"/>
 </scene>

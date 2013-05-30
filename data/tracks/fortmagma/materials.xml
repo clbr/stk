@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Generated with script from SVN rev Unknown -->
 <materials>
-  <material name="backeffect.jpg" backface-culling="N" ignore="Y" sphere="Y"/>
+  <material name="backeffect.jpg" backface-culling="N" graphical-effect="spheremap" ignore="Y"/>
   <material name="Battle_for_Wesnoth.png" compositing="test"/>
   <material name="blackrock_lava.jpg" light="N"/>
   <material name="cannonBall.jpg">

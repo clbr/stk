@@ -22,6 +22,6 @@
   <material name="torch.png" backface-culling="N" compositing="test"/>
   <material name="tree_1Low.png" backface-culling="N" compositing="blend" disable-z-write="Y"/>
   <material name="wall.png" backface-culling="N"/>
-  <material name="water_light2.png" compositing="blend" disable-z-write="Y" falling-effect="Y" graphical-effect="water"/>
+  <material name="water_light2.png" compositing="blend" disable-z-write="Y" falling-effect="Y" water-splash="Y"/>
   <material name="woodPost.png" backface-culling="N"/>
 </materials>

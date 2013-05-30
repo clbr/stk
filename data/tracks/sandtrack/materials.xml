@@ -3,7 +3,7 @@
 <materials>
   <material name="palmtree3.png" compositing="blend"/>
   <material name="seabed.jpg" reset="Y"/>
-  <material name="water_light.png" surface="Y" falling-effect="Y" graphical-effect="water">
+  <material name="water_light.png" surface="Y" falling-effect="Y" water-splash="Y">
     <particles base="splash.xml" condition="skid drive"/>
   </material>
   <material name="waterfall.png" compositing="blend"/>

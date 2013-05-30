@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 11785 -->
+<!-- Generated with script from SVN rev 12720 -->
 <track  name           = "Shiny Suburbs"
         version        = "5"
         groups         = "standard"
@@ -7,5 +7,6 @@
         music          = "kart_grand_prix.music"
         screenshot     = "city_screenshot.jpg"
         smooth-normals = "false"
+        reverse        = "Y"
 >
 </track>

@@ -1,28 +1,22 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 11144 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="subsea_track.b3d" x="0" y="0" z="0">
-    <static-object lod_instance="true" lod_group="chest" xyz="-49.99 -35.13 388.98" hpr="0.0 -38.3 0.0" scale="5.60 2.80 2.80"/>
-    <static-object lod_instance="true" lod_group="chest" xyz="-356.43 -30.35 393.42" hpr="0.0 -75.9 0.0" scale="5.60 2.80 2.80"/>
-    <static-object lod_distance="100.0" lod_group="chest" model="Cube.012.b3d" xyz="-49.99 -35.13 653.41" hpr="0.0 -38.3 0.0" scale="5.60 2.80 2.80"/>
-    <static-object lod_distance="350.0" lod_group="chest" model="Cube.013.b3d" xyz="-49.99 -35.13 670.60" hpr="0.0 -38.3 0.0" scale="5.60 2.80 2.80"/>
-    <static-object lod_instance="true" lod_group="pillar" xyz="-89.39 -18.10 366.08" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_distance="200.0" lod_group="pillar" model="pillar_high.b3d" xyz="-89.39 -18.10 618.34" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_instance="true" lod_group="pillar2" xyz="-89.43 -18.10 392.37" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_distance="200.0" lod_group="pillar2" model="pillar2_high.b3d" xyz="-89.43 -18.10 644.62" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_instance="true" lod_group="pillar2" xyz="-195.99 -16.73 369.86" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_distance="400.0" lod_group="pillar2" model="pillar2_lo.b3d" xyz="-95.06 -18.10 644.62" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_distance="400.0" lod_group="pillar" model="pillar_lo.b3d" xyz="-95.02 -18.10 618.34" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_instance="true" lod_group="pillar" xyz="-328.87 -14.97 400.24" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_instance="true" lod_group="pillar" xyz="-196.21 -16.73 395.96" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_instance="true" lod_group="pillar" xyz="-324.97 -14.97 372.69" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/>
-    <static-object lod_distance="150.0" lod_group="submarine" model="submarine_hi.b3d" xyz="-395.69 4.29 -365.18" hpr="-61.1 0.0 90.0" scale="4.66 4.92 4.66"/>
-    <static-object lod_instance="true" lod_group="submarine" xyz="-395.69 4.29 -71.50" hpr="-61.1 0.0 90.0" scale="4.66 4.92 4.66"/>
-    <static-object lod_distance="400.0" lod_group="submarine" model="submarine_lo.b3d" xyz="-360.90 4.29 -371.98" hpr="-61.1 0.0 90.0" scale="4.66 4.92 4.66"/>
-    <static-object lod_instance="true" lod_group="chest_mound" xyz="-159.44 -34.41 400.43" hpr="87.9 -70.5 1.1" scale="2.52 2.52 2.52"/>
-    <static-object lod_distance="80.0" lod_group="chest_mound" model="chest_mound_hi.b3d" xyz="-159.64 -34.41 665.68" hpr="86.5 -81.3 2.5" scale="2.52 2.52 2.52"/>
-    <static-object lod_distance="350.0" lod_group="chest_mound" model="chest_mound_lo.b3d" xyz="-191.53 -34.41 665.68" hpr="86.5 -81.3 2.5" scale="2.52 2.52 2.52"/>
-    <static-object lod_instance="true" lod_group="chest_mound" xyz="-298.18 -34.41 371.92" hpr="89.5 -127.4 -0.6" scale="2.52 2.52 2.52"/>
+    <static-object lod_instance="true" lod_group="chest" xyz="-49.99 -35.13 388.98" hpr="0.0 -38.3 0.0" scale="5.60 2.80 2.80"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="chest" xyz="-356.43 -30.35 393.42" hpr="0.0 -75.9 0.0" scale="5.60 2.80 2.80"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="100.0" lod_group="chest" model="Cube.012.b3d" xyz="-49.99 -35.13 653.41" hpr="0.0 -38.3 0.0" scale="5.60 2.80 2.80"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="350.0" lod_group="chest" model="Cube.013.b3d" xyz="-49.99 -35.13 670.60" hpr="0.0 -38.3 0.0" scale="5.60 2.80 2.80"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="200.0" lod_group="pillar" model="pillar_high.b3d" xyz="-89.39 -18.10 618.34" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="200.0" lod_group="pillar2" model="pillar2_high.b3d" xyz="-89.43 -18.10 644.62" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="400.0" lod_group="pillar2" model="pillar2_lo.b3d" xyz="-95.06 -18.10 644.62" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="400.0" lod_group="pillar" model="pillar_lo.b3d" xyz="-95.02 -18.10 618.34" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="150.0" lod_group="submarine" model="submarine_hi.b3d" xyz="-395.69 4.29 -365.18" hpr="-61.1 0.0 90.0" scale="4.66 4.92 4.66"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="submarine" xyz="-395.69 4.29 -71.50" hpr="-61.1 0.0 90.0" scale="4.66 4.92 4.66"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="400.0" lod_group="submarine" model="submarine_lo.b3d" xyz="-360.90 4.29 -371.98" hpr="-61.1 0.0 90.0" scale="4.66 4.92 4.66"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="chest_mound" xyz="-159.44 -34.41 400.43" hpr="87.9 -70.5 1.1" scale="2.52 2.52 2.52"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="80.0" lod_group="chest_mound" model="chest_mound_hi.b3d" xyz="-159.64 -34.41 665.68" hpr="86.5 -81.3 2.5" scale="2.52 2.52 2.52"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="350.0" lod_group="chest_mound" model="chest_mound_lo.b3d" xyz="-191.53 -34.41 665.68" hpr="86.5 -81.3 2.5" scale="2.52 2.52 2.52"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="chest_mound" xyz="-298.18 -34.41 371.92" hpr="89.5 -127.4 -0.6" scale="2.52 2.52 2.52"/> <!-- writeStaticObjects 3 -->
     <animated-texture name="water_dark-transp-subsea.png" dy="-0.100" />
     <animated-texture name="eggs.png" dy="0.500" />
     <animated-texture name="organic-subsea.jpg" dy="0.100" />
@@ -36,9 +30,18 @@
     <animated-texture name="waterparticles-subsea.png" dy="6.000" />
     <animated-texture name="waterparticles-subsea.png" dy="4.000" />
   </track>
-  <particle-emitter kind="fuite.xml" x="-276.47" y="4.77" z="289.39" h="13.539063"/>
-  <particle-emitter kind="fuite0.xml" x="-216.50" y="4.13" z="292.31" h="13.539063"/>
-  <particle-emitter kind="fuite1.xml" x="-102.33" y="1.93" z="253.33" h="13.539063"/>
+  <object type="movable" xyz="-89.39 -18.10 366.08" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          shape="cylinder" mass="45.0" lod_instance="true" lod_group="pillar"/>
+  <object type="movable" xyz="-89.43 -18.10 392.37" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          shape="cylinder" mass="45.0" lod_instance="true" lod_group="pillar2"/>
+  <object type="movable" xyz="-195.99 -16.73 369.86" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          shape="cylinder" mass="45.0" lod_instance="true" lod_group="pillar2"/>
+  <object type="movable" xyz="-328.87 -14.97 400.24" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          shape="cylinder" mass="45.0" lod_instance="true" lod_group="pillar"/>
+  <object type="movable" xyz="-196.21 -16.73 395.96" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          shape="cylinder" mass="45.0" lod_instance="true" lod_group="pillar"/>
+  <object type="movable" xyz="-324.97 -14.97 372.69" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"
+          shape="cylinder" mass="45.0" lod_instance="true" lod_group="pillar"/>
   <object type="animation" model="Mouette.002.b3d" xyz="-47.81 61.58 306.81" hpr="0.0 130.8 0.0" scale="6.68 6.68 6.68" shape="box" looped="y"  interaction="static">
     <curve channel="LocX" interpolation="bezier" extend="cyclic">
       <p c="1.000 -47.815" h1="0.391 -47.815" h2="1.609 -47.815"/>
@@ -273,111 +276,117 @@
           model="egg.b3d" shape="sphere" mass="2.0"/>
   <object type="movable" xyz="-183.54 3.70 74.01" hpr="0.0 -0.0 0.0" scale="0.86 0.86 0.86"
           model="egg.b3d" shape="sphere" mass="2.0"/>
-  <sun  fog="true" fog-color="111 135 164" fog-start="30.0" fog-end="450.0"/>
+  <sun  fog="true" fog-color="111 135 164" fog-start="30.00" fog-end="450.00"/>
   <sky-color rgb="111 135 164"/>
-  <big-nitro x="-318.02948" y="5.068188" z="56.995647" />
-  <big-nitro x="-320.429504" y="5.068188" z="54.59565" />
-  <big-nitro x="-315.629486" y="5.068188" z="59.395649" />
-  <big-nitro x="-155.218079" y="3.32932" z="286.612518" h="-154.725398" />
-  <big-nitro x="-154.07251" y="3.32932" z="289.807434" h="-154.725398" />
-  <big-nitro x="-156.363617" y="3.32932" z="283.417572" h="-154.725398" />
-  <big-nitro x="-367.642334" y="5.93024" z="179.186813" h="-61.383724" />
-  <big-nitro x="-370.89859" y="5.93024" z="180.14418" h="-61.383724" />
-  <big-nitro x="-364.386047" y="5.93024" z="178.229446" h="-61.383724" />
-  <big-nitro x="-306.429199" y="4.992656" z="262.211609" h="-93.18165" />
-  <big-nitro x="-310.955353" y="4.992656" z="267.270599" h="-93.18165" />
-  <big-nitro x="-308.692291" y="4.992656" z="264.741089" h="-93.18165" />
-  <big-nitro x="-81.598816" y="1.610363" z="194.07634" h="-204.344893" />
-  <big-nitro x="-75.246979" y="1.610363" z="196.47081" h="-204.344893" />
-  <big-nitro x="-78.422897" y="1.610363" z="195.27359" h="-204.344893" />
-  <big-nitro x="-85.611969" y="1.623498" z="57.373028" h="-260.241632" />
-  <big-nitro x="-82.839951" y="1.623498" z="55.414543" h="-260.241632" />
-  <big-nitro x="-88.384026" y="1.623498" z="59.331497" h="-260.241632" />
-  <big-nitro x="-294.821045" y="4.556493" z="64.770187" h="-206.400684" />
-  <big-nitro x="-288.387421" y="4.556493" z="66.935249" h="-206.400684" />
-  <big-nitro x="-291.604218" y="4.556493" z="65.852737" h="-206.400684" />
-  <big-nitro x="-314.861908" y="4.949818" z="172.804504" h="-234.525368" />
-  <big-nitro x="-311.514648" y="4.949818" z="172.242828" h="-234.525368" />
-  <big-nitro x="-318.209198" y="4.949818" z="173.366165" h="-234.525368" />
-  <small-nitro x="-245.431992" y="4.119017" z="139.642471" h="-403.851935" />
-  <small-nitro x="-252.218781" y="4.119017" z="139.50647" h="-403.851935" />
-  <small-nitro x="-248.825378" y="4.119017" z="139.574463" h="-403.851935" />
-  <small-nitro x="-212.907135" y="3.398233" z="43.063908" h="-315.029585" />
-  <small-nitro x="-212.90889" y="3.398233" z="39.669823" h="-315.029585" />
-  <small-nitro x="-212.90538" y="3.398233" z="46.457973" h="-315.029585" />
-  <small-nitro x="-165.153259" y="3.237519" z="166.810059" h="-243.743228" />
-  <small-nitro x="-158.725098" y="3.237519" z="164.62883" h="-243.743228" />
-  <small-nitro x="-161.939178" y="3.237519" z="165.719452" h="-243.743228" />
-  <big-nitro x="-117.881416" y="2.529067" z="78.46479" h="-431.453468" />
-  <big-nitro x="-120.920128" y="2.529067" z="79.976746" h="-431.453468" />
-  <big-nitro x="-114.842712" y="2.529067" z="76.952835" h="-431.453468" />
-  <big-nitro x="12.036298" y="-34.613583" z="318.431305" h="-368.52983" />
-  <big-nitro x="6.577503" y="-34.613583" z="314.396393" h="-368.52983" />
-  <big-nitro x="9.306921" y="-34.613583" z="316.413849" h="-368.52983" />
-  <big-nitro x="-296.108734" y="46.173107" z="344.861664" h="-271.214058" />
-  <big-nitro x="-293.760132" y="46.173107" z="342.411407" h="-271.214058" />
-  <big-nitro x="-298.457306" y="46.173107" z="347.311981" h="-271.214058" />
-  <item x="0.907248" y="-4.042565" z="197.038651" h="-235.113557" />
-  <item x="7.589918" y="-4.042565" z="195.846634" h="-235.113557" />
-  <item x="4.248589" y="-4.042565" z="196.442612" h="-235.113557" />
-  <item x="-386.51123" y="13.614805" z="216.660629" h="-248.949772" />
-  <item x="-380.307495" y="13.614805" z="213.905075" h="-248.949772" />
-  <item x="-383.409393" y="13.614805" z="215.282822" h="-248.949772" />
-  <item x="-187.477188" y="-34.332455" z="381.12735" h="-321.913487" />
-  <item x="-187.973267" y="-34.332455" z="376.067139" h="-321.913487" />
-  <item x="-186.981064" y="-34.332455" z="386.187469" h="-321.913487" />
-  <item x="-186.73288" y="-34.332455" z="390.981049" h="-321.913487" />
-  <item x="-188.22142" y="-34.332455" z="371.27356" h="-321.913487" />
-  <item x="-54.487316" y="-37.622952" z="363.805023" h="-342.622184" />
-  <item x="-48.053291" y="-37.622952" z="377.316742" h="-342.622184" />
-  <item x="-52.560093" y="-37.622952" z="368.201172" h="-342.622184" />
-  <item x="-50.306705" y="-37.622952" z="372.758972" h="-342.622184" />
-  <item x="-349.847351" y="-32.849976" z="379.809753" h="-288.401437" />
-  <item x="-347.467163" y="-32.849976" z="375.316833" h="-288.401437" />
-  <item x="-352.227478" y="-32.849976" z="384.302612" h="-288.401437" />
-  <item x="-345.027466" y="-32.849976" z="371.183044" h="-288.401437" />
-  <item x="-37.85928" y="43.029922" z="328.761383" h="-180.987804" />
-  <item x="-32.977295" y="43.029922" z="333.477875" h="-180.987804" />
-  <item x="-35.418247" y="43.029922" z="331.119598" h="-180.987804" />
-  <item x="-361.765076" y="5.679659" z="123.302383" h="-196.299736" />
-  <item x="-358.788025" y="5.679659" z="124.932373" h="-196.299736" />
-  <item x="-364.742218" y="5.679659" z="121.672501" h="-196.299736" />
-  <item x="-312.042175" y="4.83076" z="117.994728" h="-206.703944" />
-  <item x="-305.597168" y="4.83076" z="120.125725" h="-206.703944" />
-  <item x="-308.819611" y="4.83076" z="119.060158" h="-206.703944" />
-  <item x="-247.129242" y="4.174315" z="90.913345" h="-216.628442" />
-  <item x="-243.771378" y="4.174315" z="91.40757" h="-216.628442" />
-  <item x="-250.487198" y="4.174315" z="90.419258" h="-216.628442" />
-  <item x="-98.217148" y="1.938607" z="158.168106" h="-212.397426" />
-  <item x="-91.592575" y="1.938607" z="159.6492" h="-212.397426" />
-  <item x="-94.9048" y="1.938607" z="158.9086" h="-212.397426" />
-  <item x="-155.084259" y="3.175304" z="-77.432869" h="-212.397426" />
-  <item x="-151.772034" y="3.175304" z="-76.692261" h="-212.397426" />
-  <item x="-158.396606" y="3.175304" z="-78.17337" h="-212.397426" />
-  <item x="-229.39859" y="3.903467" z="293.470154" h="-129.383319" />
-  <item x="-230.063004" y="3.903467" z="300.225677" h="-129.383319" />
-  <item x="-229.730728" y="3.903467" z="296.847961" h="-129.383319" />
-  <item x="-101.096413" y="2.264364" z="243.318588" h="-190.89442" />
-  <item x="-98.286201" y="2.264364" z="245.221786" h="-190.89442" />
-  <item x="-103.906792" y="2.264364" z="241.415512" h="-190.89442" />
-  <item x="-458.381714" y="6.967864" z="73.846024" h="-231.083608" />
-  <item x="-452.333038" y="6.967864" z="73.201393" h="-231.083608" />
-  <item x="-455.357361" y="6.967864" z="73.523628" h="-231.083608" />
-  <item x="-449.11087" y="6.967864" z="73.043922" h="-231.083608" />
-  <banana x="-291.316193" y="-32.849976" z="395.597778" h="-288.401437" />
-  <banana x="-44.325222" y="-32.849976" z="351.801422" h="-288.401437" />
-  <banana x="-378.639709" y="4.332808" z="-60.097645" h="-288.401437" />
-  <banana x="-377.729248" y="4.332808" z="-57.035191" h="-288.401437" />
-  <banana x="-376.735992" y="4.332808" z="-54.30381" h="-288.401437" />
-  <item x="-445.500488" y="5.191294" z="-41.472004" h="-352.616745" />
-  <item x="-449.643829" y="5.191294" z="-46.848995" h="-352.616745" />
-  <item x="-447.572174" y="5.191294" z="-44.160496" h="-352.616745" />
+  <camera far="800"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
-    <check-line kind="activate" other-ids="0" p1="-465.700134 41.717461" p2="-450.401062 40.585411"
-                min-height="6.724489" same-group="1"/>
+    <check-line kind="activate" other-ids="0" p1="-465.70 41.72" p2="-450.40 40.59"
+                min-height="6.72" same-group="1"/>
   </checks>
-  <camera far="800"/>
+  <particle-emitter kind="fuite.xml" xyz="-276.47 4.77 289.39" h="13.54">
+  </particle-emitter>
+  <particle-emitter kind="fuite0.xml" xyz="-216.50 4.13 292.31" h="13.54">
+  </particle-emitter>
+  <particle-emitter kind="fuite1.xml" xyz="-102.33 1.93 253.33" h="13.54">
+  </particle-emitter>
+  <big-nitro x="-318.03" y="5.07" z="57.00" />
+  <big-nitro x="-320.43" y="5.07" z="54.60" />
+  <big-nitro x="-315.63" y="5.07" z="59.40" />
+  <big-nitro x="-155.22" y="3.33" z="286.61" h="-154.73" />
+  <big-nitro x="-154.07" y="3.33" z="289.81" h="-154.73" />
+  <big-nitro x="-156.36" y="3.33" z="283.42" h="-154.73" />
+  <big-nitro x="-367.64" y="5.93" z="179.19" h="-61.38" />
+  <big-nitro x="-370.90" y="5.93" z="180.14" h="-61.38" />
+  <big-nitro x="-364.39" y="5.93" z="178.23" h="-61.38" />
+  <big-nitro x="-306.43" y="4.99" z="262.21" h="-93.18" />
+  <big-nitro x="-310.96" y="4.99" z="267.27" h="-93.18" />
+  <big-nitro x="-308.69" y="4.99" z="264.74" h="-93.18" />
+  <big-nitro x="-81.60" y="1.61" z="194.08" h="-204.34" />
+  <big-nitro x="-75.25" y="1.61" z="196.47" h="-204.34" />
+  <big-nitro x="-78.42" y="1.61" z="195.27" h="-204.34" />
+  <big-nitro x="-85.61" y="1.62" z="57.37" h="-260.24" />
+  <big-nitro x="-82.84" y="1.62" z="55.41" h="-260.24" />
+  <big-nitro x="-88.38" y="1.62" z="59.33" h="-260.24" />
+  <big-nitro x="-294.82" y="4.56" z="64.77" h="-206.40" />
+  <big-nitro x="-288.39" y="4.56" z="66.94" h="-206.40" />
+  <big-nitro x="-291.60" y="4.56" z="65.85" h="-206.40" />
+  <big-nitro x="-314.86" y="4.95" z="172.80" h="-234.53" />
+  <big-nitro x="-311.51" y="4.95" z="172.24" h="-234.53" />
+  <big-nitro x="-318.21" y="4.95" z="173.37" h="-234.53" />
+  <small-nitro x="-245.43" y="4.12" z="139.64" h="-403.85" />
+  <small-nitro x="-252.22" y="4.12" z="139.51" h="-403.85" />
+  <small-nitro x="-248.83" y="4.12" z="139.57" h="-403.85" />
+  <small-nitro x="-212.91" y="3.40" z="43.06" h="-315.03" />
+  <small-nitro x="-212.91" y="3.40" z="39.67" h="-315.03" />
+  <small-nitro x="-212.91" y="3.40" z="46.46" h="-315.03" />
+  <small-nitro x="-165.15" y="3.24" z="166.81" h="-243.74" />
+  <small-nitro x="-158.73" y="3.24" z="164.63" h="-243.74" />
+  <small-nitro x="-161.94" y="3.24" z="165.72" h="-243.74" />
+  <big-nitro x="-117.88" y="2.53" z="78.46" h="-431.45" />
+  <big-nitro x="-120.92" y="2.53" z="79.98" h="-431.45" />
+  <big-nitro x="-114.84" y="2.53" z="76.95" h="-431.45" />
+  <big-nitro x="12.04" y="-34.61" z="318.43" h="-368.53" />
+  <big-nitro x="6.58" y="-34.61" z="314.40" h="-368.53" />
+  <big-nitro x="9.31" y="-34.61" z="316.41" h="-368.53" />
+  <big-nitro x="-296.11" y="46.17" z="344.86" h="-271.21" />
+  <big-nitro x="-293.76" y="46.17" z="342.41" h="-271.21" />
+  <big-nitro x="-298.46" y="46.17" z="347.31" h="-271.21" />
+  <item x="0.91" y="-4.04" z="197.04" h="-235.11" />
+  <item x="7.59" y="-4.04" z="195.85" h="-235.11" />
+  <item x="4.25" y="-4.04" z="196.44" h="-235.11" />
+  <item x="-386.51" y="13.61" z="216.66" h="-248.95" />
+  <item x="-380.31" y="13.61" z="213.91" h="-248.95" />
+  <item x="-383.41" y="13.61" z="215.28" h="-248.95" />
+  <item x="-187.48" y="-34.33" z="381.13" h="-321.91" />
+  <item x="-187.97" y="-34.33" z="376.07" h="-321.91" />
+  <item x="-186.98" y="-34.33" z="386.19" h="-321.91" />
+  <item x="-186.73" y="-34.33" z="390.98" h="-321.91" />
+  <item x="-188.22" y="-34.33" z="371.27" h="-321.91" />
+  <item x="-54.49" y="-37.62" z="363.81" h="-342.62" />
+  <item x="-48.05" y="-37.62" z="377.32" h="-342.62" />
+  <item x="-52.56" y="-37.62" z="368.20" h="-342.62" />
+  <item x="-50.31" y="-37.62" z="372.76" h="-342.62" />
+  <item x="-349.85" y="-32.85" z="379.81" h="-288.40" />
+  <item x="-347.47" y="-32.85" z="375.32" h="-288.40" />
+  <item x="-352.23" y="-32.85" z="384.30" h="-288.40" />
+  <item x="-345.03" y="-32.85" z="371.18" h="-288.40" />
+  <item x="-37.86" y="43.03" z="328.76" h="-180.99" />
+  <item x="-32.98" y="43.03" z="333.48" h="-180.99" />
+  <item x="-35.42" y="43.03" z="331.12" h="-180.99" />
+  <item x="-361.77" y="5.68" z="123.30" h="-196.30" />
+  <item x="-358.79" y="5.68" z="124.93" h="-196.30" />
+  <item x="-364.74" y="5.68" z="121.67" h="-196.30" />
+  <item x="-312.04" y="4.83" z="117.99" h="-206.70" />
+  <item x="-305.60" y="4.83" z="120.13" h="-206.70" />
+  <item x="-308.82" y="4.83" z="119.06" h="-206.70" />
+  <item x="-247.13" y="4.17" z="90.91" h="-216.63" />
+  <item x="-243.77" y="4.17" z="91.41" h="-216.63" />
+  <item x="-250.49" y="4.17" z="90.42" h="-216.63" />
+  <item x="-98.22" y="1.94" z="158.17" h="-212.40" />
+  <item x="-91.59" y="1.94" z="159.65" h="-212.40" />
+  <item x="-94.90" y="1.94" z="158.91" h="-212.40" />
+  <item x="-155.08" y="3.18" z="-77.43" h="-212.40" />
+  <item x="-151.77" y="3.18" z="-76.69" h="-212.40" />
+  <item x="-158.40" y="3.18" z="-78.17" h="-212.40" />
+  <item x="-229.40" y="3.90" z="293.47" h="-129.38" />
+  <item x="-230.06" y="3.90" z="300.23" h="-129.38" />
+  <item x="-229.73" y="3.90" z="296.85" h="-129.38" />
+  <item x="-101.10" y="2.26" z="243.32" h="-190.89" />
+  <item x="-98.29" y="2.26" z="245.22" h="-190.89" />
+  <item x="-103.91" y="2.26" z="241.42" h="-190.89" />
+  <item x="-458.38" y="6.97" z="73.85" h="-231.08" />
+  <item x="-452.33" y="6.97" z="73.20" h="-231.08" />
+  <item x="-455.36" y="6.97" z="73.52" h="-231.08" />
+  <item x="-449.11" y="6.97" z="73.04" h="-231.08" />
+  <banana x="-291.32" y="-32.85" z="395.60" h="-288.40" />
+  <banana x="-44.33" y="-32.85" z="351.80" h="-288.40" />
+  <banana x="-378.64" y="4.33" z="-60.10" h="-288.40" />
+  <banana x="-377.73" y="4.33" z="-57.04" h="-288.40" />
+  <banana x="-376.74" y="4.33" z="-54.30" h="-288.40" />
+  <item x="-445.50" y="5.19" z="-41.47" h="-352.62" />
+  <item x="-449.64" y="5.19" z="-46.85" h="-352.62" />
+  <item x="-447.57" y="5.19" z="-44.16" h="-352.62" />
   <default-start karts-per-row     ="2"
                  forwards-distance ="1.50"
                  sidewards-distance="3.00"

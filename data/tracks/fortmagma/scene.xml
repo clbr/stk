@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 11785 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="FortMagma_track.b3d" x="0" y="0" z="0">
     <static-object lod_instance="true" lod_group="lavaspike" xyz="-153.73 10.28 7.05" hpr="-0.0 -180.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -45,34 +45,6 @@
     <animated-texture name="lava.png" dy="-0.100" />
     <animated-texture name="lava.png" dy="-0.100" />
   </track>
-  <particle-emitter kind="fire.xml" x="-111.75" y="40.64" z="-26.75" h="89.999996">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-111.75" y="40.64" z="-51.54" h="89.999996">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-106.21" y="38.96" z="-120.62" h="89.999996">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-28.61" y="50.79" z="-115.14" h="90.000009">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-55.01" y="48.09" z="-83.02" h="89.999996">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-88.14" y="48.09" z="-83.82" h="89.999996">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-136.35" y="23.13" z="-90.26" h="89.999996">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-156.53" y="12.68" z="-46.83" h="89.999996">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-38.04" y="10.63" z="-17.54" h="89.999996">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-156.94" y="8.90" z="-43.18" h="89.999996">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-71.70" y="32.74" z="27.44" h="0.000000">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-61.41" y="49.52" z="0.75" h="60.000002">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-74.34" y="49.52" z="0.76" h="659.999977">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-67.86" y="49.52" z="11.95" h="540.000001">
-  </particle-emitter>
   <object type="animation" model="roadpart.b3d" xyz="-161.72 0.64 -33.25" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"  interaction="ghost">
   </object>
   <object type="animation" model="cannonAnim.b3d" xyz="27.81 41.00 -92.21" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"  interaction="ghost">
@@ -545,64 +517,92 @@
   </object>
   <object type="animation" model="windows.b3d" xyz="-114.89 2.26 -38.64" hpr="0.0 -0.0 0.0" scale="1.00 1.18 1.00"  interaction="ghost">
   </object>
-  <small-nitro x="-148.238953" y="1.299999" z="27.879166" h="179.999994" />
-  <small-nitro x="-156.238953" y="1.299999" z="11.879166" h="179.999994" />
-  <small-nitro x="-157.238953" y="3.076542" z="-34.120834" h="179.999994" />
-  <small-nitro x="-168.238953" y="3.076542" z="-34.120834" h="179.999994" />
-  <small-nitro x="-135.583527" y="25.868666" z="-116.042816" h="179.999994" />
-  <small-nitro x="-127.583527" y="26.868666" z="-112.042816" h="179.999994" />
-  <item x="-35.581841" y="42.246803" z="-36.145393" h="89.999997" />
-  <item x="-35.581841" y="42.246803" z="-41.145393" h="89.999997" />
-  <item x="14.418152" y="42.246803" z="-41.145401" h="89.999997" />
-  <item x="14.418152" y="42.246803" z="-36.145401" h="89.999997" />
-  <item x="14.418152" y="42.246803" z="-116.145386" h="89.999997" />
-  <item x="14.418152" y="42.246803" z="-121.145386" h="89.999997" />
-  <item x="67.846237" y="42.246803" z="-78.912544" />
-  <item x="74.862991" y="42.246803" z="-78.912544" />
-  <item x="70.844986" y="42.246803" z="-78.912544" />
-  <small-nitro x="-135.583527" y="25.868666" z="-107.042816" h="179.999994" />
-  <item x="-132.358063" y="1.299999" z="91.66243" h="179.999994" />
-  <big-nitro x="-185.589493" y="14.793189" z="-96.632828" h="179.999994" />
-  <small-nitro x="-188.122894" y="13.737944" z="-91.574036" h="179.999994" />
-  <item x="-100.252861" y="1.299999" z="96.482597" h="179.999994" />
-  <small-nitro x="-69.487511" y="33.560059" z="-112.042816" h="179.999994" />
-  <big-nitro x="-62.706367" y="1.299999" z="-8.863762" h="179.999994" />
-  <small-nitro x="-69.487511" y="33.560059" z="-118.329651" h="179.999994" />
-  <small-nitro x="-78.34288" y="1.299999" z="81.498901" h="179.999994" />
-  <small-nitro x="-62.964733" y="34.553207" z="-114.64817" h="179.999994" />
-  <item x="-75.727448" y="31.750938" z="-37.197601" h="89.999997" />
-  <banana x="-75.727448" y="31.750938" z="-30.87859" h="89.999997" />
-  <banana x="-75.727448" y="31.750938" z="-44.347775" h="89.999997" />
-  <small-nitro x="-103.775917" y="31.750938" z="-8.523322" h="89.999997" />
-  <banana x="-81.921753" y="4.402037" z="-43.396038" h="89.999997" />
-  <small-nitro x="-79.053429" y="25.994875" z="15.798979" h="89.999997" />
-  <item x="-54.872963" y="22.822456" z="14.628897" h="89.999997" />
-  <small-nitro x="-45.869522" y="20.573454" z="-76.777321" h="89.999997" />
-  <small-nitro x="-85.053024" y="27.116968" z="-94.399261" h="89.999997" />
-  <banana x="-81.921753" y="4.402037" z="-32.412216" h="89.999997" />
-  <item x="-75.727448" y="5.188471" z="-37.197601" h="89.999997" />
-  <item x="-44.402252" y="12.295124" z="-37.197601" h="89.999997" />
-  <item x="-44.402252" y="19.459433" z="-2.748898" h="89.999997" />
-  <item x="-95.90799" y="28.631794" z="-80.363251" h="89.999997" />
-  <item x="-81.224106" y="1.299999" z="79.323921" h="179.999994" />
-  <item x="-76.398361" y="1.299999" z="83.395042" h="179.999994" />
-  <item x="-95.90799" y="29.234865" z="-113.664452" h="89.999997" />
-  <item x="-95.90799" y="29.234865" z="-110.785774" h="89.999997" />
-  <item x="-95.90799" y="29.234865" z="-116.822586" h="89.999997" />
-  <item x="-164.501083" y="20.919771" z="-108.310371" h="89.999997" />
-  <item x="-164.501083" y="20.919771" z="-105.36805" h="89.999997" />
-  <item x="-180.189835" y="12.658889" z="-78.212448" h="89.999997" />
-  <checks>
-    <check-lap kind="lap" same-group="0" other-ids="1" />
-    <check-line kind="activate" other-ids="0" p1="60.91 -78.95" p2="85.86 -79.09"
-                min-height="42.12" same-group="1"/>
-  </checks>
 
   <sky-dome texture="lava_sky.png"
             horizontal="16" vertical="16" 
             texture-percent="1.0" sphere-percent="1.3"
             speed-x="0.0" speed-y="0.0" />
   <camera far="1000.0"/>
+  <checks>
+    <check-lap kind="lap" same-group="0" other-ids="1" />
+    <check-line kind="activate" other-ids="0" p1="60.91 -78.95" p2="85.86 -79.09"
+                min-height="42.12" same-group="1"/>
+  </checks>
+  <particle-emitter kind="fire.xml" xyz="-111.75 40.64 -26.75" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-111.75 40.64 -51.54" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-106.21 38.96 -120.62" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-28.61 50.79 -115.14" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-55.01 48.09 -83.02" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-88.14 48.09 -83.82" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-136.35 23.13 -90.26" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-156.53 12.68 -46.83" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-38.04 10.63 -17.54" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-156.94 8.90 -43.18" h="90.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-71.70 32.74 27.44" h="0.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-61.41 49.52 0.75" h="60.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-74.34 49.52 0.76" h="660.00">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-67.86 49.52 11.95" h="540.00">
+  </particle-emitter>
+  <small-nitro x="-148.24" y="1.30" z="27.88" h="180.00" />
+  <small-nitro x="-156.24" y="1.30" z="11.88" h="180.00" />
+  <small-nitro x="-157.24" y="3.08" z="-34.12" h="180.00" />
+  <small-nitro x="-168.24" y="3.08" z="-34.12" h="180.00" />
+  <small-nitro x="-135.58" y="25.87" z="-116.04" h="180.00" />
+  <small-nitro x="-127.58" y="26.87" z="-112.04" h="180.00" />
+  <item x="-35.58" y="42.25" z="-36.15" h="90.00" />
+  <item x="-35.58" y="42.25" z="-41.15" h="90.00" />
+  <item x="14.42" y="42.25" z="-41.15" h="90.00" />
+  <item x="14.42" y="42.25" z="-36.15" h="90.00" />
+  <item x="14.42" y="42.25" z="-116.15" h="90.00" />
+  <item x="14.42" y="42.25" z="-121.15" h="90.00" />
+  <item x="67.85" y="42.25" z="-78.91" />
+  <item x="74.86" y="42.25" z="-78.91" />
+  <item x="70.84" y="42.25" z="-78.91" />
+  <small-nitro x="-135.58" y="25.87" z="-107.04" h="180.00" />
+  <item x="-132.36" y="1.30" z="91.66" h="180.00" />
+  <big-nitro x="-185.59" y="14.79" z="-96.63" h="180.00" />
+  <small-nitro x="-188.12" y="13.74" z="-91.57" h="180.00" />
+  <item x="-100.25" y="1.30" z="96.48" h="180.00" />
+  <small-nitro x="-69.49" y="33.56" z="-112.04" h="180.00" />
+  <big-nitro x="-62.71" y="1.30" z="-8.86" h="180.00" />
+  <small-nitro x="-69.49" y="33.56" z="-118.33" h="180.00" />
+  <small-nitro x="-78.34" y="1.30" z="81.50" h="180.00" />
+  <small-nitro x="-62.96" y="34.55" z="-114.65" h="180.00" />
+  <item x="-75.73" y="31.75" z="-37.20" h="90.00" />
+  <banana x="-75.73" y="31.75" z="-30.88" h="90.00" />
+  <banana x="-75.73" y="31.75" z="-44.35" h="90.00" />
+  <small-nitro x="-103.78" y="31.75" z="-8.52" h="90.00" />
+  <banana x="-81.92" y="4.40" z="-43.40" h="90.00" />
+  <small-nitro x="-79.05" y="25.99" z="15.80" h="90.00" />
+  <item x="-54.87" y="22.82" z="14.63" h="90.00" />
+  <small-nitro x="-45.87" y="20.57" z="-76.78" h="90.00" />
+  <small-nitro x="-85.05" y="27.12" z="-94.40" h="90.00" />
+  <banana x="-81.92" y="4.40" z="-32.41" h="90.00" />
+  <item x="-75.73" y="5.19" z="-37.20" h="90.00" />
+  <item x="-44.40" y="12.30" z="-37.20" h="90.00" />
+  <item x="-44.40" y="19.46" z="-2.75" h="90.00" />
+  <item x="-95.91" y="28.63" z="-80.36" h="90.00" />
+  <item x="-81.22" y="1.30" z="79.32" h="180.00" />
+  <item x="-76.40" y="1.30" z="83.40" h="180.00" />
+  <item x="-95.91" y="29.23" z="-113.66" h="90.00" />
+  <item x="-95.91" y="29.23" z="-110.79" h="90.00" />
+  <item x="-95.91" y="29.23" z="-116.82" h="90.00" />
+  <item x="-164.50" y="20.92" z="-108.31" h="90.00" />
+  <item x="-164.50" y="20.92" z="-105.37" h="90.00" />
+  <item x="-180.19" y="12.66" z="-78.21" h="90.00" />
   <default-start karts-per-row     ="3"
                  forwards-distance ="1.10"
                  sidewards-distance="2.00"

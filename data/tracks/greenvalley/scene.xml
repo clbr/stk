@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12125 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="greenvalley_track.b3d" x="0" y="0" z="0">
     <static-object lod_distance="150.0" lod_group="plant1" model="ArctinumMinus.b3d" xyz="15.35 -0.41 -11.70" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -293,22 +293,6 @@
     <animated-texture name="waterfall.png" dy="1.000" />
     <animated-texture name="mine_water_alpha.png" dy="1.000" />
   </track>
-  <water model="water1.b3d" xyz="84.25 -11.20 -4.12" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.15" speed="300.00" length="1.25"/>
-  <water model="water_road.b3d" xyz="0.00 0.00 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.01" speed="301.70" length="1.00"/>
-  <particle-emitter kind="waterfall_left.xml" x="163.11" y="-13.49" z="-182.26" h="-5.122213">
-  </particle-emitter>
-  <particle-emitter kind="waterfall_right.xml" x="163.10" y="-13.49" z="-182.26" h="-5.122213">
-  </particle-emitter>
-  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.200" volume="1.0" max_dist="75.0" xyz="-9.84 0.99 7.36" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
-  </object>
-  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.200" volume="1.0" max_dist="75.0" xyz="5.74 0.75 3.75" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
-  </object>
-  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.100" volume="1.0" max_dist="75.0" xyz="-14.07 1.65 24.61" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
-  </object>
-  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.100" volume="1.0" max_dist="175.0" xyz="334.81 6.79 8.03" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
-  </object>
-  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.100" volume="1.0" max_dist="175.0" xyz="329.63 1.10 0.68" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
-  </object>
   <object type="animation" model="grass_tall.b3d" xyz="207.71 -8.85 -183.86" hpr="-90.0 -12.3 0.0" scale="2.08 7.67 1.57"  interaction="ghost">
   </object>
   <object type="animation" model="tree_model_4_faces.b3d" xyz="61.91 9.51 -274.00" hpr="0.0 100.0 0.0" scale="0.82 0.82 0.82"  interaction="ghost">
@@ -321,51 +305,67 @@
   </object>
   <object type="animation" model="anim_sheep2.b3d" xyz="-8.74 0.50 9.44" hpr="-0.0 -93.9 -0.0" scale="0.23 0.23 0.23"  looped="y"  interaction="ghost">
   </object>
-  <small-nitro x="-6.692352" y="1.25439" z="16.857662" />
-  <small-nitro x="-2.180311" y="1.332235" z="18.895359" />
-  <small-nitro x="-4.42142" y="1.343433" z="17.979923" />
-  <item x="-11.557928" y="5.974537" z="59.025272" />
-  <item x="24.156645" y="26.664465" z="121.157425" />
-  <item x="20.133305" y="26.767073" z="121.830757" />
-  <small-nitro x="253.997314" y="3.782384" z="50.065845" />
-  <item x="122.105301" y="40.573509" z="189.624252" />
-  <item x="120.630302" y="40.573509" z="187.768616" />
-  <item x="119.202888" y="40.573509" z="186.008133" />
-  <small-nitro x="151.38324" y="-7.991102" z="-134.138077" />
-  <big-nitro x="151.109329" y="-7.712827" z="-129.941544" />
-  <banana x="224.035065" y="22.320463" z="103.020782" />
-  <banana x="221.15271" y="4.100496" z="-20.870676" />
-  <banana x="220.93898" y="4.404107" z="-26.015129" />
-  <banana x="231.412949" y="4.145027" z="-26.897194" />
-  <banana x="231.807007" y="4.132016" z="-21.457045" />
-  <item x="226.658066" y="3.960804" z="-23.922318" />
-  <banana x="81.028069" y="3.542107" z="-182.935471" />
-  <big-nitro x="-10.29094" y="2.175555" z="-198.250519" />
-  <big-nitro x="-81.614304" y="5.931354" z="-140.570969" />
-  <item x="-77.639381" y="6.762276" z="-158.210449" />
-  <banana x="-34.548557" y="1.533221" z="-101.14518" />
-  <banana x="150.702667" y="35.136654" z="82.628525" />
-  <banana x="148.763611" y="35.115379" z="78.498909" />
-  <small-nitro x="246.16127" y="2.769817" z="41.68819" />
-  <small-nitro x="235.79335" y="2.495873" z="35.1367" />
-  <item x="278.400085" y="2.871069" z="-85.805069" />
-  <item x="182.976654" y="33.56538" z="87.896759" />
-  <banana x="79.096184" y="1.570215" z="-166.574097" />
-  <small-nitro x="-2.332981" y="1.343433" z="16.473509" />
-  <small-nitro x="-4.798024" y="1.343433" z="15.514881" />
-  <small-nitro x="18.141758" y="22.972519" z="107.297913" />
-  <small-nitro x="21.764002" y="22.972519" z="106.251984" />
-  <small-nitro x="-10.814483" y="-0.99135" z="-87.613121" />
-  <small-nitro x="-9.259133" y="-1.319855" z="-76.709503" />
-  <small-nitro x="-0.249491" y="-1.388952" z="-68.278313" />
-  <banana x="-0.613992" y="-1.306638" z="-59.692795" />
+  <sky-box texture="w_sky_6.jpg grass2.jpg w_sky_2.jpg w_sky_4.jpg w_sky_3.jpg w_sky_1.jpg"/>
+  <camera far="20000"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
     <check-line kind="activate" other-ids="0" p1="177.59 -141.65" p2="174.92 -105.72"
                 min-height="-10.54" same-group="1"/>
   </checks>
-  <sky-box texture="w_sky_6.jpg grass2.jpg w_sky_2.jpg w_sky_4.jpg w_sky_3.jpg w_sky_1.jpg"/>
-  <camera far="20000"/>
+  <water model="water1.b3d" xyz="84.25 -11.20 -4.12" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.15" speed="300.00" length="1.25"/>
+  <water model="water_road.b3d" xyz="0.00 0.00 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.01" speed="301.70" length="1.00"/>
+  <particle-emitter kind="waterfall_left.xml" xyz="163.11 -13.49 -182.26" h="-5.12">
+  </particle-emitter>
+  <particle-emitter kind="waterfall_right.xml" xyz="163.10 -13.49 -182.26" h="-5.12">
+  </particle-emitter>
+  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.200" volume="1.0" max_dist="75.0" xyz="-9.84 0.99 7.36" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
+  </object>
+  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.200" volume="1.0" max_dist="75.0" xyz="5.74 0.75 3.75" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
+  </object>
+  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.100" volume="1.0" max_dist="75.0" xyz="-14.07 1.65 24.61" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
+  </object>
+  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.100" volume="1.0" max_dist="175.0" xyz="334.81 6.79 8.03" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
+  </object>
+  <object type="sfx-emitter" sound="sheep.ogg" rolloff="0.100" volume="1.0" max_dist="175.0" xyz="329.63 1.10 0.68" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00">
+  </object>
+  <small-nitro x="-6.69" y="1.25" z="16.86" />
+  <small-nitro x="-2.18" y="1.33" z="18.90" />
+  <small-nitro x="-4.42" y="1.34" z="17.98" />
+  <item x="-11.56" y="5.97" z="59.03" />
+  <item x="24.16" y="26.66" z="121.16" />
+  <item x="20.13" y="26.77" z="121.83" />
+  <small-nitro x="254.00" y="3.78" z="50.07" />
+  <item x="122.11" y="40.57" z="189.62" />
+  <item x="120.63" y="40.57" z="187.77" />
+  <item x="119.20" y="40.57" z="186.01" />
+  <small-nitro x="151.38" y="-7.99" z="-134.14" />
+  <big-nitro x="151.11" y="-7.71" z="-129.94" />
+  <banana x="224.04" y="22.32" z="103.02" />
+  <banana x="221.15" y="4.10" z="-20.87" />
+  <banana x="220.94" y="4.40" z="-26.02" />
+  <banana x="231.41" y="4.15" z="-26.90" />
+  <banana x="231.81" y="4.13" z="-21.46" />
+  <item x="226.66" y="3.96" z="-23.92" />
+  <banana x="81.03" y="3.54" z="-182.94" />
+  <big-nitro x="-10.29" y="2.18" z="-198.25" />
+  <big-nitro x="-81.61" y="5.93" z="-140.57" />
+  <item x="-77.64" y="6.76" z="-158.21" />
+  <banana x="-34.55" y="1.53" z="-101.15" />
+  <banana x="150.70" y="35.14" z="82.63" />
+  <banana x="148.76" y="35.12" z="78.50" />
+  <small-nitro x="246.16" y="2.77" z="41.69" />
+  <small-nitro x="235.79" y="2.50" z="35.14" />
+  <item x="278.40" y="2.87" z="-85.81" />
+  <item x="182.98" y="33.57" z="87.90" />
+  <banana x="79.10" y="1.57" z="-166.57" />
+  <small-nitro x="-2.33" y="1.34" z="16.47" />
+  <small-nitro x="-4.80" y="1.34" z="15.51" />
+  <small-nitro x="18.14" y="22.97" z="107.30" />
+  <small-nitro x="21.76" y="22.97" z="106.25" />
+  <small-nitro x="-10.81" y="-0.99" z="-87.61" />
+  <small-nitro x="-9.26" y="-1.32" z="-76.71" />
+  <small-nitro x="-0.25" y="-1.39" z="-68.28" />
+  <banana x="-0.61" y="-1.31" z="-59.69" />
   <default-start karts-per-row     ="2"
                  forwards-distance ="1.50"
                  sidewards-distance="3.00"

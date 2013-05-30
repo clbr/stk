@@ -5,7 +5,7 @@
     <sfx filename="hot.ogg"/>
     <particles condition="skid drive" base="acid_splash.xml"/>
   </material>
-  <material name="acid_lake_bottom.jpg" reset="Y" graphical-effect="water" falling-effect="Y"/>
+  <material name="acid_lake_bottom.jpg" reset="Y" falling-effect="Y" water-splash="Y"/>
   <material name="arc1.png" light="N" backface-culling="N" compositing="blend" disable-z-write="Y" collision-detect="Y" collision-reaction="push" collision-particles="sparks.xml"/>
   <material name="arc2.png" reset="Y" compositing="blend" backface-culling="N" light="N" disable-z-write="Y"/>
   <material name="curious.png" backface-culling="N" compositing="blend" disable-z-write="Y"/>

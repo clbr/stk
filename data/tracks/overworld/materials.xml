@@ -7,7 +7,7 @@
   <material name="BurdockLeaf.png" backface-culling="N" compositing="coverage" ignore="Y"/>
   <material name="castelwall.jpg" backface-culling="N"/>
   <material name="city_tree_leaves.jpg" compositing="blend" ignore="Y" backface-culling="N" disable-z-write="Y" mask="city_tree_leaves_alpha.jpg"/>
-  <material name="column_diffuse.jpg" graphical-effect="normal_map" normal-map="column_normal_map.png" water-splash="false"/>
+  <material name="column_diffuse.jpg" graphical-effect="normal_map" normal-map="column_normal_map.png"/>
   <material name="CornusAmericana.png" backface-culling="N" compositing="coverage" ignore="Y"/>
   <material name="crystal_ball_halo.png" fog="N" light="N" backface-culling="N" compositing="blend" disable-z-write="Y"/>
   <material name="envmap.png" fog="N" light="N" compositing="blend" disable-z-write="Y" graphical-effect="bubble" ignore="Y"/>
@@ -36,12 +36,12 @@
   <material name="rock_brown.jpg" fog="N"/>
   <material name="hut_roof.jpg" backface-culling="N"/>
   <material name="sand2.jpg" fog="N"/>
-  <material name="sea.jpg" graphical-effect="water_shader" reset="Y" water-splash="false"/>
-  <material name="splat.png" graphical-effect="splatting" splatting-texture-1="dirt.jpg" splatting-texture-2="grass2.jpg" splatting-texture-3="rock_brown.jpg" splatting-texture-4="sand2.jpg" water-splash="false"/>
-  <material name="splat2.png" graphical-effect="splatting" splatting-texture-1="dirt.jpg" splatting-texture-2="grass2.jpg" splatting-texture-3="snow.png" splatting-texture-4="rock_grey.jpg" water-splash="false"/>
+  <material name="sea.jpg" graphical-effect="water_shader" reset="Y"/>
+  <material name="splat.png" graphical-effect="splatting" splatting-texture-1="dirt.jpg" splatting-texture-2="grass2.jpg" splatting-texture-3="rock_brown.jpg" splatting-texture-4="sand2.jpg"/>
+  <material name="splat2.png" graphical-effect="splatting" splatting-texture-1="dirt.jpg" splatting-texture-2="grass2.jpg" splatting-texture-3="snow.png" splatting-texture-4="rock_grey.jpg"/>
   <material name="track_screenshot_dummy.png" fog="N" light="N" compositing="blend"/>
   <material name="StreamPlant.png" backface-culling="N" compositing="coverage" ignore="Y"/>
-  <material name="transparence2.png" compositing="test" water-splash="false"/>
+  <material name="transparence2.png" compositing="test"/>
   <material name="tree_1.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
   <material name="tree_1Low.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
   <material name="ufo_window.png" backface-culling="N" compositing="blend" disable-z-write="Y"/>

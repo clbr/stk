@@ -6,9 +6,9 @@
   <material name="grass.jpg" max-speed="0.40"/>
   <material name="grass2.jpg" max-speed="0.40"/>
   <material name="leaves2.png" ignore="Y" compositing="coverage"/>
-  <material name="seabed.png" graphical-effect="water" falling-effect="Y"/>
+  <material name="seabed.png" falling-effect="Y" water-splash="Y"/>
   <material name="tree_1.png" light="N" compositing="coverage" backface-culling="N"/>
-  <material name="water_dark.png" light="N" reset="Y" surface="Y" water-shader="Y" water-shader-speed-1="1.50" water-shader-speed-2="1.50">
+  <material name="water_dark.png" light="N" reset="Y" surface="Y" graphical-effect="water_shader" water-shader-speed-1="1.50" water-shader-speed-2="1.50">
     <sfx filename="splash.ogg"/>
     <particles base="splash.xml" condition="skid drive"/>
   </material>

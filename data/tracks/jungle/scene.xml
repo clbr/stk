@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12125 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="jungle_track.b3d" x="0" y="0" z="0">
     <animated-texture name="zipper_jungle.png" dy="0.500" />
@@ -7,68 +7,68 @@
     <animated-texture name="water_light.png" dy="0.100" />
     <animated-texture name="water_light.png" dy="0.100" />
   </track>
-  <particle-emitter kind="fire.xml" x="-30.40" y="13.25" z="-163.04" h="0.000000" clip_distance="200">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-9.87" y="13.25" z="-162.39" h="0.000000" clip_distance="200">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-9.20" y="13.25" z="-141.48" h="-8.144329" clip_distance="200">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-29.62" y="13.25" z="-139.22" h="-8.144329" clip_distance="200">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-27.87" y="13.25" z="-182.01" h="4.549343" clip_distance="200">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-7.45" y="13.25" z="-179.73" h="4.549343" clip_distance="200">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-43.61" y="13.25" z="-223.75" h="4.549343" clip_distance="200">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-52.80" y="12.89" z="-182.66" h="4.549343" clip_distance="200">
-  </particle-emitter>
-  <particle-emitter kind="fire.xml" x="-52.61" y="12.20" z="-136.07" h="4.549343" clip_distance="200">
-  </particle-emitter>
   <sky-color rgb="77 104 255"/>
-  <banana x="-17.052567" y="12.000861" z="-297.328125" />
-  <banana x="139.893326" y="14.487841" z="-290.335388" />
-  <banana x="62.066906" y="5.96323" z="-245.256454" />
-  <banana x="82.499596" y="4.737188" z="-231.171677" />
-  <banana x="100.919914" y="6.097893" z="-224.718018" />
-  <banana x="197.061234" y="13.098305" z="-266.425507" />
-  <banana x="210.605972" y="12.73444" z="-246.419266" />
-  <banana x="222.229111" y="12.287371" z="-243.017044" />
-  <banana x="234.967361" y="12.287371" z="-233.353653" />
-  <banana x="270.36441" y="11.032856" z="-202.581589" />
-  <banana x="122.158524" y="14.727747" z="-300.906128" />
-  <item x="298.698242" y="12.552106" z="-178.216675" />
-  <item x="251.461899" y="11.729674" z="-216.322281" h="31.490144" />
-  <item x="254.286057" y="11.729674" z="-219.959152" h="31.490144" />
-  <item x="307.344238" y="14.13864" z="-151.672989" />
-  <item x="310.20578" y="14.368936" z="-126.689056" />
-  <item x="212.06398" y="9.041081" z="-207.006561" h="-58.961165" />
-  <item x="173.305145" y="13.242703" z="-274.668091" />
-  <item x="102.350342" y="15.5" z="-308.589142" />
-  <item x="209.992188" y="9.041081" z="-204.795181" h="-58.961165" />
-  <item x="214.729553" y="9.041081" z="-209.354568" h="-58.961165" />
-  <item x="176.126144" y="8.610008" z="-221.625931" />
-  <item x="117.966995" y="9.834072" z="43.014614" />
-  <item x="121.518448" y="9.834072" z="39.95303" />
-  <small-nitro x="240.948166" y="12.782118" z="-1.863419" />
-  <small-nitro x="248.498352" y="15.878353" z="-33.320431" />
-  <small-nitro x="261.753448" y="16.28203" z="-40.085922" />
-  <small-nitro x="248.418915" y="15.879525" z="-16.50906" />
-  <small-nitro x="294.09906" y="16.534683" z="-60.213261" />
-  <small-nitro x="291.354828" y="16.675005" z="-71.723755" />
-  <small-nitro x="308.079254" y="16.884279" z="-79.42572" />
-  <small-nitro x="-10.327" y="12.837983" z="-313.0784" />
-  <small-nitro x="7.901196" y="13.805217" z="-318.97525" />
-  <small-nitro x="25.386883" y="15.192658" z="-336.475861" />
-  <small-nitro x="57.074856" y="15.109499" z="-323.412964" />
-  <small-nitro x="78.098602" y="13.821575" z="-322.691162" />
+  <sky-box texture="skybox5.jpg skybox5.jpg skybox4.jpg skybox2.jpg skybox3.jpg skybox1.jpg"/>
+  <camera far="1000.0"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
     <check-line kind="activate" other-ids="0" p1="323.32 -112.02" p2="297.82 -109.41"
                 min-height="15.37" same-group="1"/>
   </checks>
-  <sky-box texture="skybox5.jpg skybox5.jpg skybox4.jpg skybox2.jpg skybox3.jpg skybox1.jpg"/>
-  <camera far="1000.0"/>
+  <particle-emitter kind="fire.xml" xyz="-30.40 13.25 -163.04" h="0.00" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-9.87 13.25 -162.39" h="0.00" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-9.20 13.25 -141.48" h="-8.14" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-29.62 13.25 -139.22" h="-8.14" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-27.87 13.25 -182.01" h="4.55" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-7.45 13.25 -179.73" h="4.55" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-43.61 13.25 -223.75" h="4.55" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-52.80 12.89 -182.66" h="4.55" clip_distance="200">
+  </particle-emitter>
+  <particle-emitter kind="fire.xml" xyz="-52.61 12.20 -136.07" h="4.55" clip_distance="200">
+  </particle-emitter>
+  <banana x="-17.05" y="12.00" z="-297.33" />
+  <banana x="139.89" y="14.49" z="-290.34" />
+  <banana x="62.07" y="5.96" z="-245.26" />
+  <banana x="82.50" y="4.74" z="-231.17" />
+  <banana x="100.92" y="6.10" z="-224.72" />
+  <banana x="197.06" y="13.10" z="-266.43" />
+  <banana x="210.61" y="12.73" z="-246.42" />
+  <banana x="222.23" y="12.29" z="-243.02" />
+  <banana x="234.97" y="12.29" z="-233.35" />
+  <banana x="270.36" y="11.03" z="-202.58" />
+  <banana x="122.16" y="14.73" z="-300.91" />
+  <item x="298.70" y="12.55" z="-178.22" />
+  <item x="251.46" y="11.73" z="-216.32" h="31.49" />
+  <item x="254.29" y="11.73" z="-219.96" h="31.49" />
+  <item x="307.34" y="14.14" z="-151.67" />
+  <item x="310.21" y="14.37" z="-126.69" />
+  <item x="212.06" y="9.04" z="-207.01" h="-58.96" />
+  <item x="173.31" y="13.24" z="-274.67" />
+  <item x="102.35" y="15.50" z="-308.59" />
+  <item x="209.99" y="9.04" z="-204.80" h="-58.96" />
+  <item x="214.73" y="9.04" z="-209.35" h="-58.96" />
+  <item x="176.13" y="8.61" z="-221.63" />
+  <item x="117.97" y="9.83" z="43.01" />
+  <item x="121.52" y="9.83" z="39.95" />
+  <small-nitro x="240.95" y="12.78" z="-1.86" />
+  <small-nitro x="248.50" y="15.88" z="-33.32" />
+  <small-nitro x="261.75" y="16.28" z="-40.09" />
+  <small-nitro x="248.42" y="15.88" z="-16.51" />
+  <small-nitro x="294.10" y="16.53" z="-60.21" />
+  <small-nitro x="291.35" y="16.68" z="-71.72" />
+  <small-nitro x="308.08" y="16.88" z="-79.43" />
+  <small-nitro x="-10.33" y="12.84" z="-313.08" />
+  <small-nitro x="7.90" y="13.81" z="-318.98" />
+  <small-nitro x="25.39" y="15.19" z="-336.48" />
+  <small-nitro x="57.07" y="15.11" z="-323.41" />
+  <small-nitro x="78.10" y="13.82" z="-322.69" />
   <default-start karts-per-row     ="2"
                  forwards-distance ="1.50"
                  sidewards-distance="3.00"

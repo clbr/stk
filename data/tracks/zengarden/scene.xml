@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12405 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="zenGarden_track.b3d" x="0" y="0" z="0">
     <static-object lod_instance="true" lod_group="torii" xyz="1.50 0.00 10.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -136,6 +136,12 @@
     <animated-texture name="water_light2.png" dy="0.050" />
   </track>
   <sun  xyz="-85.00 56.00 0.00" sun-specular="255 255 255" sun-diffuse="255 255 255" ambient="255 255 255"/>
+
+  <sky-dome texture="sky.jpg"
+            horizontal="20" vertical="20" 
+            texture-percent="1.0" sphere-percent="1.3"
+            speed-x="0.003000000026077032" speed-y="0.0" />
+  <camera far="1000.0"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
     <check-line kind="activate" other-ids="2" p1="-144.26 0.30" p2="-140.97 15.87"
@@ -143,20 +149,10 @@
     <check-line kind="activate" other-ids="0" p1="-62.52 -56.76" p2="-57.84 -37.91"
                 min-height="0.10" same-group="2"/>
   </checks>
-
-  <sky-dome texture="sky.jpg"
-            horizontal="20" vertical="20" 
-            texture-percent="1.0" sphere-percent="1.3"
-            speed-x="0.003000000026077032" speed-y="0.0" />
-  <camera far="1000.0"/>
-  <default-start karts-per-row     ="2"
-                 forwards-distance ="1.10"
-                 sidewards-distance="2.00"
-                 upwards-distance  ="1.10"/>
   <water model="Plane.002.b3d" xyz="-140.20 -0.42 -46.58" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.10" speed="200.00" length="10.00">
     <animated-texture name="water_light2.png" dy="0.050" />
   </water>
-  <particle-emitter kind="waterfall.xml" x="-183.36" y="0.77" z="50.63" h="0.00">
+  <particle-emitter kind="waterfall.xml" xyz="-183.36 0.77 50.63" h="0.00">
   </particle-emitter>
   <big-nitro x="-135.29" y="0.78" z="-46.43" />
   <big-nitro x="-139.34" y="0.78" z="-40.47" />
@@ -202,4 +198,8 @@
   <object type="billboard" texture="lightHaloY.png" xyz="-170.98 3.78 -59.92" 
              width="7.592" height="9.268" >
   </object>
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.10"
+                 sidewards-distance="2.00"
+                 upwards-distance  ="1.10"/>
 </scene>

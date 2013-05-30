@@ -11,7 +11,7 @@
   </material>
   <material name="flag.jpg" backface-culling="N"/>
   <material name="foliage.png" backface-culling="N" compositing="test" clampv="Y"/>
-  <material name="golfball_baked.jpg" use-normal-map="Y" normal-map="golfball_baked_normal.png"/>
+  <material name="golfball_baked.jpg" graphical-effect="normal_map" normal-map="golfball_baked_normal.png"/>
   <material name="grass_trim.png" backface-culling="N" compositing="blend" clampu="Y" ignore="Y"/>
   <material name="sand.jpg" max-speed="0.30">
     <particles condition="skid drive" base="sand.xml"/>

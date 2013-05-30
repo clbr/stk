@@ -17,7 +17,7 @@
   </material>
   <material name="GrassTall.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
   <material name="GrassTall.png" compositing="test" ignore="Y"/>
-  <material name="invisible.png" fog="N" light="N" compositing="blend" graphical-effect="water" slowdown-time="0.20" max-speed="0.70">
+  <material name="invisible.png" fog="N" light="N" compositing="blend" slowdown-time="0.20" max-speed="0.70" water-splash="Y">
     <sfx filename="splash.ogg" min_speed="5.00" max_speed="15.00" min_pitch="0.80" max_pitch="1.20" positional="Y" rolloff="0.10"/>
     <particles base="splash.xml" condition="skid drive"/>
   </material>
@@ -31,7 +31,7 @@
   </material>
   <material name="StreamPlant.png" ignore="Y"/>
   <material name="vegetation_1.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
-  <material name="water_light2.png" compositing="blend" surface="Y" graphical-effect="water">
+  <material name="water_light2.png" compositing="blend" surface="Y" water-splash="Y">
     <sfx filename="splash.ogg"/>
     <particles base="splash.xml" condition="skid drive"/>
   </material>

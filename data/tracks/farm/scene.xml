@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12583 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="farm_track.b3d" x="0" y="0" z="0">
     <static-object lod_instance="true" lod_group="skull" xyz="0.86 9.55 -2.36" hpr="-52.6 -0.0 -0.0" scale="0.49 0.49 0.49"/> <!-- writeStaticObjects 3 -->

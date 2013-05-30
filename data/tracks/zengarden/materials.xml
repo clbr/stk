@@ -21,11 +21,11 @@
   <material name="tree_1.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
   <material name="tree_1Low.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
   <material name="vegetation_1.png" backface-culling="N" compositing="coverage" ignore="Y"/>
-  <material name="water_light2.png" compositing="blend" disable-z-write="Y" graphical-effect="water" reset="Y" surface="Y">
+  <material name="water_light2.png" compositing="blend" disable-z-write="Y" reset="Y" surface="Y" water-splash="Y">
     <sfx filename="splash.ogg" min_speed="0.00" max_speed="0.00" min_pitch="0.80" max_pitch="1.20" positional="Y" rolloff="0.10"/>
     <particles condition="skid drive" base="splash.xml"/>
   </material>
-  <material name="water_light3.png" falling-effect="Y" graphical-effect="water"/>
+  <material name="water_light3.png" falling-effect="Y" water-splash="Y"/>
   <material name="waterlily.png" compositing="blend" disable-z-write="Y" ignore="Y"/>
   <material name="waterparticles.png" compositing="blend" disable-z-write="Y"/>
   <material name="wooden2.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>

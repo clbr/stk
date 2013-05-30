@@ -19,10 +19,10 @@
     <particles base="smoke_brown.xml" condition="skid"/>
   </material>
   <material name="roof.png" backface-culling="N"/>
-  <material name="seabed.jpg" falling-effect="Y" graphical-effect="water"/>
+  <material name="seabed.jpg" falling-effect="Y" water-splash="Y"/>
   <material name="transparence.png" fog="N" compositing="test" disable-z-write="Y"/>
   <material name="wall.png" backface-culling="N"/>
-  <material name="water_light.png" ignore="Y" surface="Y" water-shader="Y">
+  <material name="water_light.png" ignore="Y" surface="Y" graphical-effect="water_shader">
     <sfx filename="splash.ogg" rolloff="0.10" min_speed="0.00" max_speed="30.00" min_pitch="1.00" max_pitch="1.00" positional="N"/>
     <particles base="splash.xml" condition="skid drive"/>
   </material>

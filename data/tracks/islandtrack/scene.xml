@@ -1,47 +1,13 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12070 -->
+<!-- Generated with script from SVN rev 12720 -->
 <scene>
   <track model="islandtrack_track.b3d" x="0" y="0" z="0"/>
-  <water model="Water.b3d" xyz="10.00 0.00 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.60" speed="300.00" length="10.00"/>
-  <banana x="-67.241928" y="-1.299122" z="-85.758522" />
-  <item x="-10.770379" y="0.895445" z="57.934975" />
-  <item x="-44.486229" y="25" z="27.902454" />
-  <item x="-45.33086" y="25" z="26.072418" />
-  <item x="-145.920151" y="-2.828203" z="-13.345998" />
-  <item x="-46.069912" y="25" z="24.418346" />
-  <item x="-157.791183" y="8.241491" z="71.256561" />
-  <item x="-159.840088" y="8.241491" z="68.273735" />
-  <item x="-207.770599" y="9.676691" z="31.222069" />
-  <item x="-206.719437" y="9.676691" z="32.933277" />
-  <item x="-9.528656" y="0.895445" z="60.141273" />
-  <item x="-12.006065" y="0.895445" z="55.772522" />
-  <item x="-69.512611" y="-1.299122" z="-87.515366" />
-  <item x="-69.451797" y="-1.299122" z="-83.501801" />
-  <item x="-205.521591" y="9.676691" z="34.5467" />
-  <small-nitro x="-67.756111" y="1.415705" z="61.211277" />
-  <small-nitro x="-32.469292" y="6.765142" z="36.07402" />
-  <small-nitro x="42.240871" y="25" z="-60.86517" />
-  <small-nitro x="45.745564" y="25" z="-60.69627" />
-  <small-nitro x="-71.190697" y="-1.299122" z="-85.880371" />
-  <small-nitro x="-67.113632" y="1.415705" z="59.481522" />
-  <small-nitro x="-31.202278" y="6.765142" z="38.080128" />
-  <small-nitro x="-30.146433" y="6.765142" z="39.980648" />
-  <small-nitro x="-147.215057" y="-2.828203" z="-15.463158" />
-  <small-nitro x="-218.634979" y="1.15201" z="85.491348" />
-  <small-nitro x="-68.497437" y="1.415705" z="63.583511" />
-  <small-nitro x="-214.539719" y="1.15201" z="83.09169" />
-  <small-nitro x="-92.433601" y="25" z="-24.74608" />
-  <small-nitro x="-89.96936" y="25" z="-25.275589" />
-  <small-nitro x="-216.358521" y="1.15201" z="84.235779" />
-  <small-nitro x="-144.630096" y="-2.828203" z="-11.915179" />
-  <small-nitro x="-87.830963" y="25" z="-25.784731" />
-  <small-nitro x="38.862854" y="25" z="-60.991844" />
-  <item x="40.509636" y="25" z="-60.86517" />
-  <item x="44.077232" y="25" z="-60.694118" />
-  <small-nitro x="8.015705" y="0" z="-0.728317" />
-  <small-nitro x="10.046886" y="0" z="-0.728317" />
-  <small-nitro x="6.156173" y="0" z="-0.728317" />
-  <small-nitro x="11.935026" y="0" z="-0.728317" />
+
+  <sky-dome texture="sky2.jpg"
+            horizontal="16" vertical="16" 
+            texture-percent="1.0" sphere-percent="2.0"
+            speed-x="0.0" speed-y="0.0" />
+  <camera far="1000.0"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
     <check-line kind="activate" other-ids="2" p1="-172.28 81.22" p2="-173.60 68.84"
@@ -51,16 +17,6 @@
     <check-line kind="activate" other-ids="0" p1="-98.94 -38.13" p2="-89.46 -41.28"
                 min-height="7.53" same-group="3"/>
   </checks>
-
-  <sky-dome texture="sky2.jpg"
-            horizontal="16" vertical="16" 
-            texture-percent="1.0" sphere-percent="2.0"
-            speed-x="0.0" speed-y="0.0" />
-  <camera far="1000.0"/>
-  <default-start karts-per-row     ="2"
-                 forwards-distance ="1.50"
-                 sidewards-distance="3.00"
-                 upwards-distance  ="0.10"/>
   <end-cameras>
     <camera type="static_follow_kart" xyz="-170.343643 3.373950 111.604774" distance="15"/> <!-- EndCam1 -->
     <camera type="static_follow_kart" xyz="-239.978836 11.263998 88.137695" distance="35"/> <!-- EndCam2 -->
@@ -73,4 +29,48 @@
     <camera type="static_follow_kart" xyz="-24.391632 7.255007 -65.730881" distance="35.0"/> <!-- EndCam9 -->
     <camera type="ahead_of_kart" xyz="28.764820 7.255023 -91.457855" distance="35.0"/> <!-- EndCam10 -->
   </end-cameras>
+  <water model="Water.b3d" xyz="10.00 0.00 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" height="0.60" speed="300.00" length="10.00"/>
+  <banana x="-67.24" y="-1.30" z="-85.76" />
+  <item x="-10.77" y="0.90" z="57.93" />
+  <item x="-44.49" y="25.00" z="27.90" />
+  <item x="-45.33" y="25.00" z="26.07" />
+  <item x="-145.92" y="-2.83" z="-13.35" />
+  <item x="-46.07" y="25.00" z="24.42" />
+  <item x="-157.79" y="8.24" z="71.26" />
+  <item x="-159.84" y="8.24" z="68.27" />
+  <item x="-207.77" y="9.68" z="31.22" />
+  <item x="-206.72" y="9.68" z="32.93" />
+  <item x="-9.53" y="0.90" z="60.14" />
+  <item x="-12.01" y="0.90" z="55.77" />
+  <item x="-69.51" y="-1.30" z="-87.52" />
+  <item x="-69.45" y="-1.30" z="-83.50" />
+  <item x="-205.52" y="9.68" z="34.55" />
+  <small-nitro x="-67.76" y="1.42" z="61.21" />
+  <small-nitro x="-32.47" y="6.77" z="36.07" />
+  <small-nitro x="42.24" y="25.00" z="-60.87" />
+  <small-nitro x="45.75" y="25.00" z="-60.70" />
+  <small-nitro x="-71.19" y="-1.30" z="-85.88" />
+  <small-nitro x="-67.11" y="1.42" z="59.48" />
+  <small-nitro x="-31.20" y="6.77" z="38.08" />
+  <small-nitro x="-30.15" y="6.77" z="39.98" />
+  <small-nitro x="-147.22" y="-2.83" z="-15.46" />
+  <small-nitro x="-218.63" y="1.15" z="85.49" />
+  <small-nitro x="-68.50" y="1.42" z="63.58" />
+  <small-nitro x="-214.54" y="1.15" z="83.09" />
+  <small-nitro x="-92.43" y="25.00" z="-24.75" />
+  <small-nitro x="-89.97" y="25.00" z="-25.28" />
+  <small-nitro x="-216.36" y="1.15" z="84.24" />
+  <small-nitro x="-144.63" y="-2.83" z="-11.92" />
+  <small-nitro x="-87.83" y="25.00" z="-25.78" />
+  <small-nitro x="38.86" y="25.00" z="-60.99" />
+  <item x="40.51" y="25.00" z="-60.87" />
+  <item x="44.08" y="25.00" z="-60.69" />
+  <small-nitro x="8.02" y="0.00" z="-0.73" />
+  <small-nitro x="10.05" y="0.00" z="-0.73" />
+  <small-nitro x="6.16" y="0.00" z="-0.73" />
+  <small-nitro x="11.94" y="0.00" z="-0.73" />
+  <default-start karts-per-row     ="2"
+                 forwards-distance ="1.50"
+                 sidewards-distance="3.00"
+                 upwards-distance  ="0.10"/>
 </scene>
