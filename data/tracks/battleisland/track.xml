@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev Unknown -->
-<track  name        = "Battle Island"
-        version     = "5"
-        groups      = "Add-Ons"
-        designer    = "qubodup"
-        music       = "kart_grand_prix.music"
-        arena       = "Y"
-        screenshot  = "battleisland_screenshot.jpg"
+<!-- Generated with script from SVN rev 12720 -->
+<track  name           = "Battle Island"
+        version        = "5"
+        groups         = "Add-Ons"
+        designer       = "qubodup"
+        music          = "kart_grand_prix.music"
+        arena          = "Y"
+        screenshot     = "battleisland_screenshot.jpg"
+        smooth-normals = "false"
+        reverse        = "N"
 >
 </track>
