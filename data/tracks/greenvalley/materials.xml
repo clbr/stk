@@ -30,6 +30,7 @@
     <particles base="smoke_brown.xml" condition="skid"/>
   </material>
   <material name="StreamPlant.png" ignore="Y"/>
+  <material name="transparence.png" compositing="test" falling-effect="Y" reset="Y"/>
   <material name="vegetation_1.png" light="N" backface-culling="N" compositing="test" ignore="Y"/>
   <material name="water_light2.png" compositing="blend" surface="Y" water-splash="Y">
     <sfx filename="splash.ogg"/>
