@@ -2,25 +2,34 @@
 <!-- Generated with script from SVN rev Unknown -->
 <materials>
   <material name="wood_planks1.jpg" backface-culling="N"/>
-  <material name="Catail.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
+  <material name="bugslight.png" fog="N" light="N" backface-culling="N" compositing="additive" ignore="Y" disable-z-write="Y"/>
+  <material name="Catail.png" backface-culling="N" compositing="blend" disable-z-write="Y" graphical-effect="grass" ignore="Y" grass-speed="1.50"/>
   <material name="detailJapan.png" backface-culling="N" compositing="test"/>
+  <material name="dynamic_clouds.png" fog="N" compositing="blend" disable-z-write="Y"/>
+  <material name="explode.png" fog="N" light="N" backface-culling="N" compositing="additive" disable-z-write="Y"/>
   <material name="fence_pagoda.png" compositing="test"/>
+  <material name="haloStoneLantern.png" fog="N" light="N" compositing="additive" disable-z-write="Y"/>
   <material name="japanRedWood.png" backface-culling="N"/>
   <material name="koiFish.png" backface-culling="N" compositing="test"/>
-  <material name="lanternDirection.png" backface-culling="N"/>
+  <material name="lantern_light.png" fog="N" light="N" compositing="additive" disable-z-write="Y"/>
+  <material name="lanternDirection.png" light="N" backface-culling="N"/>
   <material name="lanternsupport.jpg" backface-culling="N"/>
-  <material name="lightHaloY.png" light="N" compositing="blend" disable-z-write="Y"/>
+  <material name="lightHaloY.png" light="N" backface-culling="N" compositing="additive" disable-z-write="Y" fog="N"/>
   <material name="monumentWater.png" compositing="blend" disable-z-write="Y"/>
   <material name="monumentWater2.png" compositing="blend" disable-z-write="Y"/>
   <material name="monumentWater3.png" compositing="blend" disable-z-write="Y"/>
-  <material name="pagoda_wall.png" backface-culling="N" compositing="test"/>
+  <material name="paperlantern.png" fog="N" light="N" backface-culling="N"/>
   <material name="pix.png" compositing="test" reset="Y"/>
-  <material name="plants.jpg" backface-culling="N" compositing="blend" mask="plants_alpha.jpg"/>
+  <material name="plants.jpg" backface-culling="N" compositing="blend" disable-z-write="Y" graphical-effect="grass" mask="plants_alpha.jpg" grass-speed="1.50"/>
   <material name="sakura_leaves.jpg" backface-culling="N" compositing="blend" disable-z-write="Y" mask="sakura_leaves_alpha.jpg"/>
   <material name="shintoB.jpg" backface-culling="N"/>
+  <material name="sky_color.png" fog="N" light="N" clampu="Y" clampv="Y" compositing="blend" disable-z-write="Y"/>
+  <material name="sun.png" fog="N" light="N" clampu="Y" clampv="Y" compositing="additive" disable-z-write="Y"/>
+  <material name="sunset.png" fog="N" light="N" compositing="blend" disable-z-write="Y"/>
+  <material name="sunset_color.png" fog="N" light="N" clampu="Y" clampv="Y" compositing="blend"/>
   <material name="tree_1.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
   <material name="tree_1Low.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
-  <material name="vegetation_1.png" backface-culling="N" compositing="coverage" ignore="Y"/>
+  <material name="vegetation_1.png" backface-culling="N" compositing="blend" graphical-effect="grass" ignore="Y" grass-speed="1.50"/>
   <material name="water_light2.png" compositing="blend" disable-z-write="Y" reset="Y" surface="Y" water-splash="Y">
     <sfx filename="splash.ogg" min_speed="0.00" max_speed="0.00" min_pitch="0.80" max_pitch="1.20" positional="Y" rolloff="0.10"/>
     <particles condition="skid drive" base="splash.xml"/>

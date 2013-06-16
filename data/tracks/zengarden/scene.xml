@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12720 -->
+<!-- Generated with script from SVN rev 12731 -->
 <scene>
   <track model="zenGarden_track.b3d" x="0" y="0" z="0">
     <static-object lod_instance="true" lod_group="torii" xyz="1.50 0.00 10.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="blueFireflies.b3d" xyz="-151.51 4.87 -24.18" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
     <static-object lod_distance="70.0" lod_group="sakuraPine" model="sakuraPine_LOD70.b3d" xyz="-54.59 2.15 147.31" hpr="16.3 -118.9 -16.1" scale="0.92 0.92 0.92"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="45.0" lod_group="sakuraPine" model="sakuraPine_LOD45.b3d" xyz="-54.59 2.15 128.00" hpr="16.3 -118.9 -16.1" scale="0.92 0.92 0.92"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="100.0" lod_group="sakuraPine" model="sakuraPine_LOD100.b3d" xyz="-57.59 2.15 164.00" hpr="16.3 -118.9 -16.1" scale="0.92 0.92 0.92"/> <!-- writeStaticObjects 3 -->
@@ -10,24 +13,88 @@
     <static-object lod_distance="50.0" lod_group="torii" model="torii_LOD50.b3d" xyz="-16.50 0.00 173.83" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="75.0" lod_group="torii" model="torii_LOD75.b3d" xyz="-16.50 0.00 178.64" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="120.0" lod_group="torii" model="torii_LOD120.b3d" xyz="-16.50 0.00 183.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="blueFireflies.b3d" xyz="-128.36 8.61 -19.00" hpr="-0.0 97.6 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
     <static-object lod_instance="true" lod_group="torii" xyz="-50.43 0.00 -50.65" hpr="-0.0 100.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="blueFireflies.b3d" xyz="-109.45 8.54 -24.80" hpr="-0.0 97.6 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="blueFireflies.b3d" xyz="-91.40 8.30 -36.35" hpr="-0.0 -130.7 0.0" scale="1.36 1.36 1.36"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="blueFireflies.b3d" xyz="-121.94 2.95 -59.89" hpr="-0.0 -140.6 0.0" scale="1.36 1.36 1.36"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="blueFireflies.b3d" xyz="-111.24 2.95 -46.27" hpr="0.0 152.4 0.0" scale="1.36 1.36 1.36"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="skylantern.b3d" xyz="50.27 -77.25 28.24" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="explode.png" dy="0.500" />
+    </static-object>
+    <static-object model="blueFireflies.b3d" xyz="-100.60 1.99 -29.49" hpr="0.0 152.4 0.0" scale="0.82 0.82 0.82"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="skylantern.b3d" xyz="69.53 -59.99 28.24" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="explode.png" dy="0.500" />
+    </static-object>
+    <static-object model="blueFireflies.b3d" xyz="-94.99 1.99 -11.77" hpr="0.0 152.4 0.0" scale="1.13 1.13 1.13"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="blueFireflies.b3d" xyz="-103.25 1.99 1.57" hpr="-0.0 -126.8 0.0" scale="1.13 1.13 1.13"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="blueFireflies.b3d" xyz="-118.73 1.99 7.21" hpr="-0.0 -126.8 0.0" scale="1.13 1.13 1.13"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="blueFireflies.b3d" xyz="-133.26 1.99 8.00" hpr="-0.0 102.4 -0.0" scale="1.13 1.13 1.13"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="blueFireflies.b3d" xyz="-147.93 1.99 11.29" hpr="-0.0 102.4 -0.0" scale="1.13 1.13 1.13"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="bugslight.png" dy="0.200" />
+    </static-object>
+    <static-object model="stoneLantern.b3d" xyz="-143.19 0.32 47.99" hpr="-0.0 102.6 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="explode.png" dx="0.400"  dy="0.100" />
+    </static-object>
+    <static-object model="stoneLantern.b3d" xyz="-127.96 0.32 24.31" hpr="0.0 -101.6 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="explode.png" dx="0.400"  dy="0.100" />
+    </static-object>
+    <static-object model="stoneLantern.b3d" xyz="-70.60 1.38 27.72" hpr="-0.0 53.7 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="explode.png" dx="0.400"  dy="0.100" />
+    </static-object>
+    <static-object model="stoneLantern.b3d" xyz="-90.47 0.24 24.29" hpr="-0.0 53.7 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="explode.png" dx="0.400"  dy="0.100" />
+    </static-object>
+    <static-object model="stoneLantern.b3d" xyz="-74.90 0.94 45.69" hpr="-0.0 53.7 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="explode.png" dx="0.400"  dy="0.100" />
+    </static-object>
+    <static-object model="stoneLantern.b3d" xyz="-96.72 0.89 65.61" hpr="-0.0 53.7 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="explode.png" dx="0.400"  dy="0.100" />
+    </static-object>
+    <static-object model="stoneLantern.b3d" xyz="-118.55 1.07 60.83" hpr="-0.0 53.7 -0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="explode.png" dx="0.400"  dy="0.100" />
+    </static-object>
     <static-object lod_instance="true" lod_group="bridge" xyz="-170.79 -16.09 41.63" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="150.0" lod_group="bridge" model="bridge_LOD150.b3d" xyz="-170.79 5.05 106.90" hpr="-90.0 50.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="50.0" lod_group="bridge" model="bridge_LOD50.b3d" xyz="-170.79 5.05 95.63" hpr="-90.0 50.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="500.0" lod_group="bridge" model="bridge_LOD500.b3d" xyz="-170.79 5.05 118.63" hpr="-90.0 50.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_instance="true" lod_group="directionLantern" xyz="-113.95 2.10 59.71" hpr="-90.0 55.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_instance="true" lod_group="directionLanLite" xyz="-157.94 2.73 -71.31" hpr="-90.0 -60.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_distance="25.0" lod_group="directionLantern" model="directionLantern_LOD25.b3d" xyz="-169.06 0.73 79.11" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_distance="75.0" lod_group="directionLantern" model="directionLantern_LOD75.b3d" xyz="-165.16 0.73 79.10" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_distance="100.0" lod_group="directionLantern" model="directionLantern_LOD100.b3d" xyz="-161.18 0.73 79.14" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lantern_alone.b3d" xyz="-175.05 5.23 37.77" hpr="-90.0 -0.0 0.0" scale="0.66 0.66 0.66"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="directionLantern" xyz="-113.95 -10.90 59.71" hpr="-90.0 55.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="directionLanLite" xyz="-157.94 2.26 -70.84" hpr="-90.0 -60.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="900.0" lod_group="directionLantern" model="directionLantern_LOD25.b3d" xyz="-169.06 0.73 79.11" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="1000.0" lod_group="directionLantern" model="directionLantern_LOD75.b3d" xyz="-165.16 0.73 79.10" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="1005.0" lod_group="directionLantern" model="directionLantern_LOD100.b3d" xyz="-161.18 0.73 79.14" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="35.0" lod_group="limit" model="limit_LOD35.b3d" xyz="-33.25 0.46 170.90" hpr="-90.0 73.8 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="directionLantern" xyz="-6.14 2.10 27.37" hpr="-90.0 91.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_distance="25.0" lod_group="directionLanLite" model="directionLanLite_LOD25.b3d" xyz="-157.95 2.73 75.71" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_distance="80.0" lod_group="directionLanLite" model="directionLanLite_LOD80.b3d" xyz="-157.95 2.73 78.71" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="900.0" lod_group="directionLanLite" model="directionLanLite_LOD25.b3d" xyz="-157.95 2.73 75.71" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_distance="1000.0" lod_group="directionLanLite" model="directionLanLite_LOD80.b3d" xyz="-157.95 2.73 78.71" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="directionLanLite" xyz="-145.35 2.73 -75.78" hpr="-90.0 -82.1 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_instance="true" lod_group="directionLanLite" xyz="-171.02 2.73 -59.94" hpr="-90.0 -20.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="directionLanLite" xyz="-169.42 2.73 -59.94" hpr="-90.0 -20.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="directionLantern" xyz="-17.51 1.72 -51.47" hpr="-90.0 -134.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="50.0" lod_group="pagoda1" model="pagoda1_LOD50.b3d" xyz="-102.80 7.02 148.30" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object lod_instance="true" lod_group="directionLanLite" xyz="-169.33 2.47 -31.66" hpr="-90.0 33.2 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lantern_alone.b3d" xyz="-164.08 5.23 48.69" hpr="-90.0 -0.0 0.0" scale="0.66 0.66 0.66"/> <!-- writeStaticObjects 3 -->
+    <static-object model="pagoda_bridge.b3d" xyz="0.00 0.00 0.00" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="60.0" lod_group="pineTree1" model="pineTree1_LOD50.b3d" xyz="-99.79 0.21 132.22" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="pineTree1" xyz="-124.48 0.66 57.22" hpr="-90.0 51.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="pineTree1" xyz="-132.26 -0.08 41.38" hpr="-90.0 19.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -38,6 +105,8 @@
     <static-object lod_instance="true" lod_group="pineTree1" xyz="-168.77 0.33 54.07" hpr="-90.0 51.0 -0.0" scale="0.94 0.94 0.94"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="pineTree1" xyz="-174.23 -0.23 11.31" hpr="-90.0 75.2 0.0" scale="1.03 1.03 1.03"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="pineTree1" xyz="-74.13 0.84 31.33" hpr="-90.0 51.0 -0.0" scale="0.94 0.94 0.94"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lantern_alone.b3d" xyz="-96.28 5.67 42.87" hpr="-90.0 -0.0 0.0" scale="0.66 0.66 0.66"/> <!-- writeStaticObjects 3 -->
+    <static-object model="lantern_alone.b3d" xyz="-102.88 5.67 45.64" hpr="-90.0 -0.0 0.0" scale="0.66 0.66 0.66"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="pineTree1" xyz="-53.43 0.84 11.93" hpr="-90.0 19.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="pineTree1" xyz="-109.44 1.00 65.62" hpr="-90.0 51.0 -0.0" scale="0.94 0.94 0.94"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="pineTree1" xyz="-76.11 1.43 53.32" hpr="-90.0 51.0 -0.0" scale="0.84 0.84 0.84"/> <!-- writeStaticObjects 3 -->
@@ -100,7 +169,6 @@
     <static-object model="pineVeryLow.b3d" xyz="-33.46 0.69 74.49" hpr="-90.0 -4.5 0.0" scale="1.24 1.24 1.24"/> <!-- writeStaticObjects 3 -->
     <static-object model="pineVeryLow.b3d" xyz="-21.94 1.17 55.52" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="200.0" lod_group="pagoda1" model="pagoda1_LOD200.b3d" xyz="-102.80 7.02 168.30" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object lod_instance="true" lod_group="pagoda1" xyz="-102.80 7.02 36.30" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="limit" xyz="-33.25 0.46 -58.07" hpr="-90.0 73.8 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="90.0" lod_group="limit" model="limit_LOD90.b3d" xyz="-33.25 0.46 173.90" hpr="-90.0 73.8 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="limit" xyz="-24.31 0.76 -39.82" hpr="-90.0 50.4 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -110,7 +178,7 @@
     <static-object lod_instance="true" lod_group="pineTree1" xyz="-128.27 -0.08 50.93" hpr="-90.0 19.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="500.0" lod_group="sakuraLow" model="sakuraLow_LOD500.b3d" xyz="-65.94 1.11 132.09" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="100.0" lod_group="sakuraLow" model="sakuraLow_LOD100.b3d" xyz="-65.94 1.11 125.09" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
-    <static-object model="Plane.007.b3d" xyz="-143.00 15.00 -74.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
+    <static-object model="grassCaves.b3d" xyz="-143.00 15.00 -74.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="sakuraLow" xyz="-27.84 -11.89 -1.99" hpr="0.0 -0.0 0.0" scale="1.09 1.09 1.09"/> <!-- writeStaticObjects 3 -->
     <static-object model="waterLily.b3d" xyz="-141.27 -0.47 -49.21" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
     <static-object model="waterLily.b3d" xyz="-134.82 -0.65 -53.79" hpr="0.0 -43.6 0.0" scale="0.78 0.78 0.78"/> <!-- writeStaticObjects 3 -->
@@ -124,6 +192,18 @@
     <static-object lod_instance="true" lod_group="catailVeg" xyz="-131.42 -3.04 -52.29" hpr="-0.0 123.6 -0.0" scale="0.80 0.80 0.80"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="catailVeg" xyz="-139.46 -3.04 -59.31" hpr="-0.0 -119.9 -0.0" scale="0.73 0.73 0.73"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="catailVeg" xyz="-141.21 -3.04 -54.15" hpr="-0.0 -145.8 -0.0" scale="0.89 0.89 0.89"/> <!-- writeStaticObjects 3 -->
+    <static-object model="sun_physical.b3d" xyz="511.96 -12.22 -159.79" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="sun.png" dy="-0.003" />
+    </static-object>
+    <static-object model="skybox_1.b3d" xyz="986.10 -7.58 -195.35" hpr="0.0 -0.0 0.0" scale="1.13 1.13 1.13"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="sky_color.png" dy="-0.003" />
+    </static-object>
+    <static-object model="skybox_sunset.b3d" xyz="848.93 -14.58 -195.35" hpr="0.0 -0.0 0.0" scale="1.13 1.13 1.13"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="sunset_color.png" dy="-0.003" />
+    </static-object>
+    <static-object model="clouds.b3d" xyz="556.37 -21.03 -216.36" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
+    <animated-texture name="dynamic_clouds.png" dx="0.005" />
+    </static-object>
     <static-object lod_instance="true" lod_group="sakuraPine" xyz="-16.21 0.95 -13.21" hpr="-8.3 -53.2 12.9" scale="0.60 0.60 0.60"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="sakuraPine" xyz="-19.22 0.95 0.00" hpr="16.3 -118.9 -16.1" scale="0.92 0.92 0.92"/> <!-- writeStaticObjects 3 -->
     <static-object lod_instance="true" lod_group="sakuraPine" xyz="-26.71 0.95 3.84" hpr="-5.2 136.7 -10.6" scale="0.74 0.74 0.74"/> <!-- writeStaticObjects 3 -->
@@ -135,12 +215,86 @@
     <animated-texture name="monumentWater.png" dy="-0.200" />
     <animated-texture name="water_light2.png" dy="0.050" />
   </track>
-  <sun  xyz="-85.00 56.00 0.00" sun-specular="255 255 255" sun-diffuse="255 255 255" ambient="255 255 255"/>
-
-  <sky-dome texture="sky.jpg"
-            horizontal="20" vertical="20" 
-            texture-percent="1.0" sphere-percent="1.3"
-            speed-x="0.003000000026077032" speed-y="0.0" />
+  <object type="animation" model="skyLantern_gpr2.b3d" xyz="-5.03 -36.01 -26.23" hpr="0.0 105.4 0.0" scale="1.00 1.00 1.00" shape="box" interaction="static">
+    <curve channel="LocX" interpolation="bezier" extend="const">
+      <p c="1.000 -5.031" h1="-1552.727 -5.031" h2="1554.727 -5.031"/>
+      <p c="3985.000 179.841" h1="2431.272 179.841" h2="5538.728 179.841"/>
+    </curve>
+    <curve channel="LocZ" interpolation="bezier" extend="const">
+      <p c="1.000 -26.228" h1="-1554.254 -26.228" h2="1556.254 -26.228"/>
+      <p c="3985.000 28.322" h1="2429.746 28.322" h2="5540.254 28.322"/>
+    </curve>
+    <curve channel="LocY" interpolation="bezier" extend="const">
+      <p c="1.000 -36.010" h1="-1552.495 -36.010" h2="1554.495 -36.010"/>
+      <p c="3985.000 161.320" h1="2431.505 161.320" h2="5538.495 161.320"/>
+    </curve>
+    <curve channel="RotX" interpolation="bezier" extend="const">
+      <p c="1.000 -0.000" h1="-1554.399 -0.000" h2="1556.399 -0.000"/>
+      <p c="3985.000 -0.000" h1="2429.601 -0.000" h2="5540.399 -0.000"/>
+    </curve>
+    <curve channel="RotZ" interpolation="bezier" extend="const">
+      <p c="1.000 -0.000" h1="-1554.399 -0.000" h2="1556.399 -0.000"/>
+      <p c="3985.000 -0.000" h1="2429.601 -0.000" h2="5540.399 -0.000"/>
+    </curve>
+    <curve channel="RotY" interpolation="bezier" extend="const">
+      <p c="1.000 105.356" h1="-1554.399 105.356" h2="1556.399 105.356"/>
+      <p c="3985.000 105.356" h1="2429.601 105.356" h2="5540.399 105.356"/>
+    </curve>
+  </object>
+  <object type="animation" model="skyLantern_gpr3.b3d" xyz="9.92 -98.36 2.18" hpr="-0.0 -127.4 0.0" scale="1.00 1.00 1.00" shape="box" interaction="static">
+    <curve channel="LocX" interpolation="bezier" extend="const">
+      <p c="1.000 9.919" h1="-1552.786 9.919" h2="1554.786 9.919"/>
+      <p c="3985.000 191.544" h1="2431.214 191.544" h2="5538.786 191.544"/>
+    </curve>
+    <curve channel="LocZ" interpolation="bezier" extend="const">
+      <p c="1.000 2.177" h1="-1554.254 2.177" h2="1556.254 2.177"/>
+      <p c="3985.000 56.727" h1="2429.746 56.727" h2="5540.254 56.727"/>
+    </curve>
+    <curve channel="LocY" interpolation="bezier" extend="const">
+      <p c="1.000 -98.362" h1="-1549.647 -98.362" h2="1551.647 -98.362"/>
+      <p c="3985.000 213.808" h1="2434.354 213.808" h2="5535.646 213.808"/>
+    </curve>
+    <curve channel="RotX" interpolation="bezier" extend="const">
+      <p c="1.000 -0.000" h1="-1554.399 -0.000" h2="1556.399 -0.000"/>
+      <p c="3985.000 -0.000" h1="2429.601 -0.000" h2="5540.399 -0.000"/>
+    </curve>
+    <curve channel="RotZ" interpolation="bezier" extend="const">
+      <p c="1.000 -0.000" h1="-1554.399 -0.000" h2="1556.399 -0.000"/>
+      <p c="3985.000 -0.000" h1="2429.601 -0.000" h2="5540.399 -0.000"/>
+    </curve>
+    <curve channel="RotY" interpolation="bezier" extend="const">
+      <p c="1.000 232.563" h1="-1554.399 232.563" h2="1556.399 232.563"/>
+      <p c="3985.000 232.563" h1="2429.601 232.563" h2="5540.399 232.563"/>
+    </curve>
+  </object>
+  <object type="animation" model="skyLantern_gpr1.b3d" xyz="19.63 -59.33 -24.55" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" shape="box" interaction="static">
+    <curve channel="LocX" interpolation="bezier" extend="const">
+      <p c="1.000 19.632" h1="-1552.433 19.632" h2="1554.433 19.632"/>
+      <p c="3985.000 220.146" h1="2431.567 220.146" h2="5538.433 220.146"/>
+    </curve>
+    <curve channel="LocZ" interpolation="bezier" extend="const">
+      <p c="1.000 -24.546" h1="-1554.254 -24.546" h2="1556.254 -24.546"/>
+      <p c="3985.000 30.004" h1="2429.746 30.004" h2="5540.254 30.004"/>
+    </curve>
+    <curve channel="LocY" interpolation="bezier" extend="const">
+      <p c="1.000 -59.335" h1="-1551.870 -59.335" h2="1553.870 -59.335"/>
+      <p c="3985.000 168.171" h1="2432.130 168.171" h2="5537.870 168.171"/>
+    </curve>
+    <curve channel="RotX" interpolation="bezier" extend="const">
+      <p c="1.000 -0.000" h1="-1554.399 -0.000" h2="1556.399 -0.000"/>
+      <p c="3985.000 -0.000" h1="2429.601 -0.000" h2="5540.399 -0.000"/>
+    </curve>
+    <curve channel="RotZ" interpolation="bezier" extend="const">
+      <p c="1.000 -0.000" h1="-1554.399 -0.000" h2="1556.399 -0.000"/>
+      <p c="3985.000 -0.000" h1="2429.601 -0.000" h2="5540.399 -0.000"/>
+    </curve>
+    <curve channel="RotY" interpolation="bezier" extend="const">
+      <p c="1.000 -0.000" h1="-1554.399 -0.000" h2="1556.399 -0.000"/>
+      <p c="3985.000 -0.000" h1="2429.601 -0.000" h2="5540.399 -0.000"/>
+    </curve>
+  </object>
+  <sun  xyz="578.41 -5.90 -180.53" sun-specular="255 209 165" sun-diffuse="255 215 181" ambient="255 224 179"/>
+  <sky-box texture="star-back.png star-back.png star-back.png star-back.png star-back.png star-back.png"/>
   <camera far="1000.0"/>
   <checks>
     <check-lap kind="lap" same-group="0" other-ids="1" />
@@ -189,13 +343,91 @@
   <item x="-106.42" y="5.12" z="-29.59" h="-376.44" />
   <item x="-35.65" y="0.56" z="-54.48" h="-358.75" />
   <item x="-35.77" y="0.56" z="-48.90" h="-358.75" />
-  <object type="billboard" texture="lightHaloY.png" xyz="-157.92 3.78 -71.28" 
+  <object type="billboard" texture="lightHaloY.png" xyz="-157.92 3.31 -70.80" 
              width="7.592" height="9.268" >
   </object>
   <object type="billboard" texture="lightHaloY.png" xyz="-145.35 3.78 -75.74" 
              width="7.592" height="9.268" >
   </object>
-  <object type="billboard" texture="lightHaloY.png" xyz="-170.98 3.78 -59.92" 
+  <object type="billboard" texture="lightHaloY.png" xyz="-169.38 3.78 -59.92" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-164.04 6.10 48.63" 
+             width="5.623" height="6.864" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-18.86 2.89 -52.67" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-17.60 2.89 -51.40" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-16.59 3.16 -49.92" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-15.17 2.89 -49.07" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-9.47 3.35 27.34" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-7.86 3.62 26.94" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-6.11 3.35 27.27" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-4.32 3.35 27.28" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-112.37 -9.65 60.72" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-113.84 -9.65 59.71" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-115.10 -9.38 58.45" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-116.66 -9.65 57.88" 
+             width="7.592" height="9.268" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="50.27 -76.03 28.24" 
+             width="3.679" height="4.491" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="69.53 -58.78 28.24" 
+             width="3.679" height="4.491" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-175.02 6.10 37.71" 
+             width="5.623" height="6.864" >
+  </object>
+  <object type="billboard" texture="haloStoneLantern.png" xyz="-143.25 2.22 48.01" 
+             width="3.115" height="3.803" >
+  </object>
+  <object type="billboard" texture="haloStoneLantern.png" xyz="-127.96 2.22 24.31" 
+             width="3.115" height="3.803" >
+  </object>
+  <object type="billboard" texture="haloStoneLantern.png" xyz="-70.61 3.30 27.70" 
+             width="3.115" height="3.803" >
+  </object>
+  <object type="billboard" texture="haloStoneLantern.png" xyz="-90.48 2.16 24.27" 
+             width="3.115" height="3.803" >
+  </object>
+  <object type="billboard" texture="haloStoneLantern.png" xyz="-74.91 2.87 45.67" 
+             width="3.115" height="3.803" >
+  </object>
+  <object type="billboard" texture="haloStoneLantern.png" xyz="-96.73 2.81 65.59" 
+             width="3.115" height="3.803" >
+  </object>
+  <object type="billboard" texture="haloStoneLantern.png" xyz="-118.56 3.00 60.81" 
+             width="3.115" height="3.803" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-96.25 6.54 42.81" 
+             width="5.623" height="6.864" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-102.84 6.54 45.58" 
+             width="5.623" height="6.864" >
+  </object>
+  <object type="billboard" texture="lightHaloY.png" xyz="-169.31 3.52 -31.62" 
              width="7.592" height="9.268" >
   </object>
   <default-start karts-per-row     ="2"
