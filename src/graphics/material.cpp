@@ -840,6 +840,9 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
         if (UserConfigParams::m_pixel_shaders &&
             irr_driver->isGLSL())
         {
+            BubbleEffectProvider * bubble = (BubbleEffectProvider *)
+                                            irr_driver->m_shaders->m_callbacks[ES_BUBBLES];
+            bubble->addBubble(mb);
 
             m->MaterialType = irr_driver->m_shaders->getShader(ES_BUBBLES);
 
@@ -995,7 +998,9 @@ void Material::adjustForFog(scene::ISceneNode* parent, video::SMaterial *m,
 /** Callback from LOD nodes to create some effects */
 void Material::onMadeVisible(scene::IMeshBuffer* who)
 {
-// FIXME    m_bubble_provider[who]->onMadeVisible();
+    BubbleEffectProvider * bubble = (BubbleEffectProvider *)
+                                     irr_driver->m_shaders->m_callbacks[ES_BUBBLES];
+    bubble->onMadeVisible(who);
 }
 
 //-----------------------------------------------------------------------------
@@ -1003,14 +1008,18 @@ void Material::onMadeVisible(scene::IMeshBuffer* who)
 /** Callback from LOD nodes to create some effects */
 void Material::onHidden(scene::IMeshBuffer* who)
 {
-// FIXME    m_bubble_provider[who]->onHidden();
+    BubbleEffectProvider * bubble = (BubbleEffectProvider *)
+                                     irr_driver->m_shaders->m_callbacks[ES_BUBBLES];
+    bubble->onHidden(who);
 }
 
 //-----------------------------------------------------------------------------
 
 void Material::isInitiallyHidden(scene::IMeshBuffer* who)
 {
-// FIXME    m_bubble_provider[who]->isInitiallyHidden();
+    BubbleEffectProvider * bubble = (BubbleEffectProvider *)
+                                     irr_driver->m_shaders->m_callbacks[ES_BUBBLES];
+    bubble->isInitiallyHidden(who);
 }
 
 //-----------------------------------------------------------------------------
