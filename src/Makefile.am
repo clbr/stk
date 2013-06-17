@@ -498,6 +498,8 @@ supertuxkart_SOURCES = \
  utils/aligned_array.hpp \
  utils/constants.hpp \
  utils/constants.cpp \
+ utils/helpers.hpp \
+ utils/helpers.cpp \
  utils/leak_check.cpp \
  utils/leak_check.hpp \
  utils/log.cpp \
