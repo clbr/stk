@@ -110,10 +110,9 @@ void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int use
     const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
 
     float angle = (pos.X + pos.Y + pos.Z) * 1.2f + time * m_speed;
-    angle = sinf(angle);
+    angle = sinf(angle) * m_amplitude; // Pre-multiply on the cpu
 
     srv->setVertexShaderConstant("angle", &angle, 1);
-    srv->setVertexShaderConstant("amplitude", &m_amplitude, 1);
 
     int fog = (m_fog ? 1 : 0);
     srv->setVertexShaderConstant("fog", &fog, 1);
