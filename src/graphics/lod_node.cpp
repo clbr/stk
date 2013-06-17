@@ -279,6 +279,11 @@ void LODNode::add(int level, scene::ISceneNode* node, bool reparent)
     if(UserConfigParams::m_hw_skinning_enabled && node->getType() == scene::ESNT_ANIMATED_MESH)
         HardwareSkinning::prepareNode((scene::IAnimatedMeshSceneNode*)node);
 
+    if (node->getType() == scene::ESNT_ANIMATED_MESH)
+        ((scene::IAnimatedMeshSceneNode *) node)->setReadOnlyMaterials(true);
+    if (node->getType() == scene::ESNT_MESH)
+        ((scene::IMeshSceneNode *) node)->setReadOnlyMaterials(true);
+
     node->drop();
 
     node->updateAbsolutePosition();
