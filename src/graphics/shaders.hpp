@@ -18,10 +18,20 @@
 #define HEADER_SHADERS_HPP
 
 #include <irrlicht.h>
+#include <vector>
 using namespace irr;
 
 enum E_SHADER
 {
+    ES_NORMAL_MAP = 0,
+    ES_NORMAL_MAP_WITH_LIGHTMAP,
+    ES_SPLATTING,
+    ES_WATER,
+    ES_WATER_FOG,
+    ES_SPHERE_MAP,
+    ES_SPLATTING_LIGHTMAP,
+    ES_GRASS,
+    ES_BUBBLES,
 
     ES_COUNT
 };
@@ -34,10 +44,12 @@ public:
 
     video::E_MATERIAL_TYPE getShader(const E_SHADER num) const;
 
+    video::IShaderConstantSetCallBack * m_callbacks[ES_COUNT];
+
 private:
     void check(const int num) const;
 
-    int shaders[ES_COUNT];
+    int m_shaders[ES_COUNT];
 };
 
 #endif
