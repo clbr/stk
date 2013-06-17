@@ -53,6 +53,7 @@ class AbstractKart;
 class Camera;
 class PerCameraNode;
 class PostProcessing;
+class Shaders;
 
 /**
   * \brief class that creates the irrLicht device and offers higher-level
@@ -233,6 +234,9 @@ public:
 
     inline bool isGLSL() const { return m_glsl; }
     // ------------------------------------------------------------------------
+
+    Shaders              *m_shaders;
+
 #ifdef DEBUG
     /** Removes debug meshes. */
     void clearDebugMesh() { m_debug_meshes.clear(); }
