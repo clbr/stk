@@ -38,14 +38,14 @@ Shaders::Shaders()
     // Callbacks
     memset(m_callbacks, 0, sizeof(m_callbacks));
 
-/*    m_callbacks[ES_SPHERE_MAP] = new SphereMapProvider();
+    m_callbacks[ES_SPHERE_MAP] = new SphereMapProvider();
     m_callbacks[ES_NORMAL_MAP_LIGHTMAP] = new NormalMapProvider(true);
     m_callbacks[ES_NORMAL_MAP] = new NormalMapProvider(false);
     m_callbacks[ES_SPLATTING] = new SplattingProvider(false);
     m_callbacks[ES_SPLATTING_LIGHTMAP] = new SplattingProvider(true);
     m_callbacks[ES_WATER] = new WaterShaderProvider();
     m_callbacks[ES_GRASS] = new GrassShaderProvider();
-    m_callbacks[ES_BUBBLES] = new BubbleEffectProvider();*/
+    m_callbacks[ES_BUBBLES] = new BubbleEffectProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
