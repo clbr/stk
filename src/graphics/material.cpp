@@ -27,6 +27,7 @@
 #include "config/user_config.hpp"
 #include "config/stk_config.hpp"
 #include "guiengine/engine.hpp"
+#include "graphics/callbacks.hpp"
 #include "graphics/irr_driver.hpp"
 #include "graphics/particle_kind_manager.hpp"
 #include "graphics/shaders.hpp"
@@ -854,6 +855,8 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
 
             // FIXME
             //((WaterShaderProvider*)m_shaders[SHADER_WATER])->enableFog(fog);
+            ((WaterShaderProvider *) irr_driver->m_shaders->m_callbacks[ES_WATER])->
+                setSpeed(m_water_shader_speed_1/100.0f, m_water_shader_speed_2/100.0f);
 
             m->MaterialType = irr_driver->m_shaders->getShader(fog ? ES_WATER_FOG : ES_WATER);
         }
