@@ -106,7 +106,6 @@ public:
     GrassShaderProvider()
     {
         m_fog = false;
-        m_angle =
         m_amplitude =
         m_speed = 0.0f;
     }
@@ -116,11 +115,19 @@ public:
         m_fog = enable;
     }
 
-    void update(const float dt);
+    void setSpeed(float speed)
+    {
+        m_speed = speed;
+    }
+
+    void setAmplitude(float amp)
+    {
+        m_amplitude = amp;
+    }
 
 private:
     bool m_fog;
-    float m_angle, m_amplitude, m_speed;
+    float m_amplitude, m_speed;
 };
 
 //

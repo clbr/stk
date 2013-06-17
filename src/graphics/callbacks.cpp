@@ -105,11 +105,14 @@ void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int userData)
 {
-//    grass_shaders_times[userData] += GUIEngine::getLatestDt()*m_speed;
-//    if (grass_shaders_times[userData] > M_PI*2) grass_shaders_times[userData] -= M_PI*2;
+    IVideoDriver * const drv = srv->getVideoDriver();
+    const core::vector3df pos = drv->getTransform(ETS_WORLD).getTranslation();
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
 
-//    srv->setVertexShaderConstant("angle", &grass_shaders_times[userData], 1);
-    srv->setVertexShaderConstant("amplitude", &m_amplitude, 1);
+    float angle = (pos.X + pos.Y + pos.Z) * 1.2f + time * m_speed;
+    angle = sinf(angle) * m_amplitude; // Pre-multiply on the cpu
+
+    srv->setVertexShaderConstant("angle", &angle, 1);
 
     int fog = (m_fog ? 1 : 0);
     srv->setVertexShaderConstant("fog", &fog, 1);
