@@ -53,6 +53,7 @@ class AbstractKart;
 class Camera;
 class PerCameraNode;
 class PostProcessing;
+class Shaders;
 
 /**
   * \brief class that creates the irrLicht device and offers higher-level
@@ -111,6 +112,8 @@ private:
     void                 createListOfVideoModes();
 
     bool                 m_request_screenshot;
+
+    Shaders              *m_shaders;
 
 #ifdef DEBUG
     /** Used to visualise skeletons. */
