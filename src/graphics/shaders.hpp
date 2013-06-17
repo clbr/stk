@@ -24,7 +24,7 @@ using namespace irr;
 enum E_SHADER
 {
     ES_NORMAL_MAP = 0,
-    ES_NORMAL_MAP_WITH_LIGHTMAP,
+    ES_NORMAL_MAP_LIGHTMAP,
     ES_SPLATTING,
     ES_WATER,
     ES_WATER_FOG,

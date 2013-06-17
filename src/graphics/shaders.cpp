@@ -39,7 +39,7 @@ Shaders::Shaders()
     memset(m_callbacks, 0, sizeof(m_callbacks));
 
 /*    m_callbacks[ES_SPHERE_MAP] = new SphereMapProvider();
-    m_callbacks[ES_NORMAL_MAP_WITH_LIGHTMAP] = new NormalMapProvider(true);
+    m_callbacks[ES_NORMAL_MAP_LIGHTMAP] = new NormalMapProvider(true);
     m_callbacks[ES_NORMAL_MAP] = new NormalMapProvider(false);
     m_callbacks[ES_SPLATTING] = new SplattingProvider(false);
     m_callbacks[ES_SPLATTING_LIGHTMAP] = new SplattingProvider(true);
@@ -51,8 +51,8 @@ Shaders::Shaders()
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
                                        m_callbacks[ES_NORMAL_MAP], EMT_SOLID_2_LAYER);
 
-    m_shaders[ES_NORMAL_MAP_WITH_LIGHTMAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
-                                             m_callbacks[ES_NORMAL_MAP_WITH_LIGHTMAP], EMT_SOLID_2_LAYER);
+    m_shaders[ES_NORMAL_MAP_LIGHTMAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
+                                             m_callbacks[ES_NORMAL_MAP_LIGHTMAP], EMT_SOLID_2_LAYER);
 
     m_shaders[ES_SPLATTING] = glsl(dir + "splatting.vert", dir + "splatting.frag",
                                    m_callbacks[ES_SPLATTING]);
