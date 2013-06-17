@@ -109,7 +109,7 @@ void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int use
     const core::vector3df pos = drv->getTransform(ETS_WORLD).getTranslation();
     const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
 
-    float angle = pos.X + pos.Y + pos.Z + time * m_speed;
+    float angle = (pos.X + pos.Y + pos.Z) * 1.2f + time * m_speed;
     angle = sinf(angle);
 
     srv->setVertexShaderConstant("angle", &angle, 1);
