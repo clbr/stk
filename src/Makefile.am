@@ -67,6 +67,8 @@ supertuxkart_SOURCES = \
  config/device_config.hpp \
  graphics/CBatchingMesh.cpp \
  graphics/CBatchingMesh.hpp \
+ graphics/callbacks.cpp \
+ graphics/callbacks.hpp \
  graphics/camera.cpp \
  graphics/camera.hpp \
  graphics/explosion.cpp \
@@ -102,6 +104,8 @@ supertuxkart_SOURCES = \
  graphics/rain.hpp \
  graphics/referee.cpp \
  graphics/referee.hpp \
+ graphics/shaders.cpp \
+ graphics/shaders.hpp \
  graphics/shadow.cpp \
  graphics/shadow.hpp \
  graphics/show_curve.cpp \
@@ -496,6 +500,8 @@ supertuxkart_SOURCES = \
  utils/aligned_array.hpp \
  utils/constants.hpp \
  utils/constants.cpp \
+ utils/helpers.hpp \
+ utils/helpers.cpp \
  utils/leak_check.cpp \
  utils/leak_check.hpp \
  utils/log.cpp \
