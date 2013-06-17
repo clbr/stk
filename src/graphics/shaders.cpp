@@ -57,8 +57,10 @@ Shaders::Shaders()
     m_shaders[ES_SPLATTING] = glsl(dir + "splatting.vert", dir + "splatting.frag",
                                    m_callbacks[ES_SPLATTING]);
 
-    m_shaders[ES_SPLATTING_LIGHTMAP] = glsl(dir + "splatting_lightmap.vert", dir + "splatting_lightmap.frag",
-                                            m_callbacks[ES_SPLATTING_LIGHTMAP]);
+//    m_shaders[ES_SPLATTING_LIGHTMAP] = glsl(dir + "splatting_lightmap.vert", dir + "splatting_lightmap.frag",
+//                                            m_callbacks[ES_SPLATTING_LIGHTMAP]);
+// This doesn't exist ATM, default to solid
+    m_shaders[ES_SPLATTING_LIGHTMAP] = EMT_SOLID;
 
     m_shaders[ES_WATER] = glslmat(dir + "water.vert", dir + "water.frag",
                                   m_callbacks[ES_WATER], EMT_TRANSPARENT_ALPHA_CHANNEL);
