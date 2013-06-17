@@ -102,6 +102,8 @@ supertuxkart_SOURCES = \
  graphics/rain.hpp \
  graphics/referee.cpp \
  graphics/referee.hpp \
+ graphics/shaders.cpp \
+ graphics/shaders.hpp \
  graphics/shadow.cpp \
  graphics/shadow.hpp \
  graphics/show_curve.cpp \
