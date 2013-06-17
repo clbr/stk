@@ -161,7 +161,6 @@ public:
 
     BubbleEffectProvider()
     {
-        initial_time = irr_driver->getDevice()->getTimer()->getRealTime();
         m_transparency = 1.0f;
         m_visible = true;
     }
@@ -184,7 +183,6 @@ public:
     }
 
 private:
-    u32 initial_time;
     float m_transparency;
     bool m_visible;
 };
