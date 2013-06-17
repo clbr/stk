@@ -885,8 +885,11 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
 
             // FIXME
             //((GrassShaderProvider*)m_shaders[SHADER_GRASS])->enableFog(fog);
-            // grass_shaders_times[grass_shaders_times_index] = (rand() % 500)/500.0f * M_PI * 2.0f;
-            // grass_shaders_times_index++;
+            // Only one grass speed & amplitude per map for now
+            ((GrassShaderProvider *) irr_driver->m_shaders->m_callbacks[ES_GRASS])->
+                setSpeed(m_grass_speed);
+            ((GrassShaderProvider *) irr_driver->m_shaders->m_callbacks[ES_GRASS])->
+                setAmplitude(m_grass_amplitude);
 
             // Material and shaders
             m->MaterialType = irr_driver->m_shaders->getShader(ES_GRASS);
