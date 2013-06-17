@@ -18,6 +18,7 @@
 #include "guiengine/engine.hpp"
 #include "modes/world.hpp"
 #include "tracks/track.hpp"
+#include "utils/helpers.hpp"
 
 using namespace video;
 
@@ -190,18 +191,24 @@ void SphereMapProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void BubbleEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
-    if (m_visible && m_transparency < 1.0f)
+    const float start = fabsf(mat.MaterialTypeParam2);
+    const bool visible = mat.MaterialTypeParam2 > 0;
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
+    float transparency;
+
+    const float diff = (time - start) / 3.0f;
+
+    if (visible)
     {
-        m_transparency += GUIEngine::getLatestDt()*0.3f;
-        if (m_transparency > 1.0f) m_transparency = 1.0f;
+        transparency = diff;
     }
-    else if (!m_visible && m_transparency > 0.0f)
+    else
     {
-        m_transparency -= GUIEngine::getLatestDt()*0.3f;
-        if (m_transparency < 0.0f) m_transparency = 0.0f;
+        transparency = 1.0 - diff;
     }
 
-    float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
+    transparency = clampf(transparency, 0, 1);
+
     srv->setVertexShaderConstant("time", &time, 1);
-    srv->setVertexShaderConstant("transparency", &m_transparency, 1);
+    srv->setVertexShaderConstant("transparency", &transparency, 1);
 }
