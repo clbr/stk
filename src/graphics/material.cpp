@@ -27,8 +27,10 @@
 #include "config/user_config.hpp"
 #include "config/stk_config.hpp"
 #include "guiengine/engine.hpp"
+#include "graphics/callbacks.hpp"
 #include "graphics/irr_driver.hpp"
 #include "graphics/particle_kind_manager.hpp"
+#include "graphics/shaders.hpp"
 #include "io/file_manager.hpp"
 #include "io/xml_node.hpp"
 #include "utils/string_utils.hpp"
@@ -36,7 +38,6 @@
 #include "tracks/track.hpp"
 #include "utils/log.hpp"
 
-#include <IGPUProgrammingServices.h>
 #include <IMaterialRendererServices.h>
 #include <ISceneNode.h>
 #include <IShaderConstantSetCallBack.h>
@@ -45,351 +46,6 @@ using namespace irr::video;
 
 const unsigned int UCLAMP = 1;
 const unsigned int VCLAMP = 2;
-
-//-----------------------------------------------------------------------------
-
-class NormalMapProvider : public video::IShaderConstantSetCallBack
-{
-    bool m_with_lightmap;
-
-public:
-    LEAK_CHECK()
-
-    NormalMapProvider(bool withLightmap)
-    {
-        m_with_lightmap = withLightmap;
-    }
-
-    virtual void OnSetConstants(
-                               irr::video::IMaterialRendererServices *services,
-                               s32 userData)
-    {
-        s32 decaltex = 0;
-        services->setPixelShaderConstant("DecalTex", &decaltex, 1);
-
-        s32 bumptex = 1;
-        services->setPixelShaderConstant("BumpTex", &bumptex, 1);
-
-        s32 lightmapTex = (m_with_lightmap ? 2 : 0);
-        services->setPixelShaderConstant("LightMapTex", &lightmapTex, 1);
-
-        s32 hasLightMap = (m_with_lightmap ? 1 : 0);
-        services->setPixelShaderConstant("HasLightMap", &hasLightMap, 1);
-
-        // We could calculate light direction as coming from the sun (then we'd need to
-        // transform it into camera space). But I find that pretending light
-        // comes from the camera gives good results
-        const float lightdir[] = {0.1852f, -0.1852f, -0.9259f};
-        services->setVertexShaderConstant("lightdir", lightdir, 3);
-    }
-};
-
-
-//-----------------------------------------------------------------------------
-
-class WaterShaderProvider : public video::IShaderConstantSetCallBack
-{
-    float m_dx_1, m_dy_1, m_dx_2, m_dy_2;
-    float m_water_shader_speed_1;
-    float m_water_shader_speed_2;
-    bool m_fog;
-
-public:
-    LEAK_CHECK()
-
-    void enableFog(bool enable)
-    {
-        m_fog = enable;
-    }
-
-
-    WaterShaderProvider(float water_shader_speed_1,
-                        float water_shader_speed_2)
-    {
-        m_dx_1 = 0.0f;
-        m_dy_1 = 0.0f;
-        m_dx_2 = 0.0f;
-        m_dy_2 = 0.0f;
-
-        m_water_shader_speed_1 = water_shader_speed_1/100.0f;
-        m_water_shader_speed_2 = water_shader_speed_2/100.0f;
-
-        m_fog = false;
-    }
-
-    virtual void OnSetConstants(
-                                irr::video::IMaterialRendererServices *services,
-                                s32 userData)
-    {
-        m_dx_1 += GUIEngine::getLatestDt()*m_water_shader_speed_1;
-        m_dy_1 += GUIEngine::getLatestDt()*m_water_shader_speed_1;
-
-        m_dx_2 += GUIEngine::getLatestDt()*m_water_shader_speed_2;
-        m_dy_2 -= GUIEngine::getLatestDt()*m_water_shader_speed_2;
-
-        if (m_dx_1 > 1.0f) m_dx_1 -= 1.0f;
-        if (m_dy_1 > 1.0f) m_dy_1 -= 1.0f;
-        if (m_dx_2 > 1.0f) m_dx_2 -= 1.0f;
-        if (m_dy_2 < 0.0f) m_dy_2 += 1.0f;
-
-        s32 decaltex = 0;
-        services->setPixelShaderConstant("DecalTex", &decaltex, 1);
-
-        s32 bumptex = 1;
-        services->setPixelShaderConstant("BumpTex1", &bumptex, 1);
-
-        bumptex = 2;
-        services->setPixelShaderConstant("BumpTex2", &bumptex, 1);
-
-        // We could calculate light direction as coming from the sun (then we'd need to
-        // transform it into camera space). But I find that pretending light
-        // comes from the camera gives good results
-        const float lightdir[] = {-0.315f, 0.91f, -0.3f};
-        services->setVertexShaderConstant("lightdir", lightdir, 3);
-
-        services->setVertexShaderConstant("delta1", &m_dx_1, 2);
-        services->setVertexShaderConstant("delta2", &m_dx_2, 2);
-
-        if (m_fog)
-        {
-            Track* t = World::getWorld()->getTrack();
-
-            float fogStart = t->getFogStart();
-            services->setPixelShaderConstant("fogFrom", &fogStart, 1);
-
-            float fogEnd = t->getFogEnd();
-            services->setPixelShaderConstant("fogTo", &fogEnd, 1);
-
-            video::SColor fogColor = t->getFogColor();
-            float fogColorVec[] = {fogColor.getRed()/255.0f,
-                                   fogColor.getGreen()/255.0f,
-                                   fogColor.getBlue()/255.0f, 1.0f};
-            services->setVertexShaderConstant("fogColor", fogColorVec, 4);
-        }
-    }
-};
-
-//-----------------------------------------------------------------------------
-
-// FIXME: refactor this hack to get per-instance properties, and apply the
-//        clean fix to all shaders why we're at it......
-std::map<int, float> grass_shaders_times;
-int grass_shaders_times_index = 0;
-
-class GrassShaderProvider : public video::IShaderConstantSetCallBack
-{
-    bool m_fog;
-    float m_angle;
-    float m_amplitude;
-    float m_speed;
-
-public:
-    LEAK_CHECK()
-
-
-    GrassShaderProvider(float amplitude, float speed)
-    {
-        m_fog = false;
-        m_angle = 0.0f;
-        m_amplitude = amplitude;
-        m_speed = speed;
-    }
-
-
-    void enableFog(bool enable)
-    {
-        m_fog = enable;
-    }
-
-    void update(float dt)
-    {
-        m_angle += GUIEngine::getLatestDt()*m_speed;
-        if (m_angle > M_PI*2) m_angle -= M_PI*2;
-    }
-
-    virtual void OnSetConstants(irr::video::IMaterialRendererServices *services,
-                                s32 userData)
-    {
-        grass_shaders_times[userData] += GUIEngine::getLatestDt()*m_speed;
-        if (grass_shaders_times[userData] > M_PI*2) grass_shaders_times[userData] -= M_PI*2;
-
-        services->setVertexShaderConstant("angle", &grass_shaders_times[userData], 1);
-
-        int fog = (m_fog ? 1 : 0);
-        services->setVertexShaderConstant("fog", &fog, 1);
-
-        s32 tex = 0;
-        services->setVertexShaderConstant("tex", &tex, 1);
-
-        services->setVertexShaderConstant("amplitude", &m_amplitude, 1);
-
-        if (m_fog)
-        {
-            Track* t = World::getWorld()->getTrack();
-
-            float fogStart = t->getFogStart();
-            services->setPixelShaderConstant("fogFrom", &fogStart, 1);
-
-            float fogEnd = t->getFogEnd();
-            services->setPixelShaderConstant("fogTo", &fogEnd, 1);
-
-            video::SColor fogColor = t->getFogColor();
-            float fogColorVec[] = {fogColor.getRed()/255.0f,
-                                   fogColor.getGreen()/255.0f,
-                                   fogColor.getBlue()/255.0f, 1.0f};
-            services->setVertexShaderConstant("fogColor", fogColorVec, 4);
-        }
-    }
-};
-
-//-----------------------------------------------------------------------------
-
-#if 0
-#pragma mark -
-#endif
-
-class SplattingProvider : public video::IShaderConstantSetCallBack
-{
-    core::vector3df m_light_direction;
-    bool m_light_dir_calculated;
-    bool m_lightmap;
-
-public:
-    LEAK_CHECK()
-
-    SplattingProvider(bool lightmap)
-    {
-        m_light_dir_calculated = false;
-        m_lightmap = lightmap;
-    }
-
-    virtual void OnSetConstants(
-                                irr::video::IMaterialRendererServices *services,
-                                s32 userData)
-    {
-        if (!m_light_dir_calculated)
-        {
-            m_light_dir_calculated = true;
-            m_light_direction = -World::getWorld()->getTrack()->getSunRotation().rotationToDirection();
-        }
-
-        s32 tex_layout = 1;
-        services->setPixelShaderConstant("tex_layout", &tex_layout, 1);
-
-        s32 tex_detail0 = 2;
-        services->setPixelShaderConstant("tex_detail0", &tex_detail0, 1);
-
-        s32 tex_detail1 = 3;
-        services->setPixelShaderConstant("tex_detail1", &tex_detail1, 1);
-
-        s32 tex_detail2 = 4;
-        services->setPixelShaderConstant("tex_detail2", &tex_detail2, 1);
-
-        s32 tex_detail3 = 5;
-        services->setPixelShaderConstant("tex_detail3", &tex_detail3, 1);
-
-        if (m_lightmap)
-        {
-            s32 tex_lightmap = 6;
-            services->setPixelShaderConstant("tex_lightmap", &tex_lightmap, 1);
-        }
-
-        services->setVertexShaderConstant("lightdir", &m_light_direction.X, 3);
-    }
-};
-
-//-----------------------------------------------------------------------------
-
-#if 0
-#pragma mark -
-#endif
-
-class SphereMapProvider: public video::IShaderConstantSetCallBack
-{
-    core::vector3df m_light_direction;
-
-public:
-    LEAK_CHECK()
-
-    SphereMapProvider()
-    {
-        m_light_direction = core::vector3df(-0.6f, -0.5f, -0.63f);
-        //m_light_direction = core::vector3df(-0.315f, 0.91f, -0.3f);
-    }
-
-    virtual void OnSetConstants(
-                                irr::video::IMaterialRendererServices *services,
-                                s32 userData)
-    {
-        s32 texture = 0;
-        services->setPixelShaderConstant("texture", &texture, 1);
-
-        services->setVertexShaderConstant("lightdir", &m_light_direction.X, 3);
-    }
-};
-
-//-----------------------------------------------------------------------------
-#if 0
-#pragma mark -
-#endif
-
-class BubbleEffectProvider : public video::IShaderConstantSetCallBack
-{
-    irr::u32 initial_time;
-    float m_transparency;
-    bool m_is_visible;
-
-public:
-    LEAK_CHECK()
-
-    BubbleEffectProvider()
-    {
-        initial_time = irr_driver->getDevice()->getTimer()->getRealTime();
-        m_transparency = 1.0f;
-        m_is_visible = true;
-    }
-
-    virtual void OnSetConstants(
-                                irr::video::IMaterialRendererServices *services,
-                                s32 userData)
-    {
-        if (m_is_visible && m_transparency < 1.0f)
-        {
-            m_transparency += GUIEngine::getLatestDt()*0.3f;
-            if (m_transparency > 1.0f) m_transparency = 1.0f;
-        }
-        else if (!m_is_visible && m_transparency > 0.0f)
-        {
-            m_transparency -= GUIEngine::getLatestDt()*0.3f;
-            if (m_transparency < 0.0f) m_transparency = 0.0f;
-        }
-
-        float time = (irr_driver->getDevice()->getTimer()->getRealTime() - initial_time) / 1000.0f;
-        services->setVertexShaderConstant("time", &time, 1);
-        services->setVertexShaderConstant("transparency", &m_transparency, 1);
-    }
-
-    void onMadeVisible()
-    {
-        m_is_visible = true;
-    }
-
-    void onHidden()
-    {
-        m_is_visible = false;
-        m_transparency = 0.0f;
-    }
-
-    void isInitiallyHidden()
-    {
-        m_is_visible = false;
-        m_transparency = 0.0f;
-    }
-};
-
-#if 0
-#pragma mark -
-#endif
 
 //-----------------------------------------------------------------------------
 /** Create a new material using the parameters specified in the xml file.
@@ -735,8 +391,6 @@ void Material::init(unsigned int index)
     m_water_splash              = false;
     m_is_jump_texture           = false;
 
-    m_shaders.resize(SHADER_COUNT, NULL);
-
     for (int n=0; n<EMIT_KINDS_COUNT; n++)
     {
         m_particles_effects[n] = NULL;
@@ -792,20 +446,6 @@ Material::~Material()
         m_texture->drop();
         if(m_texture->getReferenceCount()==1)
             irr_driver->removeTexture(m_texture);
-    }
-
-    for (unsigned int n=0; n<m_shaders.size(); n++)
-    {
-        if (m_shaders[n])
-        {
-            m_shaders[n]->drop();
-        }
-    }
-
-    for (std::map<scene::IMeshBuffer*, BubbleEffectProvider*>::iterator it = m_bubble_provider.begin();
-         it != m_bubble_provider.end(); it++)
-    {
-        it->second->drop();
     }
 
     // If a special sfx is installed (that isn't part of stk itself), the
@@ -1025,20 +665,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
         if (UserConfigParams::m_pixel_shaders &&
             irr_driver->isGLSL())
         {
-            if (m_shaders[SHADER_SPHERE_MAP] == NULL)
-            {
-                m_shaders[SHADER_SPHERE_MAP] = new SphereMapProvider();
-            }
-            // Material and shaders
-            IGPUProgrammingServices* gpu =
-            irr_driver->getVideoDriver()->getGPUProgrammingServices();
-            s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                     (file_manager->getShaderDir() + "spheremap.vert").c_str(),
-                     "main", video::EVST_VS_2_0,
-                     (file_manager->getShaderDir() + "spheremap.frag").c_str(),
-                     "main", video::EPST_PS_2_0,
-                     m_shaders[SHADER_SPHERE_MAP], video::EMT_SOLID_2_LAYER );
-            m->MaterialType = (E_MATERIAL_TYPE)material_type;
+            m->MaterialType = irr_driver->m_shaders->getShader(ES_SPHERE_MAP);
         }
         else
         {
@@ -1120,37 +747,9 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
                 with_lightmap = true;
             }
 
-            if (with_lightmap)
-            {
-                if (m_shaders[SHADER_NORMAL_MAP_WITH_LIGHTMAP] == NULL)
-                {
-                    m_shaders[SHADER_NORMAL_MAP_WITH_LIGHTMAP] =
-                                                   new NormalMapProvider(true);
-                }
-            }
-            else
-            {
-                if (m_shaders[SHADER_NORMAL_MAP] == NULL)
-                {
-                    m_shaders[SHADER_NORMAL_MAP] = new NormalMapProvider(false);
-                }
-            }
-
-            const char* vertex_shader = "normalmap.vert";
-            const char* pixel_shader  = "normalmap.frag";
-
             // Material and shaders
-            IGPUProgrammingServices* gpu =
-                video_driver->getGPUProgrammingServices();
-            s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                        (file_manager->getShaderDir() + vertex_shader).c_str(),
-                        "main", video::EVST_VS_2_0,
-                        (file_manager->getShaderDir() + pixel_shader).c_str(),
-                        "main", video::EPST_PS_2_0,
-                        m_shaders[with_lightmap ? SHADER_NORMAL_MAP_WITH_LIGHTMAP
-                                                : SHADER_NORMAL_MAP],
-                        video::EMT_SOLID_2_LAYER );
-            m->MaterialType = (E_MATERIAL_TYPE)material_type;
+            m->MaterialType = irr_driver->m_shaders->getShader(
+                                 with_lightmap ? ES_NORMAL_MAP_LIGHTMAP : ES_NORMAL_MAP );
             m->Lighting = false;
             m->ZWriteEnable = true;
 
@@ -1206,51 +805,15 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             }
             m->setTexture(6, tex);
 
-            if (m_splatting_lightmap.size() > 0)
-            {
-                if (m_shaders[SHADER_SPLATTING_LIGHTMAP] == NULL)
-                {
-                    m_shaders[SHADER_SPLATTING_LIGHTMAP] =
-                                          new SplattingProvider(true);
-                }
-            }
-            else
-            {
-                if (m_shaders[SHADER_SPLATTING] == NULL)
-                {
-                    m_shaders[SHADER_SPLATTING] = new SplattingProvider(false);
-                }
-            }
-
 
             // Material and shaders
-            IGPUProgrammingServices* gpu =
-                irr_driver->getVideoDriver()->getGPUProgrammingServices();
-
             if (m_splatting_lightmap.size() > 0)
             {
-                s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                            (file_manager->getShaderDir()
-                                + "splatting_lightmap.vert").c_str(),
-                            "main",video::EVST_VS_2_0,
-                            (file_manager->getShaderDir()
-                                + "splatting_lightmap.frag").c_str(),
-                            "main",video::EPST_PS_2_0,
-                            m_shaders[SHADER_SPLATTING_LIGHTMAP],
-                            video::EMT_SOLID );
-                m->MaterialType = (E_MATERIAL_TYPE)material_type;
+                m->MaterialType = irr_driver->m_shaders->getShader(ES_SPLATTING_LIGHTMAP);
             }
             else
             {
-                s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                        (file_manager->getShaderDir()
-                            + "splatting.vert").c_str(),
-                        "main",video::EVST_VS_2_0,
-                        (file_manager->getShaderDir()
-                            + "splatting.frag").c_str(),
-                        "main",video::EPST_PS_2_0,
-                        m_shaders[SHADER_SPLATTING], video::EMT_SOLID );
-                m->MaterialType = (E_MATERIAL_TYPE)material_type;
+                m->MaterialType = irr_driver->m_shaders->getShader(ES_SPLATTING);
             }
         }
         else
@@ -1274,26 +837,11 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
 
     if (m_graphical_effect == GE_BUBBLE && mb != NULL)
     {
-        IVideoDriver* video_driver = irr_driver->getVideoDriver();
         if (UserConfigParams::m_pixel_shaders &&
             irr_driver->isGLSL())
         {
-            if (m_bubble_provider.find(mb) == m_bubble_provider.end())
-            {
-                m_bubble_provider[mb] = new BubbleEffectProvider();
-            }
 
-            // Material and shaders
-            IGPUProgrammingServices* gpu = video_driver->getGPUProgrammingServices();
-            s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                       (file_manager->getShaderDir() + "bubble.vert").c_str(),
-                       "main", video::EVST_VS_2_0,
-                       (file_manager->getShaderDir() + "bubble.frag").c_str(),
-                       "main", video::EPST_PS_2_0,
-                       m_bubble_provider[mb],
-                       (m_alpha_blending ? video::EMT_TRANSPARENT_ALPHA_CHANNEL
-                                         : video::EMT_SOLID)                 );
-            m->MaterialType = (E_MATERIAL_TYPE)material_type;
+            m->MaterialType = irr_driver->m_shaders->getShader(ES_BUBBLES);
 
             // alpha blending and bubble shading can work together so when both are enabled
             // don't increment the 'modes' counter to not get the 'too many modes' warning
@@ -1310,33 +858,17 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
         if (UserConfigParams::m_pixel_shaders &&
             irr_driver->isGLSL())
         {
-            if (m_shaders[SHADER_WATER] == NULL)
-            {
-                m_shaders[SHADER_WATER] =
-                    new WaterShaderProvider(m_water_shader_speed_1,
-                                            m_water_shader_speed_2);
-            }
-
             m->setTexture(1, irr_driver->getTexture(file_manager->getTextureFile("waternormals.jpg")));
             m->setTexture(2, irr_driver->getTexture(file_manager->getTextureFile("waternormals2.jpg")));
 
-            bool fog = World::getWorld()->getTrack()->isFogEnabled();
-            const char* vertex_shader = (fog ? "water_fog.vert" : "water.vert");
-            const char* pixel_shader  = (fog ? "water_fog.frag" : "water.frag");
+            const bool fog = World::getWorld()->getTrack()->isFogEnabled();
 
-            ((WaterShaderProvider*)m_shaders[SHADER_WATER])->enableFog(fog);
+            // FIXME
+            //((WaterShaderProvider*)m_shaders[SHADER_WATER])->enableFog(fog);
+            ((WaterShaderProvider *) irr_driver->m_shaders->m_callbacks[ES_WATER])->
+                setSpeed(m_water_shader_speed_1/100.0f, m_water_shader_speed_2/100.0f);
 
-            // Material and shaders
-            IGPUProgrammingServices* gpu =
-                irr_driver->getVideoDriver()->getGPUProgrammingServices();
-            s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                        (file_manager->getShaderDir() + vertex_shader).c_str(),
-                        "main", video::EVST_VS_2_0,
-                        (file_manager->getShaderDir() + pixel_shader ).c_str(),
-                        "main", video::EPST_PS_2_0,
-                        m_shaders[SHADER_WATER],
-                        video::EMT_TRANSPARENT_ALPHA_CHANNEL);
-            m->MaterialType = (E_MATERIAL_TYPE)material_type;
+            m->MaterialType = irr_driver->m_shaders->getShader(fog ? ES_WATER_FOG : ES_WATER);
         }
         modes++;
     }
@@ -1346,31 +878,16 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
         if (UserConfigParams::m_pixel_shaders &&
             irr_driver->isGLSL())
         {
-            if (m_shaders[SHADER_GRASS] == NULL)
-            {
-                m_shaders[SHADER_GRASS] =
-                    new GrassShaderProvider(m_grass_amplitude, m_grass_speed);
-            }
+            const bool fog = World::getWorld()->getTrack()->isFogEnabled();
 
-            bool fog = World::getWorld()->getTrack()->isFogEnabled();
-            ((GrassShaderProvider*)m_shaders[SHADER_GRASS])->enableFog(fog);
-
-            grass_shaders_times[grass_shaders_times_index] = (rand() % 500)/500.0f * M_PI * 2.0f;
+            // FIXME
+            //((GrassShaderProvider*)m_shaders[SHADER_GRASS])->enableFog(fog);
+            // grass_shaders_times[grass_shaders_times_index] = (rand() % 500)/500.0f * M_PI * 2.0f;
+            // grass_shaders_times_index++;
 
             // Material and shaders
-            IGPUProgrammingServices* gpu =
-                irr_driver->getVideoDriver()->getGPUProgrammingServices();
-            s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                        (file_manager->getShaderDir() + "grass.vert").c_str(),
-                        "main", video::EVST_VS_2_0,
-                        (file_manager->getShaderDir() + "grass.frag").c_str(),
-                        "main", video::EPST_PS_2_0,
-                        m_shaders[SHADER_GRASS],
-                        video::EMT_TRANSPARENT_ALPHA_CHANNEL,
-                        grass_shaders_times_index);
-            m->MaterialType = (E_MATERIAL_TYPE)material_type;
+            m->MaterialType = irr_driver->m_shaders->getShader(ES_GRASS);
 
-            grass_shaders_times_index++;
         }
     }
 
@@ -1478,10 +995,7 @@ void Material::adjustForFog(scene::ISceneNode* parent, video::SMaterial *m,
 /** Callback from LOD nodes to create some effects */
 void Material::onMadeVisible(scene::IMeshBuffer* who)
 {
-    if (m_bubble_provider.find(who) != m_bubble_provider.end())
-    {
-        m_bubble_provider[who]->onMadeVisible();
-    }
+// FIXME    m_bubble_provider[who]->onMadeVisible();
 }
 
 //-----------------------------------------------------------------------------
@@ -1489,20 +1003,14 @@ void Material::onMadeVisible(scene::IMeshBuffer* who)
 /** Callback from LOD nodes to create some effects */
 void Material::onHidden(scene::IMeshBuffer* who)
 {
-    if (m_bubble_provider.find(who) != m_bubble_provider.end())
-    {
-        m_bubble_provider[who]->onHidden();
-    }
+// FIXME    m_bubble_provider[who]->onHidden();
 }
 
 //-----------------------------------------------------------------------------
 
 void Material::isInitiallyHidden(scene::IMeshBuffer* who)
 {
-    if (m_bubble_provider.find(who) != m_bubble_provider.end())
-    {
-        m_bubble_provider[who]->isInitiallyHidden();
-    }
+// FIXME    m_bubble_provider[who]->isInitiallyHidden();
 }
 
 //-----------------------------------------------------------------------------
