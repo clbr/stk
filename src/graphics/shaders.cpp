@@ -32,6 +32,8 @@ Shaders::~Shaders()
 video::E_MATERIAL_TYPE Shaders::getShader(const E_SHADER num) const
 {
     assert(num < ES_COUNT);
+
+    return (video::E_MATERIAL_TYPE) shaders[num];
 }
 
 void Shaders::check(const int num) const
