@@ -20,6 +20,7 @@
 #include "graphics/irr_driver.hpp"
 
 #include <irrlicht.h>
+#include <set>
 
 using namespace irr;
 
@@ -31,9 +32,14 @@ public:
         firstdone = 0;
     }
 
+    virtual void OnSetMaterial(const video::SMaterial &material)
+    {
+        mat = material;
+    }
+
 protected:
     bool firstdone;
-
+    video::SMaterial mat;
 };
 
 //
@@ -161,30 +167,59 @@ public:
 
     BubbleEffectProvider()
     {
-        m_transparency = 1.0f;
-        m_visible = true;
     }
 
-    void onMadeVisible()
+    // We hijack the material type param 2 of bubbles.
+    // It's time to start the fade, negative if fade out, positive if in.
+    // It'd be unused otherwise.
+
+    void onMadeVisible(scene::IMeshBuffer * const mb)
     {
-        m_visible = true;
+        if (!contains(mb))
+            return;
+
+        video::SMaterial &mat = mb->getMaterial();
+        mat.MaterialTypeParam2 = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
     }
 
-    void onHidden()
+    void onHidden(scene::IMeshBuffer * const mb)
     {
-        m_visible = false;
-        m_transparency = 0.0f;
+        if (!contains(mb))
+            return;
+
+        video::SMaterial &mat = mb->getMaterial();
+        mat.MaterialTypeParam2 = irr_driver->getDevice()->getTimer()->getTime() / -1000.0f;
     }
 
-    void isInitiallyHidden()
+    void isInitiallyHidden(scene::IMeshBuffer * const mb)
     {
-        m_visible = false;
-        m_transparency = 0.0f;
+        if (!contains(mb))
+            return;
+
+        video::SMaterial &mat = mb->getMaterial();
+        mat.MaterialTypeParam2 = irr_driver->getDevice()->getTimer()->getTime() / -1000.0f;
+    }
+
+    void removeBubble(const scene::IMeshBuffer * const mb)
+    {
+        m_bubbles.erase(mb);
+    }
+
+    void addBubble(scene::IMeshBuffer * const mb)
+    {
+        m_bubbles.insert(mb);
+
+        video::SMaterial &mat = mb->getMaterial();
+        mat.MaterialTypeParam2 = 1;
+    }
+
+    bool contains(const scene::IMeshBuffer * const mb) const
+    {
+        return m_bubbles.count(mb);
     }
 
 private:
-    float m_transparency;
-    bool m_visible;
+    std::set<const scene::IMeshBuffer *> m_bubbles;
 };
 
 #endif
