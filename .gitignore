@@ -13,3 +13,5 @@ aclocal.m4
 .libs
 supertuxkart
 *.desktop
+*.orig
+*.rej
