@@ -113,8 +113,6 @@ private:
 
     bool                 m_request_screenshot;
 
-    Shaders              *m_shaders;
-
 #ifdef DEBUG
     /** Used to visualise skeletons. */
     std::vector<irr::scene::IAnimatedMeshSceneNode*> m_debug_meshes;
@@ -236,6 +234,9 @@ public:
 
     inline bool isGLSL() const { return m_glsl; }
     // ------------------------------------------------------------------------
+
+    Shaders              *m_shaders;
+
 #ifdef DEBUG
     /** Removes debug meshes. */
     void clearDebugMesh() { m_debug_meshes.clear(); }
