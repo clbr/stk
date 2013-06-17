@@ -41,10 +41,6 @@ class XMLNode;
 class SFXBase;
 class ParticleKind;
 
-class NormalMapProvider;
-class SplattingProvider;
-class BubbleEffectProvider;
-
 /**
   * \ingroup graphics
   */
@@ -77,18 +73,6 @@ public:
     };
 
 private:
-
-    enum Shaders
-    {
-        SHADER_NORMAL_MAP,
-        SHADER_NORMAL_MAP_WITH_LIGHTMAP,
-        SHADER_SPLATTING,
-        SHADER_WATER,
-        SHADER_SPHERE_MAP,
-        SHADER_SPLATTING_LIGHTMAP,
-        SHADER_GRASS,
-        SHADER_COUNT
-    };
 
     video::ITexture *m_texture;
     unsigned int     m_index;
@@ -233,11 +217,6 @@ private:
     std::string      m_splatting_texture_4;
 
     std::string      m_splatting_lightmap;
-
-    std::vector<irr::video::IShaderConstantSetCallBack*> m_shaders;
-
-    /** Only used if bubble effect is enabled */
-    std::map<scene::IMeshBuffer*, BubbleEffectProvider*> m_bubble_provider;
 
     bool  m_deprecated;
 

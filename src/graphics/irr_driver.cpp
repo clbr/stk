@@ -26,6 +26,7 @@
 #include "graphics/per_camera_node.hpp"
 #include "graphics/post_processing.hpp"
 #include "graphics/referee.hpp"
+#include "graphics/shaders.hpp"
 #include "guiengine/engine.hpp"
 #include "guiengine/modaldialog.hpp"
 #include "guiengine/scalable_font.hpp"
@@ -96,6 +97,7 @@ IrrDriver::IrrDriver()
     m_resolution_changing = RES_CHANGE_NONE;
     m_device              = createDevice(video::EDT_NULL);
     m_request_screenshot  = false;
+    m_shaders             = NULL;
 }   // IrrDriver
 
 // ----------------------------------------------------------------------------
@@ -117,6 +119,8 @@ IrrDriver::~IrrDriver()
     m_device->drop();
     m_device = NULL;
     m_modes.clear();
+
+    delete m_shaders;
 }   // ~IrrDriver
 
 // ----------------------------------------------------------------------------
@@ -394,6 +398,7 @@ void IrrDriver::initDevice()
     if (m_glsl)
     {
         Log::info("irr_driver", "GLSL supported.");
+        m_shaders = new Shaders();
     }
     else
     {
