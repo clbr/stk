@@ -201,7 +201,7 @@ void BubbleEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         if (m_transparency < 0.0f) m_transparency = 0.0f;
     }
 
-    float time = (irr_driver->getDevice()->getTimer()->getRealTime() - initial_time) / 1000.0f;
+    float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
     srv->setVertexShaderConstant("time", &time, 1);
     srv->setVertexShaderConstant("transparency", &m_transparency, 1);
 }
