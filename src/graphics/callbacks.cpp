@@ -15,12 +15,15 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "graphics/callbacks.hpp"
+#include "graphics/irr_driver.hpp"
+#include "graphics/wind.hpp"
 #include "guiengine/engine.hpp"
 #include "modes/world.hpp"
 #include "tracks/track.hpp"
 #include "utils/helpers.hpp"
 
 using namespace video;
+using namespace core;
 
 void NormalMapProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -92,10 +95,14 @@ void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int use
     const core::vector3df pos = drv->getTransform(ETS_WORLD).getTranslation();
     const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
 
-    float angle = (pos.X + pos.Y + pos.Z) * 1.2f + time * m_speed;
-    angle = sinf(angle) * m_amplitude; // Pre-multiply on the cpu
+    float strength = (pos.X + pos.Y + pos.Z) * 1.2f + time * m_speed;
+    strength = noise2d(strength / 10.0f) * m_amplitude * 5;
+    // * 5 is to work with the existing amplitude values.
 
-    srv->setVertexShaderConstant("angle", &angle, 1);
+    // Pre-multiply on the cpu
+    vector3df wind = irr_driver->m_wind->getWind() * strength;
+
+    srv->setVertexShaderConstant("windDir", &wind.X, 3);
 
     if (!firstdone)
     {
