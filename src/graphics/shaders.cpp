@@ -65,9 +65,6 @@ Shaders::Shaders()
     m_shaders[ES_WATER] = glslmat(dir + "water.vert", dir + "water.frag",
                                   m_callbacks[ES_WATER], EMT_TRANSPARENT_ALPHA_CHANNEL);
 
-    m_shaders[ES_WATER_FOG] = glslmat(dir + "water_fog.vert", dir + "water_fog.frag",
-                                      m_callbacks[ES_WATER], EMT_TRANSPARENT_ALPHA_CHANNEL);
-
     m_shaders[ES_SPHERE_MAP] = glslmat(dir + "spheremap.vert", dir + "spheremap.frag",
                                        m_callbacks[ES_SPHERE_MAP], EMT_SOLID_2_LAYER);
 
