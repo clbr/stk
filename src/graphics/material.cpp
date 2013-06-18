@@ -864,14 +864,10 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             m->setTexture(1, irr_driver->getTexture(file_manager->getTextureFile("waternormals.jpg")));
             m->setTexture(2, irr_driver->getTexture(file_manager->getTextureFile("waternormals2.jpg")));
 
-            const bool fog = World::getWorld()->getTrack()->isFogEnabled();
-
-            // FIXME
-            //((WaterShaderProvider*)m_shaders[SHADER_WATER])->enableFog(fog);
             ((WaterShaderProvider *) irr_driver->m_shaders->m_callbacks[ES_WATER])->
                 setSpeed(m_water_shader_speed_1/100.0f, m_water_shader_speed_2/100.0f);
 
-            m->MaterialType = irr_driver->m_shaders->getShader(fog ? ES_WATER_FOG : ES_WATER);
+            m->MaterialType = irr_driver->m_shaders->getShader(ES_WATER);
         }
         modes++;
     }
@@ -881,10 +877,6 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
         if (UserConfigParams::m_pixel_shaders &&
             irr_driver->isGLSL())
         {
-            const bool fog = World::getWorld()->getTrack()->isFogEnabled();
-
-            // FIXME
-            //((GrassShaderProvider*)m_shaders[SHADER_GRASS])->enableFog(fog);
             // Only one grass speed & amplitude per map for now
             ((GrassShaderProvider *) irr_driver->m_shaders->m_callbacks[ES_GRASS])->
                 setSpeed(m_grass_speed);
@@ -988,6 +980,10 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
 void Material::adjustForFog(scene::ISceneNode* parent, video::SMaterial *m,
                             bool use_fog) const
 {
+    // The new pipeline does fog as a post-process effect.
+    if (irr_driver->isGLSL())
+        return;
+
     m->setFlag(video::EMF_FOG_ENABLE, m_fog && use_fog);
 
     if (parent != NULL)
