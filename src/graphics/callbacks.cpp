@@ -65,23 +65,6 @@ void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("delta1", &m_dx_1, 2);
     srv->setVertexShaderConstant("delta2", &m_dx_2, 2);
 
-    if (m_fog)
-    {
-        Track* t = World::getWorld()->getTrack();
-
-        const float fogStart = t->getFogStart();
-        srv->setPixelShaderConstant("fogFrom", &fogStart, 1);
-
-        const float fogEnd = t->getFogEnd();
-        srv->setPixelShaderConstant("fogTo", &fogEnd, 1);
-
-        const SColor fogColor = t->getFogColor();
-        const float fogColorVec[] = {fogColor.getRed()/255.0f,
-                               fogColor.getGreen()/255.0f,
-                               fogColor.getBlue()/255.0f, 1.0f};
-        srv->setVertexShaderConstant("fogColor", fogColorVec, 4);
-    }
-
     if (!firstdone)
     {
         s32 decaltex = 0;
@@ -113,26 +96,6 @@ void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int use
     angle = sinf(angle) * m_amplitude; // Pre-multiply on the cpu
 
     srv->setVertexShaderConstant("angle", &angle, 1);
-
-    int fog = (m_fog ? 1 : 0);
-    srv->setVertexShaderConstant("fog", &fog, 1);
-
-    if (m_fog)
-    {
-        Track* t = World::getWorld()->getTrack();
-
-        const float fogStart = t->getFogStart();
-        srv->setPixelShaderConstant("fogFrom", &fogStart, 1);
-
-        const float fogEnd = t->getFogEnd();
-        srv->setPixelShaderConstant("fogTo", &fogEnd, 1);
-
-        const SColor fogColor = t->getFogColor();
-        const float fogColorVec[] = {fogColor.getRed()/255.0f,
-                               fogColor.getGreen()/255.0f,
-                               fogColor.getBlue()/255.0f, 1.0f};
-        srv->setVertexShaderConstant("fogColor", fogColorVec, 4);
-    }
 
     if (!firstdone)
     {

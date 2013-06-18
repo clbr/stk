@@ -65,11 +65,6 @@ class WaterShaderProvider: public callbase
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 
-    void enableFog(bool enable)
-    {
-        m_fog = enable;
-    }
-
     void setSpeed(const float s1, const float s2)
     {
         m_water_shader_speed_1 = s1;
@@ -83,8 +78,6 @@ public:
         m_dy_1 = 0.0f;
         m_dy_2 = 0.0f;
 
-        m_fog = false;
-
         m_water_shader_speed_1 =
         m_water_shader_speed_2 = 0.0f;
     }
@@ -93,7 +86,6 @@ private:
     float m_dx_1, m_dy_1, m_dx_2, m_dy_2;
     float m_water_shader_speed_1;
     float m_water_shader_speed_2;
-    bool m_fog;
 };
 
 //
@@ -105,14 +97,8 @@ public:
 
     GrassShaderProvider()
     {
-        m_fog = false;
         m_amplitude =
         m_speed = 0.0f;
-    }
-
-    void enableFog(bool enable)
-    {
-        m_fog = enable;
     }
 
     void setSpeed(float speed)
@@ -126,7 +112,6 @@ public:
     }
 
 private:
-    bool m_fog;
     float m_amplitude, m_speed;
 };
 
