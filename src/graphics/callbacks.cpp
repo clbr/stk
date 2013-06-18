@@ -65,8 +65,11 @@ void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     if (m_dx_2 > 1.0f) m_dx_2 -= 1.0f;
     if (m_dy_2 < 0.0f) m_dy_2 += 1.0f;
 
-    srv->setVertexShaderConstant("delta1", &m_dx_1, 2);
-    srv->setVertexShaderConstant("delta2", &m_dx_2, 2);
+    const float d1[2] = { m_dx_1, m_dy_1 };
+    const float d2[2] = { m_dx_2, m_dy_2 };
+
+    srv->setVertexShaderConstant("delta1", d1, 2);
+    srv->setVertexShaderConstant("delta2", d2, 2);
 
     if (!firstdone)
     {
