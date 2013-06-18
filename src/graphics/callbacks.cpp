@@ -188,3 +188,12 @@ void BubbleEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("time", &time, 1);
     srv->setVertexShaderConstant("transparency", &transparency, 1);
 }
+
+void RainEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    const float screenw = UserConfigParams::m_width;
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 200.0f;
+
+    srv->setVertexShaderConstant("screenw", &screenw, 1);
+    srv->setVertexShaderConstant("time", &time, 1);
+}

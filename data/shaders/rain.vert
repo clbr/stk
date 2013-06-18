@@ -1,0 +1,23 @@
+uniform float screenw;
+uniform float time;
+
+void main()
+{
+	const float size = 0.5;
+
+	vec4 start = gl_Vertex;
+	start.y -= time;
+
+	vec2 signs = sign(start.xz);
+	start.xz = mod(start.xz, 17.5) * signs;
+
+	start.y = mod(start.y, 24.0) - 3.0;
+
+	vec4 eyepos = gl_ModelViewMatrix * start;
+	vec4 projCorner = gl_ProjectionMatrix * vec4(vec2(size), eyepos.z, eyepos.w);
+
+	gl_PointSize = screenw * projCorner.x / projCorner.w;
+	gl_Position = gl_ProjectionMatrix * eyepos;
+
+	gl_TexCoord[0] = gl_MultiTexCoord0;
+}
