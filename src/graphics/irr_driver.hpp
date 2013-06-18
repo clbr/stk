@@ -159,6 +159,9 @@ public:
     PerCameraNode        *addPerCameraMesh(scene::IMesh* mesh,
                                            scene::ICameraSceneNode* node,
                                            scene::ISceneNode *parent = NULL);
+    PerCameraNode        *addPerCameraNode(scene::ISceneNode* node,
+                                           scene::ICameraSceneNode* cam,
+                                           scene::ISceneNode *parent = NULL);
     scene::ISceneNode    *addBillboard(const core::dimension2d< f32 > size,
                                        video::ITexture *texture,
                                        scene::ISceneNode* parent=NULL, bool alphaTesting = false);
