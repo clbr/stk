@@ -27,6 +27,7 @@
 #include "graphics/post_processing.hpp"
 #include "graphics/referee.hpp"
 #include "graphics/shaders.hpp"
+#include "graphics/wind.hpp"
 #include "guiengine/engine.hpp"
 #include "guiengine/modaldialog.hpp"
 #include "guiengine/scalable_font.hpp"
@@ -98,6 +99,7 @@ IrrDriver::IrrDriver()
     m_device              = createDevice(video::EDT_NULL);
     m_request_screenshot  = false;
     m_shaders             = NULL;
+    m_wind                = new Wind();
 }   // IrrDriver
 
 // ----------------------------------------------------------------------------
@@ -121,6 +123,7 @@ IrrDriver::~IrrDriver()
     m_modes.clear();
 
     delete m_shaders;
+    delete m_wind;
 }   // ~IrrDriver
 
 // ----------------------------------------------------------------------------
@@ -1595,6 +1598,8 @@ void IrrDriver::update(float dt)
         new ConfirmResolutionDialog();
         m_resolution_changing = RES_CHANGE_NONE;
     }
+
+    m_wind->update();
 
     World *world = World::getWorld();
 
