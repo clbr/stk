@@ -33,4 +33,6 @@ unsigned npow(unsigned in);
 
 void savetex(ITexture *tex, const char *name = NULL);
 
+float noise2d(float v1, float v2 = 0);
+
 #endif
