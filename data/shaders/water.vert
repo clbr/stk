@@ -1,11 +1,11 @@
 // Shader based on work by Fabien Sanglard
 // Released under the terms of CC-BY 3.0
 
+uniform vec3 lightdir;
+
 varying vec3 lightVec;
 varying vec3 halfVec;
 varying vec3 eyeVec;
-
-uniform vec3 lightdir;
 
 void main()
 {
