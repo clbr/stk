@@ -214,4 +214,12 @@ private:
     std::set<const scene::IMeshBuffer *> m_bubbles;
 };
 
+//
+
+class RainEffectProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif

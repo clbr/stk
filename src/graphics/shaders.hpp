@@ -31,6 +31,7 @@ enum E_SHADER
     ES_SPLATTING_LIGHTMAP,
     ES_GRASS,
     ES_BUBBLES,
+    ES_RAIN,
 
     ES_COUNT
 };
