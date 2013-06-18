@@ -193,7 +193,11 @@ void RainEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     const float screenw = UserConfigParams::m_width;
     const float time = irr_driver->getDevice()->getTimer()->getTime() / 200.0f;
+    const matrix4 viewm = srv->getVideoDriver()->getTransform(ETS_VIEW);
+    const vector3df campos = irr_driver->getSceneManager()->getActiveCamera()->getPosition();
 
     srv->setVertexShaderConstant("screenw", &screenw, 1);
     srv->setVertexShaderConstant("time", &time, 1);
+    srv->setVertexShaderConstant("viewm", viewm.pointer(), 16);
+    srv->setVertexShaderConstant("campos", &campos.X, 3);
 }

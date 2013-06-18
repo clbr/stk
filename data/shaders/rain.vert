@@ -1,5 +1,7 @@
 uniform float screenw;
 uniform float time;
+uniform mat4 viewm;
+uniform vec3 campos;
 
 void main()
 {
@@ -13,7 +15,9 @@ void main()
 
 	start.y = mod(start.y, 24.0) - 3.0;
 
-	vec4 eyepos = gl_ModelViewMatrix * start;
+	start.xyz += campos;
+
+	vec4 eyepos = viewm * start;
 	vec4 projCorner = gl_ProjectionMatrix * vec4(vec2(size), eyepos.z, eyepos.w);
 
 	gl_PointSize = screenw * projCorner.x / projCorner.w;
