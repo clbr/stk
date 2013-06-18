@@ -1,8 +1,9 @@
+uniform vec3 lightdir;
+
 varying vec3 normal;
 varying vec4 vertex_color;
 varying vec3 eyeVec;
 varying vec3 lightVec;
-uniform vec3 lightdir;
 
 void main()
 {
