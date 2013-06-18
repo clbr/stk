@@ -46,6 +46,7 @@ Shaders::Shaders()
     m_callbacks[ES_WATER] = new WaterShaderProvider();
     m_callbacks[ES_GRASS] = new GrassShaderProvider();
     m_callbacks[ES_BUBBLES] = new BubbleEffectProvider();
+    m_callbacks[ES_RAIN] = new RainEffectProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -73,6 +74,9 @@ Shaders::Shaders()
 
     m_shaders[ES_BUBBLES] = glslmat(dir + "bubble.vert", dir + "bubble.frag",
                                     m_callbacks[ES_BUBBLES], EMT_TRANSPARENT_ALPHA_CHANNEL);
+
+    m_shaders[ES_RAIN] = glslmat(dir + "rain.vert", dir + "rain.frag",
+                                    m_callbacks[ES_RAIN], EMT_TRANSPARENT_ALPHA_CHANNEL);
 
     // Check that all successfully loaded
     u32 i;
