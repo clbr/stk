@@ -14,7 +14,7 @@ void main()
 
 	// Building the matrix Eye Space -> Tangent Space
 	vec3 n = normalize (gl_NormalMatrix * gl_Normal);
-    // gl_MultiTexCoord1.xyz
+	// gl_MultiTexCoord1.xyz
 	vec3 t = normalize (gl_NormalMatrix * vec3(1.0, 0.0, 0.0)); // tangent
 	vec3 b = cross (n, t);
 
@@ -29,7 +29,7 @@ void main()
 
 	vertexPosition = normalize(vertexPosition);
 
-    eyeVec = normalize(-vertexPosition); // we are in Eye Coordinates, so EyePos is (0,0,0)
+	eyeVec = normalize(-vertexPosition); // we are in Eye Coordinates, so EyePos is (0,0,0)
 
 	// Normalize the halfVector to pass it to the fragment shader
 
