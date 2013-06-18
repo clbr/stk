@@ -54,6 +54,7 @@ class Camera;
 class PerCameraNode;
 class PostProcessing;
 class Shaders;
+class Wind;
 
 /**
   * \brief class that creates the irrLicht device and offers higher-level
@@ -236,6 +237,9 @@ public:
     // ------------------------------------------------------------------------
 
     Shaders              *m_shaders;
+
+    /** Wind. */
+    Wind                 *m_wind;
 
 #ifdef DEBUG
     /** Removes debug meshes. */
