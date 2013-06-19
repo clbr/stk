@@ -22,6 +22,7 @@
 #include "graphics/material_manager.hpp"
 #include "graphics/particle_kind.hpp"
 #include "graphics/irr_driver.hpp"
+#include "graphics/shaders.hpp"
 #include "graphics/wind.hpp"
 #include "io/file_manager.hpp"
 #include "tracks/track.hpp"
@@ -547,6 +548,12 @@ void ParticleEmitter::setParticleType(const ParticleKind* type)
             WindAffector *waf = new WindAffector(windspeed);
             m_node->addAffector(waf);
             waf->drop();
+        }
+
+        const bool flips = type->getFlips();
+        if (flips)
+        {
+            m_node->getMaterial(0).MaterialType = irr_driver->m_shaders->getShader(ES_SNOW);
         }
     }
 }   // setParticleType
