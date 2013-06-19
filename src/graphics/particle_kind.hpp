@@ -89,6 +89,8 @@ private:
     /** Wind. < 0.01 if disabled. */
     float m_wind_speed;
 
+    bool m_flips;
+
     std::string m_name;
 
     std::string m_material_file;
@@ -156,6 +158,8 @@ public:
     float     getScaleAffectorFactorY() const { return m_scale_affector_factor_y; };
 
     float     getWindSpeed() const { return m_wind_speed; }
+
+    bool      getFlips() const { return m_flips; }
 
     std::string getName() const { return m_name; }
 };
