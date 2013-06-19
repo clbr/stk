@@ -124,6 +124,9 @@ private:
                    irr::scene::ISkinnedMesh* mesh, int id);
 #endif
 
+    void renderFixed(float dt);
+    void renderGLSL(float dt);
+
     void doScreenShot();
 public:
          IrrDriver();
