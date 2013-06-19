@@ -52,6 +52,7 @@ ParticleKind::ParticleKind(const std::string file) : m_min_start_color(255,255,2
     m_force_lost_to_gravity_time = 1000;
     m_emission_decay_rate = 0;
     m_wind_speed     = 0;
+    m_flips          = false;
 
 
     // ----- Read XML file
@@ -213,6 +214,7 @@ ParticleKind::ParticleKind(const std::string file) : m_min_start_color(255,255,2
     if (wind != NULL)
     {
         wind->get("speed", &m_wind_speed);
+        wind->get("flips", &m_flips);
     }
 
     // ------------------------------------------------------------------------
