@@ -970,6 +970,10 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
 void Material::adjustForFog(scene::ISceneNode* parent, video::SMaterial *m,
                             bool use_fog) const
 {
+    // The new pipeline does fog as a post-process effect.
+    if (irr_driver->isGLSL())
+        return;
+
     m->setFlag(video::EMF_FOG_ENABLE, m_fog && use_fog);
 
     if (parent != NULL)
