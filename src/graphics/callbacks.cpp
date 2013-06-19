@@ -192,7 +192,7 @@ void BubbleEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 void RainEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     const float screenw = UserConfigParams::m_width;
-    const float time = irr_driver->getDevice()->getTimer()->getTime() / 200.0f;
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 90.0f;
     const matrix4 viewm = srv->getVideoDriver()->getTransform(ETS_VIEW);
     const vector3df campos = irr_driver->getSceneManager()->getActiveCamera()->getPosition();
 
