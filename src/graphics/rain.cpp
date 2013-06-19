@@ -18,6 +18,7 @@
 
 #include "audio/sfx_base.hpp"
 #include "audio/sfx_manager.hpp"
+#include "graphics/glwrap.hpp"
 #include "graphics/irr_driver.hpp"
 #include "graphics/material_manager.hpp"
 #include "graphics/material.hpp"
@@ -30,8 +31,6 @@
 #include "utils/random_generator.hpp"
 
 #include <ISceneManager.h>
-
-#include <gl/gl.h>
 
 using namespace video;
 using namespace scene;
