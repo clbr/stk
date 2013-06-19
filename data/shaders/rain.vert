@@ -7,8 +7,14 @@ void main()
 {
 	const float size = 0.5;
 
+	// This simulation will run accurately for a bit under five days.
 	vec4 start = gl_Vertex;
 	start.y -= time;
+
+	// How many times has it fell?
+	float count = floor(start.y / 24.0);
+	start.x += sin(count);
+	start.z += cos(count);
 
 	vec2 signs = sign(start.xz);
 	start.xz = mod(start.xz, 17.5) * signs;
