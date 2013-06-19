@@ -222,4 +222,12 @@ public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 };
 
+//
+
+class SnowEffectProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif

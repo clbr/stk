@@ -201,3 +201,10 @@ void RainEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("viewm", viewm.pointer(), 16);
     srv->setVertexShaderConstant("campos", &campos.X, 3);
 }
+
+void SnowEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
+
+    srv->setVertexShaderConstant("time", &time, 1);
+}
