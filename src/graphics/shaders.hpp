@@ -32,6 +32,7 @@ enum E_SHADER
     ES_GRASS,
     ES_BUBBLES,
     ES_RAIN,
+    ES_SNOW,
 
     ES_COUNT
 };
