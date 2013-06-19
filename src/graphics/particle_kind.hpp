@@ -86,6 +86,9 @@ private:
 
     int m_emission_decay_rate;
 
+    /** Wind. < 0.01 if disabled. */
+    float m_wind_speed;
+
     std::string m_name;
 
     std::string m_material_file;
@@ -148,10 +151,11 @@ public:
 
     int       getEmissionDecayRate() const { return m_emission_decay_rate; }
 
-
     bool      hasScaleAffector() const { return m_has_scale_affector; }
     float     getScaleAffectorFactorX() const { return m_scale_affector_factor_x; }
     float     getScaleAffectorFactorY() const { return m_scale_affector_factor_y; };
+
+    float     getWindSpeed() const { return m_wind_speed; }
 
     std::string getName() const { return m_name; }
 };
