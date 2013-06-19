@@ -31,7 +31,7 @@
 
 #include <ISceneManager.h>
 
-#include <gl/gl.h>
+#include <GL/gl.h>
 
 using namespace video;
 using namespace scene;
