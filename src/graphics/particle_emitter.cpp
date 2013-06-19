@@ -26,6 +26,7 @@
 #include "io/file_manager.hpp"
 #include "tracks/track.hpp"
 #include "utils/constants.hpp"
+#include "utils/helpers.hpp"
 
 #include <SParticle.h>
 #include <IParticleAffector.h>
@@ -180,18 +181,21 @@ class WindAffector : public scene::IParticleAffector
 {
     /** (Squared) distance from camera at which a particle is completely faded out */
     float m_speed;
+    float m_seed;
 
 public:
     WindAffector(float speed): m_speed(speed)
     {
+        m_seed = (rand() % 1000) - 500;
     }
 
     // ------------------------------------------------------------------------
 
     virtual void affect(u32 now, scene::SParticle* particlearray, u32 count)
     {
+        const float time = irr_driver->getDevice()->getTimer()->getTime() / 10000.0f;
         core::vector3df dir = irr_driver->m_wind->getWind();
-        dir *= m_speed;
+        dir *= m_speed * std::min(noise2d(time, m_seed), -0.2f);
 
         for (u32 n = 0; n < count; n++)
         {
