@@ -22,6 +22,7 @@
 #include "graphics/material_manager.hpp"
 #include "graphics/particle_kind.hpp"
 #include "graphics/irr_driver.hpp"
+#include "graphics/wind.hpp"
 #include "io/file_manager.hpp"
 #include "tracks/track.hpp"
 #include "utils/constants.hpp"
@@ -172,6 +173,43 @@ public:
         return scene::EPAT_FADE_OUT;
     }
 };
+
+// ============================================================================
+
+class WindAffector : public scene::IParticleAffector
+{
+    /** (Squared) distance from camera at which a particle is completely faded out */
+    float m_speed;
+
+public:
+    WindAffector(float speed): m_speed(speed)
+    {
+    }
+
+    // ------------------------------------------------------------------------
+
+    virtual void affect(u32 now, scene::SParticle* particlearray, u32 count)
+    {
+        core::vector3df dir = irr_driver->m_wind->getWind();
+        dir *= m_speed;
+
+        for (u32 n = 0; n < count; n++)
+        {
+            scene::SParticle& cur = particlearray[n];
+
+            cur.pos += dir;
+        }   // for n<count
+    }   // affect
+
+    // ------------------------------------------------------------------------
+
+    virtual scene::E_PARTICLE_AFFECTOR_TYPE getType() const
+    {
+        // FIXME: this method seems to make sense only for built-in affectors
+        return scene::EPAT_FADE_OUT;
+    }
+
+};   // WindAffector
 
 
 // ============================================================================
@@ -488,7 +526,7 @@ void ParticleEmitter::setParticleType(const ParticleKind* type)
             m_node->addAffector(faa);
             faa->drop();
         }
-        
+
         if (type->hasScaleAffector())
         {
             core::dimension2df factor = core::dimension2df(type->getScaleAffectorFactorX(),
@@ -497,6 +535,14 @@ void ParticleEmitter::setParticleType(const ParticleKind* type)
                 m_node->createScaleParticleAffector(factor);
             m_node->addAffector(scale_affector);
             scale_affector->drop();
+        }
+
+        const float windspeed = type->getWindSpeed();
+        if (windspeed > 0.01f)
+        {
+            WindAffector *waf = new WindAffector(windspeed);
+            m_node->addAffector(waf);
+            waf->drop();
         }
     }
 }   // setParticleType
