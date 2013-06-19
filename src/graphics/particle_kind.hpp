@@ -82,6 +82,9 @@ private:
 
     int m_emission_decay_rate;
 
+    /** Wind. < 0.01 if disabled. */
+    float m_wind_speed;
+
     std::string m_name;
 
     std::string m_material_file;
@@ -137,6 +140,8 @@ public:
     void      setBoxSizeXZ    (float x, float z) { m_box_x = x; m_box_z = z;   }
 
     int       getEmissionDecayRate() const { return m_emission_decay_rate; }
+
+    float     getWindSpeed() const { return m_wind_speed; }
 
     std::string getName() const { return m_name; }
 };
