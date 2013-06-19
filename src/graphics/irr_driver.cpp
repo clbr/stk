@@ -1634,6 +1634,8 @@ void IrrDriver::update(float dt)
     else
         renderFixed(dt);
 
+    if (m_request_screenshot) doScreenShot();
+
     // Enable this next print statement to get render information printed
     // E.g. number of triangles rendered, culled etc. The stats is only
     // printed while the race is running and not while the in-game menu

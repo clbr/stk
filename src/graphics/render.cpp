@@ -80,8 +80,6 @@ void IrrDriver::renderFixed(float dt)
     GUIEngine::render(dt);
 
     m_video_driver->endScene();
-
-    if (m_request_screenshot) doScreenShot();
 }
 
 void IrrDriver::renderGLSL(float dt)
@@ -173,8 +171,6 @@ void IrrDriver::renderGLSL(float dt)
 #endif
 
     m_video_driver->endScene();
-
-    if (m_request_screenshot) doScreenShot();
 
     getPostProcessing()->update(dt);
 }
