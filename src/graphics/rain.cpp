@@ -90,6 +90,8 @@ public:
 
         drv->drawVertexPrimitiveList(verts, count, ind, count,
                                      EVT_STANDARD, EPT_POINT_SPRITES);
+
+        glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);
     }
 
     virtual const core::aabbox3d<f32>& getBoundingBox() const
