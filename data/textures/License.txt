@@ -107,13 +107,13 @@ Under Creative Commons Attribution Share-Alike (CC-BY-SA) - http://creativecommo
     by Dim, released under CC-BY-SA 3.0
     from open game art (http://opengameart.org/content/dims-arboretum-0)
 
-* astro_turf, bow_tile, grass3, ribbed_steel, rock_brown, rock_grey, sky3, tarmac
+* bow_tile, grass3, ribbed_steel, rock_brown, rock_grey, sky3, tarmac
     By Mac_DMH
 
 * GrassTall.png
     from the dims_arboretum by Dims
 
-* zipper particles, skid particles
+* zipper particles, skid particles, astro_turf
     by TotoPlus62
     
 ===
