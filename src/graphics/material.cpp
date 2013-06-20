@@ -875,6 +875,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
     if (m_graphical_effect == GE_GRASS)
     {
         if (UserConfigParams::m_pixel_shaders &&
+            UserConfigParams::m_weather_effects &&
             irr_driver->isGLSL())
         {
             // Only one grass speed & amplitude per map for now
