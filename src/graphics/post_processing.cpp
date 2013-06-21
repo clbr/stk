@@ -20,65 +20,24 @@
 
 #include "config/user_config.hpp"
 #include "io/file_manager.hpp"
+#include "graphics/callbacks.hpp"
 #include "graphics/irr_driver.hpp"
+#include "graphics/rtts.hpp"
+#include "graphics/shaders.hpp"
 #include "race/race_manager.hpp"
 #include "utils/log.hpp"
-
-#include <IGPUProgrammingServices.h>
-#include <IMaterialRendererServices.h>
-
-#define MOTION_BLUR_FACTOR (1.0f/15.0f)
-#define MOTION_BLUR_OFFSET 20.0f
 
 using namespace video;
 using namespace scene;
 
 PostProcessing::PostProcessing(video::IVideoDriver* video_driver)
 {
-    // Check if post-processing is supported on this hardware
-    m_supported = irr_driver->isGLSL();
-
-    //Check which texture dimensions are supported on this hardware
-    bool nonsquare = video_driver->queryFeature(video::EVDF_TEXTURE_NSQUARE);
-    bool nonpower = video_driver->queryFeature(video::EVDF_TEXTURE_NPOT);
-    if (!nonpower) {
-        Log::warn("PostProcessing",
-                  "Only power of two textures are supported.");
-    }
-    if (!nonsquare) {
-        Log::warn("PostProcessing", "Only square textures are supported.");
-    }
     // Initialization
-    if(m_supported)
-    {
-        // Render target
-        core::dimension2du opt = video_driver->getScreenSize()
-                                .getOptimalSize(!nonpower, !nonsquare);
-        m_render_target =
-            video_driver->addRenderTargetTexture(opt, "postprocess");
-        if(!m_render_target)
-        {
-            Log::warn("PostProcessing", "Couldn't create the render target "
-                      "for post-processing, disabling it.");
-            UserConfigParams::m_postprocess_enabled = false;
-        }
-
-        // Material and shaders
-        IGPUProgrammingServices* gpu =
-            video_driver->getGPUProgrammingServices();
-        s32 material_type = gpu->addHighLevelShaderMaterialFromFiles(
-                   (file_manager->getShaderDir() + "motion_blur.vert").c_str(),
-                   "main", video::EVST_VS_2_0,
-                   (file_manager->getShaderDir() + "motion_blur.frag").c_str(),
-                   "main", video::EPST_PS_2_0,
-                   this, video::EMT_SOLID);
-        m_blur_material.MaterialType = (E_MATERIAL_TYPE)material_type;
-        m_blur_material.setTexture(0, m_render_target);
-        m_blur_material.Wireframe = false;
-        m_blur_material.Lighting = false;
-        m_blur_material.ZWriteEnable = false;
-
-    }
+    m_blur_material.MaterialType = irr_driver->getShaders()->getShader(ES_MOTIONBLUR);
+    m_blur_material.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_TMP1));
+    m_blur_material.Wireframe = false;
+    m_blur_material.Lighting = false;
+    m_blur_material.ZWriteEnable = false;
 }   // PostProcessing
 
 // ----------------------------------------------------------------------------
@@ -93,11 +52,14 @@ PostProcessing::~PostProcessing()
  */
 void PostProcessing::reset()
 {
-    unsigned int n = Camera::getNumCameras();
+    const u32 n = Camera::getNumCameras();
     m_boost_time.resize(n);
     m_vertices.resize(n);
     m_center.resize(n);
     m_direction.resize(n);
+
+    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
+                                                           m_callbacks[ES_MOTIONBLUR];
 
     for(unsigned int i=0; i<n; i++)
     {
@@ -146,6 +108,10 @@ void PostProcessing::reset()
         m_center[i].Y=m_vertices[i].v0.TCoords.Y + 0.2f*tex_height;
         m_direction[i].X = m_center[i].X;
         m_direction[i].Y = m_vertices[i].v0.TCoords.Y + 0.7f*tex_height;
+
+        cb->setCenter(i, m_center[i].X, m_center[i].Y);
+        cb->setDirection(i, m_direction[i].X, m_direction[i].Y);
+        cb->setMaxHeight(i, m_vertices[i].v1.TCoords.Y);
     }  // for i <number of cameras
 }   // reset
 
@@ -155,23 +121,15 @@ void PostProcessing::reset()
  */
 void PostProcessing::beginCapture()
 {
-    if(!m_supported || !UserConfigParams::m_postprocess_enabled)
+    if(!UserConfigParams::m_postprocess_enabled)
         return;
 
     bool any_boost = false;
     for(unsigned int i=0; i<m_boost_time.size(); i++)
         any_boost |= m_boost_time[i]>0.0f;
 
-    // Don't capture the input when we have no post-processing to add
-    // it will be faster and this ay we won't lose anti-aliasing
-    if(!any_boost)
-    {
-        m_used_pp_this_frame = false;
-        return;
-    }
-
-    m_used_pp_this_frame = true;
-    irr_driver->getVideoDriver()->setRenderTarget(m_render_target, true, true);
+    irr_driver->getVideoDriver()->setRenderTarget(irr_driver->getRTTs()->getRTT(RTT_TMP1),
+                                                  true, true);
 }   // beginCapture
 
 // ----------------------------------------------------------------------------
@@ -179,8 +137,7 @@ void PostProcessing::beginCapture()
   */
 void PostProcessing::endCapture()
 {
-    if(!m_supported || !UserConfigParams::m_postprocess_enabled ||
-        !m_used_pp_this_frame)
+    if(!UserConfigParams::m_postprocess_enabled)
         return;
 
     irr_driver->getVideoDriver()->setRenderTarget(video::ERT_FRAME_BUFFER,
@@ -192,6 +149,10 @@ void PostProcessing::endCapture()
 void PostProcessing::giveBoost(unsigned int camera_index)
 {
     m_boost_time[camera_index] = 0.75f;
+
+    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
+                                                           m_callbacks[ES_MOTIONBLUR];
+    cb->setBoostTime(camera_index, m_boost_time[camera_index]);
 }   // giveBoost
 
 // ----------------------------------------------------------------------------
@@ -200,6 +161,9 @@ void PostProcessing::giveBoost(unsigned int camera_index)
  */
 void PostProcessing::update(float dt)
 {
+    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
+                                                           m_callbacks[ES_MOTIONBLUR];
+
     for(unsigned int i=0; i<m_boost_time.size(); i++)
     {
         if (m_boost_time[i] > 0.0f)
@@ -207,6 +171,8 @@ void PostProcessing::update(float dt)
             m_boost_time[i] -= dt;
             if (m_boost_time[i] < 0.0f) m_boost_time[i] = 0.0f;
         }
+
+        cb->setBoostTime(i, m_boost_time[i]);
     }
 }   // update
 
@@ -214,61 +180,29 @@ void PostProcessing::update(float dt)
 /** Render the post-processed scene */
 void PostProcessing::render()
 {
-    if(!m_supported || !UserConfigParams::m_postprocess_enabled)
+    if(!UserConfigParams::m_postprocess_enabled)
         return;
 
-    if (!m_used_pp_this_frame)
-    {
-        return;
-    }
+    const u16 indices[6] = {0, 1, 2, 3, 0, 2};
 
-    u16 indices[6] = {0, 1, 2, 3, 0, 2};
+    video::IVideoDriver * const video_driver = irr_driver->getVideoDriver();
+    video_driver->setMaterial(m_blur_material);
+    video_driver->setTransform(video::ETS_WORLD, core::IdentityMatrix);
+    video_driver->setTransform(video::ETS_VIEW, core::IdentityMatrix);
+    video_driver->setTransform(video::ETS_PROJECTION, core::IdentityMatrix);
 
-    for(m_current_camera=0; m_current_camera<Camera::getNumCameras();
-        m_current_camera++)
+    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
+                                                           m_callbacks[ES_MOTIONBLUR];
+
+    const u32 max = Camera::getNumCameras();
+    for(u32 cam = 0; cam < max; cam++)
     {
+        cb->setCurrentCamera(cam);
+
         // Draw the fullscreen quad while applying the corresponding
         // post-processing shaders
-        video::IVideoDriver*    video_driver = irr_driver->getVideoDriver();
-        video_driver->setMaterial(m_blur_material);
-        video_driver->drawIndexedTriangleList(&(m_vertices[m_current_camera].v0),
+        video_driver->drawIndexedTriangleList(&(m_vertices[cam].v0),
                                               4, &indices[0], 2);
     }
 
 }   // render
-
-// ----------------------------------------------------------------------------
-/** Implement IShaderConstantsSetCallback. Shader constants setter for
- *  post-processing */
-void PostProcessing::OnSetConstants(video::IMaterialRendererServices *services,
-                                    s32 user_data)
-{
-    // We need the maximum texture coordinates:
-    float max_tex_height = m_vertices[m_current_camera].v1.TCoords.Y;
-    services->setPixelShaderConstant("max_tex_height", &max_tex_height, 1);
-
-    // Scale the boost time to get a usable boost amount:
-    float boost_amount = m_boost_time[m_current_camera] * 0.7f;
-
-    // Especially for single screen the top of the screen is less blurred
-    // in the fragment shader by multiplying the blurr factor by
-    // (max_tex_height - texcoords.t), where max_tex_height is the maximum
-    // texture coordinate (1.0 or 0.5). In split screen this factor is too
-    // small (half the value compared with non-split screen), so we
-    // multiply this by 2.
-    if(m_boost_time.size()>1)
-        boost_amount *= 2.0f;
-
-    services->setPixelShaderConstant("boost_amount", &boost_amount, 1);
-    services->setPixelShaderConstant("center",
-                                     &(m_center[m_current_camera].X), 2);
-    services->setPixelShaderConstant("direction",
-                                     &(m_direction[m_current_camera].X), 2);
-
-    // Use a radius of 0.15 when showing a single kart, otherwise (2-4 karts
-    // on splitscreen) use only 0.75.
-    float radius = Camera::getNumCameras()==1 ? 0.15f : 0.075f;
-    services->setPixelShaderConstant("mask_radius", &radius, 1);
-    const int texunit = 0;
-    services->setPixelShaderConstant("color_buffer", &texunit, 1);
-}   // OnSetConstants
