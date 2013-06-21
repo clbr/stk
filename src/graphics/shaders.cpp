@@ -48,6 +48,7 @@ Shaders::Shaders()
     m_callbacks[ES_BUBBLES] = new BubbleEffectProvider();
     m_callbacks[ES_RAIN] = new RainEffectProvider();
     m_callbacks[ES_SNOW] = new SnowEffectProvider();
+    m_callbacks[ES_MOTIONBLUR] = new MotionBlurProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -81,6 +82,9 @@ Shaders::Shaders()
 
     m_shaders[ES_SNOW] = glslmat(dir + "snow.vert", dir + "snow.frag",
                                     m_callbacks[ES_SNOW], EMT_TRANSPARENT_ALPHA_CHANNEL);
+
+    m_shaders[ES_MOTIONBLUR] = glslmat(dir + "motion_blur.vert", dir + "motion_blur.frag",
+                                    m_callbacks[ES_MOTIONBLUR], EMT_SOLID);
 
     // Check that all successfully loaded
     u32 i;
