@@ -25,6 +25,9 @@
 
 #include "config/user_config.hpp"
 #include "graphics/irr_driver.hpp"
+#include "graphics/screenquad.hpp"
+#include "graphics/shaders.hpp"
+#include "graphics/rtts.hpp"
 #include "io/file_manager.hpp"
 #include "io/xml_node.hpp"
 #include "modes/world.hpp"
@@ -953,10 +956,12 @@ int QuadGraph::findOutOfRoadSector(const Vec3& xyz,
 //-----------------------------------------------------------------------------
 /** Takes a snapshot of the driveline quads so they can be used as minimap.
  */
-video::ITexture *QuadGraph::makeMiniMap(const core::dimension2du &dimension,
+video::ITexture *QuadGraph::makeMiniMap(const core::dimension2du &origdimension,
                                         const std::string &name,
                                         const video::SColor &fill_color)
 {
+    const core::dimension2du dimension = origdimension * 2;
+
     IrrDriver::RTTProvider rttProvider(dimension, name, true);
     video::SColor red(128, 255, 0, 0);
     createMesh(/*show_invisible part of the track*/ false,
@@ -1034,7 +1039,21 @@ video::ITexture *QuadGraph::makeMiniMap(const core::dimension2du &dimension,
     {
         Log::error("Quad Graph", "[makeMiniMap] WARNING: RTT does not appear to work,"
                         "mini-map will not be available.");
+        return NULL;
     }
+
+    screenQuad sq(irr_driver->getVideoDriver());
+    sq.getMaterial().MaterialType = irr_driver->getShaders()->getShader(ES_GAUSSIAN3H);
+    sq.setTexture(texture);
+
+    // Horizontal pass
+    sq.render(irr_driver->getRTTs()->getRTT(RTT_TMP1));
+
+    // Vertical pass
+    sq.getMaterial().MaterialType = irr_driver->getShaders()->getShader(ES_GAUSSIAN3V);
+    sq.setTexture(irr_driver->getRTTs()->getRTT(RTT_TMP1));
+
+    sq.render(texture);
 
     return texture;
 }   // makeMiniMap
