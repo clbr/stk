@@ -34,14 +34,11 @@ using namespace irr;
 /** \brief   Handles post processing, eg motion blur
  *  \ingroup graphics
  */
-class PostProcessing : public video::IShaderConstantSetCallBack
+class PostProcessing: public IReferenceCounted
 {
 private:
-    video::ITexture    *m_render_target;
     /** Material to be used when blurring is used. */
     video::SMaterial    m_blur_material;
-
-    bool                m_supported;
 
     /** Boost time, how long the boost should be displayed. This also
      *  affects the strength of the effect: longer boost time will
@@ -53,14 +50,6 @@ private:
 
     /** The center to which the blurring is aimed at, in [0,1]. */
     std::vector<core::vector2df> m_direction;
-
-    /** True if any of the cameras is using post processing. */
-    bool                m_used_pp_this_frame;
-
-    /** Currently active camera during post-processing, needed in the
-     *  OnSetConstants callback. */
-    unsigned int        m_current_camera;
-
 
     struct Quad { video::S3DVertex v0, v1, v2, v3; };
 
@@ -81,14 +70,8 @@ public:
     /** Render the post-processed scene */
     void         render();
 
-    /** Is the hardware able to use post-processing? */
-    inline bool  isSupported() const                 {return m_supported;}
-
     /** Use motion blur for a short time */
     void         giveBoost(unsigned int cam_index);
-
-    /** Implement IShaderConstantsSetCallback. Shader constants setter for post-processing */
-    virtual void OnSetConstants(video::IMaterialRendererServices *services, s32 user_data);
 };
 
 #endif // HEADER_POST_PROCESSING_HPP

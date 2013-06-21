@@ -208,3 +208,36 @@ void SnowEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
     srv->setVertexShaderConstant("time", &time, 1);
 }
+
+void MotionBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    // We need the maximum texture coordinates:
+    float max_tex_height = m_maxheight[m_current_camera];
+    srv->setPixelShaderConstant("max_tex_height", &max_tex_height, 1);
+
+    // Scale the boost time to get a usable boost amount:
+    float boost_amount = m_boost_time[m_current_camera] * 0.7f;
+
+    // Especially for single screen the top of the screen is less blurred
+    // in the fragment shader by multiplying the blurr factor by
+    // (max_tex_height - texcoords.t), where max_tex_height is the maximum
+    // texture coordinate (1.0 or 0.5). In split screen this factor is too
+    // small (half the value compared with non-split screen), so we
+    // multiply this by 2.
+    if(Camera::getNumCameras() > 1)
+        boost_amount *= 2.0f;
+
+    srv->setPixelShaderConstant("boost_amount", &boost_amount, 1);
+    srv->setPixelShaderConstant("center",
+                                     &(m_center[m_current_camera].X), 2);
+    srv->setPixelShaderConstant("direction",
+                                     &(m_direction[m_current_camera].X), 2);
+
+    // Use a radius of 0.15 when showing a single kart, otherwise (2-4 karts
+    // on splitscreen) use only 0.75.
+    float radius = Camera::getNumCameras()==1 ? 0.15f : 0.075f;
+    srv->setPixelShaderConstant("mask_radius", &radius, 1);
+
+    const int texunit = 0;
+    srv->setPixelShaderConstant("color_buffer", &texunit, 1);
+}
