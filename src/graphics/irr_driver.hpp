@@ -76,6 +76,11 @@ private:
     gui::IGUIFont              *m_race_font;
     /** Post-processing. */
     PostProcessing             *m_post_processing;
+    /** Shaders. */
+    Shaders              *m_shaders;
+    /** Wind. */
+    Wind                 *m_wind;
+
 
     /** Flag to indicate if a resolution change is pending (which will be
      *  acted upon in the next update). None means no change, yes means
@@ -238,14 +243,12 @@ public:
     /** Returns a pointer to the post processing object. */
     inline PostProcessing* getPostProcessing()  {return m_post_processing;}
     // ------------------------------------------------------------------------
-
+    inline Wind* getWind()  {return m_wind;}
+    // ------------------------------------------------------------------------
+    inline Shaders* getShaders()  {return m_shaders;}
+    // ------------------------------------------------------------------------
     inline bool isGLSL() const { return m_glsl; }
     // ------------------------------------------------------------------------
-
-    Shaders              *m_shaders;
-
-    /** Wind. */
-    Wind                 *m_wind;
 
 #ifdef DEBUG
     /** Removes debug meshes. */
