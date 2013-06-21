@@ -27,6 +27,7 @@
 #include "graphics/post_processing.hpp"
 #include "graphics/referee.hpp"
 #include "graphics/shaders.hpp"
+#include "graphics/rtts.hpp"
 #include "graphics/wind.hpp"
 #include "guiengine/engine.hpp"
 #include "guiengine/modaldialog.hpp"
@@ -401,6 +402,9 @@ void IrrDriver::initDevice()
     if (m_glsl)
     {
         Log::info("irr_driver", "GLSL supported.");
+
+        // Order matters, create RTTs as soon as possible, as they are the largest blocks.
+        m_rtts = new rtt_t();
         m_shaders = new Shaders();
     }
     else
