@@ -276,4 +276,12 @@ private:
     core::vector2df m_direction[MAX_PLAYER_COUNT];
 };
 
+//
+
+class GaussianBlurProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif
