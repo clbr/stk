@@ -230,4 +230,50 @@ public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 };
 
+//
+
+class MotionBlurProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+    void setMaxHeight(u32 who, float height)
+    {
+        assert(who < MAX_PLAYER_COUNT);
+        m_maxheight[who] = height;
+    }
+
+    void setBoostTime(u32 who, float time)
+    {
+        assert(who < MAX_PLAYER_COUNT);
+        m_boost_time[who] = time;
+    }
+
+    void setCenter(u32 who, float X, float Y)
+    {
+        assert(who < MAX_PLAYER_COUNT);
+        m_center[who].X = X;
+        m_center[who].Y = Y;
+    }
+
+    void setDirection(u32 who, float X, float Y)
+    {
+        assert(who < MAX_PLAYER_COUNT);
+        m_direction[who].X = X;
+        m_direction[who].Y = Y;
+    }
+
+    void setCurrentCamera(u32 who)
+    {
+        m_current_camera = who;
+    }
+
+private:
+    float m_maxheight[MAX_PLAYER_COUNT];
+    u32 m_current_camera;
+    float m_boost_time[MAX_PLAYER_COUNT];
+    core::vector2df m_center[MAX_PLAYER_COUNT];
+    core::vector2df m_direction[MAX_PLAYER_COUNT];
+};
+
 #endif
