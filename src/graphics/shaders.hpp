@@ -33,6 +33,7 @@ enum E_SHADER
     ES_BUBBLES,
     ES_RAIN,
     ES_SNOW,
+    ES_MOTIONBLUR,
 
     ES_COUNT
 };
