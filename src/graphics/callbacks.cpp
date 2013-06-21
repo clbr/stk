@@ -241,3 +241,13 @@ void MotionBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     const int texunit = 0;
     srv->setPixelShaderConstant("color_buffer", &texunit, 1);
 }
+
+void GaussianBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    const float pixel[2] = {
+        1.0f / UserConfigParams::m_width,
+        1.0f / UserConfigParams::m_height
+        };
+
+    srv->setVertexShaderConstant("pixel", pixel, 2);
+}
