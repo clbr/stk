@@ -55,6 +55,7 @@ class PerCameraNode;
 class PostProcessing;
 class Shaders;
 class Wind;
+class rtt_t;
 
 /**
   * \brief class that creates the irrLicht device and offers higher-level
@@ -80,6 +81,8 @@ private:
     Shaders              *m_shaders;
     /** Wind. */
     Wind                 *m_wind;
+    /** RTTs. */
+    rtt_t                *m_rtts;
 
 
     /** Flag to indicate if a resolution change is pending (which will be
@@ -246,6 +249,8 @@ public:
     inline Wind* getWind()  {return m_wind;}
     // ------------------------------------------------------------------------
     inline Shaders* getShaders()  {return m_shaders;}
+    // ------------------------------------------------------------------------
+    inline rtt_t* getRTTs()  {return m_rtts;}
     // ------------------------------------------------------------------------
     inline bool isGLSL() const { return m_glsl; }
     // ------------------------------------------------------------------------
