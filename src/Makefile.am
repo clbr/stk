@@ -105,6 +105,8 @@ supertuxkart_SOURCES = \
  graphics/render.cpp \
  graphics/referee.cpp \
  graphics/referee.hpp \
+ graphics/rtts.hpp \
+ graphics/rtts.cpp \
  graphics/shaders.cpp \
  graphics/shaders.hpp \
  graphics/shadow.cpp \
