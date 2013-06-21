@@ -36,11 +36,7 @@ using namespace scene;
 PostProcessing::PostProcessing(video::IVideoDriver* video_driver)
 {
     // Check if post-processing is supported on this hardware
-    m_supported = false;
-    if( irr_driver->isGLSL() )
-    {
-        m_supported = true;
-    }
+    m_supported = irr_driver->isGLSL();
 
     //Check which texture dimensions are supported on this hardware
     bool nonsquare = video_driver->queryFeature(video::EVDF_TEXTURE_NSQUARE);
