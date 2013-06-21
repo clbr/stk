@@ -655,7 +655,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
         if (UserConfigParams::m_pixel_shaders &&
             irr_driver->isGLSL())
         {
-            m->MaterialType = irr_driver->m_shaders->getShader(ES_SPHERE_MAP);
+            m->MaterialType = irr_driver->getShaders()->getShader(ES_SPHERE_MAP);
         }
         else
         {
@@ -738,7 +738,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             }
 
             // Material and shaders
-            m->MaterialType = irr_driver->m_shaders->getShader(
+            m->MaterialType = irr_driver->getShaders()->getShader(
                                  with_lightmap ? ES_NORMAL_MAP_LIGHTMAP : ES_NORMAL_MAP );
             m->Lighting = false;
             m->ZWriteEnable = true;
@@ -799,11 +799,11 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             // Material and shaders
             if (m_splatting_lightmap.size() > 0)
             {
-                m->MaterialType = irr_driver->m_shaders->getShader(ES_SPLATTING_LIGHTMAP);
+                m->MaterialType = irr_driver->getShaders()->getShader(ES_SPLATTING_LIGHTMAP);
             }
             else
             {
-                m->MaterialType = irr_driver->m_shaders->getShader(ES_SPLATTING);
+                m->MaterialType = irr_driver->getShaders()->getShader(ES_SPLATTING);
             }
         }
         else
@@ -831,10 +831,10 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             irr_driver->isGLSL())
         {
             BubbleEffectProvider * bubble = (BubbleEffectProvider *)
-                                            irr_driver->m_shaders->m_callbacks[ES_BUBBLES];
+                                            irr_driver->getShaders()->m_callbacks[ES_BUBBLES];
             bubble->addBubble(mb);
 
-            m->MaterialType = irr_driver->m_shaders->getShader(ES_BUBBLES);
+            m->MaterialType = irr_driver->getShaders()->getShader(ES_BUBBLES);
 
             // alpha blending and bubble shading can work together so when both are enabled
             // don't increment the 'modes' counter to not get the 'too many modes' warning
@@ -854,10 +854,10 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             m->setTexture(1, irr_driver->getTexture(file_manager->getTextureFile("waternormals.jpg")));
             m->setTexture(2, irr_driver->getTexture(file_manager->getTextureFile("waternormals2.jpg")));
 
-            ((WaterShaderProvider *) irr_driver->m_shaders->m_callbacks[ES_WATER])->
+            ((WaterShaderProvider *) irr_driver->getShaders()->m_callbacks[ES_WATER])->
                 setSpeed(m_water_shader_speed_1/100.0f, m_water_shader_speed_2/100.0f);
 
-            m->MaterialType = irr_driver->m_shaders->getShader(ES_WATER);
+            m->MaterialType = irr_driver->getShaders()->getShader(ES_WATER);
         }
         modes++;
     }
@@ -869,13 +869,13 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             irr_driver->isGLSL())
         {
             // Only one grass speed & amplitude per map for now
-            ((GrassShaderProvider *) irr_driver->m_shaders->m_callbacks[ES_GRASS])->
+            ((GrassShaderProvider *) irr_driver->getShaders()->m_callbacks[ES_GRASS])->
                 setSpeed(m_grass_speed);
-            ((GrassShaderProvider *) irr_driver->m_shaders->m_callbacks[ES_GRASS])->
+            ((GrassShaderProvider *) irr_driver->getShaders()->m_callbacks[ES_GRASS])->
                 setAmplitude(m_grass_amplitude);
 
             // Material and shaders
-            m->MaterialType = irr_driver->m_shaders->getShader(ES_GRASS);
+            m->MaterialType = irr_driver->getShaders()->getShader(ES_GRASS);
 
         }
     }
@@ -989,7 +989,7 @@ void Material::adjustForFog(scene::ISceneNode* parent, video::SMaterial *m,
 void Material::onMadeVisible(scene::IMeshBuffer* who)
 {
     BubbleEffectProvider * bubble = (BubbleEffectProvider *)
-                                     irr_driver->m_shaders->m_callbacks[ES_BUBBLES];
+                                     irr_driver->getShaders()->m_callbacks[ES_BUBBLES];
     bubble->onMadeVisible(who);
 }
 
@@ -999,7 +999,7 @@ void Material::onMadeVisible(scene::IMeshBuffer* who)
 void Material::onHidden(scene::IMeshBuffer* who)
 {
     BubbleEffectProvider * bubble = (BubbleEffectProvider *)
-                                     irr_driver->m_shaders->m_callbacks[ES_BUBBLES];
+                                     irr_driver->getShaders()->m_callbacks[ES_BUBBLES];
     bubble->onHidden(who);
 }
 
@@ -1008,7 +1008,7 @@ void Material::onHidden(scene::IMeshBuffer* who)
 void Material::isInitiallyHidden(scene::IMeshBuffer* who)
 {
     BubbleEffectProvider * bubble = (BubbleEffectProvider *)
-                                     irr_driver->m_shaders->m_callbacks[ES_BUBBLES];
+                                     irr_driver->getShaders()->m_callbacks[ES_BUBBLES];
     bubble->isInitiallyHidden(who);
 }
 
