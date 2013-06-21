@@ -195,7 +195,7 @@ public:
     virtual void affect(u32 now, scene::SParticle* particlearray, u32 count)
     {
         const float time = irr_driver->getDevice()->getTimer()->getTime() / 10000.0f;
-        core::vector3df dir = irr_driver->m_wind->getWind();
+        core::vector3df dir = irr_driver->getWind()->getWind();
         dir *= m_speed * std::min(noise2d(time, m_seed), -0.2f);
 
         for (u32 n = 0; n < count; n++)
@@ -553,7 +553,7 @@ void ParticleEmitter::setParticleType(const ParticleKind* type)
         const bool flips = type->getFlips();
         if (flips)
         {
-            m_node->getMaterial(0).MaterialType = irr_driver->m_shaders->getShader(ES_SNOW);
+            m_node->getMaterial(0).MaterialType = irr_driver->getShaders()->getShader(ES_SNOW);
         }
     }
 }   // setParticleType
