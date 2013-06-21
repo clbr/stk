@@ -103,7 +103,7 @@ void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int use
     // * 5 is to work with the existing amplitude values.
 
     // Pre-multiply on the cpu
-    vector3df wind = irr_driver->m_wind->getWind() * strength;
+    vector3df wind = irr_driver->getWind()->getWind() * strength;
 
     srv->setVertexShaderConstant("windDir", &wind.X, 3);
 
