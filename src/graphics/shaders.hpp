@@ -36,6 +36,7 @@ enum E_SHADER
     ES_MOTIONBLUR,
     ES_GAUSSIAN3H,
     ES_GAUSSIAN3V,
+    ES_MIPVIZ,
 
     ES_COUNT
 };
