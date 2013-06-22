@@ -251,3 +251,18 @@ void GaussianBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
     srv->setVertexShaderConstant("pixel", pixel, 2);
 }
+
+void MipVizProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    const ITexture * const tex = mat.TextureLayer[0].Texture;
+    if (!tex) return;
+
+    const dimension2du size = tex->getSize();
+
+    const float texsize[2] = {
+        size.Width,
+        size.Height
+        };
+
+    srv->setVertexShaderConstant("texsize", texsize, 2);
+}
