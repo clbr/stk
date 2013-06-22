@@ -50,6 +50,7 @@ Shaders::Shaders()
     m_callbacks[ES_SNOW] = new SnowEffectProvider();
     m_callbacks[ES_MOTIONBLUR] = new MotionBlurProvider();
     m_callbacks[ES_GAUSSIAN3V] = m_callbacks[ES_GAUSSIAN3H] = new GaussianBlurProvider();
+    m_callbacks[ES_MIPVIZ] = new MipVizProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -91,6 +92,9 @@ Shaders::Shaders()
                                     m_callbacks[ES_GAUSSIAN3H], EMT_SOLID);
     m_shaders[ES_GAUSSIAN3V] = glslmat(std::string(""), dir + "gaussian3v.frag",
                                     m_callbacks[ES_GAUSSIAN3V], EMT_SOLID);
+
+    m_shaders[ES_MIPVIZ] = glslmat(std::string(""), dir + "mipviz.frag",
+                                    m_callbacks[ES_MIPVIZ], EMT_SOLID);
 
     // Check that all successfully loaded
     u32 i;
