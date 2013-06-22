@@ -300,6 +300,12 @@ void InputManager::handleStaticAction(int key, int value)
                 mat.EnablePasses = scene::ESNRP_SOLID | scene::ESNRP_TRANSPARENT;
             }
             break;
+        case KEY_END:
+            if (value)
+            {
+                irr_driver->toggleMipVisualization();
+            }
+            break;
         default:
             break;
     } // switch
