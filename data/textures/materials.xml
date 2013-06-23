@@ -126,7 +126,7 @@
   <material name="snowyrock.png"/>
   <material name="speedback.png"    compositing="test" clampU="Y" clampV="Y" light="N" ignore="Y"/>
   <material name="speedfore.png"    compositing="test" clampU="Y" clampV="Y" light="N" ignore="Y"/>
-  <material name="starparticle.png" compositing="blend" clampU="Y" clampV="Y" ignore="Y" light="N"/>
+  <material name="starparticle.png" disable-z-write="Y" compositing="blend" clampU="Y" clampV="Y" ignore="Y" light="N"/>
   <material name="stonetex.jpg" />
   
   <material name="track.png" anisotropic="Y">
