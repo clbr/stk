@@ -122,6 +122,9 @@ private:
 
     bool                 m_request_screenshot;
 
+    bool                 m_wireframe;
+    bool                 m_mipviz;
+
 #ifdef DEBUG
     /** Used to visualise skeletons. */
     std::vector<irr::scene::IAnimatedMeshSceneNode*> m_debug_meshes;
@@ -254,6 +257,9 @@ public:
     // ------------------------------------------------------------------------
     inline bool isGLSL() const { return m_glsl; }
     // ------------------------------------------------------------------------
+    void toggleWireframe() { m_wireframe ^= 1; }
+    // ------------------------------------------------------------------------
+    void toggleMipVisualization() { m_mipviz ^= 1; }
 
 #ifdef DEBUG
     /** Removes debug meshes. */
