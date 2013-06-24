@@ -26,13 +26,20 @@ void main() {
 		vec4(1.0, 0.0, 0.0, 0.8)
 		);
 
-	float mip = miplevel(texsize * gl_TexCoord[0].xy);
-	mip = max(mip, 5.0);
-	int i = int(mip);
+	float mip = miplevel(texsize * gl_TexCoord[0].xy) + 2.0;
+	mip = clamp(mip, 0.0, 5.0);
 
+	int lowmip = int(mip);
+	int highmip = lowmip + 1;
+	if (highmip > 5)
+		highmip = 5;
+
+	float mixer = fract(mip);
+
+	vec4 mixcol = mix(levels[lowmip], levels[highmip], mixer);
 	vec4 tcol = texture2D(tex, gl_TexCoord[0].xy);
 
-	vec3 col = mix(tcol.xyz, levels[i].xyz, levels[i].a);
+	vec3 col = mix(tcol.xyz, mixcol.xyz, mixcol.a);
 
 	gl_FragColor = vec4(col, tcol.a);
 }
