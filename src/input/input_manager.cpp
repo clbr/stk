@@ -292,12 +292,7 @@ void InputManager::handleStaticAction(int key, int value)
         case KEY_HOME:
             if (value)
             {
-                video::SOverrideMaterial &mat =
-                    irr_driver->getVideoDriver()->getOverrideMaterial();
-
-                mat.Material.Wireframe ^= 1;
-                mat.EnableFlags = video::EMF_WIREFRAME;
-                mat.EnablePasses = scene::ESNRP_SOLID | scene::ESNRP_TRANSPARENT;
+                irr_driver->toggleWireframe();
             }
             break;
         case KEY_END:
