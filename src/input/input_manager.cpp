@@ -288,6 +288,12 @@ void InputManager::handleStaticAction(int key, int value)
                 irr_driver->toggleWireframe();
             }
             break;
+        case KEY_END:
+            if (value)
+            {
+                irr_driver->toggleMipVisualization();
+            }
+            break;
         default:
             break;
     } // switch
