@@ -4,16 +4,17 @@
   <!-- Particles -->
   <material name="flaring-star.png"      compositing="additive" ignore="Y"/>
   <material name="smoke.png"             compositing="blend" light="N" ignore="Y"/>
+  <material name="smoke_nitro.png"             compositing="blend" light="N" ignore="Y" disable-z-write="Y"/>
   <material name="smoke_yellow.png"      compositing="blend" light="N" ignore="Y"/>
   <material name="smoke_brown.png"       compositing="blend" light="N" ignore="Y"/>
   <material name="smoke_red.png"         compositing="blend" light="N" ignore="Y"/>
   <material name="smoke_black.png"       compositing="blend" light="N" ignore="Y"/>
   <material name="snowflake.png"         compositing="blend" light="N" ignore="Y"/>
-  <material name="nitro-particle.png"    additive="Y" light="N" ignore="Y"/>
+  <material name="nitro-particle.png"    compositing="additive" light="N" ignore="Y" disable-z-write="Y"/>
   <material name="skid-particle1.png"    additive="Y" light="N" ignore="Y"/>
   <material name="skid-particle2.png"    additive="Y" light="N" ignore="Y"/>
   <material name="zipper-particle.png"   additive="Y" light="N" ignore="Y"/>
-  <material name="waterparticles.png"    compositing="blend" light="N" ignore="Y"/>
+  <material name="zipper-particle.png"   additive="Y" light="N" ignore="Y"/>
   
   <!-- Textures -->
   <material name="bumpy_surface.png">

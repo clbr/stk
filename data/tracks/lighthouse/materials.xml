@@ -13,7 +13,11 @@
   <material name="metaldirt_diff.png" backface-culling="N"/>
   <material name="plants.png" backface-culling="N" compositing="additive" disable-z-write="Y" graphical-effect="grass"/>
   <material name="racetrack_blend.png" backface-culling="N" compositing="blend" disable-z-write="Y" ignore="Y"/>
-  <material name="sea.png" compositing="blend" disable-z-write="Y" graphical-effect="water_shader"/>
+  <material name="sea-bed.jpg" collision-detect="Y" falling-effect="Y" water-splash="Y" collision-reaction="reset"/>
+  <material name="sea.png" compositing="blend" disable-z-write="Y" falling-effect="Y" graphical-effect="water_shader" surface="Y">
+    <sfx filename="splash.ogg" min_speed="5.00" max_speed="15.00" min_pitch="0.80" max_pitch="1.20" positional="Y" rolloff="0.10"/>
+    <particles base="splash.xml" condition=" drive skid"/>
+  </material>
   <material name="trail_diff.png" compositing="blend" disable-z-write="Y"/>
   <material name="tree_1.png" backface-culling="N" compositing="blend" disable-z-write="Y" graphical-effect="grass"/>
   <material name="tree_noanim.png" backface-culling="N" compositing="blend" disable-z-write="Y"/>

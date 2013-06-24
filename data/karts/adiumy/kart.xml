@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 10384 -->
+<!-- Generated with script from SVN rev 12507 -->
 <kart name              = "Adiumy"
       version           = "2"
       model-file        = "adiumy.b3dz"
       icon-file         = "adiumyicon.png"
       minimap-icon-file = "adiumyicon.png"
       shadow-file       = "adiumyshadow.png"
+      random-wheel-rot  = "false"
       groups            = "standard"
       rgb               = "0.00 0.70 0.00" >
   <sounds engine = "small"/>
@@ -17,7 +18,6 @@
               start-losing = "244"
               start-losing-loop = "308"
               end-losing = "314"/>
-  <hat offset="0 0.12 0.1"/>
   <wheels>
     <front-left position = "-0.397559 0.161885 0.255742"
                  model    = "wheel-front-left.b3d"       />
@@ -28,4 +28,8 @@
     <rear-right position = "0.024863 0.076657 -0.284847"
                  model    = "wheel-rear-right.b3d"       />
   </wheels>
+  <nitro-emitter>
+    <nitro-emitter-a position = "0.203126 0.391161 -0.397603" />
+    <nitro-emitter-b position = "-0.226106 0.391161 -0.397603" />
+  </nitro-emitter>
 </kart>

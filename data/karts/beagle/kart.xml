@@ -1,17 +1,14 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 9075 -->
+<!-- Generated with script from SVN rev 12507 -->
 <kart name              = "Beagle"
       version           = "2"
       model-file        = "beagle.b3dz"
       icon-file         = "beagle_icon.png"
       minimap-icon-file = "beagle_icon.png"
       shadow-file       = "beagle_shadow.png"
+      random-wheel-rot  = "false"
       groups            = "standard"
-      rgb               = "0.7 0 0" 
-      random-wheel-rot  = "true"
-      shadow-scale      = "1.0"
-      shadow-x-offset      = "0.0"
-      shadow-y-offset      = "0.0">
+      rgb               = "0.70 0.00 0.00" >
   <sounds engine = "large"/>
   <animations left = "0"
               straight = "20"
@@ -22,7 +19,6 @@
               start-losing = "80"
               start-losing-loop = "90"
               end-losing = "100"/>
-  <hat offset="0 0.12 0"/>
   <wheels>
     <rear-right position = "0.392944 0.184659 -0.353249"
                  model    = "wheel-rear-right.b3d"       />
@@ -33,4 +29,8 @@
     <front-right position = "0.392944 0.184659 0.435626"
                  model    = "wheel-front-right.b3d"       />
   </wheels>
+  <nitro-emitter>
+    <nitro-emitter-a position = "0.163643 0.267224 -0.698970" />
+    <nitro-emitter-b position = "-0.162629 0.267224 -0.698970" />
+  </nitro-emitter>
 </kart>

@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 0.1 -->
+<!-- Generated with script from SVN rev 12507 -->
 <kart name              = "Pidgin"
       version           = "2"
       model-file        = "pidgin.b3dz"
       icon-file         = "pidginicon.png"
       minimap-icon-file = "pidginicon.png"
       shadow-file       = "pidginshadow.png"
+      random-wheel-rot  = "false"
       groups            = "standard"
-      rgb               = "0.365 0.22 0.4" >
+      rgb               = "0.42 0.25 0.46" >
+  <sounds engine = "large"/>
   <animations left = "0"
               straight = "20"
               right = "40"
@@ -18,13 +20,13 @@
               start-losing-loop = "291"
               end-losing = "301"/>
   <wheels>
-    <front-left position = "-0.256000 0.124326 0.303000"
+    <front-left position = "-0.371461 0.124264 0.303000"
                  model    = "wheel-front-left.b3d"       />
-    <front-right position = "0.257000 0.124326 0.303000"
+    <front-right position = "0.372461 0.124264 0.303000"
                  model    = "wheel-front-right.b3d"       />
-    <rear-left position = "-0.237000 0.171000 -0.438000"
+    <rear-left position = "-0.398806 0.170913 -0.438000"
                  model    = "wheel-rear-left.b3d"       />
-    <rear-right position = "0.237000 0.171000 -0.438000"
+    <rear-right position = "0.398760 0.170913 -0.438000"
                  model    = "wheel-rear-right.b3d"       />
   </wheels>
 </kart>
