@@ -117,6 +117,23 @@ void IrrDriver::renderGLSL(float dt)
 
     const bool inRace = world!=NULL;
 
+    // Overrides
+    video::SOverrideMaterial &overridemat = m_video_driver->getOverrideMaterial();
+    overridemat.EnablePasses = scene::ESNRP_SOLID | scene::ESNRP_TRANSPARENT;
+    overridemat.EnableFlags = 0;
+
+    if (m_wireframe)
+    {
+        overridemat.Material.Wireframe = 1;
+        overridemat.EnableFlags |= video::EMF_WIREFRAME;
+    }
+    if (m_mipviz)
+    {
+        overridemat.Material.MaterialType = m_shaders->getShader(ES_MIPVIZ);
+        overridemat.EnableFlags |= video::EMF_MATERIAL_TYPE;
+    }
+
+
     if (inRace)
     {
         // Start the RTT for post-processing.
