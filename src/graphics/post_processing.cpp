@@ -21,6 +21,7 @@
 #include "config/user_config.hpp"
 #include "io/file_manager.hpp"
 #include "graphics/callbacks.hpp"
+#include "graphics/glwrap.hpp"
 #include "graphics/irr_driver.hpp"
 #include "graphics/rtts.hpp"
 #include "graphics/shaders.hpp"
@@ -38,6 +39,7 @@ PostProcessing::PostProcessing(video::IVideoDriver* video_driver)
     m_material.ZWriteEnable = false;
     m_material.ZBuffer = ECFN_ALWAYS;
     m_material.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
+    m_material.setFlag(EMF_TRILINEAR_FILTER, true);
 }   // PostProcessing
 
 // ----------------------------------------------------------------------------
@@ -170,6 +172,8 @@ void PostProcessing::render()
 
     MotionBlurProvider * const mocb = (MotionBlurProvider *) irr_driver->getShaders()->
                                                            m_callbacks[ES_MOTIONBLUR];
+    GaussianBlurProvider * const gacb = (GaussianBlurProvider *) irr_driver->getShaders()->
+                                                           m_callbacks[ES_GAUSSIAN3H];
 
     rtt_t * const rtts = irr_driver->getRTTs();
     Shaders * const shaders = irr_driver->getShaders();
@@ -183,6 +187,91 @@ void PostProcessing::render()
 	// Each effect uses these as named, and sets them up for the next effect.
 	// This allows chaining effects where some may be disabled.
 
+	// As the original color shouldn't be touched, the first effect can't be disabled.
+
+        if (1) // bloom
+        {
+            // Blit the base to tmp1
+            m_material.MaterialType = EMT_SOLID;
+            m_material.setTexture(0, in);
+            drv->setRenderTarget(out, true, false);
+
+            drv->setMaterial(m_material);
+            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                              4, indices, 2);
+
+            // Catch bright areas, and progressively minify
+            m_material.MaterialType = shaders->getShader(ES_BLOOM);
+            m_material.setTexture(0, in);
+            drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
+
+            drv->setMaterial(m_material);
+            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                              4, indices, 2);
+
+            // To half
+            m_material.MaterialType = EMT_SOLID;
+            m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
+            drv->setRenderTarget(rtts->getRTT(RTT_HALF1), true, false);
+
+            drv->setMaterial(m_material);
+            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                              4, indices, 2);
+
+            // To quarter
+            m_material.MaterialType = EMT_SOLID;
+            m_material.setTexture(0, rtts->getRTT(RTT_HALF1));
+            drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), true, false);
+
+            drv->setMaterial(m_material);
+            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                              4, indices, 2);
+
+            // To eighth
+            m_material.MaterialType = EMT_SOLID;
+            m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
+            drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), true, false);
+
+            drv->setMaterial(m_material);
+            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                              4, indices, 2);
+
+            // Blur it for distribution, thrice gives good results while still fast
+            // TODO: replace with one blur of radius 6 (sqrt(9*3))
+            for (int i = 0; i < 3; i++)
+            {
+                gacb->setResolution(UserConfigParams::m_width / 8,
+                                    UserConfigParams::m_height / 8);
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
+                m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
+                drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH2), true, false);
+
+                drv->setMaterial(m_material);
+                drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                              4, indices, 2);
+
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
+                m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH2));
+                drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), false, false);
+
+                drv->setMaterial(m_material);
+                drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                                  4, indices, 2);
+            }
+
+            // Additively blend on top of tmp1
+            m_material.MaterialType = EMT_TRANSPARENT_ADD_COLOR;
+            m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
+            drv->setRenderTarget(out, false, false);
+
+            drv->setMaterial(m_material);
+            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                              4, indices, 2);
+
+            in = rtts->getRTT(RTT_TMP1);
+            out = rtts->getRTT(RTT_TMP2);
+        }
+
         if (1) // motion blur
         {
             m_material.MaterialType = shaders->getShader(ES_MOTIONBLUR);
@@ -193,12 +282,15 @@ void PostProcessing::render()
             drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
                                               4, indices, 2);
 
-            in = rtts->getRTT(RTT_TMP1);
-            out = rtts->getRTT(RTT_TMP2);
+            ITexture *tmp = in;
+            in = out;
+            out = tmp;
         }
 
         // Final blit
-        m_material.MaterialType = shaders->getShader(ES_FLIP);
+// TODO, calculate if a flip is needed, apparently even passcount doesn't need it
+//        m_material.MaterialType = shaders->getShader(ES_FLIP);
+        m_material.MaterialType = EMT_SOLID;
         m_material.setTexture(0, in);
         drv->setRenderTarget(ERT_FRAME_BUFFER, false, false);
 
