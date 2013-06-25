@@ -169,13 +169,13 @@ void PostProcessing::render()
     video_driver->setTransform(video::ETS_VIEW, core::IdentityMatrix);
     video_driver->setTransform(video::ETS_PROJECTION, core::IdentityMatrix);
 
-    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
+    MotionBlurProvider * const mocb = (MotionBlurProvider *) irr_driver->getShaders()->
                                                            m_callbacks[ES_MOTIONBLUR];
 
-    const u32 max = Camera::getNumCameras();
-    for(u32 cam = 0; cam < max; cam++)
+    const u32 cams = Camera::getNumCameras();
+    for(u32 cam = 0; cam < cams; cam++)
     {
-        cb->setCurrentCamera(cam);
+        mocb->setCurrentCamera(cam);
 
         // Draw the fullscreen quad while applying the corresponding
         // post-processing shaders
