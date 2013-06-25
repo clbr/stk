@@ -164,7 +164,6 @@ void PostProcessing::render()
     const u16 indices[6] = {0, 1, 2, 3, 0, 2};
 
     video::IVideoDriver * const drv = irr_driver->getVideoDriver();
-    drv->setMaterial(m_blur_material);
     drv->setTransform(video::ETS_WORLD, core::IdentityMatrix);
     drv->setTransform(video::ETS_VIEW, core::IdentityMatrix);
     drv->setTransform(video::ETS_PROJECTION, core::IdentityMatrix);
@@ -176,11 +175,17 @@ void PostProcessing::render()
     for(u32 cam = 0; cam < cams; cam++)
     {
         mocb->setCurrentCamera(cam);
+        ITexture *in = irr_driver->getRTTs()->getRTT(RTT_COLOR);
+        ITexture *out = irr_driver->getRTTs()->getRTT(RTT_TMP1);
+	// Each effect uses these as named, and sets them up for the next effect.
+	// This allows chaining effects where some may be disabled.
 
-        // Draw the fullscreen quad while applying the corresponding
-        // post-processing shaders
-        drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+        if (1) // motion blur
+        {
+            drv->setMaterial(m_blur_material);
+            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
                                               4, indices, 2);
+        }
     }
 
 }   // render
