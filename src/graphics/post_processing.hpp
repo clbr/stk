@@ -37,8 +37,7 @@ using namespace irr;
 class PostProcessing: public IReferenceCounted
 {
 private:
-    /** Material to be used when blurring is used. */
-    video::SMaterial    m_blur_material;
+    video::SMaterial    m_material;
 
     /** Boost time, how long the boost should be displayed. This also
      *  affects the strength of the effect: longer boost time will

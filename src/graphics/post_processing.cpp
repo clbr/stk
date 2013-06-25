@@ -33,11 +33,11 @@ using namespace scene;
 PostProcessing::PostProcessing(video::IVideoDriver* video_driver)
 {
     // Initialization
-    m_blur_material.MaterialType = irr_driver->getShaders()->getShader(ES_MOTIONBLUR);
-    m_blur_material.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_TMP1));
-    m_blur_material.Wireframe = false;
-    m_blur_material.Lighting = false;
-    m_blur_material.ZWriteEnable = false;
+    m_material.Wireframe = false;
+    m_material.Lighting = false;
+    m_material.ZWriteEnable = false;
+    m_material.ZBuffer = ECFN_ALWAYS;
+    m_material.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
 }   // PostProcessing
 
 // ----------------------------------------------------------------------------
@@ -172,6 +172,7 @@ void PostProcessing::render()
                                                            m_callbacks[ES_MOTIONBLUR];
 
     rtt_t * const rtts = irr_driver->getRTTs();
+    Shaders * const shaders = irr_driver->getShaders();
 
     const u32 cams = Camera::getNumCameras();
     for(u32 cam = 0; cam < cams; cam++)
@@ -184,9 +185,16 @@ void PostProcessing::render()
 
         if (1) // motion blur
         {
-            drv->setMaterial(m_blur_material);
+            m_material.MaterialType = shaders->getShader(ES_MOTIONBLUR);
+            m_material.setTexture(0, in);
+            drv->setRenderTarget(out, true, false);
+
+            drv->setMaterial(m_material);
             drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
                                               4, indices, 2);
+
+            ITexture *in = rtts->getRTT(RTT_TMP1);
+            ITexture *out = rtts->getRTT(RTT_TMP2);
         }
     }
 
