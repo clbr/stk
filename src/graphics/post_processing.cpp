@@ -33,11 +33,11 @@ using namespace scene;
 PostProcessing::PostProcessing(video::IVideoDriver* video_driver)
 {
     // Initialization
-    m_blur_material.MaterialType = irr_driver->getShaders()->getShader(ES_MOTIONBLUR);
-    m_blur_material.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_TMP1));
-    m_blur_material.Wireframe = false;
-    m_blur_material.Lighting = false;
-    m_blur_material.ZWriteEnable = false;
+    m_material.Wireframe = false;
+    m_material.Lighting = false;
+    m_material.ZWriteEnable = false;
+    m_material.ZBuffer = ECFN_ALWAYS;
+    m_material.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
 }   // PostProcessing
 
 // ----------------------------------------------------------------------------
@@ -116,33 +116,14 @@ void PostProcessing::reset()
 }   // reset
 
 // ----------------------------------------------------------------------------
-/** Setup the render target. First determines if there is any need for post-
- *  processing, and if so, set up render to texture.
+/** Setup some PP data.
  */
-void PostProcessing::beginCapture()
+void PostProcessing::begin()
 {
-    if(!UserConfigParams::m_postprocess_enabled)
-        return;
-
     bool any_boost = false;
     for(unsigned int i=0; i<m_boost_time.size(); i++)
         any_boost |= m_boost_time[i]>0.0f;
-
-    irr_driver->getVideoDriver()->setRenderTarget(irr_driver->getRTTs()->getRTT(RTT_TMP1),
-                                                  true, true);
 }   // beginCapture
-
-// ----------------------------------------------------------------------------
-/** Restore the framebuffer render target.
-  */
-void PostProcessing::endCapture()
-{
-    if(!UserConfigParams::m_postprocess_enabled)
-        return;
-
-    irr_driver->getVideoDriver()->setRenderTarget(video::ERT_FRAME_BUFFER,
-                                                  true, true, 0);
-}   // endCapture
 
 // ----------------------------------------------------------------------------
 /** Set the boost amount according to the speed of the camera */
@@ -180,29 +161,41 @@ void PostProcessing::update(float dt)
 /** Render the post-processed scene */
 void PostProcessing::render()
 {
-    if(!UserConfigParams::m_postprocess_enabled)
-        return;
-
     const u16 indices[6] = {0, 1, 2, 3, 0, 2};
 
-    video::IVideoDriver * const video_driver = irr_driver->getVideoDriver();
-    video_driver->setMaterial(m_blur_material);
-    video_driver->setTransform(video::ETS_WORLD, core::IdentityMatrix);
-    video_driver->setTransform(video::ETS_VIEW, core::IdentityMatrix);
-    video_driver->setTransform(video::ETS_PROJECTION, core::IdentityMatrix);
+    video::IVideoDriver * const drv = irr_driver->getVideoDriver();
+    drv->setTransform(video::ETS_WORLD, core::IdentityMatrix);
+    drv->setTransform(video::ETS_VIEW, core::IdentityMatrix);
+    drv->setTransform(video::ETS_PROJECTION, core::IdentityMatrix);
 
-    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
+    MotionBlurProvider * const mocb = (MotionBlurProvider *) irr_driver->getShaders()->
                                                            m_callbacks[ES_MOTIONBLUR];
 
-    const u32 max = Camera::getNumCameras();
-    for(u32 cam = 0; cam < max; cam++)
-    {
-        cb->setCurrentCamera(cam);
+    rtt_t * const rtts = irr_driver->getRTTs();
+    Shaders * const shaders = irr_driver->getShaders();
 
-        // Draw the fullscreen quad while applying the corresponding
-        // post-processing shaders
-        video_driver->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, &indices[0], 2);
+    const u32 cams = Camera::getNumCameras();
+    for(u32 cam = 0; cam < cams; cam++)
+    {
+        mocb->setCurrentCamera(cam);
+        ITexture *in = rtts->getRTT(RTT_COLOR);
+        ITexture *out = rtts->getRTT(RTT_TMP1);
+	// Each effect uses these as named, and sets them up for the next effect.
+	// This allows chaining effects where some may be disabled.
+
+        if (1) // motion blur
+        {
+            m_material.MaterialType = shaders->getShader(ES_MOTIONBLUR);
+            m_material.setTexture(0, in);
+            drv->setRenderTarget(out, true, false);
+
+            drv->setMaterial(m_material);
+            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                              4, indices, 2);
+
+            in = rtts->getRTT(RTT_TMP1);
+            out = rtts->getRTT(RTT_TMP2);
+        }
     }
 
 }   // render
