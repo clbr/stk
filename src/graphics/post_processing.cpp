@@ -196,6 +196,15 @@ void PostProcessing::render()
             in = rtts->getRTT(RTT_TMP1);
             out = rtts->getRTT(RTT_TMP2);
         }
+
+        // Final blit
+        m_material.MaterialType = EMT_SOLID;
+        m_material.setTexture(0, in);
+        drv->setRenderTarget(ERT_FRAME_BUFFER, false, false);
+
+        drv->setMaterial(m_material);
+        drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                          4, indices, 2);
     }
 
 }   // render
