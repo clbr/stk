@@ -1639,6 +1639,16 @@ void IrrDriver::update(float dt)
         m_video_driver->endScene();
         return;
     }
+    else if (!world)
+    {
+        m_video_driver->beginScene(/*backBuffer clear*/ true, /*zBuffer*/ true,
+                                   video::SColor(255,100,101,140));
+
+        GUIEngine::render(dt);
+
+        m_video_driver->endScene();
+        return;
+    }
 
     if (m_glsl)
         renderGLSL(dt);
