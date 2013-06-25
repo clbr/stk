@@ -198,7 +198,7 @@ void PostProcessing::render()
         }
 
         // Final blit
-        m_material.MaterialType = EMT_SOLID;
+        m_material.MaterialType = shaders->getShader(ES_FLIP);
         m_material.setTexture(0, in);
         drv->setRenderTarget(ERT_FRAME_BUFFER, false, false);
 
