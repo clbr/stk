@@ -96,6 +96,9 @@ Shaders::Shaders()
     m_shaders[ES_MIPVIZ] = glslmat(std::string(""), dir + "mipviz.frag",
                                     m_callbacks[ES_MIPVIZ], EMT_SOLID);
 
+    m_shaders[ES_FLIP] = glslmat(std::string(""), dir + "flip.frag",
+                                    0, EMT_SOLID);
+
     // Check that all successfully loaded
     u32 i;
     for (i = 0; i < ES_COUNT; i++) {
