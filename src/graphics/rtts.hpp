@@ -26,12 +26,23 @@ enum e_rtt
 {
     RTT_TMP1 = 0,
     RTT_TMP2,
+    RTT_TMP3,
+    RTT_TMP4,
     RTT_DEPTH,
     RTT_NORMAL,
     RTT_COLOR,
 
     RTT_HALF1,
     RTT_HALF2,
+
+    RTT_QUARTER1,
+    RTT_QUARTER2,
+
+    RTT_EIGHTH1,
+    RTT_EIGHTH2,
+
+    RTT_SIXTEENTH1,
+    RTT_SIXTEENTH2,
 
     RTT_COUNT
 };
