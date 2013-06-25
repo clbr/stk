@@ -122,9 +122,9 @@ void PostProcessing::reset()
  */
 void PostProcessing::begin()
 {
-    bool any_boost = false;
+    m_any_boost = false;
     for(unsigned int i=0; i<m_boost_time.size(); i++)
-        any_boost |= m_boost_time[i]>0.0f;
+        m_any_boost |= m_boost_time[i]>0.0f;
 }   // beginCapture
 
 // ----------------------------------------------------------------------------
@@ -272,7 +272,7 @@ void PostProcessing::render()
             out = rtts->getRTT(RTT_TMP2);
         }
 
-        if (1) // motion blur
+        if (1 && m_any_boost) // motion blur
         {
             m_material.MaterialType = shaders->getShader(ES_MOTIONBLUR);
             m_material.setTexture(0, in);

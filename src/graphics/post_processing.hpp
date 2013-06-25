@@ -44,6 +44,8 @@ private:
      *  have a stronger effect. */
     std::vector<float>  m_boost_time;
 
+    bool m_any_boost;
+
     /** The center of blurring, in texture coordinates [0,1]).*/
     std::vector<core::vector2df> m_center;
 
