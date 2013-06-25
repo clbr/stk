@@ -38,63 +38,57 @@
 
 void IrrDriver::renderFixed(float dt)
 {
-    World *world = World::getWorld();
-
-    const bool inRace = world!=NULL;
+    World *world = World::getWorld(); // Never NULL.
 
     m_video_driver->beginScene(/*backBuffer clear*/ true, /*zBuffer*/ true,
-                               world ? world->getClearColor()
-                                     : video::SColor(255,100,101,140));
+                               world->getClearColor());
 
-    if (inRace)
+    irr_driver->getVideoDriver()->enableMaterial2D();
+
+    RaceGUIBase *rg = world->getRaceGUI();
+    if (rg) rg->update(dt);
+
+
+    for(unsigned int i=0; i<Camera::getNumCameras(); i++)
     {
-        irr_driver->getVideoDriver()->enableMaterial2D();
-
-        RaceGUIBase *rg = world->getRaceGUI();
-        if (rg) rg->update(dt);
-
-
-        for(unsigned int i=0; i<Camera::getNumCameras(); i++)
-        {
-            Camera *camera = Camera::getCamera(i);
+        Camera *camera = Camera::getCamera(i);
 
 #ifdef ENABLE_PROFILER
-            std::ostringstream oss;
-            oss << "drawAll() for kart " << i << std::flush;
-            PROFILER_PUSH_CPU_MARKER(oss.str().c_str(), (i+1)*60,
-                                     0x00, 0x00);
+        std::ostringstream oss;
+        oss << "drawAll() for kart " << i << std::flush;
+        PROFILER_PUSH_CPU_MARKER(oss.str().c_str(), (i+1)*60,
+                                 0x00, 0x00);
 #endif
-            camera->activate();
-            rg->preRenderCallback(camera);   // adjusts start referee
-            m_scene_manager->drawAll();
+        camera->activate();
+        rg->preRenderCallback(camera);   // adjusts start referee
+        m_scene_manager->drawAll();
 
-            PROFILER_POP_CPU_MARKER();
+        PROFILER_POP_CPU_MARKER();
 
-            // Note that drawAll must be called before rendering
-            // the bullet debug view, since otherwise the camera
-            // is not set up properly. This is only used for
-            // the bullet debug view.
-            if (UserConfigParams::m_artist_debug_mode)
-                World::getWorld()->getPhysics()->draw();
-        }   // for i<world->getNumKarts()
+        // Note that drawAll must be called before rendering
+        // the bullet debug view, since otherwise the camera
+        // is not set up properly. This is only used for
+        // the bullet debug view.
+        if (UserConfigParams::m_artist_debug_mode)
+            World::getWorld()->getPhysics()->draw();
+    }   // for i<world->getNumKarts()
 
-        // Set the viewport back to the full screen for race gui
-        m_video_driver->setViewPort(core::recti(0, 0,
-                                                UserConfigParams::m_width,
-                                                UserConfigParams::m_height));
+    // Set the viewport back to the full screen for race gui
+    m_video_driver->setViewPort(core::recti(0, 0,
+                                            UserConfigParams::m_width,
+                                            UserConfigParams::m_height));
 
-        for(unsigned int i=0; i<Camera::getNumCameras(); i++)
-        {
-            Camera *camera = Camera::getCamera(i);
-            char marker_name[100];
-            sprintf(marker_name, "renderPlayerView() for kart %d", i);
+    for(unsigned int i=0; i<Camera::getNumCameras(); i++)
+    {
+        Camera *camera = Camera::getCamera(i);
+        char marker_name[100];
+        sprintf(marker_name, "renderPlayerView() for kart %d", i);
 
-            PROFILER_PUSH_CPU_MARKER(marker_name, 0x00, 0x00, (i+1)*60);
-            rg->renderPlayerView(camera, dt);
-            PROFILER_POP_CPU_MARKER();
+        PROFILER_PUSH_CPU_MARKER(marker_name, 0x00, 0x00, (i+1)*60);
+        rg->renderPlayerView(camera, dt);
+        PROFILER_POP_CPU_MARKER();
 
-        }  // for i<getNumKarts
-    }
+    }  // for i<getNumKarts
 
     // Either render the gui, or the global elements of the race gui.
     GUIEngine::render(dt);
@@ -114,9 +108,7 @@ void IrrDriver::renderFixed(float dt)
 
 void IrrDriver::renderGLSL(float dt)
 {
-    World *world = World::getWorld();
-
-    const bool inRace = world!=NULL;
+    World *world = World::getWorld(); // Never NULL.
 
     // Overrides
     video::SOverrideMaterial &overridemat = m_video_driver->getOverrideMaterial();
@@ -136,71 +128,63 @@ void IrrDriver::renderGLSL(float dt)
     }
 
 
-    if (inRace)
-    {
-        // Start the RTT for post-processing.
-        // We do this before beginScene() because we want to capture the glClear()
-        // because of tracks that do not have skyboxes (generally add-on tracks)
-        m_post_processing->begin();
-        m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
-    }
+    // Start the RTT for post-processing.
+    // We do this before beginScene() because we want to capture the glClear()
+    // because of tracks that do not have skyboxes (generally add-on tracks)
+    m_post_processing->begin();
+    m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
 
     m_video_driver->beginScene(/*backBuffer clear*/ true, /*zBuffer*/ true,
-                               world ? world->getClearColor()
-                                     : video::SColor(255,100,101,140));
+                               world->getClearColor());
 
-    if (inRace)
+    irr_driver->getVideoDriver()->enableMaterial2D();
+    RaceGUIBase *rg = world->getRaceGUI();
+    if (rg) rg->update(dt);
+
+
+    for(unsigned int i=0; i<Camera::getNumCameras(); i++)
     {
-        irr_driver->getVideoDriver()->enableMaterial2D();
-
-        RaceGUIBase *rg = world->getRaceGUI();
-        if (rg) rg->update(dt);
-
-
-        for(unsigned int i=0; i<Camera::getNumCameras(); i++)
-        {
-            Camera *camera = Camera::getCamera(i);
+        Camera *camera = Camera::getCamera(i);
 
 #ifdef ENABLE_PROFILER
-            std::ostringstream oss;
-            oss << "drawAll() for kart " << i << std::flush;
-            PROFILER_PUSH_CPU_MARKER(oss.str().c_str(), (i+1)*60,
-                                     0x00, 0x00);
+        std::ostringstream oss;
+        oss << "drawAll() for kart " << i << std::flush;
+        PROFILER_PUSH_CPU_MARKER(oss.str().c_str(), (i+1)*60,
+                                 0x00, 0x00);
 #endif
-            camera->activate();
-            rg->preRenderCallback(camera);   // adjusts start referee
-            m_scene_manager->drawAll();
+        camera->activate();
+        rg->preRenderCallback(camera);   // adjusts start referee
+        m_scene_manager->drawAll();
 
-            PROFILER_POP_CPU_MARKER();
+        PROFILER_POP_CPU_MARKER();
 
-            // Note that drawAll must be called before rendering
-            // the bullet debug view, since otherwise the camera
-            // is not set up properly. This is only used for
-            // the bullet debug view.
-            if (UserConfigParams::m_artist_debug_mode)
-                World::getWorld()->getPhysics()->draw();
-        }   // for i<world->getNumKarts()
+        // Note that drawAll must be called before rendering
+        // the bullet debug view, since otherwise the camera
+        // is not set up properly. This is only used for
+        // the bullet debug view.
+        if (UserConfigParams::m_artist_debug_mode)
+            World::getWorld()->getPhysics()->draw();
+    }   // for i<world->getNumKarts()
 
-        // Render the post-processed scene
-        m_post_processing->render();
+    // Render the post-processed scene
+    m_post_processing->render();
 
-        // Set the viewport back to the full screen for race gui
-        m_video_driver->setViewPort(core::recti(0, 0,
-                                                UserConfigParams::m_width,
-                                                UserConfigParams::m_height));
+    // Set the viewport back to the full screen for race gui
+    m_video_driver->setViewPort(core::recti(0, 0,
+                                            UserConfigParams::m_width,
+                                            UserConfigParams::m_height));
 
-        for(unsigned int i=0; i<Camera::getNumCameras(); i++)
-        {
-            Camera *camera = Camera::getCamera(i);
-            char marker_name[100];
-            sprintf(marker_name, "renderPlayerView() for kart %d", i);
+    for(unsigned int i=0; i<Camera::getNumCameras(); i++)
+    {
+        Camera *camera = Camera::getCamera(i);
+        char marker_name[100];
+        sprintf(marker_name, "renderPlayerView() for kart %d", i);
 
-            PROFILER_PUSH_CPU_MARKER(marker_name, 0x00, 0x00, (i+1)*60);
-            rg->renderPlayerView(camera, dt);
+        PROFILER_PUSH_CPU_MARKER(marker_name, 0x00, 0x00, (i+1)*60);
+        rg->renderPlayerView(camera, dt);
 
-            PROFILER_POP_CPU_MARKER();
-        }  // for i<getNumKarts
-    }
+        PROFILER_POP_CPU_MARKER();
+    }  // for i<getNumKarts
 
     // Either render the gui, or the global elements of the race gui.
     GUIEngine::render(dt);
