@@ -99,6 +99,9 @@ Shaders::Shaders()
     m_shaders[ES_FLIP] = glslmat(std::string(""), dir + "flip.frag",
                                     0, EMT_SOLID);
 
+    m_shaders[ES_BLOOM] = glslmat(std::string(""), dir + "bloom.frag",
+                                    0, EMT_SOLID);
+
     // Check that all successfully loaded
     u32 i;
     for (i = 0; i < ES_COUNT; i++) {
