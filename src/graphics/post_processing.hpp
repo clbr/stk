@@ -63,8 +63,7 @@ public:
 
     void         reset();
     /** Those should be called around the part where we render the scene to be post-processed */
-    void         beginCapture();
-    void         endCapture();
+    void         begin();
     void         update(float dt);
 
     /** Render the post-processed scene */

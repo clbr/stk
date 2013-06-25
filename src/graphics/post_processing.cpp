@@ -116,33 +116,14 @@ void PostProcessing::reset()
 }   // reset
 
 // ----------------------------------------------------------------------------
-/** Setup the render target. First determines if there is any need for post-
- *  processing, and if so, set up render to texture.
+/** Setup some PP data.
  */
-void PostProcessing::beginCapture()
+void PostProcessing::begin()
 {
-    if(!UserConfigParams::m_postprocess_enabled)
-        return;
-
     bool any_boost = false;
     for(unsigned int i=0; i<m_boost_time.size(); i++)
         any_boost |= m_boost_time[i]>0.0f;
-
-    irr_driver->getVideoDriver()->setRenderTarget(irr_driver->getRTTs()->getRTT(RTT_TMP1),
-                                                  true, true);
 }   // beginCapture
-
-// ----------------------------------------------------------------------------
-/** Restore the framebuffer render target.
-  */
-void PostProcessing::endCapture()
-{
-    if(!UserConfigParams::m_postprocess_enabled)
-        return;
-
-    irr_driver->getVideoDriver()->setRenderTarget(video::ERT_FRAME_BUFFER,
-                                                  true, true, 0);
-}   // endCapture
 
 // ----------------------------------------------------------------------------
 /** Set the boost amount according to the speed of the camera */
@@ -180,9 +161,6 @@ void PostProcessing::update(float dt)
 /** Render the post-processed scene */
 void PostProcessing::render()
 {
-    if(!UserConfigParams::m_postprocess_enabled)
-        return;
-
     const u16 indices[6] = {0, 1, 2, 3, 0, 2};
 
     video::IVideoDriver * const video_driver = irr_driver->getVideoDriver();
