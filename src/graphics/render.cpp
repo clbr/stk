@@ -25,6 +25,7 @@
 #include "graphics/per_camera_node.hpp"
 #include "graphics/post_processing.hpp"
 #include "graphics/referee.hpp"
+#include "graphics/rtts.hpp"
 #include "graphics/shaders.hpp"
 #include "graphics/wind.hpp"
 #include "modes/world.hpp"
@@ -140,7 +141,8 @@ void IrrDriver::renderGLSL(float dt)
         // Start the RTT for post-processing.
         // We do this before beginScene() because we want to capture the glClear()
         // because of tracks that do not have skyboxes (generally add-on tracks)
-        m_post_processing->beginCapture();
+        m_post_processing->begin();
+        m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
     }
 
     m_video_driver->beginScene(/*backBuffer clear*/ true, /*zBuffer*/ true,
@@ -178,9 +180,6 @@ void IrrDriver::renderGLSL(float dt)
             if (UserConfigParams::m_artist_debug_mode)
                 World::getWorld()->getPhysics()->draw();
         }   // for i<world->getNumKarts()
-
-        // Stop capturing for the post-processing
-        m_post_processing->endCapture();
 
         // Render the post-processed scene
         m_post_processing->render();
