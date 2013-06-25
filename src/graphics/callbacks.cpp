@@ -244,12 +244,7 @@ void MotionBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void GaussianBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
-    const float pixel[2] = {
-        1.0f / UserConfigParams::m_width,
-        1.0f / UserConfigParams::m_height
-        };
-
-    srv->setVertexShaderConstant("pixel", pixel, 2);
+    srv->setVertexShaderConstant("pixel", m_pixel, 2);
 }
 
 void MipVizProvider::OnSetConstants(IMaterialRendererServices *srv, int)
