@@ -171,12 +171,14 @@ void PostProcessing::render()
     MotionBlurProvider * const mocb = (MotionBlurProvider *) irr_driver->getShaders()->
                                                            m_callbacks[ES_MOTIONBLUR];
 
+    rtt_t * const rtts = irr_driver->getRTTs();
+
     const u32 cams = Camera::getNumCameras();
     for(u32 cam = 0; cam < cams; cam++)
     {
         mocb->setCurrentCamera(cam);
-        ITexture *in = irr_driver->getRTTs()->getRTT(RTT_COLOR);
-        ITexture *out = irr_driver->getRTTs()->getRTT(RTT_TMP1);
+        ITexture *in = rtts->getRTT(RTT_COLOR);
+        ITexture *out = rtts->getRTT(RTT_TMP1);
 	// Each effect uses these as named, and sets them up for the next effect.
 	// This allows chaining effects where some may be disabled.
 
