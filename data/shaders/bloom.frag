@@ -6,7 +6,7 @@ void main()
 	vec3 col = texture2D(tex, gl_TexCoord[0].xy).xyz;
 	float chroma = dot(weights, col);
 
-	col *= step(0.7, chroma);
+	col *= smoothstep(0.75, 0.9, chroma);
 
 	gl_FragColor = vec4(col, 1.0);
 }
