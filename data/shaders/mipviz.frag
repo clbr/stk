@@ -26,7 +26,7 @@ void main() {
 		vec4(1.0, 0.0, 0.0, 0.8)
 		);
 
-	float mip = miplevel(texsize * gl_TexCoord[0].xy);
+	float mip = miplevel(texsize * gl_TexCoord[0].xy) + 2.0;
 	mip = clamp(mip, 0.0, 5.0);
 
 	int lowmip = int(mip);
