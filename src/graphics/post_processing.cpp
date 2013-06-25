@@ -163,11 +163,11 @@ void PostProcessing::render()
 {
     const u16 indices[6] = {0, 1, 2, 3, 0, 2};
 
-    video::IVideoDriver * const video_driver = irr_driver->getVideoDriver();
-    video_driver->setMaterial(m_blur_material);
-    video_driver->setTransform(video::ETS_WORLD, core::IdentityMatrix);
-    video_driver->setTransform(video::ETS_VIEW, core::IdentityMatrix);
-    video_driver->setTransform(video::ETS_PROJECTION, core::IdentityMatrix);
+    video::IVideoDriver * const drv = irr_driver->getVideoDriver();
+    drv->setMaterial(m_blur_material);
+    drv->setTransform(video::ETS_WORLD, core::IdentityMatrix);
+    drv->setTransform(video::ETS_VIEW, core::IdentityMatrix);
+    drv->setTransform(video::ETS_PROJECTION, core::IdentityMatrix);
 
     MotionBlurProvider * const mocb = (MotionBlurProvider *) irr_driver->getShaders()->
                                                            m_callbacks[ES_MOTIONBLUR];
@@ -179,7 +179,7 @@ void PostProcessing::render()
 
         // Draw the fullscreen quad while applying the corresponding
         // post-processing shaders
-        video_driver->drawIndexedTriangleList(&(m_vertices[cam].v0),
+        drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
                                               4, &indices[0], 2);
     }
 
