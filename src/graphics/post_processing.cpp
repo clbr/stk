@@ -180,7 +180,7 @@ void PostProcessing::render()
         // Draw the fullscreen quad while applying the corresponding
         // post-processing shaders
         drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, &indices[0], 2);
+                                              4, indices, 2);
     }
 
 }   // render
