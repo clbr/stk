@@ -17,6 +17,7 @@
 #ifndef HEADER_CALLBACKS_HPP
 #define HEADER_CALLBACKS_HPP
 
+#include "config/user_config.hpp"
 #include "graphics/irr_driver.hpp"
 
 #include <irrlicht.h>
@@ -281,7 +282,22 @@ private:
 class GaussianBlurProvider: public callbase
 {
 public:
+    GaussianBlurProvider()
+    {
+        m_pixel[0] = 1.0f / UserConfigParams::m_width;
+        m_pixel[1] = 1.0f / UserConfigParams::m_height;
+    }
+
+    void setResolution(float x, float y)
+    {
+        m_pixel[0] = 1.0f / x;
+        m_pixel[1] = 1.0f / y;
+    }
+
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+private:
+    float m_pixel[2];
 };
 
 //

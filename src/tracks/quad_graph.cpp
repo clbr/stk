@@ -24,6 +24,7 @@
 #include <ICameraSceneNode.h>
 
 #include "config/user_config.hpp"
+#include "graphics/callbacks.hpp"
 #include "graphics/irr_driver.hpp"
 #include "graphics/screenquad.hpp"
 #include "graphics/shaders.hpp"
@@ -1041,6 +1042,10 @@ video::ITexture *QuadGraph::makeMiniMap(const core::dimension2du &origdimension,
                         "mini-map will not be available.");
         return NULL;
     }
+
+    GaussianBlurProvider * const gacb = (GaussianBlurProvider *) irr_driver->getShaders()->
+                                                        m_callbacks[ES_GAUSSIAN3H];
+    gacb->setResolution(UserConfigParams::m_width, UserConfigParams::m_height);
 
     screenQuad sq(irr_driver->getVideoDriver());
     sq.getMaterial().MaterialType = irr_driver->getShaders()->getShader(ES_GAUSSIAN3H);
