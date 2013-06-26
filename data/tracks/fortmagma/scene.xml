@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12720 -->
+<!-- Generated with script from SVN rev 12731 -->
 <scene>
   <track model="FortMagma_track.b3d" x="0" y="0" z="0">
     <static-object lod_instance="true" lod_group="lavaspike" xyz="-153.73 10.28 7.05" hpr="-0.0 -180.0 -0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
