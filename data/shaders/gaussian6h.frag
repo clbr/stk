@@ -1,7 +1,7 @@
 uniform sampler2D tex;
 uniform vec2 pixel;
 
-// Gaussian separated blur with radius 3.
+// Gaussian separated blur with radius 6.
 
 void main()
 {
