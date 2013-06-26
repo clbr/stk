@@ -84,7 +84,18 @@ void IrrDriver::renderGLSL(float dt)
 #endif
         camera->activate();
         rg->preRenderCallback(camera);   // adjusts start referee
-        m_scene_manager->drawAll();
+
+        // Lights to be removed with light prepass later
+        m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_SOLID | scene::ESNRP_LIGHT;
+        m_scene_manager->drawAll(m_renderpass);
+
+        m_renderpass = scene::ESNRP_SKY_BOX;
+        m_scene_manager->drawAll(m_renderpass);
+
+        // We need to re-render camera due to the per-cam-node hack.
+        m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
+                                 scene::ESNRP_TRANSPARENT_EFFECT | scene::ESNRP_LIGHT;
+        m_scene_manager->drawAll(m_renderpass);
 
         PROFILER_POP_CPU_MARKER();
 
@@ -160,6 +171,8 @@ void IrrDriver::renderFixed(float dt)
 #endif
         camera->activate();
         rg->preRenderCallback(camera);   // adjusts start referee
+
+        m_renderpass = ~0;
         m_scene_manager->drawAll();
 
         PROFILER_POP_CPU_MARKER();
