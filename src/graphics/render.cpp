@@ -140,6 +140,10 @@ void IrrDriver::renderGLSL(float dt)
             const core::aabbox3df cambox = camera->getCameraSceneNode()->
                                                  getViewFrustum()->getBoundingBox();
 
+            glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+            glStencilFunc(GL_ALWAYS, 1, ~0);
+            glEnable(GL_STENCIL_TEST);
+
             for (u32 i = 0; i < glowcount; i++)
             {
                 scene::ISceneNode * const cur = glows[i];
@@ -154,6 +158,9 @@ void IrrDriver::renderGLSL(float dt)
             }
             overridemat.Enabled = false;
             overridemat.EnablePasses = 0;
+
+            glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+            glDisable(GL_STENCIL_TEST);
 
             // Cool, now we have the colors set up. Progressively minify.
             video::SMaterial minimat;
@@ -188,11 +195,21 @@ void IrrDriver::renderGLSL(float dt)
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_QUARTER1), false, false);
             m_post_processing->drawQuad(cam, minimat);
 
-            // Switch back and overlay
+            // Switch back and overlay. Triple for brightness for now
+            glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+            glStencilFunc(GL_EQUAL, 0, ~0);
+            glEnable(GL_STENCIL_TEST);
+
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
-            minimat.MaterialType = m_shaders->getShader(ES_PASS_ADDITIVE);
+            minimat.MaterialType = m_shaders->getShader(ES_FLIP_ADDITIVE);
+            minimat.BlendOperation = video::EBO_ADD;
             minimat.setTexture(0, m_rtts->getRTT(RTT_QUARTER1));
             m_post_processing->drawQuad(cam, minimat);
+            m_post_processing->drawQuad(cam, minimat);
+            m_post_processing->drawQuad(cam, minimat);
+
+            glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+            glDisable(GL_STENCIL_TEST);
         } // end glow
 
         // We need to re-render camera due to the per-cam-node hack.
