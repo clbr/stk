@@ -236,13 +236,11 @@ void PostProcessing::render()
             drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
                                               4, indices, 2);
 
-            // Blur it for distribution, thrice gives good results while still fast
-            // TODO: replace with one blur of radius 6 (sqrt(9*3))
-            for (int i = 0; i < 3; i++)
+            // Blur it for distribution.
             {
                 gacb->setResolution(UserConfigParams::m_width / 8,
                                     UserConfigParams::m_height / 8);
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6V);
                 m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
                 drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH2), true, false);
 
@@ -250,7 +248,7 @@ void PostProcessing::render()
                 drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
                                               4, indices, 2);
 
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6H);
                 m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH2));
                 drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), false, false);
 
