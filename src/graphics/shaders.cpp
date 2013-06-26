@@ -93,6 +93,11 @@ Shaders::Shaders()
     m_shaders[ES_GAUSSIAN3V] = glslmat(std::string(""), dir + "gaussian3v.frag",
                                     m_callbacks[ES_GAUSSIAN3V], EMT_SOLID);
 
+    m_shaders[ES_GAUSSIAN6H] = glslmat(std::string(""), dir + "gaussian6h.frag",
+                                    m_callbacks[ES_GAUSSIAN3H], EMT_SOLID);
+    m_shaders[ES_GAUSSIAN6V] = glslmat(std::string(""), dir + "gaussian6v.frag",
+                                    m_callbacks[ES_GAUSSIAN3V], EMT_SOLID);
+
     m_shaders[ES_MIPVIZ] = glslmat(std::string(""), dir + "mipviz.frag",
                                     m_callbacks[ES_MIPVIZ], EMT_SOLID);
 
