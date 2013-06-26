@@ -298,3 +298,13 @@ void PostProcessing::render()
     }
 
 }   // render
+
+void PostProcessing::drawQuad(u32 cam, const SMaterial &mat)
+{
+    const u16 indices[6] = {0, 1, 2, 3, 0, 2};
+    video::IVideoDriver * const drv = irr_driver->getVideoDriver();
+
+    drv->setMaterial(mat);
+    drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
+                                      4, indices, 2);
+}
