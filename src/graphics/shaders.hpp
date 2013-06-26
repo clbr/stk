@@ -39,6 +39,8 @@ enum E_SHADER
     ES_MIPVIZ,
     ES_FLIP,
     ES_BLOOM,
+    ES_GAUSSIAN6H,
+    ES_GAUSSIAN6V,
 
     ES_COUNT
 };
