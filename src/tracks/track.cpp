@@ -256,6 +256,8 @@ void Track::cleanup()
         material_manager->popTempMaterial();
     }
 
+    irr_driver->clearGlowingNodes();
+
     if(UserConfigParams::logMemory())
     {
         Log::debug("track",
