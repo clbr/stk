@@ -101,14 +101,14 @@ void IrrDriver::renderGLSL(float dt)
     if (rg) rg->update(dt);
 
 
-    for(unsigned int i=0; i<Camera::getNumCameras(); i++)
+    for(unsigned int cam = 0; cam < Camera::getNumCameras(); cam++)
     {
-        Camera *camera = Camera::getCamera(i);
+        Camera *camera = Camera::getCamera(cam);
 
 #ifdef ENABLE_PROFILER
         std::ostringstream oss;
-        oss << "drawAll() for kart " << i << std::flush;
-        PROFILER_PUSH_CPU_MARKER(oss.str().c_str(), (i+1)*60,
+        oss << "drawAll() for kart " << cam << std::flush;
+        PROFILER_PUSH_CPU_MARKER(oss.str().c_str(), (cam+1)*60,
                                  0x00, 0x00);
 #endif
         camera->activate();
