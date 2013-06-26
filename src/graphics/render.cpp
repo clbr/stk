@@ -152,6 +152,8 @@ void IrrDriver::renderGLSL(float dt)
                 cb->setColor(1, 1, 1);
                 cur->render();
             }
+            overridemat.Enabled = false;
+            overridemat.EnablePasses = 0;
 
             // Cool, now we have the colors set up. Progressively minify.
             video::SMaterial minimat;
@@ -161,8 +163,37 @@ void IrrDriver::renderGLSL(float dt)
             minimat.setFlag(video::EMF_TEXTURE_WRAP, video::ETC_CLAMP_TO_EDGE);
             minimat.setFlag(video::EMF_TRILINEAR_FILTER, true);
 
+            // To half
+            minimat.setTexture(0, m_rtts->getRTT(RTT_TMP1));
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_HALF1), false, false);
+            m_post_processing->drawQuad(cam, minimat);
+
+            // To quarter
+            minimat.setTexture(0, m_rtts->getRTT(RTT_HALF1));
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_QUARTER1), false, false);
+            m_post_processing->drawQuad(cam, minimat);
+
+            // Blur it
+            ((GaussianBlurProvider *) m_shaders->m_callbacks[ES_GAUSSIAN3H])->setResolution(
+                       UserConfigParams::m_width / 4,
+                       UserConfigParams::m_height / 4);
+
+            minimat.MaterialType = m_shaders->getShader(ES_GAUSSIAN6H);
+            minimat.setTexture(0, m_rtts->getRTT(RTT_QUARTER1));
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_QUARTER2), false, false);
+            m_post_processing->drawQuad(cam, minimat);
+
+            minimat.MaterialType = m_shaders->getShader(ES_GAUSSIAN6V);
+            minimat.setTexture(0, m_rtts->getRTT(RTT_QUARTER2));
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_QUARTER1), false, false);
+            m_post_processing->drawQuad(cam, minimat);
+
+            // Switch back and overlay
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
-        }
+            minimat.MaterialType = video::EMT_TRANSPARENT_ADD_COLOR;
+            minimat.setTexture(0, m_rtts->getRTT(RTT_QUARTER1));
+            m_post_processing->drawQuad(cam, minimat);
+        } // end glow
 
         // We need to re-render camera due to the per-cam-node hack.
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
