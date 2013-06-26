@@ -31,7 +31,7 @@
 using namespace video;
 using namespace scene;
 
-PostProcessing::PostProcessing(video::IVideoDriver* video_driver)
+PostProcessing::PostProcessing(IVideoDriver* video_driver)
 {
     // Initialization
     m_material.Wireframe = false;
@@ -97,7 +97,7 @@ void PostProcessing::reset()
         core::vector3df normal(0,0,1);
         m_vertices[i].v0.Normal = m_vertices[i].v1.Normal =
         m_vertices[i].v2.Normal = m_vertices[i].v3.Normal = normal;
-        video::SColor white(0xFF, 0xFF, 0xFF, 0xFF);
+        SColor white(0xFF, 0xFF, 0xFF, 0xFF);
         m_vertices[i].v0.Color  = m_vertices[i].v1.Color  =
         m_vertices[i].v2.Color  = m_vertices[i].v3.Color  = white;
 
@@ -163,12 +163,10 @@ void PostProcessing::update(float dt)
 /** Render the post-processed scene */
 void PostProcessing::render()
 {
-    const u16 indices[6] = {0, 1, 2, 3, 0, 2};
-
-    video::IVideoDriver * const drv = irr_driver->getVideoDriver();
-    drv->setTransform(video::ETS_WORLD, core::IdentityMatrix);
-    drv->setTransform(video::ETS_VIEW, core::IdentityMatrix);
-    drv->setTransform(video::ETS_PROJECTION, core::IdentityMatrix);
+    IVideoDriver * const drv = irr_driver->getVideoDriver();
+    drv->setTransform(ETS_WORLD, core::IdentityMatrix);
+    drv->setTransform(ETS_VIEW, core::IdentityMatrix);
+    drv->setTransform(ETS_PROJECTION, core::IdentityMatrix);
 
     MotionBlurProvider * const mocb = (MotionBlurProvider *) irr_driver->getShaders()->
                                                            m_callbacks[ES_MOTIONBLUR];
@@ -196,45 +194,35 @@ void PostProcessing::render()
             m_material.setTexture(0, in);
             drv->setRenderTarget(out, true, false);
 
-            drv->setMaterial(m_material);
-            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, indices, 2);
+            drawQuad(cam, m_material);
 
             // Catch bright areas, and progressively minify
             m_material.MaterialType = shaders->getShader(ES_BLOOM);
             m_material.setTexture(0, in);
             drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
 
-            drv->setMaterial(m_material);
-            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, indices, 2);
+            drawQuad(cam, m_material);
 
             // To half
             m_material.MaterialType = EMT_SOLID;
             m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
             drv->setRenderTarget(rtts->getRTT(RTT_HALF1), true, false);
 
-            drv->setMaterial(m_material);
-            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, indices, 2);
+            drawQuad(cam, m_material);
 
             // To quarter
             m_material.MaterialType = EMT_SOLID;
             m_material.setTexture(0, rtts->getRTT(RTT_HALF1));
             drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), true, false);
 
-            drv->setMaterial(m_material);
-            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, indices, 2);
+            drawQuad(cam, m_material);
 
             // To eighth
             m_material.MaterialType = EMT_SOLID;
             m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
             drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), true, false);
 
-            drv->setMaterial(m_material);
-            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, indices, 2);
+            drawQuad(cam, m_material);
 
             // Blur it for distribution.
             {
@@ -244,17 +232,13 @@ void PostProcessing::render()
                 m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
                 drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH2), true, false);
 
-                drv->setMaterial(m_material);
-                drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, indices, 2);
+                drawQuad(cam, m_material);
 
                 m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6H);
                 m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH2));
                 drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), false, false);
 
-                drv->setMaterial(m_material);
-                drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                                  4, indices, 2);
+                drawQuad(cam, m_material);
             }
 
             // Additively blend on top of tmp1
@@ -262,9 +246,7 @@ void PostProcessing::render()
             m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
             drv->setRenderTarget(out, false, false);
 
-            drv->setMaterial(m_material);
-            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, indices, 2);
+            drawQuad(cam, m_material);
 
             in = rtts->getRTT(RTT_TMP1);
             out = rtts->getRTT(RTT_TMP2);
@@ -276,9 +258,7 @@ void PostProcessing::render()
             m_material.setTexture(0, in);
             drv->setRenderTarget(out, true, false);
 
-            drv->setMaterial(m_material);
-            drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                              4, indices, 2);
+            drawQuad(cam, m_material);
 
             ITexture *tmp = in;
             in = out;
@@ -292,9 +272,7 @@ void PostProcessing::render()
         m_material.setTexture(0, in);
         drv->setRenderTarget(ERT_FRAME_BUFFER, false, false);
 
-        drv->setMaterial(m_material);
-        drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
-                                          4, indices, 2);
+        drawQuad(cam, m_material);
     }
 
 }   // render
@@ -302,7 +280,11 @@ void PostProcessing::render()
 void PostProcessing::drawQuad(u32 cam, const SMaterial &mat)
 {
     const u16 indices[6] = {0, 1, 2, 3, 0, 2};
-    video::IVideoDriver * const drv = irr_driver->getVideoDriver();
+    IVideoDriver * const drv = irr_driver->getVideoDriver();
+
+    drv->setTransform(ETS_WORLD, core::IdentityMatrix);
+    drv->setTransform(ETS_VIEW, core::IdentityMatrix);
+    drv->setTransform(ETS_PROJECTION, core::IdentityMatrix);
 
     drv->setMaterial(mat);
     drv->drawIndexedTriangleList(&(m_vertices[cam].v0),
