@@ -124,6 +124,7 @@ private:
 
     bool                 m_wireframe;
     bool                 m_mipviz;
+    u32                  m_renderpass;
 
 #ifdef DEBUG
     /** Used to visualise skeletons. */
@@ -260,6 +261,8 @@ public:
     void toggleWireframe() { m_wireframe ^= 1; }
     // ------------------------------------------------------------------------
     void toggleMipVisualization() { m_mipviz ^= 1; }
+    // ------------------------------------------------------------------------
+    u32 getRenderPass() { return m_renderpass; }
 
 #ifdef DEBUG
     /** Removes debug meshes. */
