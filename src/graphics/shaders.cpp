@@ -109,7 +109,7 @@ Shaders::Shaders()
                                     0, EMT_SOLID);
 
     m_shaders[ES_COLORIZE] = glslmat(std::string(""), dir + "colorize.frag",
-                                    0, EMT_SOLID);
+                                    m_callbacks[ES_COLORIZE], EMT_SOLID);
 
     // Check that all successfully loaded
     u32 i;
