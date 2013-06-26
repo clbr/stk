@@ -308,4 +308,22 @@ public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 };
 
+//
+
+class ColorizeProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+    void setColor(float r, float g, float b)
+    {
+        m_color[0] = r;
+        m_color[1] = g;
+        m_color[2] = b;
+    }
+
+private:
+    float m_color[3];
+};
+
 #endif
