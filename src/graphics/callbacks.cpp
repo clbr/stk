@@ -261,3 +261,8 @@ void MipVizProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
     srv->setVertexShaderConstant("texsize", texsize, 2);
 }
+
+void ColorizeProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    srv->setVertexShaderConstant("col", m_color, 3);
+}
