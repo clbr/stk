@@ -51,6 +51,7 @@ Shaders::Shaders()
     m_callbacks[ES_MOTIONBLUR] = new MotionBlurProvider();
     m_callbacks[ES_GAUSSIAN3V] = m_callbacks[ES_GAUSSIAN3H] = new GaussianBlurProvider();
     m_callbacks[ES_MIPVIZ] = new MipVizProvider();
+    m_callbacks[ES_COLORIZE] = new ColorizeProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -105,6 +106,9 @@ Shaders::Shaders()
                                     0, EMT_SOLID);
 
     m_shaders[ES_BLOOM] = glslmat(std::string(""), dir + "bloom.frag",
+                                    0, EMT_SOLID);
+
+    m_shaders[ES_COLORIZE] = glslmat(std::string(""), dir + "colorize.frag",
                                     0, EMT_SOLID);
 
     // Check that all successfully loaded

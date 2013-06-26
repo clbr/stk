@@ -41,6 +41,7 @@ enum E_SHADER
     ES_BLOOM,
     ES_GAUSSIAN6H,
     ES_GAUSSIAN6V,
+    ES_COLORIZE,
 
     ES_COUNT
 };
