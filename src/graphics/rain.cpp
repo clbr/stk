@@ -100,8 +100,11 @@ public:
 
     virtual void OnRegisterSceneNode()
     {
-        if (IsVisible)
-            SceneManager->registerNodeForRendering(this);
+        if (IsVisible &&
+           (irr_driver->getRenderPass() & ESNRP_TRANSPARENT) == ESNRP_TRANSPARENT)
+        {
+            SceneManager->registerNodeForRendering(this, ESNRP_TRANSPARENT);
+        }
 
         ISceneNode::OnRegisterSceneNode();
     }
