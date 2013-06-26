@@ -111,6 +111,11 @@ Shaders::Shaders()
     m_shaders[ES_COLORIZE] = glslmat(std::string(""), dir + "colorize.frag",
                                     m_callbacks[ES_COLORIZE], EMT_SOLID);
 
+    m_shaders[ES_PASS] = glslmat(std::string(""), dir + "pass.frag",
+                                    0, EMT_SOLID);
+    m_shaders[ES_PASS_ADDITIVE] = glslmat(std::string(""), dir + "pass.frag",
+                                    0, EMT_TRANSPARENT_ADD_COLOR);
+
     // Check that all successfully loaded
     u32 i;
     for (i = 0; i < ES_COUNT; i++) {
