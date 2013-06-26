@@ -19,7 +19,10 @@
 #include "graphics/irr_driver.hpp"
 
 #include "config/user_config.hpp"
+#include "graphics/callbacks.hpp"
 #include "graphics/camera.hpp"
+#include "graphics/glwrap.hpp"
+#include "graphics/lod_node.hpp"
 #include "graphics/material_manager.hpp"
 #include "graphics/particle_kind_manager.hpp"
 #include "graphics/per_camera_node.hpp"
@@ -28,6 +31,8 @@
 #include "graphics/rtts.hpp"
 #include "graphics/shaders.hpp"
 #include "graphics/wind.hpp"
+#include "items/item.hpp"
+#include "items/item_manager.hpp"
 #include "modes/world.hpp"
 #include "physics/physics.hpp"
 #include "utils/constants.hpp"
@@ -57,6 +62,30 @@ void IrrDriver::renderGLSL(float dt)
         overridemat.EnablePasses = scene::ESNRP_SOLID;
     }
 
+    // Get a list of all glowing things. The driver's list contains the static ones,
+    // here we add items, as they may disappear each frame.
+    std::vector<scene::ISceneNode *> glows = m_glowing;
+
+    ItemManager * const items = ItemManager::get();
+    const u32 itemcount = items->getNumberOfItems();
+    u32 i;
+
+    for (i = 0; i < itemcount; i++)
+    {
+        Item * const item = items->getItem(i);
+        const Item::ItemType type = item->getType();
+
+        if (type != Item::ITEM_NITRO_BIG && type != Item::ITEM_NITRO_SMALL &&
+            type != Item::ITEM_BONUS_BOX)
+            continue;
+
+        LODNode * const lod = (LODNode *) item->getSceneNode();
+        const int level = lod->getLevel();
+        if (level < 0) continue;
+
+        scene::ISceneNode * const node = lod->getAllNodes()[level];
+        glows.push_back(node);
+    }
 
     // Start the RTT for post-processing.
     // We do this before beginScene() because we want to capture the glClear()
@@ -91,6 +120,49 @@ void IrrDriver::renderGLSL(float dt)
 
         m_renderpass = scene::ESNRP_SKY_BOX;
         m_scene_manager->drawAll(m_renderpass);
+
+        // Render anything glowing.
+        if (!m_mipviz && !m_wireframe)
+        {
+            m_scene_manager->setCurrentRendertime(scene::ESNRP_SOLID);
+
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_TMP1), false, false);
+            glClearColor(0, 0, 0, 0);
+            glClear(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+            const u32 glowcount = glows.size();
+            ColorizeProvider * const cb = (ColorizeProvider *) m_shaders->m_callbacks[ES_COLORIZE];
+
+            overridemat.Material.MaterialType = m_shaders->getShader(ES_COLORIZE);
+            overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
+            overridemat.EnablePasses = scene::ESNRP_SOLID;
+            overridemat.Enabled = true;
+
+            const core::aabbox3df cambox = camera->getCameraSceneNode()->
+                                                 getViewFrustum()->getBoundingBox();
+
+            for (u32 i = 0; i < glowcount; i++)
+            {
+                scene::ISceneNode * const cur = glows[i];
+
+                // Quick box-based culling
+                const core::aabbox3df nodebox = cur->getTransformedBoundingBox();
+                if (!nodebox.intersectsWithBox(cambox))
+                    continue;
+
+                cb->setColor(1, 1, 1);
+                cur->render();
+            }
+
+            // Cool, now we have the colors set up. Progressively minify.
+            video::SMaterial minimat;
+            minimat.Lighting = false;
+            minimat.ZWriteEnable = false;
+            minimat.ZBuffer = video::ECFN_ALWAYS;
+            minimat.setFlag(video::EMF_TEXTURE_WRAP, video::ETC_CLAMP_TO_EDGE);
+            minimat.setFlag(video::EMF_TRILINEAR_FILTER, true);
+
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
+        }
 
         // We need to re-render camera due to the per-cam-node hack.
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
@@ -145,6 +217,8 @@ void IrrDriver::renderGLSL(float dt)
 
     getPostProcessing()->update(dt);
 }
+
+// --------------------------------------------
 
 void IrrDriver::renderFixed(float dt)
 {
