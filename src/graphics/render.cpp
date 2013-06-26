@@ -190,7 +190,7 @@ void IrrDriver::renderGLSL(float dt)
 
             // Switch back and overlay
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
-            minimat.MaterialType = video::EMT_TRANSPARENT_ADD_COLOR;
+            minimat.MaterialType = m_shaders->getShader(ES_PASS_ADDITIVE);
             minimat.setTexture(0, m_rtts->getRTT(RTT_QUARTER1));
             m_post_processing->drawQuad(cam, minimat);
         } // end glow
