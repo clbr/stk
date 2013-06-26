@@ -126,6 +126,8 @@ private:
     bool                 m_mipviz;
     u32                  m_renderpass;
 
+    std::vector<scene::ISceneNode *> m_glowing;
+
 #ifdef DEBUG
     /** Used to visualise skeletons. */
     std::vector<irr::scene::IAnimatedMeshSceneNode*> m_debug_meshes;
@@ -263,6 +265,10 @@ public:
     void toggleMipVisualization() { m_mipviz ^= 1; }
     // ------------------------------------------------------------------------
     u32 getRenderPass() { return m_renderpass; }
+    // ------------------------------------------------------------------------
+    void addGlowingNode(scene::ISceneNode *n) { m_glowing.push_back(n); }
+    // ------------------------------------------------------------------------
+    void clearGlowingNodes() { m_glowing.clear(); }
 
 #ifdef DEBUG
     /** Removes debug meshes. */
