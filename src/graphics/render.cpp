@@ -64,7 +64,7 @@ void IrrDriver::renderGLSL(float dt)
 
     // Get a list of all glowing things. The driver's list contains the static ones,
     // here we add items, as they may disappear each frame.
-    std::vector<scene::ISceneNode *> glows = m_glowing;
+    std::vector<glowdata_t> glows = m_glowing;
 
     ItemManager * const items = ItemManager::get();
     const u32 itemcount = items->getNumberOfItems();
@@ -73,6 +73,7 @@ void IrrDriver::renderGLSL(float dt)
     for (i = 0; i < itemcount; i++)
     {
         Item * const item = items->getItem(i);
+        if (!item) continue;
         const Item::ItemType type = item->getType();
 
         if (type != Item::ITEM_NITRO_BIG && type != Item::ITEM_NITRO_SMALL &&
@@ -80,11 +81,37 @@ void IrrDriver::renderGLSL(float dt)
             continue;
 
         LODNode * const lod = (LODNode *) item->getSceneNode();
+        if (!lod->isVisible()) continue;
+
         const int level = lod->getLevel();
         if (level < 0) continue;
 
         scene::ISceneNode * const node = lod->getAllNodes()[level];
-        glows.push_back(node);
+
+        glowdata_t dat;
+        dat.node = node;
+
+        dat.r = 1.0f;
+        dat.g = 1.0f;
+        dat.b = 1.0f;
+
+        // Item colors
+        switch (type)
+        {
+            case Item::ITEM_NITRO_BIG:
+            case Item::ITEM_NITRO_SMALL:
+                dat.r = stk_config->m_nitro_glow_color[0];
+                dat.g = stk_config->m_nitro_glow_color[1];
+                dat.b = stk_config->m_nitro_glow_color[2];
+            break;
+            case Item::ITEM_BONUS_BOX:
+                dat.r = stk_config->m_box_glow_color[0];
+                dat.g = stk_config->m_box_glow_color[1];
+                dat.b = stk_config->m_box_glow_color[2];
+            break;
+        }
+
+        glows.push_back(dat);
     }
 
     // Start the RTT for post-processing.
@@ -146,14 +173,15 @@ void IrrDriver::renderGLSL(float dt)
 
             for (u32 i = 0; i < glowcount; i++)
             {
-                scene::ISceneNode * const cur = glows[i];
+                const glowdata_t &dat = glows[i];
+                scene::ISceneNode * const cur = dat.node;
 
                 // Quick box-based culling
                 const core::aabbox3df nodebox = cur->getTransformedBoundingBox();
                 if (!nodebox.intersectsWithBox(cambox))
                     continue;
 
-                cb->setColor(1, 1, 1);
+                cb->setColor(dat.r, dat.g, dat.b);
                 cur->render();
             }
             overridemat.Enabled = false;
@@ -201,11 +229,9 @@ void IrrDriver::renderGLSL(float dt)
             glEnable(GL_STENCIL_TEST);
 
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
-            minimat.MaterialType = m_shaders->getShader(ES_FLIP_ADDITIVE);
+            minimat.MaterialType = m_shaders->getShader(ES_GLOW_ADDITIVE);
             minimat.BlendOperation = video::EBO_ADD;
             minimat.setTexture(0, m_rtts->getRTT(RTT_QUARTER1));
-            m_post_processing->drawQuad(cam, minimat);
-            m_post_processing->drawQuad(cam, minimat);
             m_post_processing->drawQuad(cam, minimat);
 
             glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
