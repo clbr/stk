@@ -204,11 +204,9 @@ void IrrDriver::renderGLSL(float dt)
             glEnable(GL_STENCIL_TEST);
 
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
-            minimat.MaterialType = m_shaders->getShader(ES_FLIP_ADDITIVE);
+            minimat.MaterialType = m_shaders->getShader(ES_GLOW_ADDITIVE);
             minimat.BlendOperation = video::EBO_ADD;
             minimat.setTexture(0, m_rtts->getRTT(RTT_QUARTER1));
-            m_post_processing->drawQuad(cam, minimat);
-            m_post_processing->drawQuad(cam, minimat);
             m_post_processing->drawQuad(cam, minimat);
 
             glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
