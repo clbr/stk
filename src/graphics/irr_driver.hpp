@@ -126,7 +126,12 @@ private:
     bool                 m_mipviz;
     u32                  m_renderpass;
 
-    std::vector<scene::ISceneNode *> m_glowing;
+    struct glowdata_t {
+        scene::ISceneNode * node;
+        float r, g, b;
+    };
+
+    std::vector<glowdata_t> m_glowing;
 
 #ifdef DEBUG
     /** Used to visualise skeletons. */
@@ -266,7 +271,16 @@ public:
     // ------------------------------------------------------------------------
     u32 getRenderPass() { return m_renderpass; }
     // ------------------------------------------------------------------------
-    void addGlowingNode(scene::ISceneNode *n) { m_glowing.push_back(n); }
+    void addGlowingNode(scene::ISceneNode *n, float r = 1.0f, float g = 1.0f, float b = 1.0f)
+    {
+        glowdata_t dat;
+        dat.node = n;
+        dat.r = r;
+        dat.g = g;
+        dat.b = b;
+
+        m_glowing.push_back(dat);
+    }
     // ------------------------------------------------------------------------
     void clearGlowingNodes() { m_glowing.clear(); }
 
