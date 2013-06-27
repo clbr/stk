@@ -95,6 +95,22 @@ void IrrDriver::renderGLSL(float dt)
         dat.g = 1.0f;
         dat.b = 1.0f;
 
+        // Item colors
+        switch (type)
+        {
+            case Item::ITEM_NITRO_BIG:
+            case Item::ITEM_NITRO_SMALL:
+                dat.r = stk_config->m_nitro_glow_color[0];
+                dat.g = stk_config->m_nitro_glow_color[1];
+                dat.b = stk_config->m_nitro_glow_color[2];
+            break;
+            case Item::ITEM_BONUS_BOX:
+                dat.r = stk_config->m_box_glow_color[0];
+                dat.g = stk_config->m_box_glow_color[1];
+                dat.b = stk_config->m_box_glow_color[2];
+            break;
+        }
+
         glows.push_back(dat);
     }
 
