@@ -139,10 +139,7 @@ void TrackObject::init(const XMLNode &xml_node, LODNode* lod_node)
             m_type = "lod";
             m_presentation = new TrackObjectPresentationLOD(xml_node, lod_node);
 
-            LODNode * const tmplod = (LODNode *)
-                                     ((TrackObjectPresentationMesh *) m_presentation)->getNode();
-            if (tmplod->getLevel() >= 0)
-                glownode = tmplod->getAllNodes()[0];
+            glownode = lod_node->getAllNodes()[0];
         }
         else
         {
