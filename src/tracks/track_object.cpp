@@ -133,16 +133,21 @@ void TrackObject::init(const XMLNode &xml_node, LODNode* lod_node)
     }
     else
     {
+        scene::ISceneNode *glownode = NULL;
+
         if (lod_node != NULL)
         {
             m_type = "lod";
             m_presentation = new TrackObjectPresentationLOD(xml_node, lod_node);
+
+            glownode = lod_node->getAllNodes()[0];
         }
         else
         {
             m_type = "mesh";
             m_presentation = new TrackObjectPresentationMesh(xml_node,
                                                              m_enabled);
+            glownode = ((TrackObjectPresentationMesh *) m_presentation)->getNode();
         }
 
         if (m_interaction != "ghost" && m_interaction != "none")
@@ -150,6 +155,17 @@ void TrackObject::init(const XMLNode &xml_node, LODNode* lod_node)
             m_rigid_body = PhysicalObject::fromXML(type == "movable",
                                                    xml_node,
                                                    this);
+        }
+
+        video::SColor glow;
+        if (xml_node.get("glow", &glow) && glownode)
+        {
+            float r, g, b;
+            r = glow.getRed() / 255.0f;
+            g = glow.getGreen() / 255.0f;
+            b = glow.getBlue() / 255.0f;
+
+            irr_driver->addGlowingNode(glownode, r, g, b);
         }
     }
 
