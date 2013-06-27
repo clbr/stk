@@ -73,6 +73,7 @@ void IrrDriver::renderGLSL(float dt)
     for (i = 0; i < itemcount; i++)
     {
         Item * const item = items->getItem(i);
+        if (!item) continue;
         const Item::ItemType type = item->getType();
 
         if (type != Item::ITEM_NITRO_BIG && type != Item::ITEM_NITRO_SMALL &&
