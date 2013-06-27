@@ -81,6 +81,8 @@ void IrrDriver::renderGLSL(float dt)
             continue;
 
         LODNode * const lod = (LODNode *) item->getSceneNode();
+        if (!lod->isVisible()) continue;
+
         const int level = lod->getLevel();
         if (level < 0) continue;
 
