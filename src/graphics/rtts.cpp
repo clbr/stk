@@ -20,7 +20,7 @@
 #include "graphics/irr_driver.hpp"
 #include "utils/log.hpp"
 
-rtt_t::rtt_t()
+RTT::RTT()
 {
     using namespace video;
 
@@ -59,7 +59,7 @@ rtt_t::rtt_t()
     }
 }
 
-rtt_t::~rtt_t()
+RTT::~RTT()
 {
     u32 i;
     for (i = 0; i < RTT_COUNT; i++)
@@ -68,7 +68,7 @@ rtt_t::~rtt_t()
     }
 }
 
-ITexture *rtt_t::getRTT(E_RTT which)
+ITexture *RTT::getRTT(E_RTT which)
 {
     assert(which < RTT_COUNT);
     return rtts[which];
