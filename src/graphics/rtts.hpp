@@ -25,7 +25,7 @@ namespace irr {
 
 using irr::video::ITexture;
 
-enum e_rtt
+enum E_RTT
 {
     RTT_TMP1 = 0,
     RTT_TMP2,
@@ -56,7 +56,7 @@ public:
     rtt_t();
     ~rtt_t();
 
-    ITexture *getRTT(e_rtt which);
+    ITexture *getRTT(E_RTT which);
 
 private:
     ITexture *rtts[RTT_COUNT];
