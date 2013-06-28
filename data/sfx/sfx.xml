@@ -30,6 +30,10 @@
    <sfx filename="grab_collectable.ogg" volume="1.0" positional="false" />
    <sfx filename="hammer.ogg"           volume="1.0" positional="true" rolloff="0.05" />
    <sfx filename="horn.ogg"             volume="0.6" positional="true" rolloff="0.2"   />
+   
+   <!-- TODO (sam) to be replaced by a real song -->
+   <sfx filename="jump.ogg"      volume="0.0" positional="true" />
+   
    <sfx filename="last_lap_fanfare.ogg" volume="1.0" positional="false" />
    <sfx filename="locked.ogg"           volume="1.0" positional="false" />
    <sfx filename="machine_sound.ogg"    volume="1.0" positional="true" />

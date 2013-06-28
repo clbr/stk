@@ -49,6 +49,7 @@
 #include "io/file_manager.hpp"
 #include "items/attachment.hpp"
 #include "items/item_manager.hpp"
+#include "items/projectile_manager.hpp"
 #include "karts/controller/end_controller.hpp"
 #include "karts/abstract_kart_animation.hpp"
 #include "karts/kart_model.hpp"
@@ -66,6 +67,8 @@
 #include "tracks/track.hpp"
 #include "tracks/track_manager.hpp"
 #include "utils/constants.hpp"
+
+#include "graphics/explosion.hpp"
 
 #if defined(WIN32) && !defined(__CYGWIN__)  && !defined(__MINGW32__)
    // Disable warning for using 'this' in base member initializer list
@@ -116,6 +119,9 @@ Kart::Kart (const std::string& ident, unsigned int world_kart_id,
     m_flying               = false;
     m_sky_particles_emitter= NULL;
     m_stars_effect         = NULL;
+    m_timeFlying           = 0;
+    m_isTimeFlying          = false;
+    m_hitGround            = NULL;
 
     m_view_blocked_by_plunger = 0;
     m_has_caught_nolok_bubblegum = false;
@@ -300,10 +306,8 @@ void Kart::reset()
     // undo bubblegum effect
     if (m_bubblegum_time > 0.0f)
     {
-        m_bubblegum_time = 0.0f;
+        m_bubblegum_time   = 0.0f;
         m_bubblegum_torque = 0.0f;
-        m_body->setDamping(m_kart_properties->getChassisLinearDamping(),
-                           m_kart_properties->getChassisAngularDamping() );
     }
 
     // If the controller was replaced (e.g. replaced by end controller),
@@ -340,6 +344,10 @@ void Kart::reset()
     m_current_lean         = 0.0f;
     m_view_blocked_by_plunger = 0.0f;
     m_has_caught_nolok_bubblegum = false;
+    // In case that the kart was in the air, in which case its
+    // linear damping is 0
+    m_body->setDamping(m_kart_properties->getChassisLinearDamping(),
+                       m_kart_properties->getChassisAngularDamping() );
 
     if(m_terrain_sound)
     {
@@ -851,12 +859,18 @@ void Kart::collectedItem(Item *item, int add_info)
             break;
         }
     case Item::ITEM_BUBBLEGUM:
-        m_has_caught_nolok_bubblegum = (item->getEmitter() != NULL && item->getEmitter()->getIdent() == "nolok");
+        m_has_caught_nolok_bubblegum = (item->getEmitter() != NULL && 
+                                    item->getEmitter()->getIdent() == "nolok");
 
         // slow down
-        m_bubblegum_time = 1.0f;
-        m_bubblegum_torque = (rand()%2) ? 500.0f : -500.0f;
-        m_body->setDamping(0.8f, 0.8f);
+        m_bubblegum_time = m_kart_properties->getBubblegumTime();
+        m_bubblegum_torque = (rand()%2) 
+                           ?  m_kart_properties->getBubblegumTorque()
+                           : -m_kart_properties->getBubblegumTorque();
+        m_max_speed->setSlowdown(MaxSpeed::MS_DECREASE_BUBBLE, 
+                                 m_kart_properties->getBubblegumSpeedFraction(),
+                                 m_kart_properties->getBubblegumFadeInTime(),
+                                 m_bubblegum_time);
         m_goo_sound->position(getXYZ());
         m_goo_sound->play();
         // Play appropriate custom character sound
@@ -976,19 +990,14 @@ void Kart::update(float dt)
         if(m_squash_time<=0)
         {
             m_node->setScale(core::vector3df(1.0f, 1.0f, 1.0f));
-            m_max_speed->setSlowdown(MaxSpeed::MS_DECREASE_SQUASH,
-                                    /*slowdown*/1.0f, /*fade in*/0.0f);
         }
-    }
+    }   // if squashed
 
     if (m_bubblegum_time > 0.0f)
     {
         m_bubblegum_time -= dt;
         if (m_bubblegum_time <= 0.0f)
         {
-            // undo bubblegum effect
-            m_body->setDamping(m_kart_properties->getChassisLinearDamping(),
-                               m_kart_properties->getChassisAngularDamping() );
             m_bubblegum_torque = 0.0f;
         }
     }
@@ -1192,6 +1201,21 @@ void Kart::update(float dt)
     // is rescued isOnGround might still be true, since the kart rigid
     // body was removed from the physics, but still retain the old
     // values for the raycasts).
+    if (!isOnGround())
+    {
+        m_timeFlying+=dt;
+        m_isTimeFlying = true;
+    }
+    
+    if(isOnGround() && m_isTimeFlying)
+    {
+        m_isTimeFlying = false;
+        m_hitGround = new Explosion(getXYZ(), "jump", 
+                                   "jump_explosion.xml");
+        projectile_manager->addHitEffect(m_hitGround);
+        m_timeFlying = 0;
+    }
+    
     if( (!isOnGround() || emergency) && m_shadow_enabled)
     {
         m_shadow_enabled = false;
@@ -1200,7 +1224,7 @@ void Kart::update(float dt)
     if(!m_shadow_enabled && isOnGround() && !emergency)
     {
         m_shadow->enableShadow();
-        m_shadow_enabled = true;
+        m_shadow_enabled = true;  
     }
 }   // update
 
@@ -1229,7 +1253,8 @@ void Kart::setSquash(float time, float slowdown)
         return;
     }
     m_node->setScale(core::vector3df(1.0f, 0.5f, 1.0f));
-    m_max_speed->setSlowdown(MaxSpeed::MS_DECREASE_SQUASH, slowdown, 0.1f);
+    m_max_speed->setSlowdown(MaxSpeed::MS_DECREASE_SQUASH, slowdown, 
+                             0.1f, time);
     m_squash_time  = time;
 }   // setSquash
 
