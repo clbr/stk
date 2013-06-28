@@ -20,6 +20,7 @@
 #include "utils/helpers.hpp"
 
 #include <math.h>
+#include <algorithm>
 
 float clampf(float in, float low, float high) {
     return in > high ? high : in < low ? low : in;
@@ -157,9 +158,9 @@ float noise2d(float v1, float v2) {
 	p[2] = permute(permute(i[1] + 1) + i[0] + 1);
 
 	float m[3];
-	m[0] = fmaxf(0.5 - x0[0]*x0[0] - x0[1]*x0[1], 0);
-	m[1] = fmaxf(0.5 - x12[0]*x12[0] - x12[1]*x12[1], 0);
-	m[2] = fmaxf(0.5 - x12[2]*x12[2] - x12[3]*x12[3], 0);
+	m[0] = std::max<float>(0.5 - x0[0]*x0[0] - x0[1]*x0[1], 0);
+	m[1] = std::max<float>(0.5 - x12[0]*x12[0] - x12[1]*x12[1], 0);
+	m[2] = std::max<float>(0.5 - x12[2]*x12[2] - x12[3]*x12[3], 0);
 
 	m[0] = m[0] * m[0] * m[0] * m[0];
 	m[1] = m[1] * m[1] * m[1] * m[1];
