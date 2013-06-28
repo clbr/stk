@@ -73,6 +73,8 @@ supertuxkart_SOURCES = \
  graphics/camera.hpp \
  graphics/explosion.cpp \
  graphics/explosion.hpp \
+ graphics/glow.cpp \
+ graphics/glow.hpp \
  graphics/hardware_skinning.cpp \
  graphics/hardware_skinning.hpp \
  graphics/hit_effect.hpp \

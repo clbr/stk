@@ -326,4 +326,21 @@ private:
     float m_color[3];
 };
 
+//
+
+class GlowProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+    void setResolution(float x, float y)
+    {
+        m_res[0] = x;
+        m_res[1] = y;
+    }
+
+private:
+    float m_res[2];
+};
+
 #endif
