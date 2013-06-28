@@ -17,10 +17,13 @@
 #ifndef HEADER_RTTS_HPP
 #define HEADER_RTTS_HPP
 
-#include <ITexture.h>
-#include <assert.h>
-using namespace irr;
-using video::ITexture;
+namespace irr {
+    namespace video {
+        class ITexture;
+    };
+};
+
+using irr::video::ITexture;
 
 enum e_rtt
 {
