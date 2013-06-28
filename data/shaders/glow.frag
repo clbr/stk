@@ -1,12 +1,16 @@
 uniform sampler2D tex;
+uniform vec2 res;
 
 void main()
 {
-	vec2 coords = gl_TexCoord[0].xy;
-	coords.y = 1.0 - coords.y;
+	vec2 coords = gl_FragCoord.xy / res;
 
 	vec4 col = texture2D(tex, coords);
-	col *= 3.0;
+	float alpha = col.a;
+
+	if (alpha < 0.04) discard;
+
+	col *= vec4(vec3(4.0), 1.5);
 
 	gl_FragColor = col;
 }
