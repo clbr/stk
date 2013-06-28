@@ -405,7 +405,7 @@ void IrrDriver::initDevice()
         Log::info("irr_driver", "GLSL supported.");
 
         // Order matters, create RTTs as soon as possible, as they are the largest blocks.
-        m_rtts = new rtt_t();
+        m_rtts = new RTT();
         m_shaders = new Shaders();
     }
     else

@@ -50,11 +50,11 @@ enum E_RTT
     RTT_COUNT
 };
 
-class rtt_t
+class RTT
 {
 public:
-    rtt_t();
-    ~rtt_t();
+    RTT();
+    ~RTT();
 
     ITexture *getRTT(E_RTT which);
 
