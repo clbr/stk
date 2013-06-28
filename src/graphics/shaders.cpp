@@ -52,6 +52,7 @@ Shaders::Shaders()
     m_callbacks[ES_GAUSSIAN3V] = m_callbacks[ES_GAUSSIAN3H] = new GaussianBlurProvider();
     m_callbacks[ES_MIPVIZ] = new MipVizProvider();
     m_callbacks[ES_COLORIZE] = new ColorizeProvider();
+    m_callbacks[ES_GLOW] = new GlowProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -118,8 +119,8 @@ Shaders::Shaders()
     m_shaders[ES_PASS_ADDITIVE] = glslmat(std::string(""), dir + "pass.frag",
                                     0, EMT_TRANSPARENT_ADD_COLOR);
 
-    m_shaders[ES_GLOW_ADDITIVE] = glslmat(std::string(""), dir + "glow.frag",
-                                    0, EMT_TRANSPARENT_ADD_COLOR);
+    m_shaders[ES_GLOW] = glslmat(std::string(""), dir + "glow.frag",
+                                    m_callbacks[ES_GLOW], EMT_TRANSPARENT_ALPHA_CHANNEL);
 
     // Check that all successfully loaded
     u32 i;
