@@ -109,6 +109,9 @@ void IrrDriver::renderGLSL(float dt)
                 dat.g = stk_config->m_box_glow_color[1];
                 dat.b = stk_config->m_box_glow_color[2];
             break;
+            default:
+                Log::fatal("render", "Unknown item type got through");
+            break;
         }
 
         glows.push_back(dat);
