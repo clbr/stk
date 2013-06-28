@@ -173,7 +173,7 @@ void PostProcessing::render()
     GaussianBlurProvider * const gacb = (GaussianBlurProvider *) irr_driver->getShaders()->
                                                            m_callbacks[ES_GAUSSIAN3H];
 
-    rtt_t * const rtts = irr_driver->getRTTs();
+    RTT * const rtts = irr_driver->getRTTs();
     Shaders * const shaders = irr_driver->getShaders();
 
     const u32 cams = Camera::getNumCameras();
