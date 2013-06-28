@@ -266,3 +266,8 @@ void ColorizeProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("col", m_color, 3);
 }
+
+void GlowProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    srv->setVertexShaderConstant("res", m_res, 2);
+}
