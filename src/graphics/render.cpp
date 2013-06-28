@@ -21,6 +21,7 @@
 #include "config/user_config.hpp"
 #include "graphics/callbacks.hpp"
 #include "graphics/camera.hpp"
+#include "graphics/glow.hpp"
 #include "graphics/glwrap.hpp"
 #include "graphics/lod_node.hpp"
 #include "graphics/material_manager.hpp"
@@ -65,6 +66,7 @@ void IrrDriver::renderGLSL(float dt)
     // Get a list of all glowing things. The driver's list contains the static ones,
     // here we add items, as they may disappear each frame.
     std::vector<glowdata_t> glows = m_glowing;
+    std::vector<GlowNode *> transparent_glow_nodes;
 
     ItemManager * const items = ItemManager::get();
     const u32 itemcount = items->getNumberOfItems();
@@ -115,6 +117,12 @@ void IrrDriver::renderGLSL(float dt)
         }
 
         glows.push_back(dat);
+
+        // Push back its representation too
+        const float radius = (node->getBoundingBox().getExtent().getLength() / 2) * 2.0f;
+        GlowNode * const repnode = new GlowNode(irr_driver->getSceneManager(), radius);
+        repnode->setPosition(node->getTransformedBoundingBox().getCenter());
+        transparent_glow_nodes.push_back(repnode);
     }
 
     // Start the RTT for post-processing.
@@ -161,6 +169,10 @@ void IrrDriver::renderGLSL(float dt)
             glClear(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
             const u32 glowcount = glows.size();
             ColorizeProvider * const cb = (ColorizeProvider *) m_shaders->m_callbacks[ES_COLORIZE];
+
+            GlowProvider * const glowcb = (GlowProvider *) m_shaders->m_callbacks[ES_GLOW];
+            glowcb->setResolution(UserConfigParams::m_width,
+                                  UserConfigParams::m_height);
 
             overridemat.Material.MaterialType = m_shaders->getShader(ES_COLORIZE);
             overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
@@ -226,16 +238,8 @@ void IrrDriver::renderGLSL(float dt)
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_QUARTER1), false, false);
             m_post_processing->drawQuad(cam, minimat);
 
-            // Switch back and overlay. Triple for brightness for now
-            glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
-            glStencilFunc(GL_EQUAL, 0, ~0);
-            glEnable(GL_STENCIL_TEST);
-
+            // The glows will be rendered in the transparent phase
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
-            minimat.MaterialType = m_shaders->getShader(ES_GLOW_ADDITIVE);
-            minimat.BlendOperation = video::EBO_ADD;
-            minimat.setTexture(0, m_rtts->getRTT(RTT_QUARTER1));
-            m_post_processing->drawQuad(cam, minimat);
 
             glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
             glDisable(GL_STENCIL_TEST);
@@ -245,6 +249,12 @@ void IrrDriver::renderGLSL(float dt)
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
                                  scene::ESNRP_TRANSPARENT_EFFECT | scene::ESNRP_LIGHT;
         m_scene_manager->drawAll(m_renderpass);
+
+        const u32 glowrepcount = transparent_glow_nodes.size();
+        for (i = 0; i < glowrepcount; i++)
+        {
+            transparent_glow_nodes[i]->remove();
+        }
 
         PROFILER_POP_CPU_MARKER();
 

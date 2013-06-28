@@ -1,4 +1,6 @@
+//
 //  SuperTuxKart - a fun racing game with go-kart
+//  Copyright (C) 2013 Lauri Kasanen
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -14,56 +16,38 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_SHADERS_HPP
-#define HEADER_SHADERS_HPP
+#ifndef HEADER_GLOW_HPP
+#define HEADER_GLOW_HPP
 
-#include <irrlicht.h>
-#include <vector>
+#include <ISceneNode.h>
+#include <IMesh.h>
+
 using namespace irr;
 
-enum E_SHADER
-{
-    ES_NORMAL_MAP = 0,
-    ES_NORMAL_MAP_LIGHTMAP,
-    ES_SPLATTING,
-    ES_WATER,
-    ES_SPHERE_MAP,
-    ES_SPLATTING_LIGHTMAP,
-    ES_GRASS,
-    ES_BUBBLES,
-    ES_RAIN,
-    ES_SNOW,
-    ES_MOTIONBLUR,
-    ES_GAUSSIAN3H,
-    ES_GAUSSIAN3V,
-    ES_MIPVIZ,
-    ES_FLIP,
-    ES_FLIP_ADDITIVE,
-    ES_BLOOM,
-    ES_GAUSSIAN6H,
-    ES_GAUSSIAN6V,
-    ES_COLORIZE,
-    ES_PASS,
-    ES_PASS_ADDITIVE,
-    ES_GLOW,
-
-    ES_COUNT
-};
-
-class Shaders
+// The actual rain node
+class GlowNode: public scene::ISceneNode
 {
 public:
-    Shaders();
-    ~Shaders();
+    GlowNode(scene::ISceneManager* mgr, float radius);
+    ~GlowNode();
 
-    video::E_MATERIAL_TYPE getShader(const E_SHADER num) const;
+    virtual void render();
 
-    video::IShaderConstantSetCallBack * m_callbacks[ES_COUNT];
+    virtual const core::aabbox3d<f32>& getBoundingBox() const
+    {
+        return box;
+    }
+
+    virtual void OnRegisterSceneNode();
+
+    virtual u32 getMaterialCount() const { return 1; }
+    virtual video::SMaterial& getMaterial(u32 i) { return mat; }
 
 private:
-    void check(const int num) const;
+    static video::SMaterial mat;
+    static core::aabbox3df box;
 
-    int m_shaders[ES_COUNT];
+    static scene::IMesh *sphere;
 };
 
 #endif
