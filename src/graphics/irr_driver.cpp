@@ -391,7 +391,8 @@ void IrrDriver::initDevice()
     m_gui_env       = m_device->getGUIEnvironment();
     m_video_driver  = m_device->getVideoDriver();
     m_glsl          = m_video_driver->queryFeature(video::EVDF_ARB_GLSL) &&
-                      m_video_driver->queryFeature(video::EVDF_TEXTURE_NPOT);
+                      m_video_driver->queryFeature(video::EVDF_TEXTURE_NPOT) &&
+                      UserConfigParams::m_pixel_shaders;
 
     // This remaps the window, so it has to be done before the clear to avoid flicker
     m_device->setResizable(false);
@@ -1708,7 +1709,7 @@ bool IrrDriver::OnEvent(const irr::SEvent &event)
 
 bool IrrDriver::supportsSplatting()
 {
-    return UserConfigParams::m_pixel_shaders && m_glsl;
+    return m_glsl;
 }
 
 // ----------------------------------------------------------------------------
