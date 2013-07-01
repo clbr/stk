@@ -148,6 +148,8 @@ private:
     void renderFixed(float dt);
     void renderGLSL(float dt);
 
+    void applyObjectPassShader(scene::ISceneNode * const node);
+
     void doScreenShot();
 public:
          IrrDriver();
@@ -285,6 +287,8 @@ public:
     }
     // ------------------------------------------------------------------------
     void clearGlowingNodes() { m_glowing.clear(); }
+    // ------------------------------------------------------------------------
+    void applyObjectPassShader();
 
 #ifdef DEBUG
     /** Removes debug meshes. */
