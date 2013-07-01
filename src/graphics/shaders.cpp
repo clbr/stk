@@ -125,6 +125,8 @@ Shaders::Shaders()
 
     m_shaders[ES_OBJECTPASS] = glslmat(dir + "objectpass.vert", dir + "objectpass.frag",
                                     m_callbacks[ES_OBJECTPASS], EMT_SOLID);
+    m_shaders[ES_OBJECTPASS_REF] = glslmat(dir + "objectpass.vert", dir + "objectpass_ref.frag",
+                                    m_callbacks[ES_OBJECTPASS], EMT_SOLID);
 
 
     // Check that all successfully loaded
