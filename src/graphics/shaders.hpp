@@ -46,6 +46,7 @@ enum E_SHADER
     ES_PASS,
     ES_PASS_ADDITIVE,
     ES_GLOW,
+    ES_OBJECTPASS,
 
     ES_COUNT
 };
