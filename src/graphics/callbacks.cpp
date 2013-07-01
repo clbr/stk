@@ -271,3 +271,20 @@ void GlowProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("res", m_res, 2);
 }
+
+void ObjectPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    const float far = irr_driver->getSceneManager()->getActiveCamera()->getFarValue();
+    srv->setVertexShaderConstant("far", &far, 1);
+
+    // The normal is transformed by the inverse transposed world matrix
+    // because we want world-space normals
+    matrix4 invtworldm = irr_driver->getVideoDriver()->getTransform(ETS_WORLD);
+    invtworldm.makeInverse();
+    invtworldm = invtworldm.getTransposed();
+
+    srv->setVertexShaderConstant("invtworldm", invtworldm.pointer(), 16);
+
+    const int hastex = mat.TextureLayer[0].Texture != NULL;
+    srv->setVertexShaderConstant("hastex", &hastex, 1);
+}
