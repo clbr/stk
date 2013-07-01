@@ -125,6 +125,12 @@ Shaders::Shaders()
     // Check that all successfully loaded
     u32 i;
     for (i = 0; i < ES_COUNT; i++) {
+
+        // Old Intel Windows drivers fail here.
+        // It's an artist option, so not necessary to play.
+        if (i == ES_MIPVIZ)
+            continue;
+
         check(m_shaders[i]);
     }
 
