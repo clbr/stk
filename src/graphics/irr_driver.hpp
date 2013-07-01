@@ -84,6 +84,8 @@ private:
     /** RTTs. */
     RTT                *m_rtts;
 
+    /** The main MRT setup. */
+    core::array<video::IRenderTarget> m_mrt;
 
     /** Flag to indicate if a resolution change is pending (which will be
      *  acted upon in the next update). None means no change, yes means
