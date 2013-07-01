@@ -511,10 +511,6 @@ namespace UserConfigParams
 #define FBO_DEFAULT true
 #endif
 
-    PARAM_PREFIX BoolUserConfigParam        m_fbo
-        PARAM_DEFAULT(  BoolUserConfigParam(FBO_DEFAULT, "fbo",
-                     &m_graphics_quality, "Use frame buffer objects (FBOs)") );
-
     PARAM_PREFIX BoolUserConfigParam        m_graphical_effects
             PARAM_DEFAULT(  BoolUserConfigParam(true, "anim_gfx",
                             &m_graphics_quality, "Scenery animations") );
