@@ -662,8 +662,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
     }
     if (m_smooth_reflection_shader)
     {
-        if (UserConfigParams::m_pixel_shaders &&
-            irr_driver->isGLSL())
+        if (irr_driver->isGLSL())
         {
             m->MaterialType = irr_driver->getShaders()->getShader(ES_SPHERE_MAP);
         }
@@ -728,8 +727,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
     if (m_graphical_effect == GE_NORMAL_MAP)
     {
         IVideoDriver* video_driver = irr_driver->getVideoDriver();
-        if (UserConfigParams::m_pixel_shaders &&
-            irr_driver->isGLSL())
+        if (irr_driver->isGLSL())
         {
             ITexture* tex = irr_driver->getTexture(m_normal_map_tex);
             if (m_is_heightmap)
@@ -837,8 +835,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
 
     if (m_graphical_effect == GE_BUBBLE && mb != NULL)
     {
-        if (UserConfigParams::m_pixel_shaders &&
-            irr_driver->isGLSL())
+        if (irr_driver->isGLSL())
         {
             BubbleEffectProvider * bubble = (BubbleEffectProvider *)
                                             irr_driver->getShaders()->m_callbacks[ES_BUBBLES];
@@ -858,8 +855,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
 
     if (m_graphical_effect == GE_WATER_SHADER)
     {
-        if (UserConfigParams::m_pixel_shaders &&
-            irr_driver->isGLSL())
+        if (irr_driver->isGLSL())
         {
             m->setTexture(1, irr_driver->getTexture(file_manager->getTextureFile("waternormals.jpg")));
             m->setTexture(2, irr_driver->getTexture(file_manager->getTextureFile("waternormals2.jpg")));
@@ -874,8 +870,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
 
     if (m_graphical_effect == GE_GRASS)
     {
-        if (UserConfigParams::m_pixel_shaders &&
-            UserConfigParams::m_weather_effects &&
+        if (UserConfigParams::m_weather_effects &&
             irr_driver->isGLSL())
         {
             // Only one grass speed & amplitude per map for now
