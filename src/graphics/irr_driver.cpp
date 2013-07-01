@@ -1923,14 +1923,32 @@ void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node)
     const video::E_MATERIAL_TYPE ref = m_shaders->getShader(ES_OBJECTPASS_REF);
     const video::E_MATERIAL_TYPE pass = m_shaders->getShader(ES_OBJECTPASS);
 
+    bool viamb = false;
+    scene::IMesh *mesh = NULL;
+    if (node->getType() == scene::ESNT_ANIMATED_MESH)
+    {
+        viamb = ((scene::IAnimatedMeshSceneNode *) node)->isReadOnlyMaterials();
+        mesh = ((scene::IAnimatedMeshSceneNode *) node)->getMesh();
+    }
+    else if (node->getType() == scene::ESNT_MESH)
+    {
+        viamb = ((scene::IMeshSceneNode *) node)->isReadOnlyMaterials();
+        mesh = ((scene::IMeshSceneNode *) node)->getMesh();
+    }
+
     for (i = 0; i < mcount; i++)
     {
-        video::SMaterial &mat = node->getMaterial(i);
+        video::SMaterial &nodemat = node->getMaterial(i);
+        video::SMaterial &mbmat = mesh ? mesh->getMeshBuffer(i)->getMaterial() : nodemat;
+        video::SMaterial *mat = &nodemat;
 
-        if (mat.MaterialType == video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF)
-            mat.MaterialType = ref;
-        else if (mat.MaterialType == video::EMT_SOLID)
-            mat.MaterialType = pass;
+        if (viamb)
+            mat = &mbmat;
+
+        if (mat->MaterialType == video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF)
+            mat->MaterialType = ref;
+        else if (mat->MaterialType == video::EMT_SOLID)
+            mat->MaterialType = pass;
     }
 
 
