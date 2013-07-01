@@ -1,6 +1,7 @@
 varying vec3 nor;
 uniform sampler2D tex;
 uniform float far;
+uniform int hastex;
 
 const float near = 1.0;
 
@@ -23,7 +24,11 @@ void main() {
 	if (col.a < 0.5)
 		discard;
 
-	gl_FragData[0] = col;
+	if (hastex != 0)
+		gl_FragData[0] = col;
+	else
+		gl_FragData[0] = gl_Color;
+
 	gl_FragData[1] = vec4(nor, linear_z);
 	gl_FragData[2] = encdepth(gl_FragCoord.z);
 }

@@ -284,4 +284,7 @@ void ObjectPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     invtworldm = invtworldm.getTransposed();
 
     srv->setVertexShaderConstant("invtworldm", invtworldm.pointer(), 16);
+
+    const int hastex = mat.TextureLayer[0].Texture != NULL;
+    srv->setVertexShaderConstant("hastex", &hastex, 1);
 }
