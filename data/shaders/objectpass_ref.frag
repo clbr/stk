@@ -19,15 +19,16 @@ void main() {
 	// Tune for better inside range without losing outdoors
 	linear_z *= 10.0;
 
-	vec4 col = texture2D(tex, gl_TexCoord[0].xy);
+	if (hastex != 0) {
+		vec4 col = texture2D(tex, gl_TexCoord[0].xy);
 
-	if (col.a < 0.5)
-		discard;
+		if (col.a < 0.5)
+			discard;
 
-	if (hastex != 0)
 		gl_FragData[0] = col;
-	else
+	} else {
 		gl_FragData[0] = gl_Color;
+	}
 
 	gl_FragData[1] = vec4(nor, linear_z);
 	gl_FragData[2] = encdepth(gl_FragCoord.z);
