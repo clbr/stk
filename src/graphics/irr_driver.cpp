@@ -1915,6 +1915,9 @@ video::ITexture* IrrDriver::RTTProvider::renderToTexture(float angle,
 
 void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node)
 {
+    if (!m_glsl)
+        return;
+
     const u32 mcount = node->getMaterialCount();
     u32 i;
     const video::E_MATERIAL_TYPE ref = m_shaders->getShader(ES_OBJECTPASS_REF);
