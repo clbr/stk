@@ -53,6 +53,7 @@ Shaders::Shaders()
     m_callbacks[ES_MIPVIZ] = new MipVizProvider();
     m_callbacks[ES_COLORIZE] = new ColorizeProvider();
     m_callbacks[ES_GLOW] = new GlowProvider();
+    m_callbacks[ES_OBJECTPASS] = new ObjectPassProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -121,6 +122,12 @@ Shaders::Shaders()
 
     m_shaders[ES_GLOW] = glslmat(std::string(""), dir + "glow.frag",
                                     m_callbacks[ES_GLOW], EMT_TRANSPARENT_ALPHA_CHANNEL);
+
+    m_shaders[ES_OBJECTPASS] = glslmat(dir + "objectpass.vert", dir + "objectpass.frag",
+                                    m_callbacks[ES_OBJECTPASS], EMT_SOLID);
+    m_shaders[ES_OBJECTPASS_REF] = glslmat(dir + "objectpass.vert", dir + "objectpass_ref.frag",
+                                    m_callbacks[ES_OBJECTPASS], EMT_SOLID);
+
 
     // Check that all successfully loaded
     u32 i;
