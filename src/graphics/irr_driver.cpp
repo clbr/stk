@@ -1920,18 +1920,15 @@ void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node)
     const video::E_MATERIAL_TYPE ref = m_shaders->getShader(ES_OBJECTPASS_REF);
     const video::E_MATERIAL_TYPE pass = m_shaders->getShader(ES_OBJECTPASS);
 
-    if (node->isVisible())
+    for (i = 0; i < mcount; i++)
     {
-        for (i = 0; i < mcount; i++)
-        {
-            video::SMaterial &mat = node->getMaterial(i);
+        video::SMaterial &mat = node->getMaterial(i);
 
-            if (mat.MaterialType == video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF)
-                mat.MaterialType = ref;
-            else if (mat.MaterialType == video::EMT_SOLID)
-                mat.MaterialType = pass;
-        }
-    } // isVisible
+        if (mat.MaterialType == video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF)
+            mat.MaterialType = ref;
+        else if (mat.MaterialType == video::EMT_SOLID)
+            mat.MaterialType = pass;
+    }
 
 
     core::list<scene::ISceneNode*> kids = node->getChildren();
