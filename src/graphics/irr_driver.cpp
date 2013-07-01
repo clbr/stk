@@ -435,11 +435,6 @@ void IrrDriver::initDevice()
             ->setTextureCreationFlag(video::ETCF_CREATE_MIP_MAPS, true);
         m_device->getVideoDriver()
             ->setTextureCreationFlag(video::ETCF_OPTIMIZED_FOR_QUALITY, true);
-        if (!UserConfigParams::m_fbo)
-        {
-            m_device->getVideoDriver()
-                    ->disableFeature(video::EVDF_FRAMEBUFFER_OBJECT);
-        }
 
         // Force creation of mipmaps even if the mipmaps flag in a b3d file
         // does not set the 'enable mipmap' flag.
