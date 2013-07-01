@@ -343,4 +343,12 @@ private:
     float m_res[2];
 };
 
+//
+
+class ObjectPassProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif
