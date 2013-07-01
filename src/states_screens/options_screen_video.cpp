@@ -102,11 +102,6 @@ void OptionsScreenVideo::init()
     assert( vsync != NULL );
     vsync->setState( UserConfigParams::m_vsync );
 
-    GUIEngine::CheckBoxWidget* fbos =
-        getWidget<GUIEngine::CheckBoxWidget>("fbos");
-    assert( fbos != NULL );
-    fbos->setState( UserConfigParams::m_fbo );
-
 
     // ---- video modes
     DynamicRibbonWidget* res = getWidget<DynamicRibbonWidget>("resolutions");
@@ -472,13 +467,6 @@ void OptionsScreenVideo::eventCallback(Widget* widget, const std::string& name,
             getWidget<GUIEngine::CheckBoxWidget>("vsync");
         assert( vsync != NULL );
         UserConfigParams::m_vsync = vsync->getState();
-    }
-    else if (name == "fbos")
-    {
-        GUIEngine::CheckBoxWidget* fbos =
-            getWidget<GUIEngine::CheckBoxWidget>("fbos");
-        assert( fbos != NULL );
-        UserConfigParams::m_fbo = fbos->getState();
     }
     else if (name == "rememberWinpos")
     {
