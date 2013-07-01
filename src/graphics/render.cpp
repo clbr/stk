@@ -134,6 +134,10 @@ void IrrDriver::renderGLSL(float dt)
     m_video_driver->beginScene(/*backBuffer clear*/ true, /*zBuffer*/ true,
                                world->getClearColor());
 
+    // Clear normal and depth to zero
+    m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_NORMAL), true, false, video::SColor(0,0,0,0));
+    m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_DEPTH), true, false, video::SColor(0,0,0,0));
+
     irr_driver->getVideoDriver()->enableMaterial2D();
     RaceGUIBase *rg = world->getRaceGUI();
     if (rg) rg->update(dt);
@@ -141,6 +145,9 @@ void IrrDriver::renderGLSL(float dt)
 
     for(unsigned int cam = 0; cam < Camera::getNumCameras(); cam++)
     {
+        // Fire up the MRT
+        m_video_driver->setRenderTarget(m_mrt, false, false);
+
         Camera *camera = Camera::getCamera(cam);
 
 #ifdef ENABLE_PROFILER
