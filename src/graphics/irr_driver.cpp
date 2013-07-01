@@ -1912,3 +1912,37 @@ video::ITexture* IrrDriver::RTTProvider::renderToTexture(float angle,
     m_video_driver->setRenderTarget(0, false, false);
     return m_render_target_texture;
 }
+
+void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node)
+{
+    const u32 mcount = node->getMaterialCount();
+    u32 i;
+    const video::E_MATERIAL_TYPE ref = m_shaders->getShader(ES_OBJECTPASS_REF);
+    const video::E_MATERIAL_TYPE pass = m_shaders->getShader(ES_OBJECTPASS);
+
+    for (i = 0; i < mcount; i++)
+    {
+        video::SMaterial &mat = node->getMaterial(i);
+
+        if (mat.MaterialType == video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF)
+            mat.MaterialType = ref;
+        else if (mat.MaterialType == video::EMT_SOLID)
+            mat.MaterialType = pass;
+    }
+
+
+    core::list<scene::ISceneNode*> kids = node->getChildren();
+    scene::ISceneNodeList::Iterator it = kids.begin();
+    for (; it != kids.end(); ++it)
+    {
+        applyObjectPassShader(*it);
+    }
+}
+
+void IrrDriver::applyObjectPassShader()
+{
+    if (!m_glsl)
+        return;
+
+    applyObjectPassShader(m_scene_manager->getRootSceneNode());
+}
