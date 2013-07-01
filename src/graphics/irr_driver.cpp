@@ -408,6 +408,12 @@ void IrrDriver::initDevice()
         // Order matters, create RTTs as soon as possible, as they are the largest blocks.
         m_rtts = new RTT();
         m_shaders = new Shaders();
+
+        m_mrt.clear();
+        m_mrt.reallocate(3);
+        m_mrt.push_back(m_rtts->getRTT(RTT_COLOR));
+        m_mrt.push_back(m_rtts->getRTT(RTT_NORMAL));
+        m_mrt.push_back(m_rtts->getRTT(RTT_DEPTH));
     }
     else
     {
