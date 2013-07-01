@@ -285,6 +285,9 @@ public:
     }
     // ------------------------------------------------------------------------
     void clearGlowingNodes() { m_glowing.clear(); }
+    // ------------------------------------------------------------------------
+    void applyObjectPassShader();
+    void applyObjectPassShader(scene::ISceneNode * const node);
 
 #ifdef DEBUG
     /** Removes debug meshes. */
