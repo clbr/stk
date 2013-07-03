@@ -219,7 +219,7 @@ private:
 #endif
 
     PtrVector<ParticleEmitter>      m_all_emitters;
-    scene::ILightSceneNode  *m_sun;
+    scene::ISceneNode  *m_sun;
     /** Used to collect the triangles for the bullet mesh. */
     TriangleMesh*            m_track_mesh;
     /** Used to collect the triangles which do not have a physical
