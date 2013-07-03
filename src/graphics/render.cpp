@@ -159,8 +159,7 @@ void IrrDriver::renderGLSL(float dt)
         camera->activate();
         rg->preRenderCallback(camera);   // adjusts start referee
 
-        // Lights to be removed with light prepass later
-        m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_SOLID | scene::ESNRP_LIGHT;
+        m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_SOLID;
         m_scene_manager->drawAll(m_renderpass);
 
         m_renderpass = scene::ESNRP_SKY_BOX;
@@ -254,7 +253,7 @@ void IrrDriver::renderGLSL(float dt)
 
         // We need to re-render camera due to the per-cam-node hack.
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
-                                 scene::ESNRP_TRANSPARENT_EFFECT | scene::ESNRP_LIGHT;
+                                 scene::ESNRP_TRANSPARENT_EFFECT;
         m_scene_manager->drawAll(m_renderpass);
 
         const u32 glowrepcount = transparent_glow_nodes.size();
