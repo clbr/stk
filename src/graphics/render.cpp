@@ -260,6 +260,7 @@ void IrrDriver::renderGLSL(float dt)
         for (i = 0; i < glowrepcount; i++)
         {
             transparent_glow_nodes[i]->remove();
+            transparent_glow_nodes[i]->drop();
         }
 
         PROFILER_POP_CPU_MARKER();
