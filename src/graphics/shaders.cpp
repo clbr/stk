@@ -54,6 +54,7 @@ Shaders::Shaders()
     m_callbacks[ES_COLORIZE] = new ColorizeProvider();
     m_callbacks[ES_GLOW] = new GlowProvider();
     m_callbacks[ES_OBJECTPASS] = new ObjectPassProvider();
+    m_callbacks[ES_LIGHTBLEND] = new LightBlendProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -127,6 +128,9 @@ Shaders::Shaders()
                                     m_callbacks[ES_OBJECTPASS], EMT_SOLID);
     m_shaders[ES_OBJECTPASS_REF] = glslmat(dir + "objectpass.vert", dir + "objectpass_ref.frag",
                                     m_callbacks[ES_OBJECTPASS], EMT_SOLID);
+
+    m_shaders[ES_LIGHTBLEND] = glslmat(std::string(""), dir + "lightblend.frag",
+                                    m_callbacks[ES_LIGHTBLEND], EMT_ONETEXTURE_BLEND);
 
 
     // Check that all successfully loaded
