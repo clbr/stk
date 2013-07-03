@@ -295,7 +295,7 @@ public:
     scene::ISceneNode *addLight(const core::vector3df &pos, float radius = 1.0f, float r = 1.0f,
                   float g = 1.0f, float b = 1.0f);
     // ------------------------------------------------------------------------
-    void clearLights() { m_lights.clear(); }
+    void clearLights();
 
 #ifdef DEBUG
     /** Removes debug meshes. */
