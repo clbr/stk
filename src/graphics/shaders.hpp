@@ -48,6 +48,7 @@ enum E_SHADER
     ES_GLOW,
     ES_OBJECTPASS,
     ES_OBJECTPASS_REF,
+    ES_LIGHTBLEND,
 
     ES_COUNT
 };
