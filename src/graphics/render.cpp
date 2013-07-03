@@ -257,7 +257,7 @@ void IrrDriver::renderGLSL(float dt)
         m_scene_manager->drawAll(m_renderpass);
 
         // Lights
-        m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_TMP1), true, false, video::SColor(0, 0, 0, 0));
+        m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_TMP1), true, false, video::SColor(255, 0, 0, 0));
 
         const u32 lightcount = m_lights.size();
         for (i = 0; i < lightcount; i++)
@@ -271,8 +271,11 @@ void IrrDriver::renderGLSL(float dt)
         lightmat.ZWriteEnable = false;
         lightmat.ZBuffer = video::ECFN_ALWAYS;
         lightmat.setFlag(video::EMF_TEXTURE_WRAP, video::ETC_CLAMP_TO_EDGE);
-        lightmat.setFlag(video::EMF_TRILINEAR_FILTER, true);
+        lightmat.setFlag(video::EMF_BILINEAR_FILTER, false);
         lightmat.setTexture(0, m_rtts->getRTT(RTT_TMP1));
+        lightmat.MaterialType = m_shaders->getShader(ES_LIGHTBLEND);
+        lightmat.MaterialTypeParam = video::pack_textureBlendFunc(video::EBF_DST_COLOR, video::EBF_ZERO);
+        lightmat.BlendOperation = video::EBO_ADD;
 
         m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
         m_post_processing->drawQuad(cam, lightmat);
