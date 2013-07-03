@@ -1542,13 +1542,20 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
 
             video::SColor color;
             node->get("color", &color);
+            const video::SColorf colorf(color);
 
             float distance = 25.0f;
             node->get("distance", &distance);
 
-            scene::ILightSceneNode* node = irr_driver->getSceneManager()->addLightSceneNode(NULL, pos, color, distance);
-            node->setLightType(video::ELT_POINT);
-            node->enableCastShadow(true);
+            if (irr_driver->isGLSL())
+            {
+                irr_driver->addLight(pos, distance, colorf.r, colorf.g, colorf.b);
+            } else
+            {
+                scene::ILightSceneNode* node = irr_driver->getSceneManager()->addLightSceneNode(NULL, pos, color, distance);
+                node->setLightType(video::ELT_POINT);
+                node->enableCastShadow(true);
+            }
         }
         else if(name=="weather")
         {
@@ -1699,21 +1706,25 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
     irr_driver->getSceneManager()->setAmbientLight(m_ambient_color);
 
     // ---- Create sun (non-ambient directional light)
-    m_sun = irr_driver->getSceneManager()->addLightSceneNode(NULL,
-                                                             m_sun_position,
-                                                             m_sun_diffuse_color);
-    m_sun->setLightType(video::ELT_DIRECTIONAL);
+    const video::SColorf tmpf(m_sun_diffuse_color);
+    m_sun = irr_driver->addLight(m_sun_position, 10000.0f, tmpf.r, tmpf.g, tmpf.b);
 
-    // The angle of the light is rather important - let the sun
-    // point towards (0,0,0).
-    if(m_sun_position.getLengthSQ()==0)
-        // Backward compatibility: if no sun is specified, use the
-        // old hardcoded default angle
-        m_sun->setRotation( core::vector3df(180, 45, 45) );
-    else
-        m_sun->setRotation((-m_sun_position).getHorizontalAngle());
+    if (!irr_driver->isGLSL())
+    {
+        scene::ILightSceneNode *sun = (scene::ILightSceneNode *) m_sun;
+        sun->setLightType(video::ELT_DIRECTIONAL);
 
-    m_sun->getLightData().SpecularColor = m_sun_specular_color;
+        // The angle of the light is rather important - let the sun
+        // point towards (0,0,0).
+        if(m_sun_position.getLengthSQ()==0)
+            // Backward compatibility: if no sun is specified, use the
+            // old hardcoded default angle
+            m_sun->setRotation( core::vector3df(180, 45, 45) );
+        else
+            m_sun->setRotation((-m_sun_position).getHorizontalAngle());
+
+        sun->getLightData().SpecularColor = m_sun_specular_color;
+    }
 
 
     createPhysicsModel(main_track_count);
