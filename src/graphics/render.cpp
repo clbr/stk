@@ -257,7 +257,7 @@ void IrrDriver::renderGLSL(float dt)
         m_scene_manager->drawAll(m_renderpass);
 
         // Lights
-        m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_TMP1), true, false, video::SColor(0, 0, 0, 0));
+        m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_TMP1), true, false, video::SColor(255, 0, 0, 0));
 
         const u32 lightcount = m_lights.size();
         for (i = 0; i < lightcount; i++)
