@@ -288,3 +288,11 @@ void ObjectPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     const int hastex = mat.TextureLayer[0].Texture != NULL;
     srv->setVertexShaderConstant("hastex", &hastex, 1);
 }
+
+void LightBlendProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    const SColorf s = irr_driver->getSceneManager()->getAmbientLight();
+
+    float ambient[3] = { s.r, s.g, s.b };
+    srv->setVertexShaderConstant("ambient", ambient, 3);
+}
