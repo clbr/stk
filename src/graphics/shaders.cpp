@@ -152,7 +152,12 @@ Shaders::Shaders()
 
 Shaders::~Shaders()
 {
-
+    u32 i;
+    for (i = 0; i < ES_COUNT; i++)
+    {
+        if (i == ES_GAUSSIAN3V || !m_callbacks[i]) continue;
+        delete m_callbacks[i];
+    }
 }
 
 E_MATERIAL_TYPE Shaders::getShader(const E_SHADER num) const
