@@ -56,6 +56,7 @@ class PostProcessing;
 class Shaders;
 class Wind;
 class RTT;
+class LightNode;
 
 /**
   * \brief class that creates the irrLicht device and offers higher-level
@@ -134,6 +135,8 @@ private:
     };
 
     std::vector<glowdata_t> m_glowing;
+
+    std::vector<LightNode *> m_lights;
 
 #ifdef DEBUG
     /** Used to visualise skeletons. */
@@ -288,6 +291,11 @@ public:
     // ------------------------------------------------------------------------
     void applyObjectPassShader();
     void applyObjectPassShader(scene::ISceneNode * const node);
+    // ------------------------------------------------------------------------
+    scene::ISceneNode *addLight(const core::vector3df &pos, float radius = 1.0f, float r = 1.0f,
+                  float g = 1.0f, float b = 1.0f);
+    // ------------------------------------------------------------------------
+    void clearLights() { m_lights.clear(); }
 
 #ifdef DEBUG
     /** Removes debug meshes. */
