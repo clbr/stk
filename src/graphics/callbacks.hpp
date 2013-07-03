@@ -351,4 +351,12 @@ public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 };
 
+//
+
+class LightBlendProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif

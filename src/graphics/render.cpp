@@ -273,6 +273,7 @@ void IrrDriver::renderGLSL(float dt)
         lightmat.setFlag(video::EMF_TEXTURE_WRAP, video::ETC_CLAMP_TO_EDGE);
         lightmat.setFlag(video::EMF_TRILINEAR_FILTER, true);
         lightmat.setTexture(0, m_rtts->getRTT(RTT_TMP1));
+        lightmat.MaterialType = m_shaders->getShader(ES_LIGHTBLEND);
 
         m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
         m_post_processing->drawQuad(cam, lightmat);
