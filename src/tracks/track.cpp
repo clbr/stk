@@ -259,6 +259,7 @@ void Track::cleanup()
     }
 
     irr_driver->clearGlowingNodes();
+    irr_driver->clearLights();
 
     if(UserConfigParams::logMemory())
     {
