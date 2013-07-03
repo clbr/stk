@@ -1987,3 +1987,15 @@ scene::ISceneNode *IrrDriver::addLight(const core::vector3df &pos, float radius,
         return m_scene_manager->addLightSceneNode(NULL, pos, video::SColorf(r, g, b), radius);
     }
 }
+
+void IrrDriver::clearLights()
+{
+    u32 i;
+    const u32 max = m_lights.size();
+    for (i = 0; i < max; i++)
+    {
+        m_lights[i]->drop();
+    }
+
+    m_lights.clear();
+}
