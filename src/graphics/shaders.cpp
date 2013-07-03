@@ -130,7 +130,7 @@ Shaders::Shaders()
                                     m_callbacks[ES_OBJECTPASS], EMT_SOLID);
 
     m_shaders[ES_LIGHTBLEND] = glslmat(std::string(""), dir + "lightblend.frag",
-                                    m_callbacks[ES_LIGHTBLEND], EMT_SOLID);
+                                    m_callbacks[ES_LIGHTBLEND], EMT_ONETEXTURE_BLEND);
 
 
     // Check that all successfully loaded
