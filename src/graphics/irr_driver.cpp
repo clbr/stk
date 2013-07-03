@@ -21,6 +21,7 @@
 #include "config/user_config.hpp"
 #include "graphics/camera.hpp"
 #include "graphics/hardware_skinning.hpp"
+#include "graphics/light.hpp"
 #include "graphics/material_manager.hpp"
 #include "graphics/particle_kind_manager.hpp"
 #include "graphics/per_camera_node.hpp"
@@ -1966,4 +1967,17 @@ void IrrDriver::applyObjectPassShader()
         return;
 
     applyObjectPassShader(m_scene_manager->getRootSceneNode());
+}
+
+scene::ISceneNode *IrrDriver::addLight(const core::vector3df &pos, float radius,
+                     float r, float g, float b)
+{
+    if (m_glsl)
+    {
+        LightNode * const light = new LightNode(m_scene_manager, radius, r, g, b);
+        return light;
+    } else
+    {
+        return m_scene_manager->addLightSceneNode(NULL, pos, video::SColorf(r, g, b), radius);
+    }
 }
