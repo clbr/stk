@@ -1975,6 +1975,8 @@ scene::ISceneNode *IrrDriver::addLight(const core::vector3df &pos, float radius,
     if (m_glsl)
     {
         LightNode * const light = new LightNode(m_scene_manager, radius, r, g, b);
+        light->grab();
+        light->setParent(NULL);
         return light;
     } else
     {
