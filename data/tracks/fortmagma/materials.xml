@@ -2,7 +2,7 @@
 <!-- Generated with script from SVN rev Unknown -->
 <materials>
   <material name="backeffect.jpg" backface-culling="N" graphical-effect="spheremap" ignore="Y"/>
-  <material name="Battle_for_Wesnoth.png" compositing="test"/>
+  <material name="Battle_for_Wesnoth.png" compositing="blend"/>
   <material name="blackrock_lava.jpg" light="N"/>
   <material name="cannonBall.jpg">
     <sfx filename="WilhelmScream.ogg" min_speed="5.00" max_speed="15.00" min_pitch="0.80" max_pitch="1.20" positional="Y" rolloff="0.10"/>
