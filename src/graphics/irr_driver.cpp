@@ -1970,7 +1970,7 @@ void IrrDriver::applyObjectPassShader()
 }
 
 scene::ISceneNode *IrrDriver::addLight(const core::vector3df &pos, float radius,
-                     float r, float g, float b)
+                     float r, float g, float b, bool sun)
 {
     if (m_glsl)
     {
