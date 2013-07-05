@@ -43,7 +43,7 @@ public:
     virtual u32 getMaterialCount() const { return 1; }
     virtual video::SMaterial& getMaterial(u32 i) { return mat; }
 
-    float getRadius() { return m_radius; }
+    float getRadiusSQ() { return m_radius_sq; }
 
 private:
     static video::SMaterial mat;
@@ -51,7 +51,7 @@ private:
 
     static scene::IMesh *sphere;
 
-    float m_radius;
+    float m_radius_sq;
     float m_color[3];
 };
 
