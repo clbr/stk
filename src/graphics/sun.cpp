@@ -62,7 +62,10 @@ void SunNode::render()
     SunLightProvider * const cb = (SunLightProvider *) irr_driver->getShaders()->
                                    m_callbacks[ES_SUNLIGHT];
     cb->setColor(m_color[0], m_color[1], m_color[2]);
-    cb->setPosition(getPosition().X, getPosition().Y, getPosition().Z);
+
+    vector3df pos = getPosition();
+    pos.normalize();
+    cb->setPosition(pos.X, pos.Y, pos.Z);
 
     sq->render(false);
 }

@@ -4,7 +4,6 @@ uniform sampler2D dtex;
 uniform vec3 center;
 uniform vec3 col;
 uniform vec2 screen;
-uniform mat4 invprojview;
 
 float decdepth(vec4 rgba) {
 	return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0));
@@ -17,17 +16,11 @@ void main() {
 
 	if (z < 0.03) discard;
 
-	vec3 tmp = vec3(texc, z);
-	tmp = tmp * 2.0 - 1.0;
-
-	vec4 xpos = vec4(tmp, 1.0);
-	xpos = invprojview * xpos;
-	xpos.xyz /= xpos.w;
-
 	vec3 norm = texture2D(ntex, texc).xyz;
 	norm = (norm - 0.5) * 2.0;
 
-	vec3 L = normalize(center - xpos.xyz);
+	// Normalized on the cpu
+	vec3 L = center;
 
 	float NdotL = max(0.0, dot(norm, L));
 	if (NdotL < 0.01) discard;

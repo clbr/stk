@@ -452,19 +452,7 @@ public:
         m_pos[2] = z;
     }
 
-    void updateIPVMatrix()
-    {
-        // Update the IPV matrix, only once per frame since it's costly
-        const video::IVideoDriver * const drv = irr_driver->getVideoDriver();
-
-        m_invprojview = drv->getTransform(video::ETS_PROJECTION);
-        m_invprojview *= drv->getTransform(video::ETS_VIEW);
-        m_invprojview.makeInverse();
-    }
-
 private:
-    core::matrix4 m_invprojview;
-
     float m_color[3];
     float m_pos[3];
     float m_screen[2];
