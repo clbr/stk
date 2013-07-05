@@ -359,4 +359,70 @@ public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 };
 
+//
+
+class PointLightProvider: public callbase
+{
+public:
+    PointLightProvider()
+    {
+        m_screen[0] = UserConfigParams::m_width;
+        m_screen[1] = UserConfigParams::m_height;
+
+        m_specular = 200;
+    }
+
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+    void setColor(float r, float g, float b)
+    {
+        m_color[0] = r;
+        m_color[1] = g;
+        m_color[2] = b;
+    }
+
+    void setPosition(float x, float y, float z)
+    {
+        m_pos[0] = x;
+        m_pos[1] = y;
+        m_pos[2] = z;
+    }
+
+    void setRadius(float r)
+    {
+        m_radius = r;
+    }
+
+    void setSpecular(float s)
+    {
+        m_specular = s;
+    }
+
+    void updateIPVMatrix()
+    {
+        // Update the campos and IPV matrix, only once per frame since it's costly
+        const core::vector3df &campos =
+                     irr_driver->getSceneManager()->getActiveCamera()->getAbsolutePosition();
+        m_campos[0] = campos.X;
+        m_campos[1] = campos.Y;
+        m_campos[2] = campos.Z;
+
+        const video::IVideoDriver * const drv = irr_driver->getVideoDriver();
+
+        m_invprojview = drv->getTransform(video::ETS_PROJECTION);
+        m_invprojview *= drv->getTransform(video::ETS_VIEW);
+        m_invprojview.makeInverse();
+    }
+
+private:
+    core::matrix4 m_invprojview;
+
+    float m_campos[3];
+    float m_color[3];
+    float m_pos[3];
+    float m_screen[2];
+    float m_radius;
+    float m_specular;
+};
+
 #endif
