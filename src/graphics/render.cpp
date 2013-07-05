@@ -23,6 +23,7 @@
 #include "graphics/camera.hpp"
 #include "graphics/glow.hpp"
 #include "graphics/glwrap.hpp"
+#include "graphics/light.hpp"
 #include "graphics/lod_node.hpp"
 #include "graphics/material_manager.hpp"
 #include "graphics/particle_kind_manager.hpp"
@@ -259,10 +260,17 @@ void IrrDriver::renderGLSL(float dt)
         // Lights
         m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_TMP1), true, false, video::SColor(255, 0, 0, 0));
 
+        const vector3df camcenter = cambox.getCenter();
+        const float camradius = cambox.getExtent().getLength() / 2;
+        const float camradiussq = camradius * camradius;
+
         const u32 lightcount = m_lights.size();
         for (i = 0; i < lightcount; i++)
         {
-            
+            // Sphere culling
+            const float distancesq = (m_lights[i]->getPosition() - camcenter).getLengthSQ();
+            if (distancesq > camradiussq)
+                continue;
         } // for i in lights
 
         // Blend lights to the image
