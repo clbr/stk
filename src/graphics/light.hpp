@@ -52,6 +52,7 @@ private:
     static scene::IMesh *sphere;
 
     float m_radius_sq;
+    float m_radius;
     float m_color[3];
 };
 
