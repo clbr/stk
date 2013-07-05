@@ -127,6 +127,7 @@ private:
 
     bool                 m_wireframe;
     bool                 m_mipviz;
+    bool                 m_normals;
     u32                  m_renderpass;
 
     struct glowdata_t {
@@ -273,6 +274,10 @@ public:
     void toggleWireframe() { m_wireframe ^= 1; }
     // ------------------------------------------------------------------------
     void toggleMipVisualization() { m_mipviz ^= 1; }
+    // ------------------------------------------------------------------------
+    void toggleNormals() { m_normals ^= 1; }
+    // ------------------------------------------------------------------------
+    bool getNormals() { return m_normals; }
     // ------------------------------------------------------------------------
     u32 getRenderPass() { return m_renderpass; }
     // ------------------------------------------------------------------------
