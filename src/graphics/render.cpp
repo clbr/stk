@@ -264,6 +264,10 @@ void IrrDriver::renderGLSL(float dt)
         const float camradius = cambox.getExtent().getLength() / 2;
         const float camradius_sq = camradius * camradius;
 
+        PointLightProvider * const pcb = (PointLightProvider *) irr_driver->getShaders()->
+                                            m_callbacks[ES_POINTLIGHT];
+        pcb->updateIPVMatrix();
+
         const u32 lightcount = m_lights.size();
         for (i = 0; i < lightcount; i++)
         {

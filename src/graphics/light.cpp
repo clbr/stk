@@ -41,7 +41,7 @@ LightNode::LightNode(scene::ISceneManager* mgr, float radius, float r, float g, 
     if (!sphere)
     {
         mat.Lighting = false;
-        mat.MaterialType = irr_driver->getShaders()->getShader(ES_COLORIZE);
+        mat.MaterialType = irr_driver->getShaders()->getShader(ES_POINTLIGHT);
 
         mat.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_NORMAL));
         mat.setTexture(1, irr_driver->getRTTs()->getRTT(RTT_DEPTH));
@@ -58,6 +58,7 @@ LightNode::LightNode(scene::ISceneManager* mgr, float radius, float r, float g, 
     }
 
     setScale(vector3df(radius));
+    m_radius = radius;
     m_radius_sq = radius * radius;
 
     m_color[0] = r;
@@ -71,9 +72,11 @@ LightNode::~LightNode()
 
 void LightNode::render()
 {
-    ColorizeProvider * const cb = (ColorizeProvider *) irr_driver->getShaders()->
-                                   m_callbacks[ES_COLORIZE];
-    cb->setColor(1, 0, 0);
+    PointLightProvider * const cb = (PointLightProvider *) irr_driver->getShaders()->
+                                   m_callbacks[ES_POINTLIGHT];
+    cb->setColor(m_color[0], m_color[1], m_color[2]);
+    cb->setPosition(getPosition().X, getPosition().Y, getPosition().Z);
+    cb->setRadius(m_radius);
 
     IVideoDriver * const drv = irr_driver->getVideoDriver();
     drv->setTransform(ETS_WORLD, AbsoluteTransformation);
