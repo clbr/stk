@@ -263,6 +263,7 @@ void IrrDriver::renderGLSL(float dt)
         const vector3df camcenter = cambox.getCenter();
         const float camradius = cambox.getExtent().getLength() / 2;
         const float camradius_sq = camradius * camradius;
+        const vector3df campos = camera->getCameraSceneNode()->getPosition();
 
         PointLightProvider * const pcb = (PointLightProvider *) irr_driver->getShaders()->
                                             m_callbacks[ES_POINTLIGHT];
@@ -278,8 +279,9 @@ void IrrDriver::renderGLSL(float dt)
 
             bool inside = false;
 
+            const float camdistance_sq = (m_lights[i]->getPosition() - campos).getLengthSQ();
             // Camera inside the light's radius? 1.0 is the cam near value.
-            if (distance_sq < m_lights[i]->getRadiusSQ() + 1.0)
+            if (camdistance_sq < m_lights[i]->getRadiusSQ() + 1.0)
             {
                 inside = true;
 
