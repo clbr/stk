@@ -368,6 +368,8 @@ public:
     {
         m_screen[0] = UserConfigParams::m_width;
         m_screen[1] = UserConfigParams::m_height;
+
+        m_specular = 200;
     }
 
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -384,8 +386,6 @@ public:
         m_pos[0] = x;
         m_pos[1] = y;
         m_pos[2] = z;
-
-        m_specular = 200;
     }
 
     void setRadius(float r)
