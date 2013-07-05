@@ -50,6 +50,9 @@ LightNode::LightNode(scene::ISceneManager* mgr, float radius, float r, float g, 
         mat.setFlag(EMF_BILINEAR_FILTER, false);
         mat.setFlag(EMF_ZWRITE_ENABLE, false);
 
+        //mat.MaterialTypeParam = pack_textureBlendFunc(EBF_ONE, EBF_ONE);
+        //mat.BlendOperation = EBO_ADD;
+
         sphere = mgr->getGeometryCreator()->createSphereMesh(1, 16, 16);
         box = sphere->getBoundingBox();
     }
