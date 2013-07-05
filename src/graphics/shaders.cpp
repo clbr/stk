@@ -55,6 +55,7 @@ Shaders::Shaders()
     m_callbacks[ES_GLOW] = new GlowProvider();
     m_callbacks[ES_OBJECTPASS] = new ObjectPassProvider();
     m_callbacks[ES_LIGHTBLEND] = new LightBlendProvider();
+    m_callbacks[ES_POINTLIGHT] = new PointLightProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -131,6 +132,9 @@ Shaders::Shaders()
 
     m_shaders[ES_LIGHTBLEND] = glslmat(std::string(""), dir + "lightblend.frag",
                                     m_callbacks[ES_LIGHTBLEND], EMT_ONETEXTURE_BLEND);
+
+    m_shaders[ES_POINTLIGHT] = glslmat(std::string(""), dir + "pointlight.frag",
+                                    m_callbacks[ES_POINTLIGHT], EMT_ONETEXTURE_BLEND);
 
 
     // Check that all successfully loaded
