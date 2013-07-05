@@ -262,15 +262,41 @@ void IrrDriver::renderGLSL(float dt)
 
         const vector3df camcenter = cambox.getCenter();
         const float camradius = cambox.getExtent().getLength() / 2;
-        const float camradiussq = camradius * camradius;
+        const float camradius_sq = camradius * camradius;
 
         const u32 lightcount = m_lights.size();
         for (i = 0; i < lightcount; i++)
         {
             // Sphere culling
-            const float distancesq = (m_lights[i]->getPosition() - camcenter).getLengthSQ();
-            if (distancesq > camradiussq)
+            const float distance_sq = (m_lights[i]->getPosition() - camcenter).getLengthSQ();
+            if (distance_sq > camradius_sq)
                 continue;
+
+            bool inside = false;
+
+            // Camera inside the light's radius? 1.0 is the cam near value.
+            if (distance_sq < m_lights[i]->getRadiusSQ() + 1.0)
+            {
+                inside = true;
+
+                video::SMaterial &m = m_lights[i]->getMaterial(0);
+                m.FrontfaceCulling = true;
+                m.BackfaceCulling = false;
+                m.ZBuffer = video::ECFN_GREATER;
+            }
+
+            // Action
+            m_lights[i]->render();
+
+            // Reset the inside change
+            if (inside)
+            {
+                video::SMaterial &m = m_lights[i]->getMaterial(0);
+                m.FrontfaceCulling = false;
+                m.BackfaceCulling = true;
+                m.ZBuffer = video::ECFN_LESSEQUAL;
+            }
+
         } // for i in lights
 
         // Blend lights to the image
