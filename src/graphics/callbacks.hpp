@@ -425,4 +425,49 @@ private:
     float m_specular;
 };
 
+//
+
+class SunLightProvider: public callbase
+{
+public:
+    SunLightProvider()
+    {
+        m_screen[0] = UserConfigParams::m_width;
+        m_screen[1] = UserConfigParams::m_height;
+    }
+
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+    void setColor(float r, float g, float b)
+    {
+        m_color[0] = r;
+        m_color[1] = g;
+        m_color[2] = b;
+    }
+
+    void setPosition(float x, float y, float z)
+    {
+        m_pos[0] = x;
+        m_pos[1] = y;
+        m_pos[2] = z;
+    }
+
+    void updateIPVMatrix()
+    {
+        // Update the IPV matrix, only once per frame since it's costly
+        const video::IVideoDriver * const drv = irr_driver->getVideoDriver();
+
+        m_invprojview = drv->getTransform(video::ETS_PROJECTION);
+        m_invprojview *= drv->getTransform(video::ETS_VIEW);
+        m_invprojview.makeInverse();
+    }
+
+private:
+    core::matrix4 m_invprojview;
+
+    float m_color[3];
+    float m_pos[3];
+    float m_screen[2];
+};
+
 #endif

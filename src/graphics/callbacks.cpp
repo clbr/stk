@@ -318,3 +318,22 @@ void PointLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    srv->setVertexShaderConstant("screen", m_screen, 2);
+    srv->setVertexShaderConstant("col", m_color, 3);
+    srv->setVertexShaderConstant("center", m_pos, 3);
+    srv->setVertexShaderConstant("invprojview", m_invprojview.pointer(), 16);
+
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("ntex", &tex, 1);
+
+        tex = 1;
+        srv->setVertexShaderConstant("dtex", &tex, 1);
+
+        firstdone = true;
+    }
+}
