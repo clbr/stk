@@ -296,3 +296,25 @@ void LightBlendProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     float ambient[3] = { s.r, s.g, s.b };
     srv->setVertexShaderConstant("ambient", ambient, 3);
 }
+
+void PointLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    srv->setVertexShaderConstant("screen", m_screen, 2);
+    srv->setVertexShaderConstant("spec", &m_specular, 1);
+    srv->setVertexShaderConstant("col", m_color, 3);
+    srv->setVertexShaderConstant("campos", m_campos, 3);
+    srv->setVertexShaderConstant("center", m_pos, 3);
+    srv->setVertexShaderConstant("r", &m_radius, 1);
+    srv->setVertexShaderConstant("invprojview", m_invprojview.pointer(), 16);
+
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("ntex", &tex, 1);
+
+        tex = 1;
+        srv->setVertexShaderConstant("dtex", &tex, 1);
+
+        firstdone = true;
+    }
+}
