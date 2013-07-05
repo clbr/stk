@@ -44,6 +44,7 @@ public:
     virtual video::SMaterial& getMaterial(u32 i) { return mat; }
 
     float getRadiusSQ() { return m_radius_sq; }
+    float getRadius() { return m_radius; }
 
 private:
     static video::SMaterial mat;
