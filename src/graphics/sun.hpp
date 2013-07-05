@@ -16,45 +16,24 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_LIGHT_HPP
-#define HEADER_LIGHT_HPP
+#ifndef HEADER_SUN_HPP
+#define HEADER_SUN_HPP
 
-#include <ISceneNode.h>
-#include <IMesh.h>
+#include "graphics/light.hpp"
 
-using namespace irr;
+class screenQuad;
 
 // The actual rain node
-class LightNode: public scene::ISceneNode
+class SunNode: public LightNode
 {
 public:
-    LightNode(scene::ISceneManager* mgr, float radius, float r, float g, float b);
-    ~LightNode();
+    SunNode(scene::ISceneManager* mgr, float r, float g, float b);
+    ~SunNode();
 
     virtual void render();
 
-    virtual const core::aabbox3d<f32>& getBoundingBox() const
-    {
-        return box;
-    }
-
-    virtual void OnRegisterSceneNode();
-
-    virtual u32 getMaterialCount() const { return 1; }
-    virtual video::SMaterial& getMaterial(u32 i) { return mat; }
-
-    float getRadiusSQ() { return m_radius_sq; }
-    float getRadius() { return m_radius; }
-
-protected:
-    static video::SMaterial mat;
-    static core::aabbox3df box;
-
-    static scene::IMesh *sphere;
-
-    float m_radius_sq;
-    float m_radius;
-    float m_color[3];
+private:
+    screenQuad *sq;
 };
 
 #endif
