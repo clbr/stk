@@ -384,6 +384,8 @@ public:
         m_pos[0] = x;
         m_pos[1] = y;
         m_pos[2] = z;
+
+        m_specular = 200;
     }
 
     void setRadius(float r)
