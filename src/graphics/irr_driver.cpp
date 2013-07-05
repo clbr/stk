@@ -1913,15 +1913,20 @@ video::ITexture* IrrDriver::RTTProvider::renderToTexture(float angle,
     return m_render_target_texture;
 }
 
-void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node)
+void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node, bool rimlit)
 {
     if (!m_glsl)
         return;
 
     const u32 mcount = node->getMaterialCount();
     u32 i;
-    const video::E_MATERIAL_TYPE ref = m_shaders->getShader(ES_OBJECTPASS_REF);
-    const video::E_MATERIAL_TYPE pass = m_shaders->getShader(ES_OBJECTPASS);
+    const video::E_MATERIAL_TYPE ref = rimlit ? m_shaders->getShader(ES_OBJECTPASS_RIMLIT):
+                                       m_shaders->getShader(ES_OBJECTPASS_REF);
+    const video::E_MATERIAL_TYPE pass = rimlit ? m_shaders->getShader(ES_OBJECTPASS_RIMLIT):
+                                        m_shaders->getShader(ES_OBJECTPASS);
+
+    const video::E_MATERIAL_TYPE origref = m_shaders->getShader(ES_OBJECTPASS_REF);
+    const video::E_MATERIAL_TYPE origpass = m_shaders->getShader(ES_OBJECTPASS);
 
     bool viamb = false;
     scene::IMesh *mesh = NULL;
@@ -1945,9 +1950,11 @@ void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node)
         if (viamb)
             mat = &mbmat;
 
-        if (mat->MaterialType == video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF)
+        if (mat->MaterialType == video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF ||
+            mat->MaterialType == origref)
             mat->MaterialType = ref;
-        else if (mat->MaterialType == video::EMT_SOLID)
+        else if (mat->MaterialType == video::EMT_SOLID ||
+                 mat->MaterialType == origpass)
             mat->MaterialType = pass;
     }
 
@@ -1956,7 +1963,7 @@ void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node)
     scene::ISceneNodeList::Iterator it = kids.begin();
     for (; it != kids.end(); ++it)
     {
-        applyObjectPassShader(*it);
+        applyObjectPassShader(*it, rimlit);
     }
 }
 
