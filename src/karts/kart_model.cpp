@@ -297,6 +297,16 @@ scene::ISceneNode* KartModel::attachModel(bool animated_models)
             if(!m_wheel_model[i]) continue;
             m_wheel_node[i]->setParent(lod_node);
         }
+
+        // Enable rim lighting for the kart
+        irr_driver->applyObjectPassShader(lod_node, true);
+        std::vector<scene::ISceneNode*> &lodnodes = lod_node->getAllNodes();
+        const u32 max = lodnodes.size();
+        for (u32 i = 0; i < max; i++)
+        {
+            irr_driver->applyObjectPassShader(lodnodes[i], true);
+        }
+
     }
     else
     {
@@ -319,6 +329,7 @@ scene::ISceneNode* KartModel::attachModel(bool animated_models)
             if(!m_wheel_model[i]) continue;
             m_wheel_node[i] = irr_driver->addMesh(m_wheel_model[i], node);
             m_wheel_node[i]->grab();
+            ((scene::IMeshSceneNode *) m_wheel_node[i])->setReadOnlyMaterials(true);
     #ifdef DEBUG
             std::string debug_name = m_wheel_filename[i]+" (wheel)";
             m_wheel_node[i]->setName(debug_name.c_str());

@@ -130,6 +130,8 @@ Shaders::Shaders()
                                     m_callbacks[ES_OBJECTPASS], EMT_SOLID);
     m_shaders[ES_OBJECTPASS_REF] = glslmat(dir + "objectpass.vert", dir + "objectpass_ref.frag",
                                     m_callbacks[ES_OBJECTPASS], EMT_SOLID);
+    m_shaders[ES_OBJECTPASS_RIMLIT] = glslmat(dir + "objectpass_rimlit.vert", dir + "objectpass_rimlit.frag",
+                                    m_callbacks[ES_OBJECTPASS], EMT_SOLID);
 
     m_shaders[ES_LIGHTBLEND] = glslmat(std::string(""), dir + "lightblend.frag",
                                     m_callbacks[ES_LIGHTBLEND], EMT_ONETEXTURE_BLEND);
