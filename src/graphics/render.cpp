@@ -322,7 +322,8 @@ void IrrDriver::renderGLSL(float dt)
         lightmat.BlendOperation = video::EBO_ADD;
 
         m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
-        m_post_processing->drawQuad(cam, lightmat);
+        if (!m_mipviz)
+            m_post_processing->drawQuad(cam, lightmat);
 
         // Drawing for this cam done, cleanup
         const u32 glowrepcount = transparent_glow_nodes.size();
