@@ -165,6 +165,9 @@ void IrrDriver::renderGLSL(float dt)
         m_renderpass = scene::ESNRP_SKY_BOX;
         m_scene_manager->drawAll(m_renderpass);
 
+        // Used to cull glowing items & lights
+        const core::aabbox3df cambox = camera->getCameraSceneNode()->
+                                             getViewFrustum()->getBoundingBox();
         // Render anything glowing.
         if (!m_mipviz && !m_wireframe)
         {
@@ -184,9 +187,6 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
             overridemat.EnablePasses = scene::ESNRP_SOLID;
             overridemat.Enabled = true;
-
-            const core::aabbox3df cambox = camera->getCameraSceneNode()->
-                                                 getViewFrustum()->getBoundingBox();
 
             glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
             glStencilFunc(GL_ALWAYS, 1, ~0);
