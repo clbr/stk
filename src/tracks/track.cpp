@@ -1707,7 +1707,7 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
 
     // ---- Create sun (non-ambient directional light)
     const video::SColorf tmpf(m_sun_diffuse_color);
-    m_sun = irr_driver->addLight(m_sun_position, 10000.0f, tmpf.r, tmpf.g, tmpf.b);
+    m_sun = irr_driver->addLight(m_sun_position, 10000.0f, tmpf.r, tmpf.g, tmpf.b, true);
 
     if (!irr_driver->isGLSL())
     {
@@ -1716,7 +1716,7 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
 
         // The angle of the light is rather important - let the sun
         // point towards (0,0,0).
-        if(m_sun_position.getLengthSQ()==0)
+        if(m_sun_position.getLengthSQ() < 0.03f)
             // Backward compatibility: if no sun is specified, use the
             // old hardcoded default angle
             m_sun->setRotation( core::vector3df(180, 45, 45) );
@@ -1724,6 +1724,10 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
             m_sun->setRotation((-m_sun_position).getHorizontalAngle());
 
         sun->getLightData().SpecularColor = m_sun_specular_color;
+    } else if (m_sun_position.getLengthSQ() < 0.03f)
+    {
+        m_sun->setPosition(core::vector3df(500, 250, 250));
+        m_sun->updateAbsolutePosition();
     }
 
 

@@ -28,6 +28,7 @@
 #include "graphics/post_processing.hpp"
 #include "graphics/referee.hpp"
 #include "graphics/shaders.hpp"
+#include "graphics/sun.hpp"
 #include "graphics/rtts.hpp"
 #include "graphics/wind.hpp"
 #include "guiengine/engine.hpp"
@@ -1970,11 +1971,16 @@ void IrrDriver::applyObjectPassShader()
 }
 
 scene::ISceneNode *IrrDriver::addLight(const core::vector3df &pos, float radius,
-                     float r, float g, float b)
+                     float r, float g, float b, bool sun)
 {
     if (m_glsl)
     {
-        LightNode * const light = new LightNode(m_scene_manager, radius, r, g, b);
+        LightNode *light = NULL;
+
+        if (!sun)
+            light = new LightNode(m_scene_manager, radius, r, g, b);
+        else
+            light = new SunNode(m_scene_manager, r, g, b);
 
         light->grab();
         light->setParent(NULL);
