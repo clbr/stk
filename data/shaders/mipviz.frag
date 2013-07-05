@@ -17,7 +17,8 @@ float miplevel(in vec2 texture_coordinate)
 
 void main() {
 
-	const vec4 levels[6] = vec4[](
+	// Buggy Intel windows driver workaround
+	vec4 levels[6] = vec4[](
 		vec4(0.0, 0.0, 1.0, 0.8),
 		vec4(0.0, 0.5, 1.0, 0.4),
 		vec4(1.0, 1.0, 1.0, 0.0),
