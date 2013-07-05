@@ -262,7 +262,6 @@ void IrrDriver::renderGLSL(float dt)
 
         const vector3df camcenter = cambox.getCenter();
         const float camradius = cambox.getExtent().getLength() / 2;
-        const float camradius_sq = camradius * camradius;
         const vector3df campos = camera->getCameraSceneNode()->getPosition();
         const float camnear = camera->getCameraSceneNode()->getNearValue();
 
@@ -275,7 +274,9 @@ void IrrDriver::renderGLSL(float dt)
         {
             // Sphere culling
             const float distance_sq = (m_lights[i]->getPosition() - camcenter).getLengthSQ();
-            if (distance_sq > camradius_sq)
+            float radius_sum = camradius + m_lights[i]->getRadius();
+            radius_sum *= radius_sum;
+            if (radius_sum < distance_sq)
                 continue;
 
             bool inside = false;
