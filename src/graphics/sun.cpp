@@ -24,6 +24,7 @@
 #include "graphics/material_manager.hpp"
 #include "graphics/material.hpp"
 #include "graphics/rtts.hpp"
+#include "graphics/screenquad.hpp"
 #include "graphics/shaders.hpp"
 
 using namespace video;
@@ -33,20 +34,19 @@ using namespace core;
 SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
                      LightNode(mgr, 0, r, g, b)
 {
-/*
-    mat.Lighting = false;
-    mat.MaterialType = irr_driver->getShaders()->getShader(ES_SUNLIGHT);
 
-    mat.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_NORMAL));
-    mat.setTexture(1, irr_driver->getRTTs()->getRTT(RTT_DEPTH));
+    sq = new screenQuad(irr_driver->getVideoDriver());
 
-    mat.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
-    mat.setFlag(EMF_BILINEAR_FILTER, false);
-    mat.setFlag(EMF_ZWRITE_ENABLE, false);
+    SMaterial &m = sq->getMaterial();
 
-    mat.MaterialTypeParam = pack_textureBlendFunc(EBF_ONE, EBF_ONE);
-    mat.BlendOperation = EBO_ADD;
-*/
+    m.MaterialType = irr_driver->getShaders()->getShader(ES_SUNLIGHT);
+    m.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_NORMAL));
+    m.setTexture(1, irr_driver->getRTTs()->getRTT(RTT_DEPTH));
+
+    m.setFlag(EMF_BILINEAR_FILTER, false);
+    m.MaterialTypeParam = pack_textureBlendFunc(EBF_ONE, EBF_ONE);
+    m.BlendOperation = EBO_ADD;
+
     m_color[0] = r;
     m_color[1] = g;
     m_color[2] = b;
@@ -54,6 +54,7 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
 
 SunNode::~SunNode()
 {
+    delete sq;
 }
 
 void SunNode::render()
@@ -63,9 +64,5 @@ void SunNode::render()
     cb->setColor(m_color[0], m_color[1], m_color[2]);
     cb->setPosition(getPosition().X, getPosition().Y, getPosition().Z);
 
-    IVideoDriver * const drv = irr_driver->getVideoDriver();
-    drv->setTransform(ETS_WORLD, AbsoluteTransformation);
-    drv->setMaterial(mat);
-
-    drv->drawMeshBuffer(sphere->getMeshBuffer(0));
+    sq->render(false);
 }
