@@ -1977,6 +1977,9 @@ scene::ISceneNode *IrrDriver::addLight(const core::vector3df &pos, float radius,
         light->grab();
         light->setParent(NULL);
 
+        light->setPosition(pos);
+        light->updateAbsolutePosition();
+
         m_lights.push_back(light);
 
         return light;
