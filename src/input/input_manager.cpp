@@ -301,6 +301,12 @@ void InputManager::handleStaticAction(int key, int value)
                 irr_driver->toggleMipVisualization();
             }
             break;
+        case KEY_DELETE:
+            if (value)
+            {
+                irr_driver->toggleNormals();
+            }
+            break;
         default:
             break;
     } // switch
