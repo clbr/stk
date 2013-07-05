@@ -32,7 +32,7 @@ using namespace scene;
 using namespace core;
 
 SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
-                     LightNode(mgr, 0, r, g, b)
+                     LightNode(mgr, 10000, r, g, b)
 {
 
     sq = new screenQuad(irr_driver->getVideoDriver());
