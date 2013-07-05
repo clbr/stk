@@ -70,6 +70,10 @@ LightNode::~LightNode()
 
 void LightNode::render()
 {
+    ColorizeProvider * const cb = (ColorizeProvider *) irr_driver->getShaders()->
+                                   m_callbacks[ES_COLORIZE];
+    cb->setColor(1, 0, 0);
+
     IVideoDriver * const drv = irr_driver->getVideoDriver();
     drv->setTransform(ETS_WORLD, AbsoluteTransformation);
     drv->setMaterial(mat);
