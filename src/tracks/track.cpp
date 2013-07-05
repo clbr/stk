@@ -1683,7 +1683,7 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
 
     // ---- Create sun (non-ambient directional light)
     const video::SColorf tmpf(m_sun_diffuse_color);
-    m_sun = irr_driver->addLight(m_sun_position, 10000.0f, tmpf.r, tmpf.g, tmpf.b);
+    m_sun = irr_driver->addLight(m_sun_position, 10000.0f, tmpf.r, tmpf.g, tmpf.b, true);
 
     if (!irr_driver->isGLSL())
     {
