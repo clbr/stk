@@ -6,7 +6,7 @@ uniform sampler2D tex_detail0;
 uniform sampler2D tex_detail1;
 uniform sampler2D tex_detail2;
 uniform sampler2D tex_detail3;
-uniform sampler2D tex_detail4;
+//uniform sampler2D tex_detail4;
 
 const float near = 1.0;
 
@@ -30,7 +30,8 @@ void main() {
 	vec4 detail1 = texture2D(tex_detail1, gl_TexCoord[0].st);
 	vec4 detail2 = texture2D(tex_detail2, gl_TexCoord[0].st);
 	vec4 detail3 = texture2D(tex_detail3, gl_TexCoord[0].st);
-	vec4 detail4 = texture2D(tex_detail4, gl_TexCoord[0].st);
+//	vec4 detail4 = texture2D(tex_detail4, gl_TexCoord[0].st);
+	vec4 detail4 = vec4(0.0);
 
 	vec4 splatted = (splatting.r * detail0 +
 			splatting.g * detail1 +
