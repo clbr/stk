@@ -118,12 +118,16 @@ void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int use
 
 void SplattingProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
-    if (!m_light_dir_calculated)
-    {
-        m_light_dir_calculated = true;
-        m_light_direction = -World::getWorld()->getTrack()->getSunRotation().rotationToDirection();
-        srv->setVertexShaderConstant("lightdir", &m_light_direction.X, 3);
-    }
+    const float far = irr_driver->getSceneManager()->getActiveCamera()->getFarValue();
+    srv->setVertexShaderConstant("far", &far, 1);
+
+    // The normal is transformed by the inverse transposed world matrix
+    // because we want world-space normals
+    matrix4 invtworldm = irr_driver->getVideoDriver()->getTransform(ETS_WORLD);
+    invtworldm.makeInverse();
+    invtworldm = invtworldm.getTransposed();
+
+    srv->setVertexShaderConstant("invtworldm", invtworldm.pointer(), 16);
 
     if (!firstdone)
     {
@@ -141,12 +145,6 @@ void SplattingProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
         s32 tex_detail3 = 5;
         srv->setPixelShaderConstant("tex_detail3", &tex_detail3, 1);
-
-        if (m_lightmap)
-        {
-            s32 tex_lightmap = 6;
-            srv->setPixelShaderConstant("tex_lightmap", &tex_lightmap, 1);
-        }
 
         firstdone = true;
     }
