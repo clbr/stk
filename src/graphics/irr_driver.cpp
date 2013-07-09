@@ -1956,7 +1956,9 @@ void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node, bool rimli
             mat->MaterialType == origref)
             mat->MaterialType = ref;
         else if (mat->MaterialType == video::EMT_SOLID ||
-                 mat->MaterialType == origpass)
+                 mat->MaterialType == origpass ||
+                 (mat->MaterialType >= video::EMT_LIGHTMAP &&
+                 mat->MaterialType <= video::EMT_LIGHTMAP_LIGHTING_M4))
             mat->MaterialType = pass;
     }
 
