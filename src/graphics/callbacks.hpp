@@ -122,17 +122,6 @@ class SplattingProvider: public callbase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
-
-    SplattingProvider(bool lightmap)
-    {
-        m_light_dir_calculated = false;
-        m_lightmap = lightmap;
-    }
-
-private:
-    core::vector3df m_light_direction;
-    bool m_light_dir_calculated;
-    bool m_lightmap;
 };
 
 //
