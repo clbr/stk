@@ -23,7 +23,7 @@ void main() {
 	linear_z *= 10.0;
 
 	float rim = 1.0 - dot(eyenor, viewpos);
-	rim = smoothstep(0.5, 1.5, rim);
+	rim = smoothstep(0.5, 1.5, rim) * 0.4;
 
 	if (hastex != 0) {
 		vec4 col = texture2D(tex, gl_TexCoord[0].xy);
@@ -31,9 +31,11 @@ void main() {
 		if (col.a < 0.5)
 			discard;
 
-		gl_FragData[0] = vec4(rim);
+		col.xyz += rim;
+
+		gl_FragData[0] = col;
 	} else {
-		gl_FragData[0] = vec4(rim);
+		gl_FragData[0] = gl_Color + vec4(vec3(rim), 0.0);
 	}
 
 	gl_FragData[1] = vec4(nor, linear_z);
