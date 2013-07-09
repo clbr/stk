@@ -248,6 +248,9 @@ void GaussianBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 void MipVizProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     const ITexture * const tex = mat.TextureLayer[0].Texture;
+
+    const int notex = (mat.TextureLayer[0].Texture == NULL);
+    srv->setVertexShaderConstant("notex", &notex, 1);
     if (!tex) return;
 
     const dimension2du size = tex->getSize();
