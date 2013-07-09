@@ -64,7 +64,7 @@ Shaders::Shaders()
     m_shaders[ES_NORMAL_MAP_LIGHTMAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
                                              m_callbacks[ES_NORMAL_MAP_LIGHTMAP], EMT_SOLID_2_LAYER);
 
-    m_shaders[ES_SPLATTING] = glsl(dir + "splatting.vert", dir + "splatting.frag",
+    m_shaders[ES_SPLATTING] = glsl(dir + "objectpass.vert", dir + "splatting.frag",
                                    m_callbacks[ES_SPLATTING]);
 
     m_shaders[ES_WATER] = glslmat(dir + "water.vert", dir + "water.frag",
