@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 0.1 -->
+<!-- Generated with script from SVN rev 12507 -->
 <kart name              = "Gnu"
       version           = "2"
       model-file        = "gnu.b3dz"
       icon-file         = "gnuicon.png"
       minimap-icon-file = "gnuicon.png"
       shadow-file       = "gnushadow.png"
+      random-wheel-rot  = "false"
+      center-shift      = "0.70"
       groups            = "standard"
-      center-shift      = "0 0.7 0"
-      rgb               = "1.0 0.75 0" >
+      rgb               = "1.00 0.70 0.00" >
+  <sounds engine = "large"/>
   <animations left = "0"
               straight = "20"
               right = "40"
@@ -17,4 +19,6 @@
               start-losing = "335"
               start-losing-loop = "473"
               end-losing = "479"/>
+  <wheels>
+  </wheels>
 </kart>
