@@ -218,7 +218,6 @@ Material::Material(const XMLNode *node, int index, bool deprecated)
         node->get("splatting-texture-2", &m_splatting_texture_2);
         node->get("splatting-texture-3", &m_splatting_texture_3);
         node->get("splatting-texture-4", &m_splatting_texture_4);
-        node->get("splatting-lightmap", &m_splatting_lightmap);
     }
     else if (s == "none")
     {
@@ -797,22 +796,8 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             }
             m->setTexture(5, tex);
 
-            if (m_splatting_lightmap.size() > 0)
-            {
-                tex = irr_driver->getTexture(m_splatting_lightmap);
-            }
-            m->setTexture(6, tex);
-
-
             // Material and shaders
-            if (m_splatting_lightmap.size() > 0)
-            {
-                m->MaterialType = irr_driver->getShaders()->getShader(ES_SPLATTING_LIGHTMAP);
-            }
-            else
-            {
-                m->MaterialType = irr_driver->getShaders()->getShader(ES_SPLATTING);
-            }
+            m->MaterialType = irr_driver->getShaders()->getShader(ES_SPLATTING);
         }
         else
         {
