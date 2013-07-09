@@ -163,9 +163,6 @@ void IrrDriver::renderGLSL(float dt)
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_SOLID;
         m_scene_manager->drawAll(m_renderpass);
 
-        m_renderpass = scene::ESNRP_SKY_BOX;
-        m_scene_manager->drawAll(m_renderpass);
-
         // Used to cull glowing items & lights
         const core::aabbox3df cambox = camera->getCameraSceneNode()->
                                              getViewFrustum()->getBoundingBox();
@@ -252,11 +249,6 @@ void IrrDriver::renderGLSL(float dt)
             glDisable(GL_STENCIL_TEST);
         } // end glow
 
-        // We need to re-render camera due to the per-cam-node hack.
-        m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
-                                 scene::ESNRP_TRANSPARENT_EFFECT;
-        m_scene_manager->drawAll(m_renderpass);
-
         // Lights
         m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_TMP1), true, false, video::SColor(255, 0, 0, 0));
 
@@ -325,6 +317,14 @@ void IrrDriver::renderGLSL(float dt)
         m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
         if (!m_mipviz)
             m_post_processing->drawQuad(cam, lightmat);
+
+        m_renderpass = scene::ESNRP_SKY_BOX;
+        m_scene_manager->drawAll(m_renderpass);
+
+        // We need to re-render camera due to the per-cam-node hack.
+        m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
+                                 scene::ESNRP_TRANSPARENT_EFFECT;
+        m_scene_manager->drawAll(m_renderpass);
 
         // Drawing for this cam done, cleanup
         const u32 glowrepcount = transparent_glow_nodes.size();
