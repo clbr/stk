@@ -41,8 +41,7 @@ Shaders::Shaders()
     m_callbacks[ES_SPHERE_MAP] = new SphereMapProvider();
     m_callbacks[ES_NORMAL_MAP_LIGHTMAP] = new NormalMapProvider(true);
     m_callbacks[ES_NORMAL_MAP] = new NormalMapProvider(false);
-    m_callbacks[ES_SPLATTING] = new SplattingProvider(false);
-    m_callbacks[ES_SPLATTING_LIGHTMAP] = new SplattingProvider(true);
+    m_callbacks[ES_SPLATTING] = new SplattingProvider();
     m_callbacks[ES_WATER] = new WaterShaderProvider();
     m_callbacks[ES_GRASS] = new GrassShaderProvider();
     m_callbacks[ES_BUBBLES] = new BubbleEffectProvider();
@@ -65,13 +64,8 @@ Shaders::Shaders()
     m_shaders[ES_NORMAL_MAP_LIGHTMAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
                                              m_callbacks[ES_NORMAL_MAP_LIGHTMAP], EMT_SOLID_2_LAYER);
 
-    m_shaders[ES_SPLATTING] = glsl(dir + "splatting.vert", dir + "splatting.frag",
+    m_shaders[ES_SPLATTING] = glsl(dir + "objectpass.vert", dir + "splatting.frag",
                                    m_callbacks[ES_SPLATTING]);
-
-//    m_shaders[ES_SPLATTING_LIGHTMAP] = glsl(dir + "splatting_lightmap.vert", dir + "splatting_lightmap.frag",
-//                                            m_callbacks[ES_SPLATTING_LIGHTMAP]);
-// This doesn't exist ATM, default to solid
-    m_shaders[ES_SPLATTING_LIGHTMAP] = EMT_SOLID;
 
     m_shaders[ES_WATER] = glslmat(dir + "water.vert", dir + "water.frag",
                                   m_callbacks[ES_WATER], EMT_TRANSPARENT_ALPHA_CHANNEL);
