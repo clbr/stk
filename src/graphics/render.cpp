@@ -163,8 +163,11 @@ void IrrDriver::renderGLSL(float dt)
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_SOLID;
         m_scene_manager->drawAll(m_renderpass);
 
+        m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
         m_renderpass = scene::ESNRP_SKY_BOX;
         m_scene_manager->drawAll(m_renderpass);
+
+        m_video_driver->setRenderTarget(m_mrt, false, false);
 
         // Used to cull glowing items & lights
         const core::aabbox3df cambox = camera->getCameraSceneNode()->
