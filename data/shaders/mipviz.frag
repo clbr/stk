@@ -2,6 +2,7 @@
 
 uniform sampler2D tex;
 uniform vec2 texsize;
+uniform int notex;
 
 float miplevel(in vec2 texture_coordinate)
 {
@@ -16,6 +17,11 @@ float miplevel(in vec2 texture_coordinate)
 }
 
 void main() {
+
+	if (notex != 0) {
+		gl_FragColor = gl_Color;
+		return;
+	}
 
 	// Buggy Intel windows driver workaround
 	vec4 levels[6] = vec4[](
