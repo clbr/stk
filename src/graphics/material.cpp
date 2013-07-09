@@ -694,7 +694,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             modes++;
         }
     }
-#if !LIGHTMAP_VISUALISATION
+
     if (m_lightmap)
     {
         m->MaterialType = video::EMT_LIGHTMAP;
@@ -705,7 +705,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
         m->MaterialType = video::EMT_LIGHTMAP_ADD;
         modes++;
     }
-#endif
+
     if (m_add)
     {
         //m->MaterialType = video::EMT_TRANSPARENT_ADD_COLOR;

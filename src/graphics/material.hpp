@@ -27,8 +27,6 @@
 
 #include <IShaderConstantSetCallBack.h>
 
-#define LIGHTMAP_VISUALISATION 0
-
 
 namespace irr
 {
