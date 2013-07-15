@@ -8,7 +8,7 @@
   <material name="hacienda_ground.jpg">
     <particles base="smoke.xml" condition="skid"/>
   </material>
-  <material name="hacienda_ground_dark.jpg" physics-only="true">
+  <material name="hacienda_ground_dark.jpg">
     <particles base="smoke.xml" condition="skid"/>
   </material>
   <material name="hacienda_groundTodark.jpg">

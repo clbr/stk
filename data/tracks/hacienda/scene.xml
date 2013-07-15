@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Generated with script from SVN rev 12731 -->
+<!-- Generated with script from SVN rev 13059 -->
 <scene>
   <track model="hacienda_track.b3d" x="0" y="0" z="0">
     <static-object lod_distance="50.0" lod_group="lantern" model="Mesh.b3d" xyz="-14.00 3.85 0.00" hpr="-90.0 -0.0 0.0" scale="1.00 1.00 1.00"/> <!-- writeStaticObjects 3 -->
@@ -47,6 +47,8 @@
     </static-object>
     <static-object model="arrow.b3d" xyz="44.46 -3.15 -69.84" hpr="0.0 105.2 0.0" scale="1.00 1.00 1.00"> <!-- writeStaticObjects 2 -->
     <animated-texture name="zipper.png" dy="1.500" />
+    </static-object>
+    <static-object type="animation" model="InvisibleWalls.b3d" xyz="-10.00 0.00 0.00" hpr="0.0 -0.0 0.0" scale="1.00 1.00 1.00" shape="box" interaction="physics-only">
     </static-object>
   </track>
   <object type="animation" model="mill.b3d" xyz="246.51 39.38 -153.97" hpr="-0.0 146.1 -0.0" scale="1.00 1.00 1.00"  interaction="none">
