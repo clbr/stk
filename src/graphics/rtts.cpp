@@ -68,7 +68,7 @@ RTT::~RTT()
     }
 }
 
-ITexture *RTT::getRTT(E_RTT which)
+ITexture *RTT::getRTT(TypeRTT which)
 {
     assert(which < RTT_COUNT);
     return rtts[which];
