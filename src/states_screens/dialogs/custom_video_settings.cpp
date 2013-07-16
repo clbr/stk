@@ -83,7 +83,7 @@ void CustomVideoSettingsialog::beforeAddingWidgets()
     antialias->addLabel( L"x8" );         // 3
     antialias->setValue( UserConfigParams::m_antialiasing );
 
-    getWidget<CheckBoxWidget>("postprocessing")->setState( UserConfigParams::m_postprocess_enabled );
+    getWidget<CheckBoxWidget>("motionblur")->setState( UserConfigParams::m_motionblur );
     getWidget<CheckBoxWidget>("pixelshaders")->setState( UserConfigParams::m_pixel_shaders );
 }
 
@@ -99,8 +99,8 @@ GUIEngine::EventPropagation CustomVideoSettingsialog::processEvent(const std::st
             getWidget<CheckBoxWidget>("weather_gfx")->getState();
         UserConfigParams::m_antialiasing  =
             getWidget<SpinnerWidget>("antialiasing")->getValue();
-        UserConfigParams::m_postprocess_enabled      =
-            getWidget<CheckBoxWidget>("postprocessing")->getState();
+        UserConfigParams::m_motionblur      =
+            getWidget<CheckBoxWidget>("motionblur")->getState();
         UserConfigParams::m_show_steering_animations =
             getWidget<SpinnerWidget>("steering_animations")->getValue();
         UserConfigParams::m_pixel_shaders =
