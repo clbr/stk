@@ -150,19 +150,6 @@ void SplattingProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
 }
 
-void SphereMapProvider::OnSetConstants(IMaterialRendererServices *srv, int)
-{
-    if (!firstdone)
-    {
-        s32 tex = 0;
-        srv->setPixelShaderConstant("texture", &tex, 1);
-
-        srv->setVertexShaderConstant("lightdir", &m_light_direction.X, 3);
-
-        firstdone = true;
-    }
-}
-
 void BubbleEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     const float start = fabsf(mat.MaterialTypeParam2);
