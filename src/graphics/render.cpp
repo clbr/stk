@@ -90,6 +90,7 @@ void IrrDriver::renderGLSL(float dt)
         if (level < 0) continue;
 
         scene::ISceneNode * const node = lod->getAllNodes()[level];
+        node->updateAbsolutePosition();
 
         glowdata_t dat;
         dat.node = node;
