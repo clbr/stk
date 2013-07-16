@@ -47,9 +47,9 @@
     <spacer height="5" width="10" />
     
     <div layout="horizontal-row" width="100%" height="fit">
-        <checkbox id="postprocessing"/>
+        <checkbox id="motionblur"/>
         <spacer width="10" height="10"/>
-        <label text="Post-processing (motion blur)" I18N="Video settings"/>
+        <label text="Motion blur" I18N="Video settings"/>
     </div>
     
     <spacer height="5" width="10" />

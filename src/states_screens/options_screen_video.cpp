@@ -49,7 +49,7 @@ static const bool GFX           [] = {false, true,  true,  true,  true,  true,  
 static const int  GFX_ANIM_KARTS[] = {0,     0,     1,     2,     2,     2,     2,    2};
 static const bool GFX_WEATHER   [] = {false, false, false, false, true,  true,  true, true};
 static const int  GFX_ANTIALIAS [] = {0,     0,     0,     0,     0,     2,     2,    3};
-static const bool GFX_POSTPROCESSING[] =
+static const bool GFX_MOTIONBLUR[] =
                                      {false, false, false, false, false, false, true, true};
 static const bool GFX_PIXEL_SHADERS[] =
                                      {false, false, false, false, true,  true,  true, true};
@@ -312,7 +312,7 @@ void OptionsScreenVideo::updateGfxSlider()
             UserConfigParams::m_graphical_effects        == GFX[l] &&
             UserConfigParams::m_weather_effects          == GFX_WEATHER[l] &&
             UserConfigParams::m_antialiasing             == GFX_ANTIALIAS[l] &&
-            UserConfigParams::m_postprocess_enabled      == GFX_POSTPROCESSING[l] &&
+            UserConfigParams::m_motionblur      == GFX_MOTIONBLUR[l] &&
             UserConfigParams::m_pixel_shaders            == GFX_PIXEL_SHADERS[l])
         {
             gfx->setValue(l+1);
@@ -385,7 +385,7 @@ void OptionsScreenVideo::updateTooltip()
                                   UserConfigParams::m_pixel_shaders ? enabled : disabled);
     //I18N: in graphical options
     tooltip = tooltip + L"\n" + _("Post-processing (motion blur) : %s",
-        UserConfigParams::m_postprocess_enabled ? enabled : disabled);
+        UserConfigParams::m_motionblur ? enabled : disabled);
     gfx->setTooltip(tooltip);
 }   // updateTooltip
 
@@ -458,7 +458,7 @@ void OptionsScreenVideo::eventCallback(Widget* widget, const std::string& name,
         UserConfigParams::m_graphical_effects        = GFX[level-1];
         UserConfigParams::m_weather_effects          = GFX_WEATHER[level-1];
         UserConfigParams::m_antialiasing             = GFX_ANTIALIAS[level-1];
-        UserConfigParams::m_postprocess_enabled      = GFX_POSTPROCESSING[level-1];
+        UserConfigParams::m_motionblur      = GFX_MOTIONBLUR[level-1];
         UserConfigParams::m_pixel_shaders            = GFX_PIXEL_SHADERS[level-1];
 
         updateGfxSlider();
