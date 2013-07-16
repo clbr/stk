@@ -252,7 +252,7 @@ void PostProcessing::render()
             out = rtts->getRTT(RTT_TMP2);
         }
 
-        if (1 && m_any_boost) // motion blur
+        if (UserConfigParams::m_motionblur && m_any_boost) // motion blur
         {
             m_material.MaterialType = shaders->getShader(ES_MOTIONBLUR);
             m_material.setTexture(0, in);
