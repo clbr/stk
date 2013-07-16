@@ -38,7 +38,6 @@ Shaders::Shaders()
     // Callbacks
     memset(m_callbacks, 0, sizeof(m_callbacks));
 
-    m_callbacks[ES_SPHERE_MAP] = new SphereMapProvider();
     m_callbacks[ES_NORMAL_MAP_LIGHTMAP] = new NormalMapProvider(true);
     m_callbacks[ES_NORMAL_MAP] = new NormalMapProvider(false);
     m_callbacks[ES_SPLATTING] = new SplattingProvider();
@@ -70,8 +69,8 @@ Shaders::Shaders()
     m_shaders[ES_WATER] = glslmat(dir + "water.vert", dir + "water.frag",
                                   m_callbacks[ES_WATER], EMT_TRANSPARENT_ALPHA_CHANNEL);
 
-    m_shaders[ES_SPHERE_MAP] = glslmat(dir + "spheremap.vert", dir + "spheremap.frag",
-                                       m_callbacks[ES_SPHERE_MAP], EMT_SOLID_2_LAYER);
+    m_shaders[ES_SPHERE_MAP] = glslmat(dir + "objectpass_rimlit.vert", dir + "objectpass_spheremap.frag",
+                                       m_callbacks[ES_OBJECTPASS], EMT_SOLID);
 
     m_shaders[ES_GRASS] = glslmat(dir + "grass.vert", dir + "grass.frag",
                                   m_callbacks[ES_GRASS], EMT_TRANSPARENT_ALPHA_CHANNEL);
