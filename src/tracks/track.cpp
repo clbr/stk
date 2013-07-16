@@ -112,6 +112,7 @@ Track::Track(const std::string &filename)
     m_is_cutscene           = false;
     m_camera_far            = 1000.0f;
     m_mini_map              = NULL;
+    m_bloom                 = true;
     m_sky_particles         = NULL;
     m_sky_dx                = 0.05f;
     m_sky_dy                = 0.0f;
@@ -350,6 +351,7 @@ void Track::loadTrackInfo()
     root->get("internal",              &m_internal);
     root->get("reverse",               &m_reverse_available);
     root->get("push-back",             &m_enable_push_back);
+    root->get("bloom",                 &m_bloom);
 
     // Make the default for auto-rescue in battle mode and soccer mode to be false
     if(m_is_arena || m_is_soccer)
