@@ -683,17 +683,24 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
     }
     if (m_graphical_effect == GE_SPHERE_MAP)
     {
-        m->MaterialType = video::EMT_SPHERE_MAP;
-
-        // sphere map + alpha blending is a supported combination so in
-        // this case don't increase mode count
-        if (m_alpha_blending)
+        if (irr_driver->isGLSL())
         {
-            m->BlendOperation = video::EBO_ADD;
+            m->MaterialType = irr_driver->getShaders()->getShader(ES_SPHERE_MAP);
         }
         else
         {
-            modes++;
+            m->MaterialType = video::EMT_SPHERE_MAP;
+
+            // sphere map + alpha blending is a supported combination so in
+            // this case don't increase mode count
+            if (m_alpha_blending)
+            {
+                m->BlendOperation = video::EBO_ADD;
+            }
+            else
+            {
+                modes++;
+            }
         }
     }
 
