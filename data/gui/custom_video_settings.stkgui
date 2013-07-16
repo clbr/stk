@@ -7,6 +7,14 @@
     <spacer height="25" width="10" />
 
     <div layout="horizontal-row" width="100%" height="fit">
+        <checkbox id="pixelshaders"/>
+        <spacer width="10" height="10"/>
+        <label text="Pixel Shaders" I18N="Video settings"/>
+    </div>
+
+    <spacer height="5" width="10" />
+
+    <div layout="horizontal-row" width="100%" height="fit">
         <checkbox id="anim_gfx"/>
         <spacer width="10" height="10"/>
         <label text="Animated Scenery" I18N="Video settings"/>
@@ -52,14 +60,6 @@
         <label text="Motion blur" I18N="Video settings"/>
     </div>
     
-    <spacer height="5" width="10" />
-    
-    <div layout="horizontal-row" width="100%" height="fit">
-        <checkbox id="pixelshaders"/>
-        <spacer width="10" height="10"/>
-        <label text="Pixel Shaders" I18N="Video settings"/>
-    </div>
-
     <spacer height="5" width="10" />
 
     <div layout="horizontal-row" width="100%" height="fit">
