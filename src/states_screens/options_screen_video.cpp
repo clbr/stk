@@ -53,6 +53,8 @@ static const bool GFX_MOTIONBLUR[] =
                                      {false, false, false, false, true,  true,  true, true};
 static const bool GFX_PIXEL_SHADERS[] =
                                      {false, false, true,  true,  true,  true,  true, true};
+static const bool GFX_MLAA[] =       {false, false, false, false, false, true,  true, true};
+static const int GFX_SSAO[] =        {0,     0,     0,     1,     1,     1,     2,    2};
 
 
 static const int  GFX_LEVEL_AMOUNT = 8;
@@ -312,7 +314,9 @@ void OptionsScreenVideo::updateGfxSlider()
             UserConfigParams::m_graphical_effects        == GFX[l] &&
             UserConfigParams::m_weather_effects          == GFX_WEATHER[l] &&
             UserConfigParams::m_antialiasing             == GFX_ANTIALIAS[l] &&
-            UserConfigParams::m_motionblur      == GFX_MOTIONBLUR[l] &&
+            UserConfigParams::m_motionblur               == GFX_MOTIONBLUR[l] &&
+            UserConfigParams::m_mlaa                     == GFX_MLAA[l] &&
+            UserConfigParams::m_ssao                     == GFX_SSAO[l] &&
             UserConfigParams::m_pixel_shaders            == GFX_PIXEL_SHADERS[l])
         {
             gfx->setValue(l+1);
@@ -342,16 +346,16 @@ void OptionsScreenVideo::updateTooltip()
 
     //I18N: in the graphical options tooltip;
     // indicates a graphical feature is enabled
-    core::stringw enabled = _LTR("Enabled");
+    const core::stringw enabled = _LTR("Enabled");
     //I18N: in the graphical options tooltip;
     // indicates a graphical feature is disabled
-    core::stringw disabled = _LTR("Disabled");
+    const core::stringw disabled = _LTR("Disabled");
     //I18N: if all kart animations are enabled
-    core::stringw all = _LTR("All");
+    const core::stringw all = _LTR("All");
     //I18N: if some kart animations are enabled
-    core::stringw me = _LTR("Me Only");
+    const core::stringw me = _LTR("Me Only");
     //I18N: if no kart animations are enabled
-    core::stringw none = _LTR("None");
+    const core::stringw none = _LTR("None");
 
     core::stringw antialias_label;
     switch ((int)UserConfigParams::m_antialiasing)
@@ -367,6 +371,9 @@ void OptionsScreenVideo::updateTooltip()
     }
 
     //I18N: in graphical options
+    tooltip = tooltip + L"\n" + _("Pixel shaders : %s",
+                                  UserConfigParams::m_pixel_shaders ? enabled : disabled);
+    //I18N: in graphical options
     tooltip = _("Animated Scenery : %s",
         UserConfigParams::m_graphical_effects ? enabled : disabled);
     //I18N: in graphical options
@@ -381,11 +388,18 @@ void OptionsScreenVideo::updateTooltip()
     tooltip = tooltip + L"\n" + _("Anti-aliasing (requires restart) : %s",
                                   antialias_label);
     //I18N: in graphical options
-    tooltip = tooltip + L"\n" + _("Pixel shaders : %s",
-                                  UserConfigParams::m_pixel_shaders ? enabled : disabled);
-    //I18N: in graphical options
-    tooltip = tooltip + L"\n" + _("Post-processing (motion blur) : %s",
+    tooltip = tooltip + L"\n" + _("Motion blur: %s",
         UserConfigParams::m_motionblur ? enabled : disabled);
+    //I18N: in graphical options
+    tooltip = tooltip + L"\n" + _("MLAA: %s",
+        UserConfigParams::m_mlaa ? enabled : disabled);
+    //I18N: in graphical options
+    tooltip = tooltip + L"\n" + _("SSAO: %s",
+        UserConfigParams::m_ssao == 1 ? "low" : UserConfigParams::m_ssao == 2 ?
+                                    "high" : disabled);
+
+
+
     gfx->setTooltip(tooltip);
 }   // updateTooltip
 
@@ -458,8 +472,10 @@ void OptionsScreenVideo::eventCallback(Widget* widget, const std::string& name,
         UserConfigParams::m_graphical_effects        = GFX[level-1];
         UserConfigParams::m_weather_effects          = GFX_WEATHER[level-1];
         UserConfigParams::m_antialiasing             = GFX_ANTIALIAS[level-1];
-        UserConfigParams::m_motionblur      = GFX_MOTIONBLUR[level-1];
+        UserConfigParams::m_motionblur               = GFX_MOTIONBLUR[level-1];
         UserConfigParams::m_pixel_shaders            = GFX_PIXEL_SHADERS[level-1];
+        UserConfigParams::m_mlaa                     = GFX_MLAA[level-1];
+        UserConfigParams::m_ssao                     = GFX_SSAO[level-1];
 
         updateGfxSlider();
     }
