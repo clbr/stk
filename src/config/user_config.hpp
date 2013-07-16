@@ -544,11 +544,10 @@ namespace UserConfigParams
     PARAM_DEFAULT( BoolUserConfigParam(true, "pixel_shaders",
                                        &m_graphics_quality,
                                        "Whether to enable pixel shaders (splatting, normal maps, ...)") );
-    PARAM_PREFIX BoolUserConfigParam         m_postprocess_enabled
+    PARAM_PREFIX BoolUserConfigParam         m_motionblur
             PARAM_DEFAULT( BoolUserConfigParam(false,
-                           "postprocess_enabled", &m_graphics_quality,
-                           "Whether post-processing (motion blur...) should "
-                           "be enabled") );
+                           "motionblur_enabled", &m_graphics_quality,
+                           "Whether motion blur should be enabled") );
 
     // ---- Misc
     PARAM_PREFIX BoolUserConfigParam        m_cache_overworld
