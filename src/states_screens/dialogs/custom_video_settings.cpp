@@ -83,7 +83,14 @@ void CustomVideoSettingsialog::beforeAddingWidgets()
     antialias->addLabel( L"x8" );         // 3
     antialias->setValue( UserConfigParams::m_antialiasing );
 
+    SpinnerWidget* ssao = getWidget<SpinnerWidget>("ssao");
+    ssao->addLabel( _("Disabled") );   // 0
+    ssao->addLabel( _("low") );          // 1
+    ssao->addLabel( _("high") );         // 2
+    ssao->setValue( UserConfigParams::m_ssao );
+
     getWidget<CheckBoxWidget>("motionblur")->setState( UserConfigParams::m_motionblur );
+    getWidget<CheckBoxWidget>("mlaa")->setState( UserConfigParams::m_mlaa );
     getWidget<CheckBoxWidget>("pixelshaders")->setState( UserConfigParams::m_pixel_shaders );
 }
 
@@ -105,6 +112,10 @@ GUIEngine::EventPropagation CustomVideoSettingsialog::processEvent(const std::st
             getWidget<SpinnerWidget>("steering_animations")->getValue();
         UserConfigParams::m_pixel_shaders =
             getWidget<CheckBoxWidget>("pixelshaders")->getState();
+        UserConfigParams::m_mlaa =
+            getWidget<CheckBoxWidget>("mlaa")->getState();
+        UserConfigParams::m_ssao  =
+            getWidget<SpinnerWidget>("ssao")->getValue();
 
         switch (getWidget<SpinnerWidget>("filtering")->getValue())
         {
