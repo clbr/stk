@@ -126,22 +126,6 @@ public:
 
 //
 
-class SphereMapProvider: public callbase
-{
-public:
-    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
-
-    SphereMapProvider()
-    {
-        m_light_direction = core::vector3df(-0.6f, -0.5f, -0.63f);
-    }
-
-private:
-    core::vector3df m_light_direction;
-};
-
-//
-
 class BubbleEffectProvider: public callbase
 {
 public:
