@@ -548,6 +548,14 @@ namespace UserConfigParams
             PARAM_DEFAULT( BoolUserConfigParam(false,
                            "motionblur_enabled", &m_graphics_quality,
                            "Whether motion blur should be enabled") );
+    PARAM_PREFIX BoolUserConfigParam         m_mlaa
+            PARAM_DEFAULT( BoolUserConfigParam(false,
+                           "mlaa", &m_graphics_quality,
+                           "Whether MLAA should be enabled") );
+    PARAM_PREFIX IntUserConfigParam          m_ssao
+            PARAM_DEFAULT( IntUserConfigParam(0,
+                           "ssao", &m_graphics_quality,
+                           "Whether SSAO is enabled (0 = disabled, 1 = low, 2 = high") );
 
     // ---- Misc
     PARAM_PREFIX BoolUserConfigParam        m_cache_overworld
