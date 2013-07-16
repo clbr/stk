@@ -271,6 +271,43 @@ void PostProcessing::render()
             out = tmp;
         }
 
+        if (UserConfigParams::m_ssao == 1) // SSAO low
+        {
+/*            m_material.MaterialType = shaders->getShader(ES_SSAO);
+            m_material.setTexture(0, in);
+            drv->setRenderTarget(out, true, false);
+
+            drawQuad(cam, m_material);
+
+            ITexture *tmp = in;
+            in = out;
+            out = tmp;*/
+        } else if (UserConfigParams::m_ssao == 2) // SSAO high
+        {
+/*            m_material.MaterialType = shaders->getShader(ES_SSAO);
+            m_material.setTexture(0, in);
+            drv->setRenderTarget(out, true, false);
+
+            drawQuad(cam, m_material);
+
+            ITexture *tmp = in;
+            in = out;
+            out = tmp;*/
+        }
+
+        if (UserConfigParams::m_mlaa) // MLAA
+        {
+/*            m_material.MaterialType = shaders->getShader(ES_MLAA);
+            m_material.setTexture(0, in);
+            drv->setRenderTarget(out, true, false);
+
+            drawQuad(cam, m_material);
+
+            ITexture *tmp = in;
+            in = out;
+            out = tmp;*/
+        }
+
         // Final blit
 // TODO, calculate if a flip is needed, apparently even passcount doesn't need it
 //        m_material.MaterialType = shaders->getShader(ES_FLIP);
