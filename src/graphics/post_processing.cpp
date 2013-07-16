@@ -25,7 +25,9 @@
 #include "graphics/irr_driver.hpp"
 #include "graphics/rtts.hpp"
 #include "graphics/shaders.hpp"
+#include "modes/world.hpp"
 #include "race/race_manager.hpp"
+#include "tracks/track.hpp"
 #include "utils/log.hpp"
 
 using namespace video;
@@ -196,57 +198,61 @@ void PostProcessing::render()
 
             drawQuad(cam, m_material);
 
-            // Catch bright areas, and progressively minify
-            m_material.MaterialType = shaders->getShader(ES_BLOOM);
-            m_material.setTexture(0, in);
-            drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
-
-            drawQuad(cam, m_material);
-
-            // To half
-            m_material.MaterialType = EMT_SOLID;
-            m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
-            drv->setRenderTarget(rtts->getRTT(RTT_HALF1), true, false);
-
-            drawQuad(cam, m_material);
-
-            // To quarter
-            m_material.MaterialType = EMT_SOLID;
-            m_material.setTexture(0, rtts->getRTT(RTT_HALF1));
-            drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), true, false);
-
-            drawQuad(cam, m_material);
-
-            // To eighth
-            m_material.MaterialType = EMT_SOLID;
-            m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
-            drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), true, false);
-
-            drawQuad(cam, m_material);
-
-            // Blur it for distribution.
+            if (World::getWorld()->getTrack()->getBloom())
             {
-                gacb->setResolution(UserConfigParams::m_width / 8,
-                                    UserConfigParams::m_height / 8);
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6V);
-                m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
-                drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH2), true, false);
+
+                // Catch bright areas, and progressively minify
+                m_material.MaterialType = shaders->getShader(ES_BLOOM);
+                m_material.setTexture(0, in);
+                drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
 
                 drawQuad(cam, m_material);
 
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6H);
-                m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH2));
-                drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), false, false);
+                // To half
+                m_material.MaterialType = EMT_SOLID;
+                m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
+                drv->setRenderTarget(rtts->getRTT(RTT_HALF1), true, false);
+
+                drawQuad(cam, m_material);
+
+                // To quarter
+                m_material.MaterialType = EMT_SOLID;
+                m_material.setTexture(0, rtts->getRTT(RTT_HALF1));
+                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), true, false);
+
+                drawQuad(cam, m_material);
+
+                // To eighth
+                m_material.MaterialType = EMT_SOLID;
+                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
+                drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), true, false);
+
+                drawQuad(cam, m_material);
+
+                // Blur it for distribution.
+                {
+                    gacb->setResolution(UserConfigParams::m_width / 8,
+                                        UserConfigParams::m_height / 8);
+                    m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6V);
+                    m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
+                    drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH2), true, false);
+
+                    drawQuad(cam, m_material);
+
+                    m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6H);
+                    m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH2));
+                    drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), false, false);
+
+                    drawQuad(cam, m_material);
+                }
+
+                // Additively blend on top of tmp1
+                m_material.MaterialType = EMT_TRANSPARENT_ADD_COLOR;
+                m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
+                drv->setRenderTarget(out, false, false);
 
                 drawQuad(cam, m_material);
             }
-
-            // Additively blend on top of tmp1
-            m_material.MaterialType = EMT_TRANSPARENT_ADD_COLOR;
-            m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
-            drv->setRenderTarget(out, false, false);
-
-            drawQuad(cam, m_material);
 
             in = rtts->getRTT(RTT_TMP1);
             out = rtts->getRTT(RTT_TMP2);
