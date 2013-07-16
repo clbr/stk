@@ -46,13 +46,13 @@ DEFINE_SCREEN_SINGLETON( OptionsScreenVideo );
 
 // Look-up table for GFX levels
 static const bool GFX           [] = {false, true,  true,  true,  true,  true,  true, true};
-static const int  GFX_ANIM_KARTS[] = {0,     0,     1,     2,     2,     2,     2,    2};
-static const bool GFX_WEATHER   [] = {false, false, false, false, true,  true,  true, true};
+static const int  GFX_ANIM_KARTS[] = {0,     1,     2,     2,     2,     2,     2,    2};
+static const bool GFX_WEATHER   [] = {false, false, true,  true,  true,  true,  true, true};
 static const int  GFX_ANTIALIAS [] = {0,     0,     0,     0,     0,     2,     2,    3};
 static const bool GFX_MOTIONBLUR[] =
-                                     {false, false, false, false, false, false, true, true};
-static const bool GFX_PIXEL_SHADERS[] =
                                      {false, false, false, false, true,  true,  true, true};
+static const bool GFX_PIXEL_SHADERS[] =
+                                     {false, false, true,  true,  true,  true,  true, true};
 
 
 static const int  GFX_LEVEL_AMOUNT = 8;
