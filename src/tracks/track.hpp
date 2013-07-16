@@ -365,6 +365,8 @@ private:
     float                   m_minimap_x_scale;
     float                   m_minimap_y_scale;
 
+    bool m_bloom;
+
     /** List of all bezier curves in the track - for e.g. camera, ... */
     std::vector<BezierCurve*> m_all_curves;
 
@@ -555,6 +557,7 @@ public:
 
     const std::vector<Subtitle>& getSubtitles() const { return m_subtitles; }
 
+    bool getBloom() const { return m_bloom; }
 };   // class Track
 
 #endif
