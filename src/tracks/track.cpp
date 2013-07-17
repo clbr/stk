@@ -261,6 +261,7 @@ void Track::cleanup()
 
     irr_driver->clearGlowingNodes();
     irr_driver->clearLights();
+    irr_driver->clearForcedBloom();
 
     if(UserConfigParams::logMemory())
     {
