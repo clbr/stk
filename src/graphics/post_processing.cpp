@@ -208,6 +208,65 @@ void PostProcessing::render()
 
                 drawQuad(cam, m_material);
 
+                // Do we have any forced bloom nodes? If so, draw them now
+                const std::vector<scene::ISceneNode *> &blooms = irr_driver->getForcedBloom();
+                const u32 bloomsize = blooms.size();
+
+                // The forced-bloom objects are drawn again, to know which pixels to pick.
+                // While it's more drawcalls, there's a cost to using four MRTs over three,
+                // and there shouldn't be many such objects in a track.
+                // The stencil is already in use for the glow. The alpha channel is best
+                // reserved for other use (specular, etc).
+                //
+                // They are drawn with depth and color writes off, giving 4x-8x drawing speed.
+                if (bloomsize)
+                {
+                    const core::aabbox3df &cambox = irr_driver->getSceneManager()->
+                                                    getActiveCamera()->getViewFrustum()->
+                                                    getBoundingBox();
+
+                    irr_driver->getSceneManager()->setCurrentRendertime(ESNRP_SOLID);
+                    SOverrideMaterial &overridemat = drv->getOverrideMaterial();
+                    overridemat.EnablePasses = ESNRP_SOLID;
+                    overridemat.EnableFlags = EMF_MATERIAL_TYPE | EMF_ZWRITE_ENABLE | EMF_COLOR_MASK;
+                    overridemat.Enabled = true;
+
+                    overridemat.Material.MaterialType = EMT_SOLID;
+                    overridemat.Material.ZWriteEnable = false;
+                    overridemat.Material.ColorMask = ECP_NONE;
+                    glClear(GL_STENCIL_BUFFER_BIT);
+
+                    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+                    glStencilFunc(GL_ALWAYS, 1, ~0);
+                    glEnable(GL_STENCIL_TEST);
+
+                    for (u32 i = 0; i < bloomsize; i++)
+                    {
+                        scene::ISceneNode * const cur = blooms[i];
+
+                        // Quick box-based culling
+                        const core::aabbox3df nodebox = cur->getTransformedBoundingBox();
+                        if (!nodebox.intersectsWithBox(cambox))
+                            continue;
+
+                        cur->render();
+                    }
+
+                    overridemat.Enabled = 0;
+                    overridemat.EnablePasses = 0;
+
+                    // Ok, we have the stencil; now use it to blit from color to bloom tex
+                    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+                    glStencilFunc(GL_EQUAL, 1, ~0);
+                    m_material.MaterialType = EMT_SOLID;
+                    m_material.setTexture(0, rtts->getRTT(RTT_COLOR));
+                    drv->setRenderTarget(rtts->getRTT(RTT_TMP3), false, false);
+
+                    drawQuad(cam, m_material);
+
+                    glDisable(GL_STENCIL_TEST);
+                }
+
                 // To half
                 m_material.MaterialType = EMT_SOLID;
                 m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
