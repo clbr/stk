@@ -139,6 +139,8 @@ private:
 
     std::vector<LightNode *> m_lights;
 
+    std::vector<scene::ISceneNode *> m_forcedbloom;
+
 #ifdef DEBUG
     /** Used to visualise skeletons. */
     std::vector<irr::scene::IAnimatedMeshSceneNode*> m_debug_meshes;
@@ -293,6 +295,13 @@ public:
     }
     // ------------------------------------------------------------------------
     void clearGlowingNodes() { m_glowing.clear(); }
+    // ------------------------------------------------------------------------
+    void addForcedBloomNode(scene::ISceneNode *n)
+    {
+        m_forcedbloom.push_back(n);
+    }
+    // ------------------------------------------------------------------------
+    void clearForcedBloom() { m_forcedbloom.clear(); }
     // ------------------------------------------------------------------------
     void applyObjectPassShader();
     void applyObjectPassShader(scene::ISceneNode * const node, bool rimlit = false);
