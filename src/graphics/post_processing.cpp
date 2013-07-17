@@ -240,6 +240,8 @@ void PostProcessing::render()
                     glStencilFunc(GL_ALWAYS, 1, ~0);
                     glEnable(GL_STENCIL_TEST);
 
+                    irr_driver->getSceneManager()->drawAll(ESNRP_CAMERA);
+
                     for (u32 i = 0; i < bloomsize; i++)
                     {
                         scene::ISceneNode * const cur = blooms[i];
