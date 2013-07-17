@@ -303,6 +303,8 @@ public:
     // ------------------------------------------------------------------------
     void clearForcedBloom() { m_forcedbloom.clear(); }
     // ------------------------------------------------------------------------
+    const std::vector<scene::ISceneNode *> &getForcedBloom() const { return m_forcedbloom; }
+    // ------------------------------------------------------------------------
     void applyObjectPassShader();
     void applyObjectPassShader(scene::ISceneNode * const node, bool rimlit = false);
     // ------------------------------------------------------------------------
