@@ -221,8 +221,9 @@ void PostProcessing::render()
                 // They are drawn with depth and color writes off, giving 4x-8x drawing speed.
                 if (bloomsize)
                 {
-                    const core::aabbox3df &cambox = irr_driver->getSceneManager()->
-                                                    getActiveCamera()->getViewFrustum()->
+                    const core::aabbox3df &cambox = Camera::getCamera(cam)->
+                                                    getCameraSceneNode()->
+                                                    getViewFrustum()->
                                                     getBoundingBox();
 
                     irr_driver->getSceneManager()->setCurrentRendertime(ESNRP_SOLID);
@@ -240,7 +241,7 @@ void PostProcessing::render()
                     glStencilFunc(GL_ALWAYS, 1, ~0);
                     glEnable(GL_STENCIL_TEST);
 
-                    irr_driver->getSceneManager()->drawAll(ESNRP_CAMERA);
+                    Camera::getCamera(cam)->getCameraSceneNode()->render();
 
                     for (u32 i = 0; i < bloomsize; i++)
                     {
