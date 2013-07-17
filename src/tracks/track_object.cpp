@@ -167,6 +167,12 @@ void TrackObject::init(const XMLNode &xml_node, LODNode* lod_node)
 
             irr_driver->addGlowingNode(glownode, r, g, b);
         }
+
+        bool forcedbloom = false;
+        if (xml_node.get("forcedbloom", &forcedbloom) && forcedbloom && glownode)
+        {
+            irr_driver->addForcedBloomNode(glownode);
+        }
     }
 
 
