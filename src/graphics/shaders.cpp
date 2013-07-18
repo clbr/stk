@@ -55,6 +55,7 @@ Shaders::Shaders()
     m_callbacks[ES_LIGHTBLEND] = new LightBlendProvider();
     m_callbacks[ES_POINTLIGHT] = new PointLightProvider();
     m_callbacks[ES_SUNLIGHT] = new SunLightProvider();
+    m_callbacks[ES_BLOOM] = new BloomProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -106,7 +107,7 @@ Shaders::Shaders()
                                     0, EMT_TRANSPARENT_ADD_COLOR);
 
     m_shaders[ES_BLOOM] = glslmat(std::string(""), dir + "bloom.frag",
-                                    0, EMT_SOLID);
+                                    m_callbacks[ES_BLOOM], EMT_SOLID);
 
     m_shaders[ES_COLORIZE] = glslmat(std::string(""), dir + "colorize.frag",
                                     m_callbacks[ES_COLORIZE], EMT_SOLID);
