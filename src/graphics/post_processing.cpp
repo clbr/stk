@@ -202,6 +202,9 @@ void PostProcessing::render()
 
             if (globalbloom)
             {
+                const float threshold = World::getWorld()->getTrack()->getBloomThreshold();
+                ((BloomProvider *) shaders->m_callbacks[ES_BLOOM])->setThreshold(threshold);
+
                 // Catch bright areas, and progressively minify
                 m_material.MaterialType = shaders->getShader(ES_BLOOM);
                 m_material.setTexture(0, in);
