@@ -198,20 +198,28 @@ void PostProcessing::render()
 
             drawQuad(cam, m_material);
 
-            if (World::getWorld()->getTrack()->getBloom())
-            {
+            const bool globalbloom = World::getWorld()->getTrack()->getBloom();
 
+            if (globalbloom)
+            {
                 // Catch bright areas, and progressively minify
                 m_material.MaterialType = shaders->getShader(ES_BLOOM);
                 m_material.setTexture(0, in);
                 drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
 
                 drawQuad(cam, m_material);
+            }
 
-                // Do we have any forced bloom nodes? If so, draw them now
-                const std::vector<scene::ISceneNode *> &blooms = irr_driver->getForcedBloom();
-                const u32 bloomsize = blooms.size();
+            // Do we have any forced bloom nodes? If so, draw them now
+            const std::vector<scene::ISceneNode *> &blooms = irr_driver->getForcedBloom();
+            const u32 bloomsize = blooms.size();
 
+            if (!globalbloom && bloomsize)
+                drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
+
+
+            if (globalbloom || bloomsize)
+            {
                 // The forced-bloom objects are drawn again, to know which pixels to pick.
                 // While it's more drawcalls, there's a cost to using four MRTs over three,
                 // and there shouldn't be many such objects in a track.
@@ -280,7 +288,7 @@ void PostProcessing::render()
                     drv->setRenderTarget(rtts->getRTT(RTT_TMP3), false, false);
 
                     drawQuad(cam, m_material);
-                }
+                } // end forced bloom
 
                 // To half
                 m_material.MaterialType = EMT_SOLID;
@@ -326,7 +334,7 @@ void PostProcessing::render()
                 drv->setRenderTarget(out, false, false);
 
                 drawQuad(cam, m_material);
-            }
+            } // end if bloom
 
             in = rtts->getRTT(RTT_TMP1);
             out = rtts->getRTT(RTT_TMP2);
