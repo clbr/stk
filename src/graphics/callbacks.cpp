@@ -324,3 +324,8 @@ void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+void BloomProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    srv->setVertexShaderConstant("low", &m_threshold, 1);
+}
