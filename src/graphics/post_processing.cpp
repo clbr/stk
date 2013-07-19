@@ -390,17 +390,34 @@ void PostProcessing::render()
             out = tmp;*/
         }
 
-        if (UserConfigParams::m_mlaa) // MLAA
+        if (UserConfigParams::m_mlaa) // MLAA. Must be the last pp filter.
         {
-/*            m_material.MaterialType = shaders->getShader(ES_MLAA);
+            drv->setRenderTarget(out, false, false);
+
+            glEnable(GL_STENCIL_TEST);
+            glClearColor(0.0, 0.0, 0.0, 1.0);
+            glClear(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+            glStencilFunc(GL_ALWAYS, 1, ~0);
+            glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+
+            // Pass 1: color edge detection
+            m_material.setFlag(EMF_BILINEAR_FILTER, false);
+            m_material.MaterialType = shaders->getShader(ES_MLAA_COLOR1);
             m_material.setTexture(0, in);
-            drv->setRenderTarget(out, true, false);
 
             drawQuad(cam, m_material);
+            m_material.setFlag(EMF_BILINEAR_FILTER, true);
 
+            glStencilFunc(GL_EQUAL, 1, ~0);
+            glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+
+            // Pass 2: blend weights
+            // Pass 3: gather
+            // Done.
+            glDisable(GL_STENCIL_TEST);
             ITexture *tmp = in;
             in = out;
-            out = tmp;*/
+            out = tmp;
         }
 
         // Final blit
