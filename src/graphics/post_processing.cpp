@@ -23,6 +23,7 @@
 #include "graphics/callbacks.hpp"
 #include "graphics/glwrap.hpp"
 #include "graphics/irr_driver.hpp"
+#include "graphics/mlaa_areamap.hpp"
 #include "graphics/rtts.hpp"
 #include "graphics/shaders.hpp"
 #include "modes/world.hpp"
@@ -42,6 +43,15 @@ PostProcessing::PostProcessing(IVideoDriver* video_driver)
     m_material.ZBuffer = ECFN_ALWAYS;
     m_material.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
     m_material.setFlag(EMF_TRILINEAR_FILTER, true);
+
+    // Load the MLAA area map
+    io::IReadFile *areamap = irr_driver->getDevice()->getFileSystem()->
+                         createMemoryReadFile((void *) AreaMap33, sizeof(AreaMap33),
+                         "AreaMap33", false);
+    if (!areamap) Log::fatal("postprocessing", "Failed to load the areamap");
+    m_areamap = irr_driver->getVideoDriver()->getTexture(areamap);
+    areamap->drop();
+
 }   // PostProcessing
 
 // ----------------------------------------------------------------------------
