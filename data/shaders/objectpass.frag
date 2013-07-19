@@ -1,7 +1,10 @@
 varying vec3 nor;
+
 uniform sampler2D tex;
+uniform sampler2D lighttex;
 uniform float far;
 uniform int hastex;
+uniform int haslightmap;
 
 const float near = 1.0;
 
@@ -19,8 +22,14 @@ void main() {
 	// Tune for better inside range without losing outdoors
 	linear_z *= 10.0;
 
+	vec4 light = vec4(1.0);
+
+	if (haslightmap != 0) {
+		light = texture2D(lighttex, gl_TexCoord[1].xy);
+	}
+
 	if (hastex != 0)
-		gl_FragData[0] = texture2D(tex, gl_TexCoord[0].xy);
+		gl_FragData[0] = texture2D(tex, gl_TexCoord[0].xy) * light;
 	else
 		gl_FragData[0] = gl_Color;
 
