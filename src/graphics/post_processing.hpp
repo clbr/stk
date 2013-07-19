@@ -58,6 +58,8 @@ private:
      *  the vertex position, normal, and texture coordinate. */
     std::vector<Quad> m_vertices;
 
+    video::ITexture *m_areamap;
+
 public:
                  PostProcessing(video::IVideoDriver* video_driver);
     virtual     ~PostProcessing();
