@@ -446,4 +446,28 @@ private:
     float m_threshold;
 };
 
+//
+
+class MLAAColor1Provider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
+//
+
+class MLAABlend2Provider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
+//
+
+class MLAANeigh3Provider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif

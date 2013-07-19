@@ -56,6 +56,9 @@ Shaders::Shaders()
     m_callbacks[ES_POINTLIGHT] = new PointLightProvider();
     m_callbacks[ES_SUNLIGHT] = new SunLightProvider();
     m_callbacks[ES_BLOOM] = new BloomProvider();
+    m_callbacks[ES_MLAA_COLOR1] = new MLAAColor1Provider();
+    m_callbacks[ES_MLAA_BLEND2] = new MLAABlend2Provider();
+    m_callbacks[ES_MLAA_NEIGH3] = new MLAANeigh3Provider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -135,6 +138,14 @@ Shaders::Shaders()
 
     m_shaders[ES_SUNLIGHT] = glslmat(std::string(""), dir + "sunlight.frag",
                                     m_callbacks[ES_SUNLIGHT], EMT_ONETEXTURE_BLEND);
+
+    m_shaders[ES_MLAA_COLOR1] = glsl(dir + "mlaa_offset.vert", dir + "mlaa_color1.frag",
+                                    m_callbacks[ES_MLAA_COLOR1]);
+    m_shaders[ES_MLAA_BLEND2] = glsl(dir + "pass.vert", dir + "mlaa_blend2.frag",
+                                    m_callbacks[ES_MLAA_BLEND2]);
+    m_shaders[ES_MLAA_NEIGH3] = glsl(dir + "mlaa_offset.vert", dir + "mlaa_neigh3.frag",
+                                    m_callbacks[ES_MLAA_NEIGH3]);
+
 
 
     // Check that all successfully loaded
