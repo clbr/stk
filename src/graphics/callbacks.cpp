@@ -341,3 +341,36 @@ void BloomProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("low", &m_threshold, 1);
 }
+
+void MLAAColor1Provider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("ntex", &tex, 1);
+
+        firstdone = true;
+    }
+}
+
+void MLAABlend2Provider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("ntex", &tex, 1);
+
+        firstdone = true;
+    }
+}
+
+void MLAANeigh3Provider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("ntex", &tex, 1);
+
+        firstdone = true;
+    }
+}
