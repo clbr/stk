@@ -412,6 +412,20 @@ void PostProcessing::render()
             glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 
             // Pass 2: blend weights
+            drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
+
+            m_material.MaterialType = shaders->getShader(ES_MLAA_BLEND2);
+            m_material.setTexture(0, out);
+            m_material.setTexture(1, out);
+            m_material.setTexture(2, m_areamap);
+            m_material.TextureLayer[2].BilinearFilter = false;
+
+            drawQuad(cam, m_material);
+
+            m_material.TextureLayer[2].BilinearFilter = true;
+            m_material.setTexture(1, 0);
+            m_material.setTexture(2, 0);
+
             // Pass 3: gather
             // Done.
             glDisable(GL_STENCIL_TEST);
