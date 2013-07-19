@@ -341,3 +341,63 @@ void BloomProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("low", &m_threshold, 1);
 }
+
+void MLAAColor1Provider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        const float pixels[2] = {
+            1.0f / UserConfigParams::m_width,
+            1.0f / UserConfigParams::m_height
+        };
+
+        srv->setPixelShaderConstant("PIXEL_SIZE", pixels, 2);
+
+        firstdone = true;
+    }
+}
+
+void MLAABlend2Provider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        const float pixels[2] = {
+            1.0f / UserConfigParams::m_width,
+            1.0f / UserConfigParams::m_height
+        };
+
+        srv->setPixelShaderConstant("PIXEL_SIZE", pixels, 2);
+
+
+        int tex = 0;
+        srv->setPixelShaderConstant("edgesMap", &tex, 1);
+
+        tex = 1;
+        srv->setPixelShaderConstant("areaMap", &tex, 1);
+
+
+        firstdone = true;
+    }
+}
+
+void MLAANeigh3Provider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        const float pixels[2] = {
+            1.0f / UserConfigParams::m_width,
+            1.0f / UserConfigParams::m_height
+        };
+
+        srv->setPixelShaderConstant("PIXEL_SIZE", pixels, 2);
+
+
+        int tex = 0;
+        srv->setPixelShaderConstant("blendMap", &tex, 1);
+
+        tex = 1;
+        srv->setPixelShaderConstant("colorMap", &tex, 1);
+
+        firstdone = true;
+    }
+}

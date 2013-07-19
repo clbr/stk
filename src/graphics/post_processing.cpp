@@ -23,6 +23,7 @@
 #include "graphics/callbacks.hpp"
 #include "graphics/glwrap.hpp"
 #include "graphics/irr_driver.hpp"
+#include "graphics/mlaa_areamap.hpp"
 #include "graphics/rtts.hpp"
 #include "graphics/shaders.hpp"
 #include "modes/world.hpp"
@@ -42,6 +43,15 @@ PostProcessing::PostProcessing(IVideoDriver* video_driver)
     m_material.ZBuffer = ECFN_ALWAYS;
     m_material.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
     m_material.setFlag(EMF_TRILINEAR_FILTER, true);
+
+    // Load the MLAA area map
+    io::IReadFile *areamap = irr_driver->getDevice()->getFileSystem()->
+                         createMemoryReadFile((void *) AreaMap33, sizeof(AreaMap33),
+                         "AreaMap33", false);
+    if (!areamap) Log::fatal("postprocessing", "Failed to load the areamap");
+    m_areamap = irr_driver->getVideoDriver()->getTexture(areamap);
+    areamap->drop();
+
 }   // PostProcessing
 
 // ----------------------------------------------------------------------------
@@ -380,17 +390,61 @@ void PostProcessing::render()
             out = tmp;*/
         }
 
-        if (UserConfigParams::m_mlaa) // MLAA
+        if (UserConfigParams::m_mlaa) // MLAA. Must be the last pp filter.
         {
-/*            m_material.MaterialType = shaders->getShader(ES_MLAA);
+            drv->setRenderTarget(out, false, false);
+
+            glEnable(GL_STENCIL_TEST);
+            glClearColor(0.0, 0.0, 0.0, 1.0);
+            glClear(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+            glStencilFunc(GL_ALWAYS, 1, ~0);
+            glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+
+            // Pass 1: color edge detection
+            m_material.setFlag(EMF_BILINEAR_FILTER, false);
+            m_material.setFlag(EMF_TRILINEAR_FILTER, false);
+            m_material.MaterialType = shaders->getShader(ES_MLAA_COLOR1);
             m_material.setTexture(0, in);
-            drv->setRenderTarget(out, true, false);
+
+            drawQuad(cam, m_material);
+            m_material.setFlag(EMF_BILINEAR_FILTER, true);
+            m_material.setFlag(EMF_TRILINEAR_FILTER, true);
+
+            glStencilFunc(GL_EQUAL, 1, ~0);
+            glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+
+            // Pass 2: blend weights
+            drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
+
+            m_material.MaterialType = shaders->getShader(ES_MLAA_BLEND2);
+            m_material.setTexture(0, out);
+            m_material.setTexture(1, m_areamap);
+            m_material.TextureLayer[1].BilinearFilter = false;
+            m_material.TextureLayer[1].TrilinearFilter = false;
 
             drawQuad(cam, m_material);
 
-            ITexture *tmp = in;
-            in = out;
-            out = tmp;*/
+            m_material.TextureLayer[1].BilinearFilter = true;
+            m_material.TextureLayer[1].TrilinearFilter = true;
+            m_material.setTexture(1, 0);
+
+            // Pass 3: gather
+            drv->setRenderTarget(in, false, false);
+
+            m_material.setFlag(EMF_BILINEAR_FILTER, false);
+            m_material.setFlag(EMF_TRILINEAR_FILTER, false);
+            m_material.MaterialType = shaders->getShader(ES_MLAA_NEIGH3);
+            m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
+            m_material.setTexture(1, rtts->getRTT(RTT_COLOR));
+
+            drawQuad(cam, m_material);
+
+            m_material.setFlag(EMF_BILINEAR_FILTER, true);
+            m_material.setFlag(EMF_TRILINEAR_FILTER, true);
+            m_material.setTexture(1, 0);
+
+            // Done.
+            glDisable(GL_STENCIL_TEST);
         }
 
         // Final blit
