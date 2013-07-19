@@ -427,11 +427,20 @@ void PostProcessing::render()
             m_material.setTexture(2, 0);
 
             // Pass 3: gather
+            drv->setRenderTarget(in, false, false);
+
+            m_material.setFlag(EMF_BILINEAR_FILTER, false);
+            m_material.MaterialType = shaders->getShader(ES_MLAA_NEIGH3);
+            m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
+            m_material.setTexture(1, rtts->getRTT(RTT_COLOR));
+
+            drawQuad(cam, m_material);
+
+            m_material.setFlag(EMF_BILINEAR_FILTER, true);
+            m_material.setTexture(1, 0);
+
             // Done.
             glDisable(GL_STENCIL_TEST);
-            ITexture *tmp = in;
-            in = out;
-            out = tmp;
         }
 
         // Final blit
