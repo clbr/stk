@@ -421,10 +421,12 @@ void PostProcessing::render()
             m_material.setTexture(1, out);
             m_material.setTexture(2, m_areamap);
             m_material.TextureLayer[2].BilinearFilter = false;
+            m_material.TextureLayer[2].TrilinearFilter = false;
 
             drawQuad(cam, m_material);
 
             m_material.TextureLayer[2].BilinearFilter = true;
+            m_material.TextureLayer[2].TrilinearFilter = true;
             m_material.setTexture(1, 0);
             m_material.setTexture(2, 0);
 
