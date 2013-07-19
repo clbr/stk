@@ -141,7 +141,7 @@ Shaders::Shaders()
 
     m_shaders[ES_MLAA_COLOR1] = glsl(dir + "mlaa_offset.vert", dir + "mlaa_color1.frag",
                                     m_callbacks[ES_MLAA_COLOR1]);
-    m_shaders[ES_MLAA_BLEND2] = glsl(std::string(""), dir + "mlaa_blend2.frag",
+    m_shaders[ES_MLAA_BLEND2] = glsl(dir + "pass.vert", dir + "mlaa_blend2.frag",
                                     m_callbacks[ES_MLAA_BLEND2]);
     m_shaders[ES_MLAA_NEIGH3] = glsl(dir + "mlaa_offset.vert", dir + "mlaa_neigh3.frag",
                                     m_callbacks[ES_MLAA_NEIGH3]);
