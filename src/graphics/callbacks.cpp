@@ -275,6 +275,18 @@ void ObjectPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
     const int hastex = mat.TextureLayer[0].Texture != NULL;
     srv->setVertexShaderConstant("hastex", &hastex, 1);
+
+    const int haslightmap = mat.TextureLayer[1].Texture != NULL;
+    srv->setVertexShaderConstant("haslightmap", &haslightmap, 1);
+
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("tex", &tex, 1);
+
+        tex = 1;
+        srv->setVertexShaderConstant("lighttex", &tex, 1);
+    }
 }
 
 void LightBlendProvider::OnSetConstants(IMaterialRendererServices *srv, int)
