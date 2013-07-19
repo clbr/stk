@@ -3,7 +3,6 @@
 
 #extension GL_ARB_shader_texture_lod: enable
 
-uniform sampler2D edgesMapL;
 uniform sampler2D edgesMap;
 uniform sampler2D areaMap;
 
@@ -23,7 +22,7 @@ float SearchXLeft(vec2 texcoord) {
 	float i;
 	float e = 0.0;
 	for (i = -1.5; i > -2.0 * MAX_SEARCH_STEPS; i -= 2.0) {
-		e = tex2Doffset(edgesMapL, texcoord, vec2(i, 0.0)).g;
+		e = tex2Doffset(edgesMap, texcoord, vec2(i, 0.0)).g;
 		if (e < 0.9) break;
 	}
 	return max(i + 1.5 - 2.0 * e, -2.0 * MAX_SEARCH_STEPS);
@@ -33,7 +32,7 @@ float SearchXRight(vec2 texcoord) {
 	float i;
 	float e = 0.0;
 	for (i = 1.5; i < 2.0 * MAX_SEARCH_STEPS; i += 2.0) {
-		e = tex2Doffset(edgesMapL, texcoord, vec2(i, 0.0)).g;
+		e = tex2Doffset(edgesMap, texcoord, vec2(i, 0.0)).g;
 		if (e < 0.9) break;
 	}
 	return min(i - 1.5 + 2.0 * e, 2.0 * MAX_SEARCH_STEPS);
@@ -43,7 +42,7 @@ float SearchYDown(vec2 texcoord) {
 	float i;
 	float e = 0.0;
 	for (i = -1.5; i > -2.0 * MAX_SEARCH_STEPS; i -= 2.0) {
-		e = tex2Doffset(edgesMapL, texcoord, vec2(i, 0.0).yx).r;
+		e = tex2Doffset(edgesMap, texcoord, vec2(i, 0.0).yx).r;
 		if (e < 0.9) break;
 	}
 	return max(i + 1.5 - 2.0 * e, -2.0 * MAX_SEARCH_STEPS);
@@ -53,7 +52,7 @@ float SearchYUp(vec2 texcoord) {
 	float i;
 	float e = 0.0;
 	for (i = 1.5; i < 2.0 * MAX_SEARCH_STEPS; i += 2.0) {
-		e = tex2Doffset(edgesMapL, texcoord, vec2(i, 0.0).yx).r;
+		e = tex2Doffset(edgesMap, texcoord, vec2(i, 0.0).yx).r;
 		if (e < 0.9) break;
 	}
 	return min(i - 1.5 + 2.0 * e, 2.0 * MAX_SEARCH_STEPS);
@@ -87,8 +86,8 @@ void main() {
 		// Now fetch the crossing edges. Instead of sampling between edgels, we
 		// sample at 0.25, to be able to discern what value has each edgel:
 		vec4 coords = vec4(d.x, 0.25, d.y + 1.0, 0.25) * PIXEL_SIZE.xyxy + gl_TexCoord[0].xyxy;
-		float e1 = texture2DLod(edgesMapL, coords.xy, 0.0).r;
-		float e2 = texture2DLod(edgesMapL, coords.zw, 0.0).r;
+		float e1 = texture2DLod(edgesMap, coords.xy, 0.0).r;
+		float e2 = texture2DLod(edgesMap, coords.zw, 0.0).r;
 
 		// Ok, we know how this pattern looks like, now it is time for getting
 		// the actual area:
@@ -102,8 +101,8 @@ void main() {
 
 		// Now fetch the crossing edges (yet again):
 		vec4 coords = vec4(-0.25, d.x, -0.25, d.y - 1.0) * PIXEL_SIZE.xyxy + gl_TexCoord[0].xyxy;
-		float e1 = texture2DLod(edgesMapL, coords.xy, 0.0).g;
-		float e2 = texture2DLod(edgesMapL, coords.zw, 0.0).g;
+		float e1 = texture2DLod(edgesMap, coords.xy, 0.0).g;
+		float e2 = texture2DLod(edgesMap, coords.zw, 0.0).g;
 
 		// Get the area for this direction:
 		areas.ba = Area(abs(d), e1, e2);

@@ -370,12 +370,9 @@ void MLAABlend2Provider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 
         int tex = 0;
-        srv->setPixelShaderConstant("edgesMapL", &tex, 1);
-
-        tex = 1;
         srv->setPixelShaderConstant("edgesMap", &tex, 1);
 
-        tex = 2;
+        tex = 1;
         srv->setPixelShaderConstant("areaMap", &tex, 1);
 
 
