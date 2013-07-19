@@ -402,11 +402,13 @@ void PostProcessing::render()
 
             // Pass 1: color edge detection
             m_material.setFlag(EMF_BILINEAR_FILTER, false);
+            m_material.setFlag(EMF_TRILINEAR_FILTER, false);
             m_material.MaterialType = shaders->getShader(ES_MLAA_COLOR1);
             m_material.setTexture(0, in);
 
             drawQuad(cam, m_material);
             m_material.setFlag(EMF_BILINEAR_FILTER, true);
+            m_material.setFlag(EMF_TRILINEAR_FILTER, true);
 
             glStencilFunc(GL_EQUAL, 1, ~0);
             glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
@@ -430,6 +432,7 @@ void PostProcessing::render()
             drv->setRenderTarget(in, false, false);
 
             m_material.setFlag(EMF_BILINEAR_FILTER, false);
+            m_material.setFlag(EMF_TRILINEAR_FILTER, false);
             m_material.MaterialType = shaders->getShader(ES_MLAA_NEIGH3);
             m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
             m_material.setTexture(1, rtts->getRTT(RTT_COLOR));
@@ -437,6 +440,7 @@ void PostProcessing::render()
             drawQuad(cam, m_material);
 
             m_material.setFlag(EMF_BILINEAR_FILTER, true);
+            m_material.setFlag(EMF_TRILINEAR_FILTER, true);
             m_material.setTexture(1, 0);
 
             // Done.
