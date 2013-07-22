@@ -118,8 +118,8 @@ void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int use
 
 void SplattingProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
-    const float far = irr_driver->getSceneManager()->getActiveCamera()->getFarValue();
-    srv->setVertexShaderConstant("far", &far, 1);
+    const float camfar = irr_driver->getSceneManager()->getActiveCamera()->getFarValue();
+    srv->setVertexShaderConstant("far", &camfar, 1);
 
     // The normal is transformed by the inverse transposed world matrix
     // because we want world-space normals
@@ -262,8 +262,8 @@ void GlowProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void ObjectPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
-    const float far = irr_driver->getSceneManager()->getActiveCamera()->getFarValue();
-    srv->setVertexShaderConstant("far", &far, 1);
+    const float camfar = irr_driver->getSceneManager()->getActiveCamera()->getFarValue();
+    srv->setVertexShaderConstant("far", &camfar, 1);
 
     // The normal is transformed by the inverse transposed world matrix
     // because we want world-space normals
