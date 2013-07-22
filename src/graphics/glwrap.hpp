@@ -7,6 +7,8 @@
 #  include <OpenGL/gl.h>
 #else
 
+#define GL_GLEXT_PROTOTYPES 1
+
 #  ifdef ANDROID
 #    include <GLES/gl.h>
 #  else
@@ -19,6 +21,8 @@
 // Windows has intentionally handicapped GL support. Not going to declare individual
 // tokens here, better include the glext.h already shipped in the project.
 #    include "../../lib/irrlicht/source/Irrlicht/glext.h"
+#  else
+#    include <GL/glext.h>
 #  endif
 #endif
 

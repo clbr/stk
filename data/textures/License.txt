@@ -115,6 +115,9 @@ Under Creative Commons Attribution Share-Alike (CC-BY-SA) - http://creativecommo
 
 * zipper particles, skid particles, astro_turf
     by TotoPlus62
+
+* lens flare
+    by tbw
     
 ===
 GPL

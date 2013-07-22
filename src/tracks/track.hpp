@@ -370,6 +370,8 @@ private:
     bool m_bloom;
     float m_bloom_threshold;
 
+    bool m_lensflare;
+
     /** List of all bezier curves in the track - for e.g. camera, ... */
     std::vector<BezierCurve*> m_all_curves;
 
@@ -564,6 +566,8 @@ public:
 
     bool getBloom() const { return m_bloom; }
     float getBloomThreshold() const { return m_bloom_threshold; }
+
+    bool hasLensFlare() const { return m_lensflare; }
 };   // class Track
 
 #endif
