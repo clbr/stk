@@ -448,8 +448,6 @@ void PostProcessing::render()
         }
 
         // Final blit
-// TODO, calculate if a flip is needed, apparently even passcount doesn't need it
-//        m_material.MaterialType = shaders->getShader(ES_FLIP);
 
         if (irr_driver->getNormals())
         {
@@ -457,7 +455,7 @@ void PostProcessing::render()
             m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
         } else
         {
-            m_material.MaterialType = EMT_SOLID;
+            m_material.MaterialType = shaders->getShader(ES_FLIP);
             m_material.setTexture(0, in);
         }
 
