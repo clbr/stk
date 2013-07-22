@@ -282,25 +282,16 @@ void PostProcessing::render()
                     // Ok, we have the stencil; now use it to blit from color to bloom tex
                     glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
                     glStencilFunc(GL_EQUAL, 1, ~0);
-                    m_material.MaterialType = shaders->getShader(ES_FLIP);
+                    m_material.MaterialType = EMT_SOLID;
                     m_material.setTexture(0, rtts->getRTT(RTT_COLOR));
 
-                    // For the clear
-                    glDisable(GL_STENCIL_TEST);
+                    // Just in case.
                     glColorMask(1, 1, 1, 1);
-                    drv->setRenderTarget(rtts->getRTT(RTT_TMP2), true, false);
-                    glEnable(GL_STENCIL_TEST);
-
-                    drawQuad(cam, m_material);
-
-                    glDisable(GL_STENCIL_TEST);
-
-                    // This flip move courtesy of irrlicht.
-                    m_material.MaterialType = EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
-                    m_material.setTexture(0, rtts->getRTT(RTT_TMP2));
                     drv->setRenderTarget(rtts->getRTT(RTT_TMP3), false, false);
 
                     drawQuad(cam, m_material);
+
+                    glDisable(GL_STENCIL_TEST);
                 } // end forced bloom
 
                 // To half
