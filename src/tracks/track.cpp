@@ -115,6 +115,7 @@ Track::Track(const std::string &filename)
     m_bloom                 = true;
     m_bloom_threshold       = 0.75f;
     m_clouds                = false;
+    m_lensflare             = false;
     m_sky_particles         = NULL;
     m_sky_dx                = 0.05f;
     m_sky_dy                = 0.0f;
@@ -356,7 +357,8 @@ void Track::loadTrackInfo()
     root->get("push-back",             &m_enable_push_back);
     root->get("clouds",                &m_clouds);
     root->get("bloom",                 &m_bloom);
-    root->get("bloom-threshold",        &m_bloom_threshold);
+    root->get("bloom-threshold",       &m_bloom_threshold);
+    root->get("lens-flare",            &m_lensflare);
 
     // Make the default for auto-rescue in battle mode and soccer mode to be false
     if(m_is_arena || m_is_soccer)
@@ -1713,6 +1715,11 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
     irr_driver->getSceneManager()->setAmbientLight(m_ambient_color);
 
     // ---- Create sun (non-ambient directional light)
+    if (m_sun_position.getLengthSQ() < 0.03f)
+    {
+        m_sun_position = core::vector3df(500, 250, 250);
+    }
+
     const video::SColorf tmpf(m_sun_diffuse_color);
     m_sun = irr_driver->addLight(m_sun_position, 10000.0f, tmpf.r, tmpf.g, tmpf.b, true);
 
@@ -1731,10 +1738,6 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
             m_sun->setRotation((-m_sun_position).getHorizontalAngle());
 
         sun->getLightData().SpecularColor = m_sun_specular_color;
-    } else if (m_sun_position.getLengthSQ() < 0.03f)
-    {
-        m_sun->setPosition(core::vector3df(500, 250, 250));
-        m_sun->updateAbsolutePosition();
     }
 
 

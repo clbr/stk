@@ -23,6 +23,7 @@
 #include "graphics/camera.hpp"
 #include "graphics/glow.hpp"
 #include "graphics/glwrap.hpp"
+#include "graphics/lens_flare.hpp"
 #include "graphics/light.hpp"
 #include "graphics/lod_node.hpp"
 #include "graphics/material_manager.hpp"
@@ -37,6 +38,7 @@
 #include "items/item_manager.hpp"
 #include "modes/world.hpp"
 #include "physics/physics.hpp"
+#include "tracks/track.hpp"
 #include "utils/constants.hpp"
 #include "utils/log.hpp"
 #include "utils/profiler.hpp"
@@ -325,6 +327,26 @@ void IrrDriver::renderGLSL(float dt)
 
         m_renderpass = scene::ESNRP_SKY_BOX;
         m_scene_manager->drawAll(m_renderpass);
+
+        // Is the lens flare enabled & visible? Check last frame's query.
+        if (World::getWorld()->getTrack()->hasLensFlare())
+        {
+            GLuint res;
+            glGetQueryObjectuiv(m_lensflare_query, GL_QUERY_RESULT, &res);
+
+            // Prepare the query for the next frame.
+            glBeginQuery(GL_SAMPLES_PASSED_ARB, m_lensflare_query);
+            m_scene_manager->setCurrentRendertime(scene::ESNRP_SOLID);
+            m_scene_manager->drawAll(scene::ESNRP_CAMERA);
+            m_sun_interposer->render();
+            glEndQuery(GL_SAMPLES_PASSED_ARB);
+
+            m_lensflare->setStrength(res / 4000.0f);
+            m_lensflare->OnRegisterSceneNode();
+
+            // Make sure the color mask is reset
+            glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+        }
 
         // We need to re-render camera due to the per-cam-node hack.
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
