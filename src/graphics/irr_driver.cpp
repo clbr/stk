@@ -20,7 +20,9 @@
 
 #include "config/user_config.hpp"
 #include "graphics/camera.hpp"
+#include "graphics/glwrap.hpp"
 #include "graphics/hardware_skinning.hpp"
+#include "graphics/lens_flare.hpp"
 #include "graphics/light.hpp"
 #include "graphics/material_manager.hpp"
 #include "graphics/particle_kind_manager.hpp"
@@ -416,6 +418,28 @@ void IrrDriver::initDevice()
         m_mrt.push_back(m_rtts->getRTT(RTT_COLOR));
         m_mrt.push_back(m_rtts->getRTT(RTT_NORMAL));
         m_mrt.push_back(m_rtts->getRTT(RTT_DEPTH));
+
+        // todo: work-around windows
+        glGenQueries(1, &m_lensflare_query);
+
+        scene::IMesh * const sphere = m_scene_manager->getGeometryCreator()->createSphereMesh(1, 16, 16);
+        m_sun_interposer = m_scene_manager->addMeshSceneNode(sphere);
+        m_sun_interposer->grab();
+        m_sun_interposer->setParent(NULL);
+        m_sun_interposer->setScale(core::vector3df(20));
+
+        m_sun_interposer->getMaterial(0).Lighting = false;
+        m_sun_interposer->getMaterial(0).ColorMask = video::ECP_NONE;
+        m_sun_interposer->getMaterial(0).ZWriteEnable = false;
+
+        sphere->drop();
+
+        m_lensflare = new scene::CLensFlareSceneNode(NULL, m_scene_manager, -1);
+        video::ITexture * const tex =
+            m_video_driver->getTexture((file_manager->getTextureDir() + "lensflare.png").c_str());
+        if (!tex) Log::fatal("irr_driver", "Cannot find lens flare texture");
+        m_lensflare->setMaterialTexture(0, tex);
+        m_lensflare->setAutomaticCulling(scene::EAC_OFF);
     }
     else
     {
@@ -2005,6 +2029,13 @@ scene::ISceneNode *IrrDriver::addLight(const core::vector3df &pos, float radius,
         light->updateAbsolutePosition();
 
         m_lights.push_back(light);
+
+        if (sun) {
+            m_sun_interposer->setPosition(pos);
+            m_sun_interposer->updateAbsolutePosition();
+            m_lensflare->setPosition(pos);
+            m_lensflare->updateAbsolutePosition();
+        }
 
         return light;
     } else
