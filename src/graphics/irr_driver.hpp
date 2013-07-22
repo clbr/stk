@@ -39,7 +39,8 @@
 namespace irr
 {
     namespace scene { class ISceneManager; class IMesh; class IAnimatedMeshSceneNode; class IAnimatedMesh;
-        class IMeshSceneNode; class IParticleSystemSceneNode; class ICameraSceneNode; class ILightSceneNode; }
+        class IMeshSceneNode; class IParticleSystemSceneNode; class ICameraSceneNode; class ILightSceneNode;
+        class CLensFlareSceneNode; }
     namespace gui   { class IGUIEnvironment; class IGUIFont; }
 }
 using namespace irr;
@@ -130,6 +131,9 @@ private:
     bool                 m_normals;
     bool                 m_ssaoviz;
     u32                  m_renderpass;
+    u32                  m_lensflare_query;
+    scene::IMeshSceneNode *m_sun_interposer;
+    scene::CLensFlareSceneNode *m_lensflare;
 
     struct glowdata_t {
         scene::ISceneNode * node;
