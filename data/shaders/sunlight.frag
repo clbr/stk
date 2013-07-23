@@ -1,9 +1,13 @@
 uniform sampler2D ntex;
 uniform sampler2D dtex;
+uniform sampler2D cloudtex;
 
 uniform vec3 center;
 uniform vec3 col;
 uniform vec2 screen;
+uniform mat4 invprojview;
+uniform int hasclouds;
+uniform vec2 wind;
 
 float decdepth(vec4 rgba) {
 	return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0));
@@ -25,5 +29,23 @@ void main() {
 	float NdotL = max(0.0, dot(norm, L));
 	if (NdotL < 0.01) discard;
 
-	gl_FragColor = vec4(NdotL * col, 1.0);
+	vec3 outcol = NdotL * col;
+
+	if (hasclouds == 1)
+	{
+		vec3 tmp = vec3(texc, z);
+		tmp = tmp * 2.0 - 1.0;
+
+		vec4 xpos = vec4(tmp, 1.0);
+		xpos = invprojview * xpos;
+		xpos.xyz /= xpos.w;
+
+		vec2 cloudcoord = (xpos.xz * 0.00833333) + wind;
+		float cloud = texture2D(cloudtex, cloudcoord).x;
+		//float cloud = step(0.5, cloudcoord.x) * step(0.5, cloudcoord.y);
+
+		outcol *= cloud;
+	}
+
+	gl_FragColor = vec4(outcol, 1.0);
 }

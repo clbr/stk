@@ -262,6 +262,9 @@ void IrrDriver::renderGLSL(float dt)
         PointLightProvider * const pcb = (PointLightProvider *) irr_driver->getShaders()->
                                             m_callbacks[ES_POINTLIGHT];
         pcb->updateIPVMatrix();
+        SunLightProvider * const scb = (SunLightProvider *) irr_driver->getShaders()->
+                                            m_callbacks[ES_SUNLIGHT];
+        scb->updateIPVMatrix();
 
         const u32 lightcount = m_lights.size();
         for (i = 0; i < lightcount; i++)

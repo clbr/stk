@@ -407,6 +407,8 @@ public:
     {
         m_screen[0] = UserConfigParams::m_width;
         m_screen[1] = UserConfigParams::m_height;
+
+        m_wind[0] = m_wind[1] = 0;
     }
 
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -425,10 +427,22 @@ public:
         m_pos[2] = z;
     }
 
+    void updateIPVMatrix()
+    {
+        // Update the IPV matrix, only once per frame since it's costly
+        const video::IVideoDriver * const drv = irr_driver->getVideoDriver();
+
+        m_invprojview = drv->getTransform(video::ETS_PROJECTION);
+        m_invprojview *= drv->getTransform(video::ETS_VIEW);
+        m_invprojview.makeInverse();
+    }
+
 private:
+    core::matrix4 m_invprojview;
     float m_color[3];
     float m_pos[3];
     float m_screen[2];
+    float m_wind[2];
 };
 
 //
