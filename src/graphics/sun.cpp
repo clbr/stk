@@ -26,6 +26,7 @@
 #include "graphics/rtts.hpp"
 #include "graphics/screenquad.hpp"
 #include "graphics/shaders.hpp"
+#include "io/file_manager.hpp"
 
 using namespace video;
 using namespace scene;
@@ -42,10 +43,15 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
     m.MaterialType = irr_driver->getShaders()->getShader(ES_SUNLIGHT);
     m.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_NORMAL));
     m.setTexture(1, irr_driver->getRTTs()->getRTT(RTT_DEPTH));
+    m.setTexture(2, irr_driver->getTexture((file_manager->getTextureDir() + "cloudshadow.png").c_str()));
+
+    m.TextureLayer[2].TextureWrapU = m.TextureLayer[2].TextureWrapV = ETC_REPEAT;
 
     m.setFlag(EMF_BILINEAR_FILTER, false);
     m.MaterialTypeParam = pack_textureBlendFunc(EBF_ONE, EBF_ONE);
     m.BlendOperation = EBO_ADD;
+
+    m.TextureLayer[2].TrilinearFilter = true;
 
     m_color[0] = r;
     m_color[1] = g;
