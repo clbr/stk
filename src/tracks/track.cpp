@@ -114,6 +114,7 @@ Track::Track(const std::string &filename)
     m_mini_map              = NULL;
     m_bloom                 = true;
     m_bloom_threshold       = 0.75f;
+    m_clouds                = false;
     m_sky_particles         = NULL;
     m_sky_dx                = 0.05f;
     m_sky_dy                = 0.0f;
@@ -353,6 +354,7 @@ void Track::loadTrackInfo()
     root->get("internal",              &m_internal);
     root->get("reverse",               &m_reverse_available);
     root->get("push-back",             &m_enable_push_back);
+    root->get("clouds",                &m_clouds);
     root->get("bloom",                 &m_bloom);
     root->get("bloom-threshold",        &m_bloom_threshold);
 
