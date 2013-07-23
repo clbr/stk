@@ -258,6 +258,7 @@ void IrrDriver::renderGLSL(float dt)
         const vector3df campos = camera->getCameraSceneNode()->getPosition();
         const float camnear = camera->getCameraSceneNode()->getNearValue();
 
+        m_scene_manager->drawAll(scene::ESNRP_CAMERA);
         PointLightProvider * const pcb = (PointLightProvider *) irr_driver->getShaders()->
                                             m_callbacks[ES_POINTLIGHT];
         pcb->updateIPVMatrix();
