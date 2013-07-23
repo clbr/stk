@@ -321,9 +321,24 @@ void PointLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
+    const int hasclouds = World::getWorld()->getTrack()->hasClouds() &&
+                          UserConfigParams::m_weather_effects;
+
     srv->setVertexShaderConstant("screen", m_screen, 2);
     srv->setVertexShaderConstant("col", m_color, 3);
     srv->setVertexShaderConstant("center", m_pos, 3);
+    srv->setVertexShaderConstant("invprojview", m_invprojview.pointer(), 16);
+    srv->setVertexShaderConstant("hasclouds", &hasclouds, 1);
+
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
+
+    float strength = time;
+    strength = fabsf(noise2d(strength / 10.0f)) * 0.003f;
+
+    const vector3df winddir = irr_driver->getWind()->getWind() * strength;
+    m_wind[0] += winddir.X;
+    m_wind[1] += winddir.Z;
+    srv->setVertexShaderConstant("wind", m_wind, 2);
 
     if (!firstdone)
     {
@@ -332,6 +347,9 @@ void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
         tex = 1;
         srv->setVertexShaderConstant("dtex", &tex, 1);
+
+        tex = 2;
+        srv->setVertexShaderConstant("cloudtex", &tex, 1);
 
         firstdone = true;
     }
