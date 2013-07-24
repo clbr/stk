@@ -390,12 +390,17 @@ void PostProcessing::render()
             }
 
             // Overlay
-            m_material.MaterialType = EMT_SOLID;
+            m_material.MaterialType = EMT_ONETEXTURE_BLEND;
             m_material.setTexture(0, rtts->getRTT(curssao));
             m_material.setTexture(1, 0);
+            m_material.BlendOperation = EBO_ADD;
+            m_material.MaterialTypeParam = pack_textureBlendFunc(EBF_DST_COLOR, EBF_ZERO);
 
             drv->setRenderTarget(in, false, false);
             drawQuad(cam, m_material);
+
+            m_material.BlendOperation = EBO_NONE;
+            m_material.MaterialTypeParam = 0;
 
         } else if (UserConfigParams::m_ssao == 2) // SSAO high
         {
@@ -428,12 +433,17 @@ void PostProcessing::render()
             }
 
             // Overlay
-            m_material.MaterialType = EMT_SOLID;
+            m_material.MaterialType = EMT_ONETEXTURE_BLEND;
             m_material.setTexture(0, rtts->getRTT(curssao));
             m_material.setTexture(1, 0);
+            m_material.BlendOperation = EBO_ADD;
+            m_material.MaterialTypeParam = pack_textureBlendFunc(EBF_DST_COLOR, EBF_ZERO);
 
             drv->setRenderTarget(in, false, false);
             drawQuad(cam, m_material);
+
+            m_material.BlendOperation = EBO_NONE;
+            m_material.MaterialTypeParam = 0;
         }
 
         if (UserConfigParams::m_mlaa) // MLAA. Must be the last pp filter.
