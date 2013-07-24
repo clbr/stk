@@ -47,6 +47,9 @@ enum TypeRTT
     RTT_SIXTEENTH1,
     RTT_SIXTEENTH2,
 
+    RTT_SSAO1,
+    RTT_SSAO2,
+
     RTT_COUNT
 };
 
