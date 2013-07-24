@@ -399,15 +399,41 @@ void PostProcessing::render()
 
         } else if (UserConfigParams::m_ssao == 2) // SSAO high
         {
-/*            m_material.MaterialType = shaders->getShader(ES_SSAO);
-            m_material.setTexture(0, in);
-            drv->setRenderTarget(out, true, false);
+            m_material.MaterialType = shaders->getShader(ES_SSAO);
+            m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
+            m_material.setTexture(1, rtts->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
+
+            const TypeRTT curssao = tick ? RTT_SSAO2 : RTT_SSAO1;
+
+            drv->setRenderTarget(rtts->getRTT(curssao), true, false,
+                                 SColor(255, 255, 255, 255));
 
             drawQuad(cam, m_material);
 
-            ITexture *tmp = in;
-            in = out;
-            out = tmp;*/
+            // Blur it to reduce noise.
+            {
+                gacb->setResolution(UserConfigParams::m_width / 4,
+                                    UserConfigParams::m_height / 4);
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
+                m_material.setTexture(0, rtts->getRTT(curssao));
+                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), true, false);
+
+                drawQuad(cam, m_material);
+
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
+                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
+                drv->setRenderTarget(rtts->getRTT(curssao), false, false);
+
+                drawQuad(cam, m_material);
+            }
+
+            // Overlay
+            m_material.MaterialType = EMT_SOLID;
+            m_material.setTexture(0, rtts->getRTT(curssao));
+            m_material.setTexture(1, 0);
+
+            drv->setRenderTarget(in, false, false);
+            drawQuad(cam, m_material);
         }
 
         if (UserConfigParams::m_mlaa) // MLAA. Must be the last pp filter.
