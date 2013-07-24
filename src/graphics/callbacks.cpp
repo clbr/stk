@@ -419,3 +419,11 @@ void MLAANeigh3Provider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+void SSAOProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        firstdone = true;
+    }
+}
