@@ -321,7 +321,8 @@ void PointLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
-    const int hasclouds = World::getWorld()->getTrack()->hasClouds();
+    const int hasclouds = World::getWorld()->getTrack()->hasClouds() &&
+                          UserConfigParams::m_weather_effects;
 
     srv->setVertexShaderConstant("screen", m_screen, 2);
     srv->setVertexShaderConstant("col", m_color, 3);
