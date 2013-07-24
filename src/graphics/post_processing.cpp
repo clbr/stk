@@ -188,6 +188,8 @@ void PostProcessing::render()
     RTT * const rtts = irr_driver->getRTTs();
     Shaders * const shaders = irr_driver->getShaders();
 
+    static u8 tick = 0;
+
     const u32 cams = Camera::getNumCameras();
     for(u32 cam = 0; cam < cams; cam++)
     {
@@ -359,15 +361,23 @@ void PostProcessing::render()
 
         if (UserConfigParams::m_ssao == 1) // SSAO low
         {
-/*            m_material.MaterialType = shaders->getShader(ES_SSAO);
-            m_material.setTexture(0, in);
-            drv->setRenderTarget(out, true, false);
+            m_material.MaterialType = shaders->getShader(ES_SSAO);
+            m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
+            m_material.setTexture(1, rtts->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
+
+            drv->setRenderTarget(rtts->getRTT(tick ? RTT_SSAO2 : RTT_SSAO1), true, false,
+                                 SColor(255, 255, 255, 255));
 
             drawQuad(cam, m_material);
 
-            ITexture *tmp = in;
-            in = out;
-            out = tmp;*/
+            // Overlay
+            m_material.MaterialType = EMT_SOLID;
+            m_material.setTexture(0, rtts->getRTT(tick ? RTT_SSAO2 : RTT_SSAO1));
+            m_material.setTexture(1, 0);
+
+            drv->setRenderTarget(in, false, false);
+            drawQuad(cam, m_material);
+
         } else if (UserConfigParams::m_ssao == 2) // SSAO high
         {
 /*            m_material.MaterialType = shaders->getShader(ES_SSAO);
@@ -455,6 +465,8 @@ void PostProcessing::render()
         drawQuad(cam, m_material);
     }
 
+    tick++;
+    tick %= 2;
 }   // render
 
 void PostProcessing::drawQuad(u32 cam, const SMaterial &mat)
