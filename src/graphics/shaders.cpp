@@ -59,6 +59,7 @@ Shaders::Shaders()
     m_callbacks[ES_MLAA_COLOR1] = new MLAAColor1Provider();
     m_callbacks[ES_MLAA_BLEND2] = new MLAABlend2Provider();
     m_callbacks[ES_MLAA_NEIGH3] = new MLAANeigh3Provider();
+    m_callbacks[ES_SSAO] = new SSAOProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -146,6 +147,7 @@ Shaders::Shaders()
     m_shaders[ES_MLAA_NEIGH3] = glsl(dir + "mlaa_offset.vert", dir + "mlaa_neigh3.frag",
                                     m_callbacks[ES_MLAA_NEIGH3]);
 
+    m_shaders[ES_SSAO] = glsl(std::string(""), dir + "ssao.frag", m_callbacks[ES_SSAO]);
 
 
     // Check that all successfully loaded
