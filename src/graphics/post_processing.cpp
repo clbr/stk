@@ -365,14 +365,16 @@ void PostProcessing::render()
             m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
             m_material.setTexture(1, rtts->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
 
-            drv->setRenderTarget(rtts->getRTT(tick ? RTT_SSAO2 : RTT_SSAO1), true, false,
+            const TypeRTT curssao = tick ? RTT_SSAO2 : RTT_SSAO1;
+
+            drv->setRenderTarget(rtts->getRTT(curssao), true, false,
                                  SColor(255, 255, 255, 255));
 
             drawQuad(cam, m_material);
 
             // Overlay
             m_material.MaterialType = EMT_SOLID;
-            m_material.setTexture(0, rtts->getRTT(tick ? RTT_SSAO2 : RTT_SSAO1));
+            m_material.setTexture(0, rtts->getRTT(curssao));
             m_material.setTexture(1, 0);
 
             drv->setRenderTarget(in, false, false);
