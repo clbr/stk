@@ -484,4 +484,12 @@ public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 };
 
+//
+
+class SSAOProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif
