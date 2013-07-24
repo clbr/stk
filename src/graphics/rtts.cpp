@@ -31,6 +31,8 @@ RTT::RTT()
     const core::dimension2du eighth = res/8;
     const core::dimension2du sixteenth = res/16;
 
+    const core::dimension2du ssaosize = UserConfigParams::m_ssao == 2 ? res : quarter;
+
     rtts[RTT_TMP1] = drv->addRenderTargetTexture(res, "rtt.tmp1", ECF_A8R8G8B8, true);
     rtts[RTT_TMP2] = drv->addRenderTargetTexture(res, "rtt.tmp2", ECF_A8R8G8B8, true);
     rtts[RTT_TMP3] = drv->addRenderTargetTexture(res, "rtt.tmp3", ECF_A8R8G8B8, true);
@@ -50,6 +52,9 @@ RTT::RTT()
 
     rtts[RTT_SIXTEENTH1] = drv->addRenderTargetTexture(sixteenth, "rtt.s1", ECF_A8R8G8B8, true);
     rtts[RTT_SIXTEENTH2] = drv->addRenderTargetTexture(sixteenth, "rtt.s2", ECF_A8R8G8B8, true);
+
+    rtts[RTT_SSAO1] = drv->addRenderTargetTexture(ssaosize, "rtt.ssao1", ECF_A8R8G8B8, true);
+    rtts[RTT_SSAO2] = drv->addRenderTargetTexture(ssaosize, "rtt.ssao2", ECF_A8R8G8B8, true);
 
     u32 i;
     for (i = 0; i < RTT_COUNT; i++)
