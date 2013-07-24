@@ -1898,6 +1898,11 @@ video::ITexture* IrrDriver::RTTProvider::renderToTexture(float angle,
     if (angle != -1 && m_rtt_main_node != NULL)
         m_rtt_main_node->setRotation( core::vector3df(0, angle, 0) );
 
+    video::SOverrideMaterial &overridemat = m_video_driver->getOverrideMaterial();
+    overridemat.EnablePasses = scene::ESNRP_SOLID;
+    overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
+    overridemat.Material.MaterialType = video::EMT_SOLID;
+
     if (m_rtt_main_node == NULL)
     {
         irr_driver->getSceneManager()->drawAll();
@@ -1910,6 +1915,8 @@ video::ITexture* IrrDriver::RTTProvider::renderToTexture(float angle,
         m_rtt_main_node->setVisible(false);
         m_light->setVisible(false);
     }
+
+    overridemat.EnablePasses = 0;
 
     m_video_driver->setRenderTarget(0, false, false);
     return m_render_target_texture;
