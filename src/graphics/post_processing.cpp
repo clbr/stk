@@ -412,16 +412,16 @@ void PostProcessing::render()
 
             // Blur it to reduce noise.
             {
-                gacb->setResolution(UserConfigParams::m_width / 4,
-                                    UserConfigParams::m_height / 4);
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
+                gacb->setResolution(UserConfigParams::m_width,
+                                    UserConfigParams::m_height);
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6V);
                 m_material.setTexture(0, rtts->getRTT(curssao));
-                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), true, false);
+                drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
 
                 drawQuad(cam, m_material);
 
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
-                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6H);
+                m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
                 drv->setRenderTarget(rtts->getRTT(curssao), false, false);
 
                 drawQuad(cam, m_material);
