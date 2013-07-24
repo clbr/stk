@@ -54,6 +54,7 @@ enum E_SHADER
     ES_MLAA_COLOR1,
     ES_MLAA_BLEND2,
     ES_MLAA_NEIGH3,
+    ES_SSAO,
 
     ES_COUNT
 };
