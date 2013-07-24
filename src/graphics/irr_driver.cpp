@@ -1696,7 +1696,7 @@ bool IrrDriver::OnEvent(const irr::SEvent &event)
         // Ignore 'normal' messages
         if (event.LogEvent.Level > 1)
         {
-            printf("[IrrDriver Temp Logger] Level %d: %s\n",
+            Log::warn("[IrrDriver Temp Logger]", "Level %d: %s\n",
                    event.LogEvent.Level,event.LogEvent.Text);
         }
         return true;
