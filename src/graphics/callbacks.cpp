@@ -424,6 +424,12 @@ void SSAOProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     if (!firstdone)
     {
+        int tex = 0;
+        srv->setPixelShaderConstant("tex", &tex, 1);
+
+        tex = 1;
+        srv->setPixelShaderConstant("oldtex", &tex, 1);
+
         firstdone = true;
     }
 }
