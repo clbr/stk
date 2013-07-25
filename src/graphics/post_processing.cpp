@@ -361,7 +361,7 @@ void PostProcessing::render()
 
         const TypeRTT curssao = tick ? RTT_SSAO2 : RTT_SSAO1;
 
-        if (UserConfigParams::m_ssao == 1 && 0) // SSAO low
+        if (UserConfigParams::m_ssao == 1) // SSAO low
         {
             m_material.MaterialType = shaders->getShader(ES_SSAO);
             m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
@@ -402,7 +402,7 @@ void PostProcessing::render()
             m_material.BlendOperation = EBO_NONE;
             m_material.MaterialTypeParam = 0;
 
-        } else if (UserConfigParams::m_ssao == 2 && 0) // SSAO high
+        } else if (UserConfigParams::m_ssao == 2) // SSAO high
         {
             m_material.MaterialType = shaders->getShader(ES_SSAO);
             m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
