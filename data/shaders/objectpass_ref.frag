@@ -17,7 +17,7 @@ void main() {
 	float linear_z = (2.0 * near) / (far + near - gl_FragCoord.z * (far - near));
 
 	// Tune for better inside range without losing outdoors
-	linear_z *= 10.0;
+	linear_z *= 2.0;
 
 	if (hastex != 0) {
 		vec4 col = texture2D(tex, gl_TexCoord[0].xy);
