@@ -12,10 +12,14 @@ if(APPLE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -arch i386 -F/Library/Frameworks")
 endif()
 
-add_definitions(-Wall -pipe -fexpensive-optimizations -I/usr/X11R6/include -DIRRLICHT_EXPORTS=1 -DNDEBUG=1)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -O3  -fno-exceptions -fno-rtti -fstrict-aliasing")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPNG_THREAD_UNSAFE_OK -DPNG_NO_MMX_CODE -DPNG_NO_MNG_FEATURES")
+add_definitions(-DNDEBUG=1 -DIRRLICHT_EXPORTS=1 -DPNG_THREAD_UNSAFE_OK -DPNG_NO_MMX_CODE -DPNG_NO_MNG_FEATURES)
+if(MSVC)
+  add_definitions(/D_IRR_STATIC_LIB_)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}" /MTd)
+else()
+  set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wall -pipe -O3  -fno-exceptions -fno-rtti -fstrict-aliasing -fexpensive-optimizations -I/usr/X11R6/include")
+  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wall -pipe -O3  -fno-exceptions -fno-rtti -fstrict-aliasing -fexpensive-optimizations -I/usr/X11R6/include")
+endif()
 
 set(IRRLICHT_SOURCES
 source/Irrlicht/CTRStencilShadow.cpp
@@ -105,15 +109,6 @@ source/Irrlicht/COBJMeshWriter.cpp
 source/Irrlicht/CGUIScrollBar.cpp
 source/Irrlicht/CAttributes.cpp
 source/Irrlicht/CTRTextureGouraudAdd.cpp
-source/Irrlicht/aesGladman/hmac.cpp
-source/Irrlicht/aesGladman/sha1.cpp
-source/Irrlicht/aesGladman/sha2.cpp
-source/Irrlicht/aesGladman/fileenc.cpp
-source/Irrlicht/aesGladman/prng.cpp
-source/Irrlicht/aesGladman/aescrypt.cpp
-source/Irrlicht/aesGladman/pwd2key.cpp
-source/Irrlicht/aesGladman/aeskey.cpp
-source/Irrlicht/aesGladman/aestab.cpp
 source/Irrlicht/CGUIStaticText.cpp
 source/Irrlicht/CSceneNodeAnimatorCollisionResponse.cpp
 source/Irrlicht/CGUIFont.cpp
@@ -655,27 +650,6 @@ include/IGUIFileOpenDialog.h
 include/IBoneSceneNode.h
 include/IShaderConstantSetCallBack.h
 include/ITexture.h
-
-
-source/Irrlicht/lzma/LzmaDec.c
-source/Irrlicht/lzma/Types.h
-source/Irrlicht/lzma/LzmaDec.h
-
-
-source/Irrlicht/bzip2/mk251.c
-source/Irrlicht/bzip2/unzcrash.c
-source/Irrlicht/bzip2/spewG.c
-source/Irrlicht/bzip2/decompress.c
-source/Irrlicht/bzip2/bzcompress.c
-source/Irrlicht/bzip2/bzlib.c
-source/Irrlicht/bzip2/huffman.c
-source/Irrlicht/bzip2/bzip2recover.c
-source/Irrlicht/bzip2/bzip2.c
-source/Irrlicht/bzip2/crctable.c
-source/Irrlicht/bzip2/randtable.c
-source/Irrlicht/bzip2/blocksort.c
-source/Irrlicht/bzip2/bzlib_private.h
-source/Irrlicht/bzip2/bzlib.h
 
 
 source/Irrlicht/zlib/infback.c
