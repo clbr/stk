@@ -40,8 +40,8 @@ void main(void)
 
 	float bl = 0.0;
 
-	// adjust for the depth ( not sure if this is good..)
-	float radD = rad/curdepth;
+	// adjust for the depth, 0.1 close, 0.01 far
+	float radD = 0.10 - (curdepth * 0.09);
 
 	for(int i = 0; i < SAMPLES; ++i) {
 
