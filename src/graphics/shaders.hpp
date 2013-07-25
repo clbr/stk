@@ -21,43 +21,55 @@
 #include <vector>
 using namespace irr;
 
+#define FOREACH_SHADER(ACT) \
+    ACT(ES_NORMAL_MAP) \
+    ACT(ES_NORMAL_MAP_LIGHTMAP) \
+    ACT(ES_SPLATTING) \
+    ACT(ES_WATER) \
+    ACT(ES_SPHERE_MAP) \
+    ACT(ES_GRASS) \
+    ACT(ES_BUBBLES) \
+    ACT(ES_RAIN) \
+    ACT(ES_SNOW) \
+    ACT(ES_MOTIONBLUR) \
+    ACT(ES_GAUSSIAN3H) \
+    ACT(ES_GAUSSIAN3V) \
+    ACT(ES_MIPVIZ) \
+    ACT(ES_FLIP) \
+    ACT(ES_FLIP_ADDITIVE) \
+    ACT(ES_BLOOM) \
+    ACT(ES_GAUSSIAN6H) \
+    ACT(ES_GAUSSIAN6V) \
+    ACT(ES_COLORIZE) \
+    ACT(ES_PASS) \
+    ACT(ES_PASS_ADDITIVE) \
+    ACT(ES_GLOW) \
+    ACT(ES_OBJECTPASS) \
+    ACT(ES_OBJECTPASS_REF) \
+    ACT(ES_LIGHTBLEND) \
+    ACT(ES_POINTLIGHT) \
+    ACT(ES_SUNLIGHT) \
+    ACT(ES_OBJECTPASS_RIMLIT) \
+    ACT(ES_MLAA_COLOR1) \
+    ACT(ES_MLAA_BLEND2) \
+    ACT(ES_MLAA_NEIGH3) \
+    ACT(ES_SSAO)
+
+#define ENUM(a) a,
+#define STR(a) #a,
+
 enum E_SHADER
 {
-    ES_NORMAL_MAP = 0,
-    ES_NORMAL_MAP_LIGHTMAP,
-    ES_SPLATTING,
-    ES_WATER,
-    ES_SPHERE_MAP,
-    ES_GRASS,
-    ES_BUBBLES,
-    ES_RAIN,
-    ES_SNOW,
-    ES_MOTIONBLUR,
-    ES_GAUSSIAN3H,
-    ES_GAUSSIAN3V,
-    ES_MIPVIZ,
-    ES_FLIP,
-    ES_FLIP_ADDITIVE,
-    ES_BLOOM,
-    ES_GAUSSIAN6H,
-    ES_GAUSSIAN6V,
-    ES_COLORIZE,
-    ES_PASS,
-    ES_PASS_ADDITIVE,
-    ES_GLOW,
-    ES_OBJECTPASS,
-    ES_OBJECTPASS_REF,
-    ES_LIGHTBLEND,
-    ES_POINTLIGHT,
-    ES_SUNLIGHT,
-    ES_OBJECTPASS_RIMLIT,
-    ES_MLAA_COLOR1,
-    ES_MLAA_BLEND2,
-    ES_MLAA_NEIGH3,
-    ES_SSAO,
+    FOREACH_SHADER(ENUM)
 
     ES_COUNT
 };
+
+#ifdef SHADER_NAMES
+static const char *shader_names[] = {
+    FOREACH_SHADER(STR)
+};
+#endif
 
 class Shaders
 {
@@ -74,5 +86,9 @@ private:
 
     int m_shaders[ES_COUNT];
 };
+
+#undef ENUM
+#undef STR
+#undef FOREACH_SHADER
 
 #endif
