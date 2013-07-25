@@ -22,7 +22,7 @@ void main() {
 	float linear_z = (2.0 * near) / (far + near - gl_FragCoord.z * (far - near));
 
 	// Tune for better inside range without losing outdoors
-	linear_z *= 10.0;
+	linear_z *= 2.0;
 
 	// Splatting part
 	vec4 splatting = texture2D(tex_layout, gl_TexCoord[1].st);

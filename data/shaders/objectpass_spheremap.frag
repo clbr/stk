@@ -19,7 +19,7 @@ void main() {
 	float linear_z = (2.0 * near) / (far + near - gl_FragCoord.z * (far - near));
 
 	// Tune for better inside range without losing outdoors
-	linear_z *= 10.0;
+	linear_z *= 2.0;
 
 	// Calculate the spherical UV
 	const vec3 forward = vec3(0.0, 0.0, 1.0);
