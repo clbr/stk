@@ -359,13 +359,13 @@ void PostProcessing::render()
             out = tmp;
         }
 
+        const TypeRTT curssao = tick ? RTT_SSAO2 : RTT_SSAO1;
+
         if (UserConfigParams::m_ssao == 1 && 0) // SSAO low
         {
             m_material.MaterialType = shaders->getShader(ES_SSAO);
             m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
             m_material.setTexture(1, rtts->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
-
-            const TypeRTT curssao = tick ? RTT_SSAO2 : RTT_SSAO1;
 
             drv->setRenderTarget(rtts->getRTT(curssao), true, false,
                                  SColor(255, 255, 255, 255));
@@ -407,8 +407,6 @@ void PostProcessing::render()
             m_material.MaterialType = shaders->getShader(ES_SSAO);
             m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
             m_material.setTexture(1, rtts->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
-
-            const TypeRTT curssao = tick ? RTT_SSAO2 : RTT_SSAO1;
 
             drv->setRenderTarget(rtts->getRTT(curssao), true, false,
                                  SColor(255, 255, 255, 255));
@@ -509,6 +507,10 @@ void PostProcessing::render()
         {
             m_material.MaterialType = shaders->getShader(ES_FLIP);
             m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
+        } else if (irr_driver->getSSAOViz())
+        {
+            m_material.MaterialType = shaders->getShader(ES_FLIP);
+            m_material.setTexture(0, rtts->getRTT(curssao));
         } else
         {
             m_material.MaterialType = shaders->getShader(ES_FLIP);
