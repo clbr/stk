@@ -159,7 +159,7 @@ Shaders::Shaders()
         if (i == ES_MIPVIZ)
             continue;
 
-        check(m_shaders[i]);
+        check(i);
     }
 
     #undef glsl
@@ -186,9 +186,9 @@ E_MATERIAL_TYPE Shaders::getShader(const E_SHADER num) const
 
 void Shaders::check(const int num) const
 {
-    if (num == -1)
+    if (m_shaders[num] == -1)
     {
-        Log::fatal("shaders", "Shader failed to load. Update your drivers, if the issue "
-                              "persists, report a bug to us.");
+        Log::fatal("shaders", "Shader %u failed to load. Update your drivers, if the issue "
+                              "persists, report a bug to us.", num);
     }
 }
