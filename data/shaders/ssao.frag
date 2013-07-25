@@ -6,7 +6,6 @@ uniform sampler2D oldtex;
 const float totStrength = 2.38;
 const float strength = 0.07;
 const float falloff = 0.000002;
-const float rad = 0.006;
 
 #define SAMPLES 16
 
