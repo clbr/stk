@@ -306,6 +306,12 @@ void InputManager::handleStaticAction(int key, int value)
                 irr_driver->toggleNormals();
             }
             break;
+        case KEY_NEXT: // pgup
+            if (value)
+            {
+                irr_driver->toggleSSAOViz();
+            }
+            break;
         default:
             break;
     } // switch

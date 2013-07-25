@@ -128,6 +128,7 @@ private:
     bool                 m_wireframe;
     bool                 m_mipviz;
     bool                 m_normals;
+    bool                 m_ssaoviz;
     u32                  m_renderpass;
 
     struct glowdata_t {
@@ -280,6 +281,10 @@ public:
     void toggleNormals() { m_normals ^= 1; }
     // ------------------------------------------------------------------------
     bool getNormals() { return m_normals; }
+    // ------------------------------------------------------------------------
+    void toggleSSAOViz() { m_ssaoviz ^= 1; }
+    // ------------------------------------------------------------------------
+    bool getSSAOViz() { return m_ssaoviz; }
     // ------------------------------------------------------------------------
     u32 getRenderPass() { return m_renderpass; }
     // ------------------------------------------------------------------------
