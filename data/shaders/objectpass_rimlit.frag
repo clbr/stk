@@ -20,7 +20,7 @@ void main() {
 	float linear_z = (2.0 * near) / (far + near - gl_FragCoord.z * (far - near));
 
 	// Tune for better inside range without losing outdoors
-	linear_z *= 10.0;
+	linear_z *= 2.0;
 
 	float rim = 1.0 - dot(eyenor, viewpos);
 	rim = smoothstep(0.5, 1.5, rim) * 0.35;
