@@ -10,7 +10,7 @@ const float rad = 0.006;
 
 #define SAMPLES 16
 
-const float invSamples = 1.0 / SAMPLES.0;
+const float invSamples = 1.0 / SAMPLES;
 
 void main(void)
 {
