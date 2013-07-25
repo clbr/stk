@@ -14,6 +14,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#define SHADER_NAMES
+
 #include "graphics/callbacks.hpp"
 #include "graphics/irr_driver.hpp"
 #include "graphics/shaders.hpp"
@@ -188,7 +190,7 @@ void Shaders::check(const int num) const
 {
     if (m_shaders[num] == -1)
     {
-        Log::fatal("shaders", "Shader %u failed to load. Update your drivers, if the issue "
-                              "persists, report a bug to us.", num);
+        Log::fatal("shaders", "Shader %s failed to load. Update your drivers, if the issue "
+                              "persists, report a bug to us.", shader_names[num] + 3);
     }
 }
