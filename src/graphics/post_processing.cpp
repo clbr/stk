@@ -135,8 +135,8 @@ void PostProcessing::reset()
 void PostProcessing::begin()
 {
     m_any_boost = false;
-    for(unsigned int i=0; i<m_boost_time.size(); i++)
-        m_any_boost |= m_boost_time[i]>0.0f;
+    for (u32 i = 0; i < m_boost_time.size(); i++)
+        m_any_boost |= m_boost_time[i] > 0.01f;
 }   // beginCapture
 
 // ----------------------------------------------------------------------------
