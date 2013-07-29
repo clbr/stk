@@ -23,7 +23,7 @@ uniform float mask_radius;
 uniform float max_tex_height;
 
 // Number of samples used for blurring
-#define NB_SAMPLES 12
+#define NB_SAMPLES 8
 
 void main()
 {
