@@ -119,17 +119,28 @@ void PostProcessing::reset()
                       +m_vertices[i].v2.TCoords.X) * 0.5f;
 
         // Center is around 20 percent from bottom of screen:
-        float tex_height = m_vertices[i].v1.TCoords.Y
+        const float tex_height = m_vertices[i].v1.TCoords.Y
                          - m_vertices[i].v0.TCoords.Y;
-        m_center[i].Y=m_vertices[i].v0.TCoords.Y + 0.2f*tex_height;
         m_direction[i].X = m_center[i].X;
         m_direction[i].Y = m_vertices[i].v0.TCoords.Y + 0.7f*tex_height;
 
-        cb->setCenter(i, m_center[i].X, m_center[i].Y);
+        setMotionBlurCenterY(i, 0.2f);
+
         cb->setDirection(i, m_direction[i].X, m_direction[i].Y);
         cb->setMaxHeight(i, m_vertices[i].v1.TCoords.Y);
     }  // for i <number of cameras
 }   // reset
+
+void PostProcessing::setMotionBlurCenterY(const u32 num, const float y)
+{
+    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
+                                                           m_callbacks[ES_MOTIONBLUR];
+
+    const float tex_height = m_vertices[num].v1.TCoords.Y - m_vertices[num].v0.TCoords.Y;
+    m_center[num].Y = m_vertices[num].v0.TCoords.Y + y * tex_height;
+
+    cb->setCenter(num, m_center[num].X, m_center[num].Y);
+}
 
 // ----------------------------------------------------------------------------
 /** Setup some PP data.
