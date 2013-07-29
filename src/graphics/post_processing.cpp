@@ -26,6 +26,8 @@
 #include "graphics/mlaa_areamap.hpp"
 #include "graphics/rtts.hpp"
 #include "graphics/shaders.hpp"
+#include "karts/abstract_kart.hpp"
+#include "karts/kart_model.hpp"
 #include "modes/world.hpp"
 #include "race/race_manager.hpp"
 #include "tracks/track.hpp"
@@ -349,6 +351,16 @@ void PostProcessing::render()
 
         if (UserConfigParams::m_motionblur && m_any_boost) // motion blur
         {
+            // Calculate the kart's Y position on screen
+            const core::vector3df pos =
+                Camera::getCamera(cam)->getKart()->getNode()->getPosition();
+            float ndc[4];
+            core::matrix4 trans = camnode->getProjectionMatrix();
+            trans *= camnode->getViewMatrix();
+
+            trans.transformVect(ndc, pos);
+            const float karty = (ndc[1] / ndc[3]) * 0.5f + 0.5f;
+
             m_material.MaterialType = shaders->getShader(ES_MOTIONBLUR);
             m_material.setTexture(0, in);
             drv->setRenderTarget(out, true, false);
