@@ -51,7 +51,7 @@ void main(void)
 		float normAcceptable = step(0.2, dot(vec3(1.0), abs(occluderFragment.xyz)));
 
 		// get the normal of the occluder fragment
-		vec3 occNorm = occluderFragment.xyz * vec3(2.0) - vec3(1.0);
+		vec3 occNorm = normalize(occluderFragment.xyz * vec3(2.0) - vec3(1.0));
 
 		// if depthDifference is negative = occluder is behind current fragment
 		float depthDifference = curdepth - occluderFragment.a;
