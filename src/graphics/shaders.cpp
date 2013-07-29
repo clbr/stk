@@ -91,8 +91,8 @@ Shaders::Shaders()
     m_shaders[ES_SNOW] = glslmat(dir + "snow.vert", dir + "snow.frag",
                                     m_callbacks[ES_SNOW], EMT_TRANSPARENT_ALPHA_CHANNEL);
 
-    m_shaders[ES_MOTIONBLUR] = glslmat(dir + "motion_blur.vert", dir + "motion_blur.frag",
-                                    m_callbacks[ES_MOTIONBLUR], EMT_SOLID);
+    m_shaders[ES_MOTIONBLUR] = glsl(std::string(""), dir + "motion_blur.frag",
+                                    m_callbacks[ES_MOTIONBLUR]);
 
     m_shaders[ES_GAUSSIAN3H] = glslmat(std::string(""), dir + "gaussian3h.frag",
                                     m_callbacks[ES_GAUSSIAN3H], EMT_SOLID);
