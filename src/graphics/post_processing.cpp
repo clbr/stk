@@ -371,6 +371,8 @@ void PostProcessing::render()
 
             trans.transformVect(ndc, pos);
             const float karty = (ndc[1] / ndc[3]) * 0.5f + 0.5f;
+            setMotionBlurCenterY(cam, karty);
+
 
             m_material.MaterialType = shaders->getShader(ES_MOTIONBLUR);
             m_material.setTexture(0, in);
