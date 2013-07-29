@@ -193,6 +193,8 @@ void PostProcessing::render()
     const u32 cams = Camera::getNumCameras();
     for(u32 cam = 0; cam < cams; cam++)
     {
+        scene::ICameraSceneNode * const camnode =
+            Camera::getCamera(cam)->getCameraSceneNode();
         mocb->setCurrentCamera(cam);
         ITexture *in = rtts->getRTT(RTT_COLOR);
         ITexture *out = rtts->getRTT(RTT_TMP1);
@@ -244,8 +246,7 @@ void PostProcessing::render()
                 // They are drawn with depth and color writes off, giving 4x-8x drawing speed.
                 if (bloomsize)
                 {
-                    const core::aabbox3df &cambox = Camera::getCamera(cam)->
-                                                    getCameraSceneNode()->
+                    const core::aabbox3df &cambox = camnode->
                                                     getViewFrustum()->
                                                     getBoundingBox();
 
@@ -264,7 +265,7 @@ void PostProcessing::render()
                     glStencilFunc(GL_ALWAYS, 1, ~0);
                     glEnable(GL_STENCIL_TEST);
 
-                    Camera::getCamera(cam)->getCameraSceneNode()->render();
+                    camnode->render();
 
                     for (u32 i = 0; i < bloomsize; i++)
                     {
