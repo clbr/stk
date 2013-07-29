@@ -29,7 +29,7 @@ void main(void)
 	float curdepth = cur.a;
 
 	// Will we skip this pixel? (if it's the sky)
-	float len = dot(vec3(1.0), cur.xyz);
+	float len = dot(vec3(1.0), abs(cur.xyz));
 	if (len < 0.2) discard;
 
 	float mytotstrength = 3.0 * totStrength * curdepth * (1.0 - curdepth);
