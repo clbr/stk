@@ -60,6 +60,8 @@ private:
 
     video::ITexture *m_areamap;
 
+    void setMotionBlurCenterY(const u32 num, const float y);
+
 public:
                  PostProcessing(video::IVideoDriver* video_driver);
     virtual     ~PostProcessing();
