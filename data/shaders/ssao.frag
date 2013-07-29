@@ -48,6 +48,7 @@ void main(void)
 
 		// get the depth of the occluder fragment
 		vec4 occluderFragment = texture2D(tex, ray);
+		float normAcceptable = step(0.2, dot(vec3(1.0), abs(occluderFragment.xyz)));
 
 		// get the normal of the occluder fragment
 		vec3 occNorm = occluderFragment.xyz * vec3(2.0) - vec3(1.0);
@@ -59,7 +60,7 @@ void main(void)
 		float normDiff = 1.0 - dot(occNorm, norm);
 
 		// the falloff equation, starts at falloff and is kind of 1/x^2 falling
-		bl += step(falloff, depthDifference) * normDiff *
+		bl += step(falloff, depthDifference) * normDiff * normAcceptable *
 			(1.0 - smoothstep(falloff, strength, depthDifference));
 	}
 
