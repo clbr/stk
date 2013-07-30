@@ -433,3 +433,8 @@ void SSAOProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+void GodRayProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    srv->setPixelShaderConstant("sunpos", m_sunpos, 2);
+}
