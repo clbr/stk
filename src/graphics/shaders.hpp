@@ -54,7 +54,8 @@ using namespace irr;
     ACT(ES_MLAA_BLEND2) \
     ACT(ES_MLAA_NEIGH3) \
     ACT(ES_SSAO) \
-    ACT(ES_GODFADE)
+    ACT(ES_GODFADE) \
+    ACT(ES_GODRAY)
 
 #define ENUM(a) a,
 #define STR(a) #a,
