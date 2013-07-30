@@ -116,6 +116,7 @@ Track::Track(const std::string &filename)
     m_bloom_threshold       = 0.75f;
     m_clouds                = false;
     m_lensflare             = false;
+    m_godrays               = false;
     m_sky_particles         = NULL;
     m_sky_dx                = 0.05f;
     m_sky_dy                = 0.0f;
@@ -359,6 +360,7 @@ void Track::loadTrackInfo()
     root->get("bloom",                 &m_bloom);
     root->get("bloom-threshold",       &m_bloom_threshold);
     root->get("lens-flare",            &m_lensflare);
+    root->get("god-rays",              &m_godrays);
 
     // Make the default for auto-rescue in battle mode and soccer mode to be false
     if(m_is_arena || m_is_soccer)
