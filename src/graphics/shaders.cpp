@@ -151,6 +151,8 @@ Shaders::Shaders()
 
     m_shaders[ES_SSAO] = glsl(std::string(""), dir + "ssao.frag", m_callbacks[ES_SSAO]);
 
+    m_shaders[ES_GODFADE] = glsl(std::string(""), dir + "godfade.frag", 0);
+
 
     // Check that all successfully loaded
     u32 i;
