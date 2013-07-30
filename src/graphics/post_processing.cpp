@@ -360,6 +360,10 @@ void PostProcessing::render()
             out = rtts->getRTT(RTT_TMP2);
         }
 
+        if (World::getWorld()->getTrack()->hasGodRays() && m_sunpixels > 100) // god rays
+        {
+        }
+
         if (UserConfigParams::m_motionblur && m_any_boost) // motion blur
         {
             // Calculate the kart's Y position on screen
