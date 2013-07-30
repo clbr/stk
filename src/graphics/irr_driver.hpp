@@ -321,6 +321,8 @@ public:
                   float g = 1.0f, float b = 1.0f, bool sun = false);
     // ------------------------------------------------------------------------
     void clearLights();
+    // ------------------------------------------------------------------------
+    scene::IMeshSceneNode *getSunInterposer() { return m_sun_interposer; }
 
 #ifdef DEBUG
     /** Removes debug meshes. */
