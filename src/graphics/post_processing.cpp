@@ -375,6 +375,37 @@ void PostProcessing::render()
             sun->render();
 
             sun->getMaterial(0).ColorMask = ECP_NONE;
+
+            // Fade to quarter
+            m_material.MaterialType = shaders->getShader(ES_GODFADE);
+            m_material.setTexture(0, out);
+            drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), false, false);
+
+            drawQuad(cam, m_material);
+
+            // Calculate the sun's position in texcoords
+            const core::vector3df pos = sun->getPosition();
+            float ndc[4];
+            core::matrix4 trans = camnode->getProjectionMatrix();
+            trans *= camnode->getViewMatrix();
+
+            trans.transformVect(ndc, pos);
+
+            const float texh = m_vertices[cam].v1.TCoords.Y - m_vertices[cam].v0.TCoords.Y;
+            const float texw = m_vertices[cam].v3.TCoords.X - m_vertices[cam].v0.TCoords.X;
+
+            const float sunx = ((ndc[0] / ndc[3]) * 0.5f + 0.5f) * texw;
+            const float suny = ((ndc[1] / ndc[3]) * 0.5f + 0.5f) * texh;
+
+            ((GodRayProvider *) irr_driver->getShaders()->m_callbacks[ES_GODRAY])->
+                setSunPosition(sunx, suny);
+
+            // Rays please
+            m_material.MaterialType = shaders->getShader(ES_GODRAY);
+            m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
+            drv->setRenderTarget(rtts->getRTT(RTT_QUARTER2), true, false);
+
+            drawQuad(cam, m_material);
         }
 
         if (UserConfigParams::m_motionblur && m_any_boost) // motion blur

@@ -492,4 +492,18 @@ public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 };
 
+//
+
+class GodRayProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+    // In texcoords
+    void setSunPosition(float x, float y) { m_sunpos[0] = x; m_sunpos[1] = y; }
+
+private:
+    float m_sunpos[2];
+};
+
 #endif
