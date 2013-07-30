@@ -362,6 +362,19 @@ void PostProcessing::render()
 
         if (World::getWorld()->getTrack()->hasGodRays() && m_sunpixels > 100) // god rays
         {
+            // Grab the sky
+            drv->setRenderTarget(out, true, false);
+            irr_driver->getSceneManager()->drawAll(ESNRP_SKY_BOX);
+
+            // The sun interposer
+            IMeshSceneNode * const sun = irr_driver->getSunInterposer();
+            sun->getMaterial(0).ColorMask = ECP_ALL;
+            irr_driver->getSceneManager()->drawAll(ESNRP_CAMERA);
+            irr_driver->getSceneManager()->setCurrentRendertime(ESNRP_SOLID);
+
+            sun->render();
+
+            sun->getMaterial(0).ColorMask = ECP_NONE;
         }
 
         if (UserConfigParams::m_motionblur && m_any_boost) // motion blur
