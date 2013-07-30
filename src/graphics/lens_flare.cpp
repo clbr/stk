@@ -1,3 +1,5 @@
+/* TODO: copyright */
+
 #include "graphics/lens_flare.hpp"
 #include "IVideoDriver.h"
 #include "ISceneManager.h"
