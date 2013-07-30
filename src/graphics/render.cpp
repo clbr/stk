@@ -329,10 +329,13 @@ void IrrDriver::renderGLSL(float dt)
         m_scene_manager->drawAll(m_renderpass);
 
         // Is the lens flare enabled & visible? Check last frame's query.
-        if (World::getWorld()->getTrack()->hasLensFlare())
+        const bool hasflare = World::getWorld()->getTrack()->hasLensFlare();
+        const bool hasgodrays = World::getWorld()->getTrack()->hasGodRays();
+        if (hasflare | hasgodrays)
         {
             GLuint res;
             glGetQueryObjectuiv(m_lensflare_query, GL_QUERY_RESULT, &res);
+            m_post_processing->setSunPixels(res);
 
             // Prepare the query for the next frame.
             glBeginQuery(GL_SAMPLES_PASSED_ARB, m_lensflare_query);
@@ -342,7 +345,9 @@ void IrrDriver::renderGLSL(float dt)
             glEndQuery(GL_SAMPLES_PASSED_ARB);
 
             m_lensflare->setStrength(res / 4000.0f);
-            m_lensflare->OnRegisterSceneNode();
+
+            if (hasflare)
+                m_lensflare->OnRegisterSceneNode();
 
             // Make sure the color mask is reset
             glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
