@@ -43,7 +43,8 @@ GlowNode::GlowNode(scene::ISceneManager* mgr, float radius): ISceneNode(mgr->get
         mat.MaterialType = irr_driver->getShaders()->getShader(ES_GLOW);
 
         mat.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_QUARTER1));
-        mat.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
+        mat.TextureLayer[0].TextureWrapU =
+        mat.TextureLayer[0].TextureWrapV = ETC_CLAMP_TO_EDGE;
         mat.setFlag(EMF_TRILINEAR_FILTER, true);
 
         sphere = mgr->getGeometryCreator()->createSphereMesh(1, 4, 4);
