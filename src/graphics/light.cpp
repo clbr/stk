@@ -46,7 +46,12 @@ LightNode::LightNode(scene::ISceneManager* mgr, float radius, float r, float g, 
         mat.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_NORMAL));
         mat.setTexture(1, irr_driver->getRTTs()->getRTT(RTT_DEPTH));
 
-        mat.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
+        for (u32 i = 0; i < MATERIAL_MAX_TEXTURES; ++i)
+        {
+            mat.TextureLayer[i].TextureWrapU =
+            mat.TextureLayer[i].TextureWrapV = ETC_CLAMP_TO_EDGE;
+        }
+
         mat.setFlag(EMF_BILINEAR_FILTER, false);
         mat.setFlag(EMF_ZWRITE_ENABLE, false);
 
