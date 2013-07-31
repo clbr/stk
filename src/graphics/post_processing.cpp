@@ -388,6 +388,23 @@ void PostProcessing::render()
 
             drawQuad(cam, m_material);
 
+            // Blur
+            {
+                gacb->setResolution(UserConfigParams::m_width / 4,
+                                    UserConfigParams::m_height / 4);
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
+                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
+                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER2), true, false);
+
+                drawQuad(cam, m_material);
+
+                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
+                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER2));
+                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), false, false);
+
+                drawQuad(cam, m_material);
+            }
+
             // Calculate the sun's position in texcoords
             const core::vector3df pos = sun->getPosition();
             float ndc[4];
