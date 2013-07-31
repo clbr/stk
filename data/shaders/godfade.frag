@@ -7,7 +7,7 @@ void main()
 	// Keep the sun fully bright, but fade the sky
 	float mul = col.r * col.g * col.b;
 	mul = step(mul, 0.99);
-	mul *= 0.9;
+	mul *= 0.97;
 	mul = 1.0 - mul;
 
 	col = col * vec4(mul);

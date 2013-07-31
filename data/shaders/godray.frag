@@ -3,13 +3,13 @@ uniform vec2 sunpos;
 
 #define SAMPLES 12
 
-const float decaystep = 0.8;
+const float decaystep = 0.78;
 
 void main()
 {
 	vec2 texc = gl_TexCoord[0].xy;
 	vec2 tosun = sunpos - texc;
-	vec2 dist = tosun * 1.0/(float(SAMPLES) * 1.1);
+	vec2 dist = tosun * 1.0/(float(SAMPLES) * 1.05);
 
 	vec3 col = texture2D(tex, texc).xyz;
 	float decay = 1.0;
@@ -22,5 +22,5 @@ void main()
 		decay *= decaystep;
 	}
 
-	gl_FragColor = vec4(col, 1.0) * 0.99;
+	gl_FragColor = vec4(col, 1.0) * 0.6;
 }
