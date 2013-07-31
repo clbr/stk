@@ -22,5 +22,5 @@ void main()
 		decay *= decaystep;
 	}
 
-	gl_FragColor = vec4(col, 1.0) * 0.6;
+	gl_FragColor = vec4(col, 1.0) * 0.8;
 }
