@@ -445,6 +445,13 @@ void PostProcessing::render()
 
                 drawQuad(cam, m_material);
             }
+
+            // Overlay
+            m_material.MaterialType = EMT_TRANSPARENT_ADD_COLOR;
+            m_material.setTexture(0, rtts->getRTT(RTT_QUARTER2));
+            drv->setRenderTarget(in, false, false);
+
+            drawQuad(cam, m_material);
         }
 
         if (UserConfigParams::m_motionblur && m_any_boost) // motion blur
