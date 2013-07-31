@@ -3,7 +3,7 @@ uniform vec2 sunpos;
 
 #define SAMPLES 12
 
-const float decaystep = 0.78;
+const float decaystep = 0.88;
 
 void main()
 {
@@ -12,7 +12,7 @@ void main()
 
 	if (dot(tosun, tosun) > 0.49) discard;
 
-	vec2 dist = tosun * 1.0/(float(SAMPLES) * 1.05);
+	vec2 dist = tosun * 1.0/(float(SAMPLES) * 1.12);
 
 	vec3 col = texture2D(tex, texc).xyz;
 	float decay = 1.0;
