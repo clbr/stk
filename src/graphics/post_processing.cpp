@@ -43,8 +43,13 @@ PostProcessing::PostProcessing(IVideoDriver* video_driver)
     m_material.Lighting = false;
     m_material.ZWriteEnable = false;
     m_material.ZBuffer = ECFN_ALWAYS;
-    m_material.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
     m_material.setFlag(EMF_TRILINEAR_FILTER, true);
+
+    for (u32 i = 0; i < MATERIAL_MAX_TEXTURES; ++i)
+    {
+        m_material.TextureLayer[i].TextureWrapU =
+        m_material.TextureLayer[i].TextureWrapV = ETC_CLAMP_TO_EDGE;
+    }
 
     // Load the MLAA area map
     io::IReadFile *areamap = irr_driver->getDevice()->getFileSystem()->

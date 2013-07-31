@@ -49,7 +49,8 @@ public:
         mat.Thickness = 200;
 
         mat.setTexture(0, tex);
-        mat.setFlag(EMF_TEXTURE_WRAP, ETC_CLAMP_TO_EDGE);
+        mat.TextureLayer[0].TextureWrapU =
+        mat.TextureLayer[0].TextureWrapV = ETC_CLAMP_TO_EDGE;
 
         count = 2500;
         area = 3500;
