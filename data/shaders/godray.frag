@@ -9,7 +9,7 @@ void main()
 {
 	vec2 texc = gl_TexCoord[0].xy;
 	vec2 tosun = sunpos - texc;
-	vec2 dist = tosun * 1.0/float(SAMPLES);
+	vec2 dist = tosun * 1.0/(float(SAMPLES) * 1.1);
 
 	vec3 col = texture2D(tex, texc).xyz;
 	float decay = 1.0;
@@ -22,5 +22,5 @@ void main()
 		decay *= decaystep;
 	}
 
-	gl_FragColor = vec4(col, 1.0);
+	gl_FragColor = vec4(col, 1.0) * 0.99;
 }
