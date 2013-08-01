@@ -365,7 +365,7 @@ void PostProcessing::render()
             out = rtts->getRTT(RTT_TMP2);
         }
 
-        if (World::getWorld()->getTrack()->hasGodRays() && m_sunpixels > 100) // god rays
+        if (World::getWorld()->getTrack()->hasGodRays() && m_sunpixels > 30) // god rays
         {
             // Grab the sky
             drv->setRenderTarget(out, true, false);
