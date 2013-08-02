@@ -506,4 +506,12 @@ private:
     float m_sunpos[2];
 };
 
+//
+
+class ShadowPassProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif

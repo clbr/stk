@@ -445,3 +445,15 @@ void GodRayProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setPixelShaderConstant("sunpos", m_sunpos, 2);
 }
+
+void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    const int hastex = mat.TextureLayer[0].Texture != NULL;
+    srv->setVertexShaderConstant("hastex", &hastex, 1);
+
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("tex", &tex, 1);
+    }
+}
