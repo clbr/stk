@@ -437,8 +437,13 @@ public:
         m_invprojview.makeInverse();
     }
 
+    void setShadowMatrix(const core::matrix4 &mat)
+    {
+        m_shadowmat = mat;
+    }
+
 private:
-    core::matrix4 m_invprojview;
+    core::matrix4 m_invprojview, m_shadowmat;
     float m_color[3];
     float m_pos[3];
     float m_screen[2];

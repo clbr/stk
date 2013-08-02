@@ -254,6 +254,40 @@ void IrrDriver::renderGLSL(float dt)
             glDisable(GL_STENCIL_TEST);
         } // end glow
 
+        // Shadows
+        if (!m_mipviz && !m_wireframe && UserConfigParams::m_shadows)
+        {
+            m_scene_manager->setCurrentRendertime(scene::ESNRP_SOLID);
+
+            // Set up a nice ortho projection that contains our camera frustum
+            core::matrix4 ortho;
+            core::aabbox3df box = cambox;
+            box.addInternalPoint(m_suncam->getPosition());
+            const float rad = box.getExtent().getLength() / 2;
+
+            ortho.buildProjectionMatrixOrthoLH(rad, rad, 30, 1000);
+
+            m_suncam->setTarget(camera->getCameraSceneNode()->getTarget());
+            m_suncam->setProjectionMatrix(ortho, true);
+            m_scene_manager->setActiveCamera(m_suncam);
+
+            ortho *= m_suncam->getViewMatrix();
+            ((SunLightProvider *) m_shaders->m_callbacks[ES_SUNLIGHT])->setShadowMatrix(ortho);
+
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
+
+            overridemat.Material.MaterialType = m_shaders->getShader(ES_SHADOWPASS);
+            overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
+            overridemat.EnablePasses = scene::ESNRP_SOLID;
+            overridemat.Enabled = true;
+
+            m_scene_manager->drawAll(scene::ESNRP_SOLID);
+
+            overridemat.EnablePasses = 0;
+            overridemat.Enabled = false;
+            camera->activate();
+        }
+
         // Lights
         m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_TMP1), true, false, video::SColor(255, 0, 0, 0));
 

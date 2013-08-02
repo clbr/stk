@@ -134,6 +134,7 @@ private:
     u32                  m_lensflare_query;
     scene::IMeshSceneNode *m_sun_interposer;
     scene::CLensFlareSceneNode *m_lensflare;
+    scene::ICameraSceneNode *m_suncam;
 
     struct glowdata_t {
         scene::ISceneNode * node;
