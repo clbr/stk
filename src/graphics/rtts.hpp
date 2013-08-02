@@ -50,6 +50,8 @@ enum TypeRTT
     RTT_SSAO1,
     RTT_SSAO2,
 
+    RTT_SHADOW,
+
     RTT_COUNT
 };
 
