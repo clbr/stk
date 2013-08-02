@@ -63,6 +63,7 @@ Shaders::Shaders()
     m_callbacks[ES_MLAA_NEIGH3] = new MLAANeigh3Provider();
     m_callbacks[ES_SSAO] = new SSAOProvider();
     m_callbacks[ES_GODRAY] = new GodRayProvider();
+    m_callbacks[ES_SHADOWPASS] = new ShadowPassProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -156,6 +157,9 @@ Shaders::Shaders()
 
     m_shaders[ES_GODFADE] = glsl(std::string(""), dir + "godfade.frag", 0);
     m_shaders[ES_GODRAY] = glsl(std::string(""), dir + "godray.frag", m_callbacks[ES_GODRAY]);
+
+    m_shaders[ES_SHADOWPASS] = glsl(dir + "pass.vert", dir + "shadowpass.frag",
+                                    m_callbacks[ES_SHADOWPASS]);
 
 
     // Check that all successfully loaded
