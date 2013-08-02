@@ -340,6 +340,10 @@ void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     m_wind[1] += winddir.Z;
     srv->setVertexShaderConstant("wind", m_wind, 2);
 
+    if (UserConfigParams::m_shadows)
+    {
+    }
+
     if (!firstdone)
     {
         int tex = 0;
@@ -350,6 +354,9 @@ void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
         tex = 2;
         srv->setVertexShaderConstant("cloudtex", &tex, 1);
+
+        tex = 3;
+        srv->setVertexShaderConstant("shadowtex", &tex, 1);
 
         firstdone = true;
     }
