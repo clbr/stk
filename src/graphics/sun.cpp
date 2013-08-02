@@ -45,6 +45,12 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
     m.setTexture(1, irr_driver->getRTTs()->getRTT(RTT_DEPTH));
     m.setTexture(2, irr_driver->getTexture((file_manager->getTextureDir() + "cloudshadow.png").c_str()));
 
+    if (UserConfigParams::m_shadows)
+    {
+        m.setTexture(3, irr_driver->getRTTs()->getRTT(RTT_SHADOW));
+        m.MaterialType = irr_driver->getShaders()->getShader(ES_SUNLIGHT_SHADOW);
+    }
+
     for (u32 i = 0; i < MATERIAL_MAX_TEXTURES; i++)
     {
         m.TextureLayer[i].TextureWrapU = m.TextureLayer[i].TextureWrapV =
