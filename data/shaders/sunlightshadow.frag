@@ -7,6 +7,7 @@ uniform vec3 center;
 uniform vec3 col;
 uniform vec2 screen;
 uniform mat4 invprojview;
+uniform mat4 shadowmat;
 uniform int hasclouds;
 uniform vec2 wind;
 
@@ -32,15 +33,16 @@ void main() {
 
 	vec3 outcol = NdotL * col;
 
+	// World-space position
+	vec3 tmp = vec3(texc, z);
+	tmp = tmp * 2.0 - 1.0;
+
+	vec4 xpos = vec4(tmp, 1.0);
+	xpos = invprojview * xpos;
+	xpos.xyz /= xpos.w;
+
 	if (hasclouds == 1)
 	{
-		vec3 tmp = vec3(texc, z);
-		tmp = tmp * 2.0 - 1.0;
-
-		vec4 xpos = vec4(tmp, 1.0);
-		xpos = invprojview * xpos;
-		xpos.xyz /= xpos.w;
-
 		vec2 cloudcoord = (xpos.xz * 0.00833333) + wind;
 		float cloud = texture2D(cloudtex, cloudcoord).x;
 		//float cloud = step(0.5, cloudcoord.x) * step(0.5, cloudcoord.y);
@@ -49,10 +51,12 @@ void main() {
 	}
 
 	// Shadows
-	float shadowmapz = decdepth(texture2D(shadowtex, texc));
-	float shadowz = 0.5;
+	const float bias = 0.005;
+	vec3 shadowcoord = (shadowmat * vec4(xpos.xyz, 1.0)).xyz;
+	shadowcoord = (shadowcoord * 0.5) + vec3(0.5);
+	float shadowmapz = decdepth(texture2D(shadowtex, shadowcoord.xy));
 
-	outcol *= step(shadowz, shadowmapz);
+	outcol *= step(shadowcoord.z, shadowmapz + bias);
 
 	gl_FragColor = vec4(outcol, 1.0);
 }

@@ -440,6 +440,10 @@ void IrrDriver::initDevice()
         if (!tex) Log::fatal("irr_driver", "Cannot find lens flare texture");
         m_lensflare->setMaterialTexture(0, tex);
         m_lensflare->setAutomaticCulling(scene::EAC_OFF);
+
+        m_suncam = m_scene_manager->addCameraSceneNode(0, vector3df(0), vector3df(0), -1, false);
+        m_suncam->grab();
+        m_suncam->setParent(NULL);
     }
     else
     {
@@ -2033,8 +2037,12 @@ scene::ISceneNode *IrrDriver::addLight(const core::vector3df &pos, float radius,
         if (sun) {
             m_sun_interposer->setPosition(pos);
             m_sun_interposer->updateAbsolutePosition();
+
             m_lensflare->setPosition(pos);
             m_lensflare->updateAbsolutePosition();
+
+            m_suncam->setPosition(pos);
+            m_suncam->updateAbsolutePosition();
         }
 
         return light;

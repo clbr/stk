@@ -342,6 +342,7 @@ void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
     if (UserConfigParams::m_shadows)
     {
+        srv->setVertexShaderConstant("shadowmat", m_shadowmat.pointer(), 16);
     }
 
     if (!firstdone)
