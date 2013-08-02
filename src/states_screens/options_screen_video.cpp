@@ -477,7 +477,7 @@ void OptionsScreenVideo::eventCallback(Widget* widget, const std::string& name,
         UserConfigParams::m_mlaa                     = GFX_MLAA[level-1];
         UserConfigParams::m_ssao                     = GFX_SSAO[level-1];
 
-        updateTooltip();
+        updateGfxSlider();
     }
     else if (name == "vsync")
     {
