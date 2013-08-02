@@ -297,8 +297,6 @@ void OptionsScreenVideo::init()
         gfx->setDeactivated();
         getWidget<ButtonWidget>("custom")->setDeactivated();
     }
-
-    updateTooltip();
 }   // init
 
 // ----------------------------------------------------------------------------
@@ -333,6 +331,7 @@ void OptionsScreenVideo::updateGfxSlider()
         gfx->setCustomText( _("Custom") );
     }
 
+    updateTooltip();
 }
 
 // ----------------------------------------------------------------------------
