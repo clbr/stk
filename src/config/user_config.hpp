@@ -556,6 +556,10 @@ namespace UserConfigParams
             PARAM_DEFAULT( IntUserConfigParam(0,
                            "ssao", &m_graphics_quality,
                            "Whether SSAO is enabled (0 = disabled, 1 = low, 2 = high") );
+    PARAM_PREFIX IntUserConfigParam          m_shadows
+            PARAM_DEFAULT( IntUserConfigParam(0,
+                           "shadows", &m_graphics_quality,
+                           "Whether shadows are enabled (0 = disabled, 1 = low, 2 = high") );
 
     // ---- Misc
     PARAM_PREFIX BoolUserConfigParam        m_cache_overworld

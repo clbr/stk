@@ -75,6 +75,14 @@
         <spacer width="10" height="10"/>
         <gauge id="ssao" min_value="0" max_value="2" width="50%"/>
     </div>
+
+    <spacer height="5" width="10" />
+
+    <div layout="horizontal-row" width="100%" height="fit">
+        <label text="Shadows (requires restart)" I18N="Video settings"/>
+        <spacer width="10" height="10"/>
+        <gauge id="shadows" min_value="0" max_value="2" width="50%"/>
+    </div>
     
     <spacer proportion="1"/>
     

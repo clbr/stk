@@ -89,6 +89,12 @@ void CustomVideoSettingsialog::beforeAddingWidgets()
     ssao->addLabel( _("high") );         // 2
     ssao->setValue( UserConfigParams::m_ssao );
 
+    SpinnerWidget* shadows = getWidget<SpinnerWidget>("shadows");
+    shadows->addLabel( _("Disabled") );   // 0
+    shadows->addLabel( _("low") );          // 1
+    shadows->addLabel( _("high") );         // 2
+    shadows->setValue( UserConfigParams::m_shadows );
+
     getWidget<CheckBoxWidget>("motionblur")->setState( UserConfigParams::m_motionblur );
     getWidget<CheckBoxWidget>("mlaa")->setState( UserConfigParams::m_mlaa );
     getWidget<CheckBoxWidget>("pixelshaders")->setState( UserConfigParams::m_pixel_shaders );
@@ -116,6 +122,8 @@ GUIEngine::EventPropagation CustomVideoSettingsialog::processEvent(const std::st
             getWidget<CheckBoxWidget>("mlaa")->getState();
         UserConfigParams::m_ssao  =
             getWidget<SpinnerWidget>("ssao")->getValue();
+        UserConfigParams::m_shadows  =
+            getWidget<SpinnerWidget>("shadows")->getValue();
 
         switch (getWidget<SpinnerWidget>("filtering")->getValue())
         {
