@@ -45,6 +45,12 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
     m.setTexture(1, irr_driver->getRTTs()->getRTT(RTT_DEPTH));
     m.setTexture(2, irr_driver->getTexture((file_manager->getTextureDir() + "cloudshadow.png").c_str()));
 
+    for (u32 i = 0; i < MATERIAL_MAX_TEXTURES; i++)
+    {
+        m.TextureLayer[i].TextureWrapU = m.TextureLayer[i].TextureWrapV =
+            ETC_CLAMP_TO_EDGE;
+    }
+
     m.TextureLayer[2].TextureWrapU = m.TextureLayer[2].TextureWrapV = ETC_REPEAT;
 
     m.setFlag(EMF_BILINEAR_FILTER, false);
