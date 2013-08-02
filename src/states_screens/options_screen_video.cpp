@@ -55,6 +55,7 @@ static const bool GFX_PIXEL_SHADERS[] =
                                      {false, false, true,  true,  true,  true,  true, true};
 static const bool GFX_MLAA[] =       {false, false, false, false, false, true,  true, true};
 static const int GFX_SSAO[] =        {0,     0,     0,     1,     1,     1,     2,    2};
+static const int GFX_SHADOWS[] =     {0,     0,     0,     1,     1,     2,     2,    2};
 
 
 static const int  GFX_LEVEL_AMOUNT = 8;
@@ -317,6 +318,7 @@ void OptionsScreenVideo::updateGfxSlider()
             UserConfigParams::m_motionblur               == GFX_MOTIONBLUR[l] &&
             UserConfigParams::m_mlaa                     == GFX_MLAA[l] &&
             UserConfigParams::m_ssao                     == GFX_SSAO[l] &&
+            UserConfigParams::m_shadows                  == GFX_SHADOWS[l] &&
             UserConfigParams::m_pixel_shaders            == GFX_PIXEL_SHADERS[l])
         {
             gfx->setValue(l+1);
@@ -397,6 +399,10 @@ void OptionsScreenVideo::updateTooltip()
     tooltip = tooltip + L"\n" + _("SSAO: %s",
         UserConfigParams::m_ssao == 1 ? "low" : UserConfigParams::m_ssao == 2 ?
                                     "high" : disabled);
+    //I18N: in graphical options
+    tooltip = tooltip + L"\n" + _("Shadows: %s",
+        UserConfigParams::m_shadows == 1 ? "low" : UserConfigParams::m_shadows == 2 ?
+                                    "high" : disabled);
 
 
 
@@ -476,6 +482,7 @@ void OptionsScreenVideo::eventCallback(Widget* widget, const std::string& name,
         UserConfigParams::m_pixel_shaders            = GFX_PIXEL_SHADERS[level-1];
         UserConfigParams::m_mlaa                     = GFX_MLAA[level-1];
         UserConfigParams::m_ssao                     = GFX_SSAO[level-1];
+        UserConfigParams::m_shadows                  = GFX_SHADOWS[level-1];
 
         updateGfxSlider();
     }
