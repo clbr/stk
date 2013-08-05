@@ -58,6 +58,7 @@ class Shaders;
 class Wind;
 class RTT;
 class LightNode;
+class ShadowImportance;
 
 /**
   * \brief class that creates the irrLicht device and offers higher-level
@@ -85,6 +86,8 @@ private:
     Wind                 *m_wind;
     /** RTTs. */
     RTT                *m_rtts;
+    /** Shadow importance. */
+    ShadowImportance   *m_shadow_importance;
 
     /** The main MRT setup. */
     core::array<video::IRenderTarget> m_mrt;
