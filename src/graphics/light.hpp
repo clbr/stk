@@ -45,6 +45,7 @@ public:
 
     float getRadiusSQ() { return m_radius_sq; }
     float getRadius() { return m_radius; }
+    void getColor(float out[3]) { memcpy(out, m_color, 3 * sizeof(float)); }
 
 protected:
     static video::SMaterial mat;
