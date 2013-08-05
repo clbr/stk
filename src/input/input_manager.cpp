@@ -307,10 +307,16 @@ void InputManager::handleStaticAction(int key, int value)
                 irr_driver->toggleNormals();
             }
             break;
-        case KEY_NEXT: // pgup
+        case KEY_NEXT: // pgdown
             if (value)
             {
                 irr_driver->toggleSSAOViz();
+            }
+            break;
+        case KEY_PRIOR: // pgup
+            if (value)
+            {
+                irr_driver->toggleLightViz();
             }
             break;
         default:
