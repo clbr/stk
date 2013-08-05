@@ -119,6 +119,8 @@ supertuxkart_SOURCES = \
  graphics/shaders.hpp \
  graphics/shadow.cpp \
  graphics/shadow.hpp \
+ graphics/shadow_importance.cpp \
+ graphics/shadow_importance.hpp \
  graphics/show_curve.cpp \
  graphics/show_curve.hpp \
  graphics/skid_marks.cpp \
