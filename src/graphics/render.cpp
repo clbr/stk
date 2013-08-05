@@ -167,6 +167,11 @@ void IrrDriver::renderGLSL(float dt)
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_SOLID;
         m_scene_manager->drawAll(m_renderpass);
 
+        ShadowImportanceProvider * const sicb = (ShadowImportanceProvider *)
+                                                 irr_driver->getShaders()->
+                                                 m_callbacks[ES_SHADOW_IMPORTANCE];
+        sicb->updateIPVMatrix();
+
         // Used to cull glowing items & lights
         const core::aabbox3df cambox = camera->getCameraSceneNode()->
                                              getViewFrustum()->getBoundingBox();
@@ -279,6 +284,7 @@ void IrrDriver::renderGLSL(float dt)
 
             ortho *= m_suncam->getViewMatrix();
             ((SunLightProvider *) m_shaders->m_callbacks[ES_SUNLIGHT])->setShadowMatrix(ortho);
+            sicb->setShadowMatrix(ortho);
 
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
 
