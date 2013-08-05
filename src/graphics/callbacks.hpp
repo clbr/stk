@@ -525,6 +525,24 @@ class ShadowImportanceProvider: public callbase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+    void updateIPVMatrix()
+    {
+        // Update the IPV matrix, only once per frame since it's costly
+        const video::IVideoDriver * const drv = irr_driver->getVideoDriver();
+
+        m_invprojview = drv->getTransform(video::ETS_PROJECTION);
+        m_invprojview *= drv->getTransform(video::ETS_VIEW);
+        m_invprojview.makeInverse();
+    }
+
+    void setShadowMatrix(const core::matrix4 &mat)
+    {
+        m_shadowmat = mat;
+    }
+
+private:
+    core::matrix4 m_invprojview, m_shadowmat;
 };
 
 #endif
