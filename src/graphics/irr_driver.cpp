@@ -30,6 +30,7 @@
 #include "graphics/post_processing.hpp"
 #include "graphics/referee.hpp"
 #include "graphics/shaders.hpp"
+#include "graphics/shadow_importance.hpp"
 #include "graphics/sun.hpp"
 #include "graphics/rtts.hpp"
 #include "graphics/wind.hpp"
@@ -412,6 +413,7 @@ void IrrDriver::initDevice()
         // Order matters, create RTTs as soon as possible, as they are the largest blocks.
         m_rtts = new RTT();
         m_shaders = new Shaders();
+        m_shadow_importance = new ShadowImportance();
 
         m_mrt.clear();
         m_mrt.reallocate(3);
