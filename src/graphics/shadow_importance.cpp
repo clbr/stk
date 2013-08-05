@@ -63,14 +63,14 @@ public:
         i = 0;
         for (x = 0; x < UserConfigParams::m_width; x++)
         {
-            const float xpos = (((float) x) / UserConfigParams::m_width) * 2.0f - 1.0f;
+            const float xpos = ((float) x) / UserConfigParams::m_width;
 
             for (y = 0; y < UserConfigParams::m_height; y++)
             {
-                const float ypos = (((float) y) / UserConfigParams::m_height) * 2.0f - 1.0f;
+                const float ypos = ((float) y) / UserConfigParams::m_height;
 
                 ind[i] = i;
-                verts[i] = S3DVertex(xpos, ypos, 0, 0, 0, 0, SColor(255, 255, 0, 0), 0, 0);
+                verts[i] = S3DVertex(xpos, ypos, 0, 0, 0, 0, SColor(255, 255, 255, 255), 0, 0);
                 i++;
             }
         }
