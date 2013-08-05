@@ -44,6 +44,7 @@ void main() {
 	if (NdotL < 0.01) discard;
 	float NdotH = max(0.0, dot(norm, H));
 	NdotH = pow(NdotH, spec);
+	NdotH += 0.05; // offset so that the alpha test doesn't kill us
 
 	gl_FragColor = NdotL * vec4(col, NdotH);
 }
