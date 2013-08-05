@@ -130,6 +130,7 @@ private:
     bool                 m_mipviz;
     bool                 m_normals;
     bool                 m_ssaoviz;
+    bool                 m_lightviz;
     u32                  m_renderpass;
     u32                  m_lensflare_query;
     scene::IMeshSceneNode *m_sun_interposer;
@@ -288,6 +289,8 @@ public:
     bool getNormals() { return m_normals; }
     // ------------------------------------------------------------------------
     void toggleSSAOViz() { m_ssaoviz ^= 1; }
+    // ------------------------------------------------------------------------
+    void toggleLightViz() { m_lightviz ^= 1; }
     // ------------------------------------------------------------------------
     bool getSSAOViz() { return m_ssaoviz; }
     // ------------------------------------------------------------------------
