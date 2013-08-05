@@ -64,6 +64,7 @@ Shaders::Shaders()
     m_callbacks[ES_SSAO] = new SSAOProvider();
     m_callbacks[ES_GODRAY] = new GodRayProvider();
     m_callbacks[ES_SHADOWPASS] = new ShadowPassProvider();
+    m_callbacks[ES_SHADOW_IMPORTANCE] = new ShadowImportanceProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -160,6 +161,10 @@ Shaders::Shaders()
 
     m_shaders[ES_SHADOWPASS] = glsl(dir + "pass.vert", dir + "shadowpass.frag",
                                     m_callbacks[ES_SHADOWPASS]);
+
+    m_shaders[ES_SHADOW_IMPORTANCE] = glsl(dir + "shadowimportance.vert",
+                                           dir + "shadowimportance.frag",
+                                    m_callbacks[ES_SHADOW_IMPORTANCE]);
 
 
     // Check that all successfully loaded
