@@ -463,6 +463,9 @@ void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void ShadowImportanceProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
+    srv->setVertexShaderConstant("shadowmat", m_shadowmat.pointer(), 16);
+    srv->setVertexShaderConstant("ipvmat", m_invprojview.pointer(), 16);
+
     if (!firstdone)
     {
         int tex = 0;
