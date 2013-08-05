@@ -49,6 +49,7 @@ LODNode::LODNode(std::string group_name, scene::ISceneNode* parent,
     drop();
 
     m_forced_lod = -1;
+    m_last_tick = 0;
 }
 
 LODNode::~LODNode()
@@ -139,9 +140,12 @@ void LODNode::OnRegisterSceneNode()
         shown = true;
     }
 
+    const u32 now = irr_driver->getDevice()->getTimer()->getTime();
+
     // support an optional, mostly hard-coded fade-in/out effect for objects with a single level
     if (m_nodes.size() == 1 && (m_nodes[0]->getType() == scene::ESNT_MESH ||
-                                m_nodes[0]->getType() == scene::ESNT_ANIMATED_MESH))
+                                m_nodes[0]->getType() == scene::ESNT_ANIMATED_MESH) &&
+        now > m_last_tick)
     {
         if (m_previous_visibility == WAS_HIDDEN && shown)
         {
@@ -237,6 +241,7 @@ void LODNode::OnRegisterSceneNode()
     }
 
     m_previous_visibility = (shown ? WAS_SHOWN : WAS_HIDDEN);
+    m_last_tick = now;
 
     // If this node has children other than the LOD nodes, draw them
     core::list<ISceneNode*>::Iterator it;
