@@ -263,10 +263,14 @@ void IrrDriver::renderGLSL(float dt)
             // Set up a nice ortho projection that contains our camera frustum
             core::matrix4 ortho;
             core::aabbox3df box = cambox;
-            box.addInternalPoint(m_suncam->getPosition());
-            const float rad = box.getExtent().getLength() / 2;
 
-            ortho.buildProjectionMatrixOrthoLH(rad, rad, 30, 1000);
+            m_suncam->getViewMatrix().transformBoxEx(box);
+            core::vector3df extent = box.getExtent();
+            const float w = fabsf(extent.X);
+            const float h = fabsf(extent.Y);
+            const float z = box.MaxEdge.Z;
+
+            ortho.buildProjectionMatrixOrthoLH(w, h, 30, z);
 
             m_suncam->setTarget(camera->getCameraSceneNode()->getTarget());
             m_suncam->setProjectionMatrix(ortho, true);
