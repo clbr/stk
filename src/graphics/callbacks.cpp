@@ -456,5 +456,21 @@ void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     {
         int tex = 0;
         srv->setVertexShaderConstant("tex", &tex, 1);
+
+        firstdone = true;
+    }
+}
+
+void ShadowImportanceProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("ntex", &tex, 1);
+
+        tex = 1;
+        srv->setVertexShaderConstant("dtex", &tex, 1);
+
+        firstdone = true;
     }
 }
