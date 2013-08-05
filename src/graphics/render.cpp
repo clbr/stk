@@ -33,6 +33,7 @@
 #include "graphics/referee.hpp"
 #include "graphics/rtts.hpp"
 #include "graphics/shaders.hpp"
+#include "graphics/shadow_importance.hpp"
 #include "graphics/wind.hpp"
 #include "items/item.hpp"
 #include "items/item_manager.hpp"
