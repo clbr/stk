@@ -310,7 +310,7 @@ void IrrDriver::renderGLSL(float dt)
             colcb->setResolution(1, m_rtts->getRTT(RTT_WARPV)->getSize().Height);
             sq.render(m_rtts->getRTT(RTT_COLLAPSEH));
 
-            colcb->setResolution(m_rtts->getRTT(RTT_WARPV)->getSize().Width, 1);
+            colcb->setResolution(m_rtts->getRTT(RTT_WARPV)->getSize().Height, 1);
             sq.render(m_rtts->getRTT(RTT_COLLAPSEV));
 
             // Convert importance maps to warp maps
