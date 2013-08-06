@@ -293,9 +293,9 @@ void IrrDriver::renderGLSL(float dt)
             ((SunLightProvider *) m_shaders->m_callbacks[ES_SUNLIGHT])->setShadowMatrix(ortho);
             sicb->setShadowMatrix(ortho);
 
+            // Render the importance map
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
 
-            // Render the importance map
             m_suncam->render();
             m_shadow_importance->render();
 
