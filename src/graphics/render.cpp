@@ -305,6 +305,7 @@ void IrrDriver::renderGLSL(float dt)
             screenQuad sq(m_video_driver);
             sq.setMaterialType(m_shaders->getShader(ES_COLLAPSE));
             sq.setTexture(m_rtts->getRTT(RTT_SHADOW));
+            sq.getMaterial().setFlag(EMF_BILINEAR_FILTER, false);
 
             colcb->setResolution(1, m_rtts->getRTT(RTT_WARPV)->getSize().Height);
             sq.render(m_rtts->getRTT(RTT_COLLAPSEV));
