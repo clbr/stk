@@ -477,3 +477,7 @@ void ShadowImportanceProvider::OnSetConstants(IMaterialRendererServices *srv, in
         firstdone = true;
     }
 }
+
+void CollapseProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+}

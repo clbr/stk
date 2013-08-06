@@ -65,6 +65,7 @@ Shaders::Shaders()
     m_callbacks[ES_GODRAY] = new GodRayProvider();
     m_callbacks[ES_SHADOWPASS] = new ShadowPassProvider();
     m_callbacks[ES_SHADOW_IMPORTANCE] = new ShadowImportanceProvider();
+    m_callbacks[ES_COLLAPSE] = new CollapseProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -165,6 +166,9 @@ Shaders::Shaders()
     m_shaders[ES_SHADOW_IMPORTANCE] = glsl(dir + "shadowimportance.vert",
                                            dir + "shadowimportance.frag",
                                     m_callbacks[ES_SHADOW_IMPORTANCE]);
+
+    m_shaders[ES_COLLAPSE] = glsl(std::string(""), dir + "collapse.frag",
+                                    m_callbacks[ES_COLLAPSE]);
 
 
     // Check that all successfully loaded
