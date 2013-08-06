@@ -160,7 +160,7 @@ Shaders::Shaders()
     m_shaders[ES_GODFADE] = glsl(std::string(""), dir + "godfade.frag", 0);
     m_shaders[ES_GODRAY] = glsl(std::string(""), dir + "godray.frag", m_callbacks[ES_GODRAY]);
 
-    m_shaders[ES_SHADOWPASS] = glsl(dir + "pass.vert", dir + "shadowpass.frag",
+    m_shaders[ES_SHADOWPASS] = glsl(dir + "shadowpass.vert", dir + "shadowpass.frag",
                                     m_callbacks[ES_SHADOWPASS]);
 
     m_shaders[ES_SHADOW_IMPORTANCE] = glsl(dir + "shadowimportance.vert",
