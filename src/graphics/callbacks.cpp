@@ -503,6 +503,11 @@ void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         int tex = 0;
         srv->setVertexShaderConstant("tex", &tex, 1);
 
+        tex = 1;
+        srv->setVertexShaderConstant("warpx", &tex, 1);
+        tex = 2;
+        srv->setVertexShaderConstant("warpy", &tex, 1);
+
         firstdone = true;
     }
 }
