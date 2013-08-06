@@ -266,9 +266,14 @@ void IrrDriver::renderGLSL(float dt)
         {
             m_scene_manager->setCurrentRendertime(scene::ESNRP_SOLID);
 
+            const Vec3 *vmin, *vmax;
+            World::getWorld()->getTrack()->getAABB(&vmin, &vmax);
+            const core::aabbox3df trackbox(vmin->toIrrVector(), vmax->toIrrVector());
+
             // Set up a nice ortho projection that contains our camera frustum
             core::matrix4 ortho;
             core::aabbox3df box = cambox;
+            box = box.intersect(trackbox);
 
             m_suncam->getViewMatrix().transformBoxEx(box);
             core::vector3df extent = box.getExtent();
