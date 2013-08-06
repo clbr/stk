@@ -545,4 +545,12 @@ private:
     core::matrix4 m_invprojview, m_shadowmat;
 };
 
+//
+
+class CollapseProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif
