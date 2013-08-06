@@ -566,6 +566,8 @@ public:
             if (m_pixel[i] > 0.9f) m_pixel[i] = m_multi[i] = 0;
         }
 
+        std::swap(m_multi[0], m_multi[1]);
+
         m_size = std::max(x, y);
     }
 
