@@ -557,12 +557,16 @@ public:
         m_pixel[0] = 1.0f / x;
         m_pixel[1] = 1.0f / y;
 
+        m_multi[0] = m_multi[1] = 1;
+
         u32 i;
         for (i = 0; i < 2; i++)
         {
             // No increase for the other direction
-            if (m_pixel[i] > 0.9f) m_pixel[i] = 0;
+            if (m_pixel[i] > 0.9f) m_pixel[i] = m_multi[i] = 0;
         }
+
+        std::swap(m_multi[0], m_multi[1]);
 
         m_size = std::max(x, y);
     }
