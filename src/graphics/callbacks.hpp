@@ -551,6 +551,18 @@ class CollapseProvider: public callbase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+    void setResolution(float x, float y)
+    {
+        m_pixel[0] = 1.0f / x;
+        m_pixel[1] = 1.0f / y;
+
+        m_size = std::max(x, y);
+    }
+
+private:
+    float m_pixel[2];
+    float m_size;
 };
 
 #endif
