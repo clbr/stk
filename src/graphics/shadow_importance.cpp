@@ -90,6 +90,8 @@ public:
         IVideoDriver * const drv = irr_driver->getVideoDriver();
         drv->setMaterial(mat);
 
+        drv->setTransform(ETS_WORLD, IdentityMatrix);
+
         drv->drawVertexPrimitiveList(verts, count, ind, count,
                                      EVT_STANDARD, EPT_POINTS);
     }
