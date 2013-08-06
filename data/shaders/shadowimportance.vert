@@ -23,7 +23,7 @@ void main()
 	xpos.xyz /= xpos.w;
 
 	// Now we have this pixel's world-space position. Convert to shadow space.
-	vec4 pos = shadowmat * xpos;
+	vec4 pos = shadowmat * vec4(xpos.xyz, 1.0);
 
 	shadowz = pos.z;
 	realz = z;
