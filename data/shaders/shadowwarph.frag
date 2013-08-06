@@ -19,8 +19,6 @@ void main()
 	}
 
 	float res = (lower / total) - origtc.x;
-	res *= 2.0;
-	res -= 1.0;
 
 	float r, g;
 	r = abs(res * step(res, 0.0));
