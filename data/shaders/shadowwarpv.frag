@@ -1,5 +1,4 @@
 uniform sampler2D tex;
-uniform vec2 pixel;
 uniform int size;
 
 void main()
