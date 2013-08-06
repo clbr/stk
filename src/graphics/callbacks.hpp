@@ -573,7 +573,7 @@ public:
 
 private:
     float m_pixel[2];
-    float m_size;
+    int m_size;
     float m_multi[2];
 };
 
