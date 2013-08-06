@@ -144,7 +144,7 @@ Shaders::Shaders()
 
     m_shaders[ES_SUNLIGHT] = glslmat(std::string(""), dir + "sunlight.frag",
                                     m_callbacks[ES_SUNLIGHT], EMT_ONETEXTURE_BLEND);
-    m_shaders[ES_SUNLIGHT_SHADOW] = glslmat(dir + "sunlightshadow.vert", dir + "sunlightshadow.frag",
+    m_shaders[ES_SUNLIGHT_SHADOW] = glslmat(dir + "pass.vert", dir + "sunlightshadow.frag",
                                     m_callbacks[ES_SUNLIGHT], EMT_ONETEXTURE_BLEND);
 
     m_shaders[ES_MLAA_COLOR1] = glsl(dir + "mlaa_offset.vert", dir + "mlaa_color1.frag",
