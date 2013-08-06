@@ -90,13 +90,13 @@ namespace video
 		EMF_MATERIAL_TYPE = 0x100000,
 
 		//! Texture
-		EMT_TEXTURE0 = 0x200000,
+		EMF_TEXTURE0 = 0x200000,
 
 		//! Texture
-		EMT_TEXTURE1 = 0x400000,
+		EMF_TEXTURE1 = 0x400000,
 
 		//! Texture
-		EMT_TEXTURE2 = 0x800000,
+		EMF_TEXTURE2 = 0x800000,
 	};
 
 } // end namespace video
