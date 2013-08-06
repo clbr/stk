@@ -59,7 +59,8 @@ using namespace irr;
     ACT(ES_GODRAY) \
     ACT(ES_SHADOWPASS) \
     ACT(ES_SHADOW_IMPORTANCE) \
-    ACT(ES_COLLAPSE)
+    ACT(ES_COLLAPSE) \
+    ACT(ES_SHADOW_WARP)
 
 #define ENUM(a) a,
 #define STR(a) #a,
