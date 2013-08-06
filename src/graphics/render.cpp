@@ -295,6 +295,7 @@ void IrrDriver::renderGLSL(float dt)
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
 
             // Render the importance map
+            m_suncam->render();
             m_shadow_importance->render();
 
             // Actual shadow map
