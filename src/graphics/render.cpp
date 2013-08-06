@@ -335,16 +335,18 @@ void IrrDriver::renderGLSL(float dt)
             sq.render(m_rtts->getRTT(RTT_WARPV));
 
             // Actual shadow map
-/*
             overridemat.Material.MaterialType = m_shaders->getShader(ES_SHADOWPASS);
-            overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
+            overridemat.EnableFlags = video::EMF_MATERIAL_TYPE | video::EMF_TEXTURE1 |
+                                      video::EMF_TEXTURE2;
             overridemat.EnablePasses = scene::ESNRP_SOLID;
+            overridemat.Material.setTexture(1, m_rtts->getRTT(RTT_WARPH));
+            overridemat.Material.setTexture(2, m_rtts->getRTT(RTT_WARPV));
             overridemat.Enabled = true;
 
             m_scene_manager->drawAll(scene::ESNRP_SOLID);
 
             overridemat.EnablePasses = 0;
-            overridemat.Enabled = false;*/
+            overridemat.Enabled = false;
             camera->activate();
         }
 
