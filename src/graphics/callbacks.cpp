@@ -531,5 +531,6 @@ void ShadowImportanceProvider::OnSetConstants(IMaterialRendererServices *srv, in
 void CollapseProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("pixel", m_pixel, 2);
+    srv->setVertexShaderConstant("multi", m_multi, 2);
     srv->setVertexShaderConstant("size", &m_size, 1);
 }
