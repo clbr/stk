@@ -35,6 +35,8 @@ RTT::RTT()
 
     const u16 shadowside = UserConfigParams::m_shadows == 2 ? 2048 : 512;
     const core::dimension2du shadowsize(shadowside, shadowside);
+    const core::dimension2du warpvsize(1, shadowside);
+    const core::dimension2du warphsize(shadowside, 1);
 
     rtts[RTT_TMP1] = drv->addRenderTargetTexture(res, "rtt.tmp1", ECF_A8R8G8B8, true);
     rtts[RTT_TMP2] = drv->addRenderTargetTexture(res, "rtt.tmp2", ECF_A8R8G8B8, true);
@@ -60,6 +62,10 @@ RTT::RTT()
     rtts[RTT_SSAO2] = drv->addRenderTargetTexture(ssaosize, "rtt.ssao2", ECF_A8R8G8B8, true);
 
     rtts[RTT_SHADOW] = drv->addRenderTargetTexture(shadowsize, "rtt.shadow", ECF_A8R8G8B8, true);
+    rtts[RTT_COLLAPSEV] = drv->addRenderTargetTexture(warpvsize, "rtt.collapsev", ECF_A8R8G8B8, true);
+    rtts[RTT_COLLAPSEH] = drv->addRenderTargetTexture(warphsize, "rtt.collapseh", ECF_A8R8G8B8, true);
+    rtts[RTT_WARPV] = drv->addRenderTargetTexture(warpvsize, "rtt.warpv", ECF_A8R8G8B8, true);
+    rtts[RTT_WARPH] = drv->addRenderTargetTexture(warphsize, "rtt.warph", ECF_A8R8G8B8, true);
 
     u32 i;
     for (i = 0; i < RTT_COUNT; i++)
