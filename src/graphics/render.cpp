@@ -326,6 +326,13 @@ void IrrDriver::renderGLSL(float dt)
             sq.render(m_rtts->getRTT(RTT_COLLAPSEV));
 
             // Convert importance maps to warp maps
+            sq.setMaterialType(m_shaders->getShader(ES_SHADOW_WARPH));
+            sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEH));
+            sq.render(m_rtts->getRTT(RTT_WARPH));
+
+            sq.setMaterialType(m_shaders->getShader(ES_SHADOW_WARPV));
+            sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEV));
+            sq.render(m_rtts->getRTT(RTT_WARPV));
 
             // Actual shadow map
 /*
