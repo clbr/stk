@@ -51,6 +51,10 @@ enum TypeRTT
     RTT_SSAO2,
 
     RTT_SHADOW,
+    RTT_COLLAPSEH,
+    RTT_COLLAPSEV,
+    RTT_WARPH,
+    RTT_WARPV,
 
     RTT_COUNT
 };
