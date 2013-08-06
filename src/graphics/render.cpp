@@ -335,6 +335,7 @@ void IrrDriver::renderGLSL(float dt)
             sq.render(m_rtts->getRTT(RTT_WARPV));
 
             // Actual shadow map
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
             overridemat.Material.MaterialType = m_shaders->getShader(ES_SHADOWPASS);
             overridemat.EnableFlags = video::EMF_MATERIAL_TYPE | video::EMF_TEXTURE1 |
                                       video::EMF_TEXTURE2;
