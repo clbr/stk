@@ -25,6 +25,8 @@
 using namespace video;
 using namespace core;
 
+//-------------------------------------
+
 void NormalMapProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     if (!firstdone)
@@ -51,6 +53,8 @@ void NormalMapProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+//-------------------------------------
 
 void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -92,6 +96,8 @@ void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
 }
 
+//-------------------------------------
+
 void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int userData)
 {
     IVideoDriver * const drv = srv->getVideoDriver();
@@ -115,6 +121,8 @@ void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int use
         firstdone = true;
     }
 }
+
+//-------------------------------------
 
 void SplattingProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -150,6 +158,8 @@ void SplattingProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
 }
 
+//-------------------------------------
+
 void BubbleEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     const float start = fabsf(mat.MaterialTypeParam2);
@@ -174,6 +184,8 @@ void BubbleEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("transparency", &transparency, 1);
 }
 
+//-------------------------------------
+
 void RainEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     const float screenw = UserConfigParams::m_width;
@@ -187,12 +199,16 @@ void RainEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("campos", &campos.X, 3);
 }
 
+//-------------------------------------
+
 void SnowEffectProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
 
     srv->setVertexShaderConstant("time", &time, 1);
 }
+
+//-------------------------------------
 
 void MotionBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -227,10 +243,14 @@ void MotionBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setPixelShaderConstant("color_buffer", &texunit, 1);
 }
 
+//-------------------------------------
+
 void GaussianBlurProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("pixel", m_pixel, 2);
 }
+
+//-------------------------------------
 
 void MipVizProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -250,15 +270,21 @@ void MipVizProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("texsize", texsize, 2);
 }
 
+//-------------------------------------
+
 void ColorizeProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("col", m_color, 3);
 }
 
+//-------------------------------------
+
 void GlowProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("res", m_res, 2);
 }
+
+//-------------------------------------
 
 void ObjectPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -289,6 +315,8 @@ void ObjectPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
 }
 
+//-------------------------------------
+
 void LightBlendProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     const SColorf s = irr_driver->getSceneManager()->getAmbientLight();
@@ -296,6 +324,8 @@ void LightBlendProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     float ambient[3] = { s.r, s.g, s.b };
     srv->setVertexShaderConstant("ambient", ambient, 3);
 }
+
+//-------------------------------------
 
 void PointLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -318,6 +348,8 @@ void PointLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+//-------------------------------------
 
 void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -363,10 +395,14 @@ void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
 }
 
+//-------------------------------------
+
 void BloomProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("low", &m_threshold, 1);
 }
+
+//-------------------------------------
 
 void MLAAColor1Provider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -382,6 +418,8 @@ void MLAAColor1Provider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+//-------------------------------------
 
 void MLAABlend2Provider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -406,6 +444,8 @@ void MLAABlend2Provider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
 }
 
+//-------------------------------------
+
 void MLAANeigh3Provider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     if (!firstdone)
@@ -428,6 +468,8 @@ void MLAANeigh3Provider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
 }
 
+//-------------------------------------
+
 void SSAOProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     if (!firstdone)
@@ -442,10 +484,14 @@ void SSAOProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
 }
 
+//-------------------------------------
+
 void GodRayProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setPixelShaderConstant("sunpos", m_sunpos, 2);
 }
+
+//-------------------------------------
 
 void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -460,6 +506,8 @@ void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+//-------------------------------------
 
 void ShadowImportanceProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
@@ -477,6 +525,8 @@ void ShadowImportanceProvider::OnSetConstants(IMaterialRendererServices *srv, in
         firstdone = true;
     }
 }
+
+//-------------------------------------
 
 void CollapseProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
