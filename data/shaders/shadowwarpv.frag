@@ -24,8 +24,8 @@ void main()
 	res -= 1.0;
 
 	float r, g;
-	r = res * step(res, 0.0);
+	r = abs(res * step(res, 0.0));
 	g = res * step(0.0, res);
 
-	gl_FragColor = vec4(r, g, 0.0, 0.0);
+	gl_FragColor = vec4(r, g, 0.0, 1.0);
 }
