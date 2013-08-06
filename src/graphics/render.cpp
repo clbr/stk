@@ -32,6 +32,7 @@
 #include "graphics/post_processing.hpp"
 #include "graphics/referee.hpp"
 #include "graphics/rtts.hpp"
+#include "graphics/screenquad.hpp"
 #include "graphics/shaders.hpp"
 #include "graphics/shadow_importance.hpp"
 #include "graphics/wind.hpp"
@@ -297,6 +298,21 @@ void IrrDriver::renderGLSL(float dt)
             // Render the importance map
             m_suncam->render();
             m_shadow_importance->render();
+
+            CollapseProvider * const colcb = (CollapseProvider *)
+                                                 m_shaders->
+                                                 m_callbacks[ES_COLLAPSE];
+            screenQuad sq(m_video_driver);
+            sq.setMaterialType(m_shaders->getShader(ES_COLLAPSE));
+            sq.setTexture(m_rtts->getRTT(RTT_SHADOW));
+
+            colcb->setResolution(1, m_rtts->getRTT(RTT_WARPV)->getSize().Height);
+            sq.render(m_rtts->getRTT(RTT_COLLAPSEV));
+
+            colcb->setResolution(m_rtts->getRTT(RTT_WARPV)->getSize().Width, 1);
+            sq.render(m_rtts->getRTT(RTT_COLLAPSEH));
+
+            // Convert importance maps to warp maps
 
             // Actual shadow map
 /*
