@@ -294,6 +294,11 @@ void IrrDriver::renderGLSL(float dt)
 
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
 
+            // Render the importance map
+            m_shadow_importance->render();
+
+            // Actual shadow map
+/*
             overridemat.Material.MaterialType = m_shaders->getShader(ES_SHADOWPASS);
             overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
             overridemat.EnablePasses = scene::ESNRP_SOLID;
@@ -302,7 +307,7 @@ void IrrDriver::renderGLSL(float dt)
             m_scene_manager->drawAll(scene::ESNRP_SOLID);
 
             overridemat.EnablePasses = 0;
-            overridemat.Enabled = false;
+            overridemat.Enabled = false;*/
             camera->activate();
         }
 
