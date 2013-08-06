@@ -169,7 +169,9 @@ Shaders::Shaders()
 
     m_shaders[ES_COLLAPSE] = glsl(std::string(""), dir + "collapse.frag",
                                     m_callbacks[ES_COLLAPSE]);
-    m_shaders[ES_SHADOW_WARP] = glsl(std::string(""), dir + "shadowwarp.frag",
+    m_shaders[ES_SHADOW_WARPH] = glsl(std::string(""), dir + "shadowwarph.frag",
+                                    m_callbacks[ES_COLLAPSE]);
+    m_shaders[ES_SHADOW_WARPV] = glsl(std::string(""), dir + "shadowwarpv.frag",
                                     m_callbacks[ES_COLLAPSE]);
 
 
