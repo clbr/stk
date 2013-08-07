@@ -391,6 +391,12 @@ void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         tex = 3;
         srv->setVertexShaderConstant("shadowtex", &tex, 1);
 
+        tex = 4;
+        srv->setVertexShaderConstant("warpx", &tex, 1);
+
+        tex = 5;
+        srv->setVertexShaderConstant("warpy", &tex, 1);
+
         firstdone = true;
     }
 }

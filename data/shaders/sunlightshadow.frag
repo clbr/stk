@@ -2,6 +2,8 @@ uniform sampler2D ntex;
 uniform sampler2D dtex;
 uniform sampler2D cloudtex;
 uniform sampler2D shadowtex;
+uniform sampler2D warpx;
+uniform sampler2D warpy;
 
 uniform vec3 center;
 uniform vec3 col;
@@ -54,6 +56,13 @@ void main() {
 	const float bias = 0.005;
 	vec3 shadowcoord = (shadowmat * vec4(xpos.xyz, 1.0)).xyz;
 	shadowcoord = (shadowcoord * 0.5) + vec3(0.5);
+
+	vec2 movex = texture2D(warpx, shadowcoord.xy).xy;
+	vec2 movey = texture2D(warpy, shadowcoord.xy).xy;
+	float dx = -movex.x + movex.y;
+	float dy = -movey.x + movey.y;
+	shadowcoord.xy += vec2(dx, dy);
+
 	float shadowmapz = decdepth(texture2D(shadowtex, shadowcoord.xy));
 
 	outcol *= step(shadowcoord.z, shadowmapz + bias);
