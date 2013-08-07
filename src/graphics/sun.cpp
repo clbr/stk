@@ -48,6 +48,9 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
     if (UserConfigParams::m_shadows)
     {
         m.setTexture(3, irr_driver->getRTTs()->getRTT(RTT_SHADOW));
+        m.setTexture(4, irr_driver->getRTTs()->getRTT(RTT_WARPH));
+        m.setTexture(5, irr_driver->getRTTs()->getRTT(RTT_WARPV));
+
         m.MaterialType = irr_driver->getShaders()->getShader(ES_SUNLIGHT_SHADOW);
     }
 
