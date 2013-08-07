@@ -14,5 +14,8 @@ void main()
 	float dx = -movex.x + movex.y;
 	float dy = -movey.x + movey.y;
 
+	dx *= 2.0;
+	dy *= 2.0;
+
 	gl_Position = pos + vec4(dx, dy, vec2(0.0));
 }
