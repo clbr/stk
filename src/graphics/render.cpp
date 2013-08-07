@@ -288,6 +288,7 @@ void IrrDriver::renderGLSL(float dt)
             m_suncam->setTarget(camera->getCameraSceneNode()->getTarget());
             m_suncam->setProjectionMatrix(ortho, true);
             m_scene_manager->setActiveCamera(m_suncam);
+            m_suncam->render();
 
             ortho *= m_suncam->getViewMatrix();
             ((SunLightProvider *) m_shaders->m_callbacks[ES_SUNLIGHT])->setShadowMatrix(ortho);
@@ -296,7 +297,6 @@ void IrrDriver::renderGLSL(float dt)
             // Render the importance map
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
 
-            m_suncam->render();
             m_shadow_importance->render();
 
             CollapseProvider * const colcb = (CollapseProvider *)
