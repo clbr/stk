@@ -7,7 +7,7 @@ void main()
 {
 	float res = 0.0;
 	vec2 tc = gl_TexCoord[0].xy;
-	tc.y = 1.0 - tc.y;
+//	tc.y = 1.0 - tc.y;
 	tc *= multi;
 
 	for (int i = 0; i < size; i++)
