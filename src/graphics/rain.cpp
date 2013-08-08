@@ -47,6 +47,7 @@ public:
         mat.ZWriteEnable = false;
         mat.MaterialType = irr_driver->getShaders()->getShader(ES_RAIN);
         mat.Thickness = 200;
+        mat.BlendOperation = EBO_ADD;
 
         mat.setTexture(0, tex);
         mat.TextureLayer[0].TextureWrapU =
