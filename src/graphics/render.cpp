@@ -342,6 +342,16 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.EnablePasses = scene::ESNRP_SOLID;
             overridemat.Material.setTexture(1, m_rtts->getRTT(RTT_WARPH));
             overridemat.Material.setTexture(2, m_rtts->getRTT(RTT_WARPV));
+            overridemat.Material.TextureLayer[1].TextureWrapU =
+            overridemat.Material.TextureLayer[1].TextureWrapV =
+            overridemat.Material.TextureLayer[2].TextureWrapU =
+            overridemat.Material.TextureLayer[2].TextureWrapV = video::ETC_CLAMP_TO_EDGE;
+            overridemat.Material.TextureLayer[1].BilinearFilter =
+            overridemat.Material.TextureLayer[2].BilinearFilter = true;
+            overridemat.Material.TextureLayer[1].TrilinearFilter =
+            overridemat.Material.TextureLayer[2].TrilinearFilter = false;
+            overridemat.Material.TextureLayer[1].AnisotropicFilter =
+            overridemat.Material.TextureLayer[2].AnisotropicFilter = 0;
             overridemat.Enabled = true;
 
             m_scene_manager->drawAll(scene::ESNRP_SOLID);
