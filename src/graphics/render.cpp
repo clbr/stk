@@ -346,6 +346,8 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.Material.TextureLayer[1].TextureWrapV =
             overridemat.Material.TextureLayer[2].TextureWrapU =
             overridemat.Material.TextureLayer[2].TextureWrapV = video::ETC_CLAMP_TO_EDGE;
+            overridemat.Material.TextureLayer[1].BilinearFilter =
+            overridemat.Material.TextureLayer[2].BilinearFilter = false;
             overridemat.Enabled = true;
 
             m_scene_manager->drawAll(scene::ESNRP_SOLID);
