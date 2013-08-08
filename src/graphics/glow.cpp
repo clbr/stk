@@ -46,6 +46,7 @@ GlowNode::GlowNode(scene::ISceneManager* mgr, float radius): ISceneNode(mgr->get
         mat.TextureLayer[0].TextureWrapU =
         mat.TextureLayer[0].TextureWrapV = ETC_CLAMP_TO_EDGE;
         mat.setFlag(EMF_TRILINEAR_FILTER, true);
+        mat.BlendOperation = EBO_ADD;
 
         sphere = mgr->getGeometryCreator()->createSphereMesh(1, 4, 4);
         box = sphere->getBoundingBox();
