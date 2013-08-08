@@ -317,11 +317,11 @@ void IrrDriver::renderGLSL(float dt)
                        m_rtts->getRTT(RTT_WARPV)->getSize().Height,
                        m_rtts->getRTT(RTT_WARPV)->getSize().Height);
 
-            sq.setMaterialType(m_shaders->getShader(ES_GAUSSIAN3H));
+            sq.setMaterialType(m_shaders->getShader(ES_GAUSSIAN6H));
             sq.setTexture(m_rtts->getRTT(RTT_WARPH));
             sq.render(m_rtts->getRTT(RTT_COLLAPSEH));
 
-            sq.setMaterialType(m_shaders->getShader(ES_GAUSSIAN3V));
+            sq.setMaterialType(m_shaders->getShader(ES_GAUSSIAN6V));
             sq.setTexture(m_rtts->getRTT(RTT_WARPV));
             sq.render(m_rtts->getRTT(RTT_COLLAPSEV));
 
