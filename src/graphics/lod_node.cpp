@@ -82,6 +82,11 @@ int LODNode::getLevel()
         if (dist < m_detail[n])
           return n;
     }
+
+    // If it's the shadow pass, and we would have otherwise hidden the item, show the min one
+    if (curr_cam->isOrthogonal())
+        return m_detail.size() - 1;
+
     return -1;
 }  // getLevel
 
