@@ -4,7 +4,6 @@ uniform int size;
 void main()
 {
 	vec2 origtc = gl_TexCoord[0].xy;
-	origtc.y = 1.0 - origtc.y;
 
 	// Get total sum
 	float lower = 0.0;
