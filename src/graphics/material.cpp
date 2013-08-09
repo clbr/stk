@@ -834,6 +834,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
             bubble->addBubble(mb);
 
             m->MaterialType = irr_driver->getShaders()->getShader(ES_BUBBLES);
+            m->BlendOperation = video::EBO_ADD;
 
             // alpha blending and bubble shading can work together so when both are enabled
             // don't increment the 'modes' counter to not get the 'too many modes' warning
@@ -873,6 +874,7 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
 
             // Material and shaders
             m->MaterialType = irr_driver->getShaders()->getShader(ES_GRASS);
+            m->BlendOperation = video::EBO_ADD;
 
         }
     }
