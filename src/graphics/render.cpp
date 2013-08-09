@@ -359,7 +359,7 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.Material.TextureLayer[2].TextureWrapU =
             overridemat.Material.TextureLayer[2].TextureWrapV = video::ETC_CLAMP_TO_EDGE;
             overridemat.Material.TextureLayer[1].BilinearFilter =
-            overridemat.Material.TextureLayer[2].BilinearFilter =
+            overridemat.Material.TextureLayer[2].BilinearFilter = true;
             overridemat.Material.TextureLayer[1].TrilinearFilter =
             overridemat.Material.TextureLayer[2].TrilinearFilter = false;
             overridemat.Material.TextureLayer[1].AnisotropicFilter =
