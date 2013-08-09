@@ -103,6 +103,10 @@
     Released under the Creative Commons BY (Attribution) 3.0
     Recorded by Mike Koenig, with modifications by Marianne Gagnon (Auria)
     
+* inflate
+    Created by  neonaeon, released under CC-BY 3.0
+    http://www.freesound.org/people/neonaeon/sounds/16572/
+
 * last lap fanfare
     by Dundersylt
     released under CC-BY-SA 3.0+

@@ -29,7 +29,8 @@
    <sfx filename="gp_end.ogg"           volume="1.0" positional="false" />
    <sfx filename="grab_collectable.ogg" volume="1.0" positional="false" />
    <sfx filename="hammer.ogg"           volume="1.0" positional="true" rolloff="0.05" />
-   <sfx filename="horn.ogg"             volume="0.6" positional="true" rolloff="0.2"   />
+   <sfx filename="horn.ogg"             volume="0.6" positional="true" rolloff="0.2"  />
+   <sfx filename="inflate.ogg"          volume="1.0" positional="true"  rolloff="0.1" />
    
    <!-- TODO (sam) to be replaced by a real song -->
    <sfx filename="jump.ogg"      volume="0.8" positional="true" />
@@ -39,6 +40,7 @@
    <sfx filename="machine_sound.ogg"    volume="1.0" positional="true" />
    <sfx filename="parachute.ogg"        volume="1.0" positional="true" rolloff="0.5"  />
    <sfx filename="portal.ogg"           volume="1.0" positional="true" />
+   <sfx filename="plopp.ogg"            volume="1.0" positional="true"  rolloff="0.1" />
    <sfx filename="plunger.ogg"          volume="1.0" positional="false" />
    <sfx filename="pre_start_race.ogg"   volume="1.0" positional="false" />
    <sfx filename="race_finish.ogg"      volume="1.0" positional="false" />
