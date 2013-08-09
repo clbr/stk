@@ -78,6 +78,18 @@ void IrrDriver::renderGLSL(float dt)
     const u32 itemcount = items->getNumberOfItems();
     u32 i;
 
+    // For each static node, give it a glow representation
+    const u32 staticglows = glows.size();
+    for (i = 0; i < staticglows; i++)
+    {
+        scene::ISceneNode * const node = glows[i].node;
+
+        const float radius = (node->getBoundingBox().getExtent().getLength() / 2) * 2.0f;
+        GlowNode * const repnode = new GlowNode(irr_driver->getSceneManager(), radius);
+        repnode->setPosition(node->getTransformedBoundingBox().getCenter());
+        transparent_glow_nodes.push_back(repnode);
+    }
+
     for (i = 0; i < itemcount; i++)
     {
         Item * const item = items->getItem(i);
