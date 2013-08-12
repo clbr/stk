@@ -309,13 +309,27 @@ void IrrDriver::renderGLSL(float dt)
             m_suncam->getViewMatrix().transformBoxEx(box);
             m_suncam->getViewMatrix().transformBoxEx(trackbox);
 
-/*            core::vector3df extent = box.getExtent();
+            core::vector3df extent = trackbox.getExtent();
             const float w = fabsf(extent.X);
-            const float h = fabsf(extent.Y);*/
+            const float h = fabsf(extent.Y);
             const float z = box.MaxEdge.Z;
 
-            ortho.buildProjectionMatrixOrthoLH(box.MinEdge.X, box.MaxEdge.X,
-                                               box.MaxEdge.Y, box.MinEdge.Y,
+            // Snap to texels
+            const float units_per_w = w / m_rtts->getRTT(RTT_SHADOW)->getSize().Width;
+            const float units_per_h = h / m_rtts->getRTT(RTT_SHADOW)->getSize().Height;
+
+            float left = box.MinEdge.X;
+            float right = box.MaxEdge.X;
+            float up = box.MaxEdge.Y;
+            float down = box.MinEdge.Y;
+
+            left -= fmodf(left, units_per_w);
+            right -= fmodf(right, units_per_w);
+            up -= fmodf(up, units_per_h);
+            down -= fmodf(down, units_per_h);
+
+            ortho.buildProjectionMatrixOrthoLH(left, right,
+                                               up, down,
                                                30, z);
 
             m_suncam->setTarget(camera->getCameraSceneNode()->getTarget());
