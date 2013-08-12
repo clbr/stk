@@ -332,7 +332,6 @@ void IrrDriver::renderGLSL(float dt)
                                                up, down,
                                                30, z);
 
-            m_suncam->setTarget(camera->getCameraSceneNode()->getTarget());
             m_suncam->setProjectionMatrix(ortho, true);
             m_scene_manager->setActiveCamera(m_suncam);
             m_suncam->render();
