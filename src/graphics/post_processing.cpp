@@ -232,6 +232,10 @@ void PostProcessing::render()
 
             const bool globalbloom = World::getWorld()->getTrack()->getBloom();
 
+            BloomPowerProvider * const bloomcb = (BloomPowerProvider *)
+                                                 irr_driver->getShaders()->
+                                                 m_callbacks[ES_BLOOM_POWER];
+
             if (globalbloom)
             {
                 const float threshold = World::getWorld()->getTrack()->getBloomThreshold();
@@ -246,7 +250,7 @@ void PostProcessing::render()
             }
 
             // Do we have any forced bloom nodes? If so, draw them now
-            const std::vector<scene::ISceneNode *> &blooms = irr_driver->getForcedBloom();
+            const std::vector<IrrDriver::bloomdata_t> &blooms = irr_driver->getForcedBloom();
             const u32 bloomsize = blooms.size();
 
             if (!globalbloom && bloomsize)
@@ -255,6 +259,15 @@ void PostProcessing::render()
 
             if (globalbloom || bloomsize)
             {
+                // Clear the alpha to a suitable value, stencil
+                glClearColor(0, 0, 0, 0.1);
+                glColorMask(0, 0, 0, 1);
+
+                glClear(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+
+                glClearColor(0, 0, 0, 0);
+                glColorMask(1, 1, 1, 1);
+
                 // The forced-bloom objects are drawn again, to know which pixels to pick.
                 // While it's more drawcalls, there's a cost to using four MRTs over three,
                 // and there shouldn't be many such objects in a track.
@@ -274,10 +287,9 @@ void PostProcessing::render()
                     overridemat.EnableFlags = EMF_MATERIAL_TYPE | EMF_ZWRITE_ENABLE | EMF_COLOR_MASK;
                     overridemat.Enabled = true;
 
-                    overridemat.Material.MaterialType = EMT_SOLID;
+                    overridemat.Material.MaterialType = shaders->getShader(ES_BLOOM_POWER);
                     overridemat.Material.ZWriteEnable = false;
-                    overridemat.Material.ColorMask = ECP_NONE;
-                    glClear(GL_STENCIL_BUFFER_BIT);
+                    overridemat.Material.ColorMask = ECP_ALPHA;
 
                     glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
                     glStencilFunc(GL_ALWAYS, 1, ~0);
@@ -287,27 +299,30 @@ void PostProcessing::render()
 
                     for (u32 i = 0; i < bloomsize; i++)
                     {
-                        scene::ISceneNode * const cur = blooms[i];
+                        scene::ISceneNode * const cur = blooms[i].node;
 
                         // Quick box-based culling
                         const core::aabbox3df nodebox = cur->getTransformedBoundingBox();
                         if (!nodebox.intersectsWithBox(cambox))
                             continue;
+
+                        bloomcb->setPower(blooms[i].power);
 
                         cur->render();
                     }
 
                     // Second pass for transparents. No-op for solids.
                     irr_driver->getSceneManager()->setCurrentRendertime(ESNRP_TRANSPARENT);
-                    overridemat.Material.MaterialType = EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
                     for (u32 i = 0; i < bloomsize; i++)
                     {
-                        scene::ISceneNode * const cur = blooms[i];
+                        scene::ISceneNode * const cur = blooms[i].node;
 
                         // Quick box-based culling
                         const core::aabbox3df nodebox = cur->getTransformedBoundingBox();
                         if (!nodebox.intersectsWithBox(cambox))
                             continue;
+
+                        bloomcb->setPower(blooms[i].power);
 
                         cur->render();
                     }
@@ -322,11 +337,14 @@ void PostProcessing::render()
                     m_material.setTexture(0, rtts->getRTT(RTT_COLOR));
 
                     // Just in case.
-                    glColorMask(1, 1, 1, 1);
+                    glColorMask(1, 1, 1, 0);
                     drv->setRenderTarget(rtts->getRTT(RTT_TMP3), false, false);
 
+                    m_material.ColorMask = ECP_RGB;
                     drawQuad(cam, m_material);
+                    m_material.ColorMask = ECP_ALL;
 
+                    glColorMask(1, 1, 1, 1);
                     glDisable(GL_STENCIL_TEST);
                 } // end forced bloom
 
@@ -369,11 +387,14 @@ void PostProcessing::render()
                 }
 
                 // Additively blend on top of tmp1
-                m_material.MaterialType = EMT_TRANSPARENT_ADD_COLOR;
+                m_material.BlendOperation = EBO_ADD;
+                m_material.MaterialType = shaders->getShader(ES_BLOOM_BLEND);
                 m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
                 drv->setRenderTarget(out, false, false);
 
                 drawQuad(cam, m_material);
+
+                m_material.BlendOperation = EBO_NONE;
             } // end if bloom
 
             in = rtts->getRTT(RTT_TMP1);
