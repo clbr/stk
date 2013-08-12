@@ -577,4 +577,20 @@ private:
     float m_multi[2];
 };
 
+//
+
+class BloomPowerProvider: public callbase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+
+    void setPower(float power)
+    {
+        m_power = power / 10.0f;
+    }
+
+private:
+    float m_power;
+};
+
 #endif
