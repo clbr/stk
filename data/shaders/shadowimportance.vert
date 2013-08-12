@@ -3,8 +3,8 @@ uniform sampler2D dtex;
 uniform mat4 ipvmat;
 uniform mat4 shadowmat;
 
-varying float shadowz;
-varying float realz;
+varying float linearz;
+varying vec3 normal;
 
 float decdepth(vec4 rgba) {
 	return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0));
@@ -25,8 +25,9 @@ void main()
 	// Now we have this pixel's world-space position. Convert to shadow space.
 	vec4 pos = shadowmat * vec4(xpos.xyz, 1.0);
 
-	shadowz = pos.z;
-	realz = z;
+	vec4 ntmp = texture2D(ntex, texc);
+	normal = ntmp.xyz * 2.0 - 1.0;
+	linearz = ntmp.a;
 
 	gl_Position = pos;
 }
