@@ -25,4 +25,5 @@
     <rear-right position = "0.340563 0.116514 -0.323795"
                  model    = "wheel-rear-right.b3d"       />
   </wheels>
+  <hat offset = "0.0 1.0 0.0">
 </kart>

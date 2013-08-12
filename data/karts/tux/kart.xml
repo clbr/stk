@@ -32,4 +32,5 @@
     <nitro-emitter-a position = "0.224117 0.329109 -0.685808" />
     <nitro-emitter-b position = "-0.195588 0.329109 -0.685808" />
   </nitro-emitter>
+  <hat offset = "0.0 1.0 0.0">
 </kart>
