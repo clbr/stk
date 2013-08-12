@@ -121,6 +121,8 @@ Shaders::Shaders()
 
     m_shaders[ES_COLORIZE] = glslmat(std::string(""), dir + "colorize.frag",
                                     m_callbacks[ES_COLORIZE], EMT_SOLID);
+    m_shaders[ES_COLORIZE_REF] = glslmat(std::string(""), dir + "colorize_ref.frag",
+                                    m_callbacks[ES_COLORIZE], EMT_SOLID);
 
     m_shaders[ES_PASS] = glslmat(std::string(""), dir + "pass.frag",
                                     0, EMT_SOLID);
