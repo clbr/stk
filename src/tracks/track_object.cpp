@@ -26,6 +26,7 @@
 #include "items/item_manager.hpp"
 #include "physics/physical_object.hpp"
 #include "race/race_manager.hpp"
+#include "utils/helpers.hpp"
 
 
 /** A track object: any additional object on the track. This object implements
@@ -171,7 +172,11 @@ void TrackObject::init(const XMLNode &xml_node, LODNode* lod_node)
         bool forcedbloom = false;
         if (xml_node.get("forcedbloom", &forcedbloom) && forcedbloom && glownode)
         {
-            irr_driver->addForcedBloomNode(glownode);
+            float power = 1;
+            xml_node.get("bloompower", &power);
+            power = clampf(power, 0.5f, 10);
+
+            irr_driver->addForcedBloomNode(glownode, power);
         }
     }
 
