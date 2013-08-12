@@ -226,6 +226,23 @@ void IrrDriver::renderGLSL(float dt)
                 cb->setColor(dat.r, dat.g, dat.b);
                 cur->render();
             }
+
+            // Second round for transparents; it's a no-op for solids
+            m_scene_manager->setCurrentRendertime(scene::ESNRP_TRANSPARENT);
+            overridemat.Material.MaterialType = m_shaders->getShader(ES_COLORIZE_REF);
+            for (u32 i = 0; i < glowcount; i++)
+            {
+                const glowdata_t &dat = glows[i];
+                scene::ISceneNode * const cur = dat.node;
+
+                // Quick box-based culling
+                const core::aabbox3df nodebox = cur->getTransformedBoundingBox();
+                if (!nodebox.intersectsWithBox(cambox))
+                    continue;
+
+                cb->setColor(dat.r, dat.g, dat.b);
+                cur->render();
+            }
             overridemat.Enabled = false;
             overridemat.EnablePasses = 0;
 
