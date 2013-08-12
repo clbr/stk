@@ -299,7 +299,8 @@ void IrrDriver::renderGLSL(float dt)
 
             const Vec3 *vmin, *vmax;
             World::getWorld()->getTrack()->getAABB(&vmin, &vmax);
-            core::aabbox3df trackbox(vmin->toIrrVector(), vmax->toIrrVector());
+            core::aabbox3df trackbox(vmin->toIrrVector(), vmax->toIrrVector() -
+                                                          core::vector3df(0, 30, 0));
 
             // Set up a nice ortho projection that contains our camera frustum
             core::matrix4 ortho;
