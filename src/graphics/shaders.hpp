@@ -41,6 +41,7 @@ using namespace irr;
     ACT(ES_GAUSSIAN6H) \
     ACT(ES_GAUSSIAN6V) \
     ACT(ES_COLORIZE) \
+    ACT(ES_COLORIZE_REF) \
     ACT(ES_PASS) \
     ACT(ES_PASS_ADDITIVE) \
     ACT(ES_GLOW) \
