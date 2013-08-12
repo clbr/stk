@@ -302,9 +302,18 @@ void IrrDriver::renderGLSL(float dt)
             core::aabbox3df trackbox(vmin->toIrrVector(), vmax->toIrrVector() -
                                                           core::vector3df(0, 30, 0));
 
+            scene::ICameraSceneNode * const camnode = camera->getCameraSceneNode();
+            const float oldfar = camnode->getFarValue();
+            camnode->setFarValue(std::min(100.0f, oldfar));
+            camnode->render();
+            const core::aabbox3df smallcambox = camnode->
+                                             getViewFrustum()->getBoundingBox();
+            camnode->setFarValue(oldfar);
+            camnode->render();
+
             // Set up a nice ortho projection that contains our camera frustum
             core::matrix4 ortho;
-            core::aabbox3df box = cambox;
+            core::aabbox3df box = smallcambox;
             box = box.intersect(trackbox);
 
             m_suncam->getViewMatrix().transformBoxEx(box);
