@@ -179,6 +179,8 @@ Shaders::Shaders()
 
     m_shaders[ES_BLOOM_POWER] = glsl(std::string(""), dir + "bloompower.frag",
                                     m_callbacks[ES_BLOOM_POWER]);
+    m_shaders[ES_BLOOM_BLEND] = glsl(std::string(""), dir + "bloomblend.frag",
+                                    0);
 
 
     // Check that all successfully loaded
