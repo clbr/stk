@@ -297,6 +297,21 @@ void PostProcessing::render()
                         cur->render();
                     }
 
+                    // Second pass for transparents. No-op for solids.
+                    irr_driver->getSceneManager()->setCurrentRendertime(ESNRP_TRANSPARENT);
+                    overridemat.Material.MaterialType = EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
+                    for (u32 i = 0; i < bloomsize; i++)
+                    {
+                        scene::ISceneNode * const cur = blooms[i];
+
+                        // Quick box-based culling
+                        const core::aabbox3df nodebox = cur->getTransformedBoundingBox();
+                        if (!nodebox.intersectsWithBox(cambox))
+                            continue;
+
+                        cur->render();
+                    }
+
                     overridemat.Enabled = 0;
                     overridemat.EnablePasses = 0;
 
