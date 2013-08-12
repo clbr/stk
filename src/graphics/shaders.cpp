@@ -66,6 +66,7 @@ Shaders::Shaders()
     m_callbacks[ES_SHADOWPASS] = new ShadowPassProvider();
     m_callbacks[ES_SHADOW_IMPORTANCE] = new ShadowImportanceProvider();
     m_callbacks[ES_COLLAPSE] = new CollapseProvider();
+    m_callbacks[ES_BLOOM_POWER] = new BloomPowerProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -175,6 +176,9 @@ Shaders::Shaders()
                                     m_callbacks[ES_COLLAPSE]);
     m_shaders[ES_SHADOW_WARPV] = glsl(std::string(""), dir + "shadowwarpv.frag",
                                     m_callbacks[ES_COLLAPSE]);
+
+    m_shaders[ES_BLOOM_POWER] = glsl(std::string(""), dir + "bloompower.frag",
+                                    m_callbacks[ES_BLOOM_POWER]);
 
 
     // Check that all successfully loaded

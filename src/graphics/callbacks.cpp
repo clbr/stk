@@ -545,3 +545,10 @@ void CollapseProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("multi", m_multi, 2);
     srv->setVertexShaderConstant("size", &m_size, 1);
 }
+
+//-------------------------------------
+
+void BloomPowerProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    srv->setVertexShaderConstant("power", &m_power, 1);
+}
