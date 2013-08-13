@@ -35,7 +35,7 @@ void main(void)
 	float mytotstrength = 3.0 * totStrength * curdepth * (1.0 - curdepth);
 
 	// get the normal of current fragment
-	vec3 norm = cur.xyz * vec3(2.0) - vec3(1.0);
+	vec3 norm = normalize(cur.xyz * vec3(2.0) - vec3(1.0));
 
 	float bl = 0.0;
 
