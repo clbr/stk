@@ -113,7 +113,7 @@ public:
         int getHeight() const {return m_height; }
     };   // VideoMode
 
-    struct bloomdata_t {
+    struct BloomData {
         scene::ISceneNode * node;
         float power;
     };
@@ -146,16 +146,16 @@ private:
     scene::CLensFlareSceneNode *m_lensflare;
     scene::ICameraSceneNode *m_suncam;
 
-    struct glowdata_t {
+    struct GlowData {
         scene::ISceneNode * node;
         float r, g, b;
     };
 
-    std::vector<glowdata_t> m_glowing;
+    std::vector<GlowData> m_glowing;
 
     std::vector<LightNode *> m_lights;
 
-    std::vector<bloomdata_t> m_forcedbloom;
+    std::vector<BloomData> m_forcedbloom;
 
 #ifdef DEBUG
     /** Used to visualise skeletons. */
@@ -307,7 +307,7 @@ public:
     // ------------------------------------------------------------------------
     void addGlowingNode(scene::ISceneNode *n, float r = 1.0f, float g = 1.0f, float b = 1.0f)
     {
-        glowdata_t dat;
+        GlowData dat;
         dat.node = n;
         dat.r = r;
         dat.g = g;
@@ -320,7 +320,7 @@ public:
     // ------------------------------------------------------------------------
     void addForcedBloomNode(scene::ISceneNode *n, float power = 1)
     {
-        bloomdata_t dat;
+        BloomData dat;
         dat.node = n;
         dat.power = power;
 
@@ -329,7 +329,7 @@ public:
     // ------------------------------------------------------------------------
     void clearForcedBloom() { m_forcedbloom.clear(); }
     // ------------------------------------------------------------------------
-    const std::vector<bloomdata_t> &getForcedBloom() const { return m_forcedbloom; }
+    const std::vector<BloomData> &getForcedBloom() const { return m_forcedbloom; }
     // ------------------------------------------------------------------------
     void applyObjectPassShader();
     void applyObjectPassShader(scene::ISceneNode * const node, bool rimlit = false);
