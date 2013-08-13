@@ -42,7 +42,7 @@ class Rain
 
 public:
     Rain(Camera* camera, irr::scene::ISceneNode* parent);
-    ~Rain();
+    virtual ~Rain();
 
     void update(float dt);
     void setPosition(const irr::core::vector3df& position);

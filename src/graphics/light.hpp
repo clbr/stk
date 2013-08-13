@@ -29,7 +29,7 @@ class LightNode: public scene::ISceneNode
 {
 public:
     LightNode(scene::ISceneManager* mgr, float radius, float r, float g, float b);
-    ~LightNode();
+    virtual ~LightNode();
 
     virtual void render();
 
