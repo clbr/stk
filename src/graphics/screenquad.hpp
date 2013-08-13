@@ -46,7 +46,7 @@ public:
     SMaterial& getMaterial() { return mat; }
 
     //Set the texture to render with the quad
-    void setTexture(ITexture* __restrict tex, u32 layer = 0)
+    void setTexture(ITexture* tex, u32 layer = 0)
     {
         mat.TextureLayer[layer].Texture = tex;
     }
