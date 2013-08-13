@@ -139,7 +139,7 @@ IrrDriver::~IrrDriver()
  */
 void IrrDriver::reset()
 {
-    m_post_processing->reset();
+    if (m_glsl) m_post_processing->reset();
 }   // reset
 
 // ----------------------------------------------------------------------------
