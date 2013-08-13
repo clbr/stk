@@ -19,7 +19,8 @@
 
 #include "graphics/glwrap.hpp"
 
-#include <irrlicht.h>
+#include <SMaterial.h>
+#include <IVideoDriver.h>
 
 using namespace irr;
 using namespace video;
