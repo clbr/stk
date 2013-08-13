@@ -46,8 +46,6 @@
 #include "utils/log.hpp"
 #include "utils/profiler.hpp"
 
-#include <irrlicht.h>
-
 void IrrDriver::renderGLSL(float dt)
 {
     World *world = World::getWorld(); // Never NULL.
