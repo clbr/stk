@@ -9,7 +9,7 @@
     <div layout="horizontal-row" width="100%" height="fit">
         <checkbox id="pixelshaders"/>
         <spacer width="10" height="10"/>
-        <label text="Pixel Shaders" I18N="Video settings"/>
+        <label text="Pixel Shaders (requires restart)" I18N="Video settings"/>
     </div>
 
     <spacer height="5" width="10" />
