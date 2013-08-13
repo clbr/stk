@@ -21,7 +21,7 @@
 
 #include "graphics/light.hpp"
 
-class screenQuad;
+class ScreenQuad;
 
 // The actual rain node
 class SunNode: public LightNode
@@ -33,7 +33,7 @@ public:
     virtual void render();
 
 private:
-    screenQuad *sq;
+    ScreenQuad *sq;
 };
 
 #endif
