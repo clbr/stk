@@ -24,7 +24,7 @@
 #include "graphics/glwrap.hpp"
 #include "graphics/irr_driver.hpp"
 #include "graphics/mlaa_areamap.hpp"
-#include "graphics/rtts.hpp"
+#include "graphics/irr_driver.hpp"
 #include "graphics/shaders.hpp"
 #include "karts/abstract_kart.hpp"
 #include "karts/kart_model.hpp"
@@ -203,7 +203,6 @@ void PostProcessing::render()
     GaussianBlurProvider * const gacb = (GaussianBlurProvider *) irr_driver->getShaders()->
                                                            m_callbacks[ES_GAUSSIAN3H];
 
-    RTT * const rtts = irr_driver->getRTTs();
     Shaders * const shaders = irr_driver->getShaders();
 
     static u8 tick = 0;
@@ -214,8 +213,8 @@ void PostProcessing::render()
         scene::ICameraSceneNode * const camnode =
             Camera::getCamera(cam)->getCameraSceneNode();
         mocb->setCurrentCamera(cam);
-        ITexture *in = rtts->getRTT(RTT_COLOR);
-        ITexture *out = rtts->getRTT(RTT_TMP1);
+        ITexture *in = irr_driver->getRTT(RTT_COLOR);
+        ITexture *out = irr_driver->getRTT(RTT_TMP1);
 	// Each effect uses these as named, and sets them up for the next effect.
 	// This allows chaining effects where some may be disabled.
 
@@ -244,7 +243,7 @@ void PostProcessing::render()
                 // Catch bright areas, and progressively minify
                 m_material.MaterialType = shaders->getShader(ES_BLOOM);
                 m_material.setTexture(0, in);
-                drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
+                drv->setRenderTarget(irr_driver->getRTT(RTT_TMP3), true, false);
 
                 drawQuad(cam, m_material);
             }
@@ -254,7 +253,7 @@ void PostProcessing::render()
             const u32 bloomsize = blooms.size();
 
             if (!globalbloom && bloomsize)
-                drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
+                drv->setRenderTarget(irr_driver->getRTT(RTT_TMP3), true, false);
 
 
             if (globalbloom || bloomsize)
@@ -334,11 +333,11 @@ void PostProcessing::render()
                     glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
                     glStencilFunc(GL_EQUAL, 1, ~0);
                     m_material.MaterialType = EMT_SOLID;
-                    m_material.setTexture(0, rtts->getRTT(RTT_COLOR));
+                    m_material.setTexture(0, irr_driver->getRTT(RTT_COLOR));
 
                     // Just in case.
                     glColorMask(1, 1, 1, 0);
-                    drv->setRenderTarget(rtts->getRTT(RTT_TMP3), false, false);
+                    drv->setRenderTarget(irr_driver->getRTT(RTT_TMP3), false, false);
 
                     m_material.ColorMask = ECP_RGB;
                     drawQuad(cam, m_material);
@@ -350,22 +349,22 @@ void PostProcessing::render()
 
                 // To half
                 m_material.MaterialType = EMT_SOLID;
-                m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
-                drv->setRenderTarget(rtts->getRTT(RTT_HALF1), true, false);
+                m_material.setTexture(0, irr_driver->getRTT(RTT_TMP3));
+                drv->setRenderTarget(irr_driver->getRTT(RTT_HALF1), true, false);
 
                 drawQuad(cam, m_material);
 
                 // To quarter
                 m_material.MaterialType = EMT_SOLID;
-                m_material.setTexture(0, rtts->getRTT(RTT_HALF1));
-                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), true, false);
+                m_material.setTexture(0, irr_driver->getRTT(RTT_HALF1));
+                drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER1), true, false);
 
                 drawQuad(cam, m_material);
 
                 // To eighth
                 m_material.MaterialType = EMT_SOLID;
-                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
-                drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), true, false);
+                m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
+                drv->setRenderTarget(irr_driver->getRTT(RTT_EIGHTH1), true, false);
 
                 drawQuad(cam, m_material);
 
@@ -374,14 +373,14 @@ void PostProcessing::render()
                     gacb->setResolution(UserConfigParams::m_width / 8,
                                         UserConfigParams::m_height / 8);
                     m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6V);
-                    m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
-                    drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH2), true, false);
+                    m_material.setTexture(0, irr_driver->getRTT(RTT_EIGHTH1));
+                    drv->setRenderTarget(irr_driver->getRTT(RTT_EIGHTH2), true, false);
 
                     drawQuad(cam, m_material);
 
                     m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6H);
-                    m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH2));
-                    drv->setRenderTarget(rtts->getRTT(RTT_EIGHTH1), false, false);
+                    m_material.setTexture(0, irr_driver->getRTT(RTT_EIGHTH2));
+                    drv->setRenderTarget(irr_driver->getRTT(RTT_EIGHTH1), false, false);
 
                     drawQuad(cam, m_material);
                 }
@@ -389,7 +388,7 @@ void PostProcessing::render()
                 // Additively blend on top of tmp1
                 m_material.BlendOperation = EBO_ADD;
                 m_material.MaterialType = shaders->getShader(ES_BLOOM_BLEND);
-                m_material.setTexture(0, rtts->getRTT(RTT_EIGHTH1));
+                m_material.setTexture(0, irr_driver->getRTT(RTT_EIGHTH1));
                 drv->setRenderTarget(out, false, false);
 
                 drawQuad(cam, m_material);
@@ -397,8 +396,8 @@ void PostProcessing::render()
                 m_material.BlendOperation = EBO_NONE;
             } // end if bloom
 
-            in = rtts->getRTT(RTT_TMP1);
-            out = rtts->getRTT(RTT_TMP2);
+            in = irr_driver->getRTT(RTT_TMP1);
+            out = irr_driver->getRTT(RTT_TMP2);
         }
 
         if (World::getWorld()->getTrack()->hasGodRays() && m_sunpixels > 30) // god rays
@@ -420,7 +419,7 @@ void PostProcessing::render()
             // Fade to quarter
             m_material.MaterialType = shaders->getShader(ES_GODFADE);
             m_material.setTexture(0, out);
-            drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), false, false);
+            drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER1), false, false);
 
             drawQuad(cam, m_material);
 
@@ -429,14 +428,14 @@ void PostProcessing::render()
                 gacb->setResolution(UserConfigParams::m_width / 4,
                                     UserConfigParams::m_height / 4);
                 m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
-                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
-                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER2), true, false);
+                m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
+                drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER2), true, false);
 
                 drawQuad(cam, m_material);
 
                 m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
-                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER2));
-                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), false, false);
+                m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER2));
+                drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER1), false, false);
 
                 drawQuad(cam, m_material);
             }
@@ -460,8 +459,8 @@ void PostProcessing::render()
 
             // Rays please
             m_material.MaterialType = shaders->getShader(ES_GODRAY);
-            m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
-            drv->setRenderTarget(rtts->getRTT(RTT_QUARTER2), true, false);
+            m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
+            drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER2), true, false);
 
             drawQuad(cam, m_material);
 
@@ -470,21 +469,21 @@ void PostProcessing::render()
                 gacb->setResolution(UserConfigParams::m_width / 4,
                                     UserConfigParams::m_height / 4);
                 m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
-                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER2));
-                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), true, false);
+                m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER2));
+                drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER1), true, false);
 
                 drawQuad(cam, m_material);
 
                 m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
-                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
-                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER2), false, false);
+                m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
+                drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER2), false, false);
 
                 drawQuad(cam, m_material);
             }
 
             // Overlay
             m_material.MaterialType = EMT_TRANSPARENT_ADD_COLOR;
-            m_material.setTexture(0, rtts->getRTT(RTT_QUARTER2));
+            m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER2));
             drv->setRenderTarget(in, false, false);
 
             drawQuad(cam, m_material);
@@ -520,10 +519,10 @@ void PostProcessing::render()
         if (UserConfigParams::m_ssao == 1) // SSAO low
         {
             m_material.MaterialType = shaders->getShader(ES_SSAO);
-            m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
-            m_material.setTexture(1, rtts->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
+            m_material.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
+            m_material.setTexture(1, irr_driver->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
 
-            drv->setRenderTarget(rtts->getRTT(curssao), true, false,
+            drv->setRenderTarget(irr_driver->getRTT(curssao), true, false,
                                  SColor(255, 255, 255, 255));
 
             drawQuad(cam, m_material);
@@ -533,21 +532,21 @@ void PostProcessing::render()
                 gacb->setResolution(UserConfigParams::m_width / 4,
                                     UserConfigParams::m_height / 4);
                 m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
-                m_material.setTexture(0, rtts->getRTT(curssao));
-                drv->setRenderTarget(rtts->getRTT(RTT_QUARTER1), true, false);
+                m_material.setTexture(0, irr_driver->getRTT(curssao));
+                drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER1), true, false);
 
                 drawQuad(cam, m_material);
 
                 m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
-                m_material.setTexture(0, rtts->getRTT(RTT_QUARTER1));
-                drv->setRenderTarget(rtts->getRTT(curssao), false, false);
+                m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
+                drv->setRenderTarget(irr_driver->getRTT(curssao), false, false);
 
                 drawQuad(cam, m_material);
             }
 
             // Overlay
             m_material.MaterialType = EMT_ONETEXTURE_BLEND;
-            m_material.setTexture(0, rtts->getRTT(curssao));
+            m_material.setTexture(0, irr_driver->getRTT(curssao));
             m_material.setTexture(1, 0);
             m_material.BlendOperation = EBO_ADD;
             m_material.MaterialTypeParam = pack_textureBlendFunc(EBF_DST_COLOR, EBF_ZERO);
@@ -561,10 +560,10 @@ void PostProcessing::render()
         } else if (UserConfigParams::m_ssao == 2) // SSAO high
         {
             m_material.MaterialType = shaders->getShader(ES_SSAO);
-            m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
-            m_material.setTexture(1, rtts->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
+            m_material.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
+            m_material.setTexture(1, irr_driver->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
 
-            drv->setRenderTarget(rtts->getRTT(curssao), true, false,
+            drv->setRenderTarget(irr_driver->getRTT(curssao), true, false,
                                  SColor(255, 255, 255, 255));
 
             drawQuad(cam, m_material);
@@ -574,21 +573,21 @@ void PostProcessing::render()
                 gacb->setResolution(UserConfigParams::m_width,
                                     UserConfigParams::m_height);
                 m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6V);
-                m_material.setTexture(0, rtts->getRTT(curssao));
-                drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
+                m_material.setTexture(0, irr_driver->getRTT(curssao));
+                drv->setRenderTarget(irr_driver->getRTT(RTT_TMP3), true, false);
 
                 drawQuad(cam, m_material);
 
                 m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6H);
-                m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
-                drv->setRenderTarget(rtts->getRTT(curssao), false, false);
+                m_material.setTexture(0, irr_driver->getRTT(RTT_TMP3));
+                drv->setRenderTarget(irr_driver->getRTT(curssao), false, false);
 
                 drawQuad(cam, m_material);
             }
 
             // Overlay
             m_material.MaterialType = EMT_ONETEXTURE_BLEND;
-            m_material.setTexture(0, rtts->getRTT(curssao));
+            m_material.setTexture(0, irr_driver->getRTT(curssao));
             m_material.setTexture(1, 0);
             m_material.BlendOperation = EBO_ADD;
             m_material.MaterialTypeParam = pack_textureBlendFunc(EBF_DST_COLOR, EBF_ZERO);
@@ -624,7 +623,7 @@ void PostProcessing::render()
             glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 
             // Pass 2: blend weights
-            drv->setRenderTarget(rtts->getRTT(RTT_TMP3), true, false);
+            drv->setRenderTarget(irr_driver->getRTT(RTT_TMP3), true, false);
 
             m_material.MaterialType = shaders->getShader(ES_MLAA_BLEND2);
             m_material.setTexture(0, out);
@@ -644,8 +643,8 @@ void PostProcessing::render()
             m_material.setFlag(EMF_BILINEAR_FILTER, false);
             m_material.setFlag(EMF_TRILINEAR_FILTER, false);
             m_material.MaterialType = shaders->getShader(ES_MLAA_NEIGH3);
-            m_material.setTexture(0, rtts->getRTT(RTT_TMP3));
-            m_material.setTexture(1, rtts->getRTT(RTT_COLOR));
+            m_material.setTexture(0, irr_driver->getRTT(RTT_TMP3));
+            m_material.setTexture(1, irr_driver->getRTT(RTT_COLOR));
 
             drawQuad(cam, m_material);
 
@@ -662,11 +661,11 @@ void PostProcessing::render()
         if (irr_driver->getNormals())
         {
             m_material.MaterialType = shaders->getShader(ES_FLIP);
-            m_material.setTexture(0, rtts->getRTT(RTT_NORMAL));
+            m_material.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
         } else if (irr_driver->getSSAOViz())
         {
             m_material.MaterialType = shaders->getShader(ES_FLIP);
-            m_material.setTexture(0, rtts->getRTT(curssao));
+            m_material.setTexture(0, irr_driver->getRTT(curssao));
         } else
         {
             m_material.MaterialType = shaders->getShader(ES_FLIP);
