@@ -42,6 +42,10 @@ RTT::RTT()
 
     // The last parameter stands for "has stencil". The name is used in the texture
     // cache, and when saving textures to files as the default name.
+    //
+    // All RTTs are currently RGBA8 with stencil. The four tmp RTTs are the same size
+    // as the screen, for use in post-processing.
+
     rtts[RTT_TMP1] = drv->addRenderTargetTexture(res, "rtt.tmp1", ECF_A8R8G8B8, true);
     rtts[RTT_TMP2] = drv->addRenderTargetTexture(res, "rtt.tmp2", ECF_A8R8G8B8, true);
     rtts[RTT_TMP3] = drv->addRenderTargetTexture(res, "rtt.tmp3", ECF_A8R8G8B8, true);
