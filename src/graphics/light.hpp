@@ -43,8 +43,8 @@ public:
     virtual u32 getMaterialCount() const { return 1; }
     virtual video::SMaterial& getMaterial(u32 i) { return mat; }
 
-    float getRadius() { return m_radius; }
-    void getColor(float out[3]) { memcpy(out, m_color, 3 * sizeof(float)); }
+    float getRadius() const { return m_radius; }
+    void getColor(float out[3]) const { memcpy(out, m_color, 3 * sizeof(float)); }
 
 protected:
     static video::SMaterial mat;
