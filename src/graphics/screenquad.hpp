@@ -24,10 +24,10 @@
 using namespace irr;
 using namespace video;
 
-class screenQuad {
+class ScreenQuad {
 
 public:
-    screenQuad(IVideoDriver *xy)
+    ScreenQuad(IVideoDriver *xy)
     {
         vd = xy;
 

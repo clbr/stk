@@ -1047,7 +1047,7 @@ video::ITexture *QuadGraph::makeMiniMap(const core::dimension2du &origdimension,
                                                         m_callbacks[ES_GAUSSIAN3H];
     gacb->setResolution(UserConfigParams::m_width, UserConfigParams::m_height);
 
-    screenQuad sq(irr_driver->getVideoDriver());
+    ScreenQuad sq(irr_driver->getVideoDriver());
     sq.getMaterial().MaterialType = irr_driver->getShaders()->getShader(ES_GAUSSIAN3H);
     sq.setTexture(texture);
 
