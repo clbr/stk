@@ -20,7 +20,11 @@
 #include "config/user_config.hpp"
 #include "graphics/irr_driver.hpp"
 
-#include <irrlicht.h>
+#include <IShaderConstantSetCallBack.h>
+#include <SMaterial.h>
+#include <ISceneManager.h>
+#include <ICameraSceneNode.h>
+#include <IMaterialRendererServices.h>
 #include <set>
 
 using namespace irr;
