@@ -53,7 +53,8 @@ void main() {
 	}
 
 	// Shadows
-	const float bias = 0.001;
+	float bias = 0.002 * tan(acos(NdotL));
+	bias = clamp(bias, 0.001, 0.01);
 	vec3 shadowcoord = (shadowmat * vec4(xpos.xyz, 1.0)).xyz;
 	shadowcoord = (shadowcoord * 0.5) + vec3(0.5);
 
