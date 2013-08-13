@@ -24,7 +24,6 @@
 #include "graphics/glwrap.hpp"
 #include "graphics/irr_driver.hpp"
 #include "graphics/mlaa_areamap.hpp"
-#include "graphics/irr_driver.hpp"
 #include "graphics/shaders.hpp"
 #include "karts/abstract_kart.hpp"
 #include "karts/kart_model.hpp"
@@ -32,6 +31,8 @@
 #include "race/race_manager.hpp"
 #include "tracks/track.hpp"
 #include "utils/log.hpp"
+
+#include <SViewFrustum.h>
 
 using namespace video;
 using namespace scene;

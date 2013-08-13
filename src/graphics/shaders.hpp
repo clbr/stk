@@ -17,7 +17,8 @@
 #ifndef HEADER_SHADERS_HPP
 #define HEADER_SHADERS_HPP
 
-#include <irrlicht.h>
+#include <IShaderConstantSetCallBack.h>
+#include <IMeshSceneNode.h>
 #include <vector>
 using namespace irr;
 
