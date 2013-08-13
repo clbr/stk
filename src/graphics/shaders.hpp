@@ -69,7 +69,7 @@ using namespace irr;
 #define ENUM(a) a,
 #define STR(a) #a,
 
-enum E_SHADER
+enum ShaderType
 {
     FOREACH_SHADER(ENUM)
 
@@ -88,7 +88,7 @@ public:
     Shaders();
     ~Shaders();
 
-    video::E_MATERIAL_TYPE getShader(const E_SHADER num) const;
+    video::E_MATERIAL_TYPE getShader(const ShaderType num) const;
 
     video::IShaderConstantSetCallBack * m_callbacks[ES_COUNT];
 
