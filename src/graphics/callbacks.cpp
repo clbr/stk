@@ -109,7 +109,7 @@ void GrassShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int use
     // * 5 is to work with the existing amplitude values.
 
     // Pre-multiply on the cpu
-    vector3df wind = irr_driver->getWind()->getWind() * strength;
+    vector3df wind = irr_driver->getWind() * strength;
 
     srv->setVertexShaderConstant("windDir", &wind.X, 3);
 
@@ -367,7 +367,7 @@ void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     float strength = time;
     strength = fabsf(noise2d(strength / 10.0f)) * 0.003f;
 
-    const vector3df winddir = irr_driver->getWind()->getWind() * strength;
+    const vector3df winddir = irr_driver->getWind() * strength;
     m_wind[0] += winddir.X;
     m_wind[1] += winddir.Z;
     srv->setVertexShaderConstant("wind", m_wind, 2);

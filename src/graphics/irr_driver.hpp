@@ -45,6 +45,7 @@ namespace irr
 }
 using namespace irr;
 
+#include "graphics/wind.hpp"
 #include "utils/aligned_array.hpp"
 #include "utils/no_copy.hpp"
 #include "utils/ptr_vector.hpp"
@@ -281,7 +282,7 @@ public:
     /** Returns a pointer to the post processing object. */
     inline PostProcessing* getPostProcessing()  {return m_post_processing;}
     // ------------------------------------------------------------------------
-    inline Wind* getWind()  {return m_wind;}
+    inline core::vector3df getWind()  {return m_wind->getWind();}
     // ------------------------------------------------------------------------
     inline Shaders* getShaders()  {return m_shaders;}
     // ------------------------------------------------------------------------
