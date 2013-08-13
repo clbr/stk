@@ -210,7 +210,7 @@ Shaders::~Shaders()
     }
 }
 
-E_MATERIAL_TYPE Shaders::getShader(const E_SHADER num) const
+E_MATERIAL_TYPE Shaders::getShader(const ShaderType num) const
 {
     assert(num < ES_COUNT);
 
