@@ -25,67 +25,66 @@ using namespace irr;
 using namespace video;
 
 class screenQuad {
-    public:
-      screenQuad(IVideoDriver *xy)
-      {
-	vd = xy;
 
-	mat.Lighting = false;
-	mat.ZBuffer = video::ECFN_ALWAYS;
-	mat.ZWriteEnable = false;
+public:
+    screenQuad(IVideoDriver *xy)
+    {
+        vd = xy;
 
-	for(u32 c = 0; c < MATERIAL_MAX_TEXTURES; c++)
-	{
-	   mat.TextureLayer[c].TextureWrapU = video::ETC_CLAMP_TO_EDGE;
-	   mat.TextureLayer[c].TextureWrapV = video::ETC_CLAMP_TO_EDGE;
-	}
-      }
+        mat.Lighting = false;
+        mat.ZBuffer = video::ECFN_ALWAYS;
+        mat.ZWriteEnable = false;
 
-      SMaterial& getMaterial() { return mat; }
+        for(u32 c = 0; c < MATERIAL_MAX_TEXTURES; c++)
+        {
+           mat.TextureLayer[c].TextureWrapU = video::ETC_CLAMP_TO_EDGE;
+           mat.TextureLayer[c].TextureWrapV = video::ETC_CLAMP_TO_EDGE;
+        }
+    }
 
-      //Set the texture to render with the quad
-      void setTexture(ITexture* __restrict tex, u32 layer = 0)
-      {
-	mat.TextureLayer[layer].Texture = tex;
-      }
+    SMaterial& getMaterial() { return mat; }
 
-      ITexture* getTexture(u32 layer = 0) const { return mat.TextureLayer[layer].Texture; }
+    //Set the texture to render with the quad
+    void setTexture(ITexture* __restrict tex, u32 layer = 0)
+    {
+        mat.TextureLayer[layer].Texture = tex;
+    }
 
-      void setMaterialType(E_MATERIAL_TYPE mt) { mat.MaterialType = mt; }
+    ITexture* getTexture(u32 layer = 0) const { return mat.TextureLayer[layer].Texture; }
 
-      void render(bool setRTToFrameBuff = true) const
-      {
-	if(setRTToFrameBuff)
-	   vd->setRenderTarget(video::ERT_FRAME_BUFFER);
+    void setMaterialType(E_MATERIAL_TYPE mt) { mat.MaterialType = mt; }
 
-	sq_dorender();
-      }
+    void render(bool setRTToFrameBuff = true) const
+    {
+        if(setRTToFrameBuff)
+           vd->setRenderTarget(video::ERT_FRAME_BUFFER);
 
-      void render(ITexture* rt) const
-      {
-	vd->setRenderTarget(rt);
+        sq_dorender();
+    }
 
-	sq_dorender();
-      }
+    void render(ITexture* rt) const
+    {
+        vd->setRenderTarget(rt);
 
-   protected:
-	static const S3DVertex vertices[4];
-	static const u16 indices[4];
-	SMaterial mat;
+        sq_dorender();
+    }
 
-	IVideoDriver* vd;
+protected:
+    static const S3DVertex vertices[4];
+    static const u16 indices[4];
+    SMaterial mat;
 
-	void sq_dorender() const
-	{
-		glColor3ub(255, 255, 255);
+    IVideoDriver* vd;
 
-		vd->setMaterial(mat);
-		vd->setTransform(ETS_WORLD, core::IdentityMatrix);
-		vd->setTransform(ETS_VIEW, core::IdentityMatrix);
-		vd->setTransform(ETS_PROJECTION, core::IdentityMatrix);
-		vd->drawVertexPrimitiveList(vertices, 4, indices, 2, EVT_STANDARD,
-						scene::EPT_TRIANGLE_STRIP);
-	}
+    void sq_dorender() const
+    {
+        vd->setMaterial(mat);
+        vd->setTransform(ETS_WORLD, core::IdentityMatrix);
+        vd->setTransform(ETS_VIEW, core::IdentityMatrix);
+        vd->setTransform(ETS_PROJECTION, core::IdentityMatrix);
+        vd->drawVertexPrimitiveList(vertices, 4, indices, 2, EVT_STANDARD,
+                        scene::EPT_TRIANGLE_STRIP);
+    }
 };
 
 #endif
