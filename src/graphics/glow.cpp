@@ -42,7 +42,7 @@ GlowNode::GlowNode(scene::ISceneManager* mgr, float radius): ISceneNode(mgr->get
         mat.Lighting = false;
         mat.MaterialType = irr_driver->getShaders()->getShader(ES_GLOW);
 
-        mat.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_QUARTER1));
+        mat.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
         mat.TextureLayer[0].TextureWrapU =
         mat.TextureLayer[0].TextureWrapV = ETC_CLAMP_TO_EDGE;
         mat.setFlag(EMF_TRILINEAR_FILTER, true);

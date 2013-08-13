@@ -43,8 +43,8 @@ LightNode::LightNode(scene::ISceneManager* mgr, float radius, float r, float g, 
         mat.Lighting = false;
         mat.MaterialType = irr_driver->getShaders()->getShader(ES_POINTLIGHT);
 
-        mat.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_NORMAL));
-        mat.setTexture(1, irr_driver->getRTTs()->getRTT(RTT_DEPTH));
+        mat.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
+        mat.setTexture(1, irr_driver->getRTT(RTT_DEPTH));
 
         for (u32 i = 0; i < MATERIAL_MAX_TEXTURES; ++i)
         {

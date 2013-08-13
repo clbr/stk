@@ -41,16 +41,16 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
     SMaterial &m = sq->getMaterial();
 
     m.MaterialType = irr_driver->getShaders()->getShader(ES_SUNLIGHT);
-    m.setTexture(0, irr_driver->getRTTs()->getRTT(RTT_NORMAL));
-    m.setTexture(1, irr_driver->getRTTs()->getRTT(RTT_DEPTH));
+    m.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
+    m.setTexture(1, irr_driver->getRTT(RTT_DEPTH));
     m.setTexture(2, irr_driver->getTexture((file_manager->getTextureDir() + "cloudshadow.png").c_str()));
     m.setFlag(EMF_BILINEAR_FILTER, false);
 
     if (UserConfigParams::m_shadows)
     {
-        m.setTexture(3, irr_driver->getRTTs()->getRTT(RTT_SHADOW));
-        m.setTexture(4, irr_driver->getRTTs()->getRTT(RTT_WARPH));
-        m.setTexture(5, irr_driver->getRTTs()->getRTT(RTT_WARPV));
+        m.setTexture(3, irr_driver->getRTT(RTT_SHADOW));
+        m.setTexture(4, irr_driver->getRTT(RTT_WARPH));
+        m.setTexture(5, irr_driver->getRTT(RTT_WARPV));
 
         m.TextureLayer[4].BilinearFilter =
         m.TextureLayer[5].BilinearFilter = true;
