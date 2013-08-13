@@ -80,8 +80,8 @@ void PostProcessing::reset()
     m_center.resize(n);
     m_direction.resize(n);
 
-    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
-                                                           m_callbacks[ES_MOTIONBLUR];
+    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->
+                                                           getCallback(ES_MOTIONBLUR);
 
     for(unsigned int i=0; i<n; i++)
     {
@@ -139,8 +139,8 @@ void PostProcessing::reset()
 
 void PostProcessing::setMotionBlurCenterY(const u32 num, const float y)
 {
-    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
-                                                           m_callbacks[ES_MOTIONBLUR];
+    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->
+                                                           getCallback(ES_MOTIONBLUR);
 
     const float tex_height = m_vertices[num].v1.TCoords.Y - m_vertices[num].v0.TCoords.Y;
     m_center[num].Y = m_vertices[num].v0.TCoords.Y + y * tex_height;
@@ -164,8 +164,8 @@ void PostProcessing::giveBoost(unsigned int camera_index)
 {
     m_boost_time[camera_index] = 0.75f;
 
-    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
-                                                           m_callbacks[ES_MOTIONBLUR];
+    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->
+                                                           getCallback(ES_MOTIONBLUR);
     cb->setBoostTime(camera_index, m_boost_time[camera_index]);
 }   // giveBoost
 
@@ -175,8 +175,8 @@ void PostProcessing::giveBoost(unsigned int camera_index)
  */
 void PostProcessing::update(float dt)
 {
-    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->getShaders()->
-                                                           m_callbacks[ES_MOTIONBLUR];
+    MotionBlurProvider * const cb = (MotionBlurProvider *) irr_driver->
+                                                           getCallback(ES_MOTIONBLUR);
 
     for(unsigned int i=0; i<m_boost_time.size(); i++)
     {
@@ -199,12 +199,10 @@ void PostProcessing::render()
     drv->setTransform(ETS_VIEW, core::IdentityMatrix);
     drv->setTransform(ETS_PROJECTION, core::IdentityMatrix);
 
-    MotionBlurProvider * const mocb = (MotionBlurProvider *) irr_driver->getShaders()->
-                                                           m_callbacks[ES_MOTIONBLUR];
-    GaussianBlurProvider * const gacb = (GaussianBlurProvider *) irr_driver->getShaders()->
-                                                           m_callbacks[ES_GAUSSIAN3H];
-
-    Shaders * const shaders = irr_driver->getShaders();
+    MotionBlurProvider * const mocb = (MotionBlurProvider *) irr_driver->
+                                                           getCallback(ES_MOTIONBLUR);
+    GaussianBlurProvider * const gacb = (GaussianBlurProvider *) irr_driver->
+                                                                 getCallback(ES_GAUSSIAN3H);
 
     static u8 tick = 0;
 
@@ -233,16 +231,16 @@ void PostProcessing::render()
             const bool globalbloom = World::getWorld()->getTrack()->getBloom();
 
             BloomPowerProvider * const bloomcb = (BloomPowerProvider *)
-                                                 irr_driver->getShaders()->
-                                                 m_callbacks[ES_BLOOM_POWER];
+                                                 irr_driver->
+                                                 getCallback(ES_BLOOM_POWER);
 
             if (globalbloom)
             {
                 const float threshold = World::getWorld()->getTrack()->getBloomThreshold();
-                ((BloomProvider *) shaders->m_callbacks[ES_BLOOM])->setThreshold(threshold);
+                ((BloomProvider *) irr_driver->getCallback(ES_BLOOM))->setThreshold(threshold);
 
                 // Catch bright areas, and progressively minify
-                m_material.MaterialType = shaders->getShader(ES_BLOOM);
+                m_material.MaterialType = irr_driver->getShader(ES_BLOOM);
                 m_material.setTexture(0, in);
                 drv->setRenderTarget(irr_driver->getRTT(RTT_TMP3), true, false);
 
@@ -287,7 +285,7 @@ void PostProcessing::render()
                     overridemat.EnableFlags = EMF_MATERIAL_TYPE | EMF_ZWRITE_ENABLE | EMF_COLOR_MASK;
                     overridemat.Enabled = true;
 
-                    overridemat.Material.MaterialType = shaders->getShader(ES_BLOOM_POWER);
+                    overridemat.Material.MaterialType = irr_driver->getShader(ES_BLOOM_POWER);
                     overridemat.Material.ZWriteEnable = false;
                     overridemat.Material.ColorMask = ECP_ALPHA;
 
@@ -373,13 +371,13 @@ void PostProcessing::render()
                 {
                     gacb->setResolution(UserConfigParams::m_width / 8,
                                         UserConfigParams::m_height / 8);
-                    m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6V);
+                    m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN6V);
                     m_material.setTexture(0, irr_driver->getRTT(RTT_EIGHTH1));
                     drv->setRenderTarget(irr_driver->getRTT(RTT_EIGHTH2), true, false);
 
                     drawQuad(cam, m_material);
 
-                    m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6H);
+                    m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN6H);
                     m_material.setTexture(0, irr_driver->getRTT(RTT_EIGHTH2));
                     drv->setRenderTarget(irr_driver->getRTT(RTT_EIGHTH1), false, false);
 
@@ -388,7 +386,7 @@ void PostProcessing::render()
 
                 // Additively blend on top of tmp1
                 m_material.BlendOperation = EBO_ADD;
-                m_material.MaterialType = shaders->getShader(ES_BLOOM_BLEND);
+                m_material.MaterialType = irr_driver->getShader(ES_BLOOM_BLEND);
                 m_material.setTexture(0, irr_driver->getRTT(RTT_EIGHTH1));
                 drv->setRenderTarget(out, false, false);
 
@@ -418,7 +416,7 @@ void PostProcessing::render()
             sun->getMaterial(0).ColorMask = ECP_NONE;
 
             // Fade to quarter
-            m_material.MaterialType = shaders->getShader(ES_GODFADE);
+            m_material.MaterialType = irr_driver->getShader(ES_GODFADE);
             m_material.setTexture(0, out);
             drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER1), false, false);
 
@@ -428,13 +426,13 @@ void PostProcessing::render()
             {
                 gacb->setResolution(UserConfigParams::m_width / 4,
                                     UserConfigParams::m_height / 4);
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
+                m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN3V);
                 m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
                 drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER2), true, false);
 
                 drawQuad(cam, m_material);
 
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
+                m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN3H);
                 m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER2));
                 drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER1), false, false);
 
@@ -455,11 +453,11 @@ void PostProcessing::render()
             const float sunx = ((ndc[0] / ndc[3]) * 0.5f + 0.5f) * texw;
             const float suny = ((ndc[1] / ndc[3]) * 0.5f + 0.5f) * texh;
 
-            ((GodRayProvider *) irr_driver->getShaders()->m_callbacks[ES_GODRAY])->
+            ((GodRayProvider *) irr_driver->getCallback(ES_GODRAY))->
                 setSunPosition(sunx, suny);
 
             // Rays please
-            m_material.MaterialType = shaders->getShader(ES_GODRAY);
+            m_material.MaterialType = irr_driver->getShader(ES_GODRAY);
             m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
             drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER2), true, false);
 
@@ -469,13 +467,13 @@ void PostProcessing::render()
             {
                 gacb->setResolution(UserConfigParams::m_width / 4,
                                     UserConfigParams::m_height / 4);
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
+                m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN3V);
                 m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER2));
                 drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER1), true, false);
 
                 drawQuad(cam, m_material);
 
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
+                m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN3H);
                 m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
                 drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER2), false, false);
 
@@ -504,7 +502,7 @@ void PostProcessing::render()
             setMotionBlurCenterY(cam, karty);
 
 
-            m_material.MaterialType = shaders->getShader(ES_MOTIONBLUR);
+            m_material.MaterialType = irr_driver->getShader(ES_MOTIONBLUR);
             m_material.setTexture(0, in);
             drv->setRenderTarget(out, true, false);
 
@@ -519,7 +517,7 @@ void PostProcessing::render()
 
         if (UserConfigParams::m_ssao == 1) // SSAO low
         {
-            m_material.MaterialType = shaders->getShader(ES_SSAO);
+            m_material.MaterialType = irr_driver->getShader(ES_SSAO);
             m_material.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
             m_material.setTexture(1, irr_driver->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
 
@@ -532,13 +530,13 @@ void PostProcessing::render()
             {
                 gacb->setResolution(UserConfigParams::m_width / 4,
                                     UserConfigParams::m_height / 4);
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3V);
+                m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN3V);
                 m_material.setTexture(0, irr_driver->getRTT(curssao));
                 drv->setRenderTarget(irr_driver->getRTT(RTT_QUARTER1), true, false);
 
                 drawQuad(cam, m_material);
 
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN3H);
+                m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN3H);
                 m_material.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
                 drv->setRenderTarget(irr_driver->getRTT(curssao), false, false);
 
@@ -560,7 +558,7 @@ void PostProcessing::render()
 
         } else if (UserConfigParams::m_ssao == 2) // SSAO high
         {
-            m_material.MaterialType = shaders->getShader(ES_SSAO);
+            m_material.MaterialType = irr_driver->getShader(ES_SSAO);
             m_material.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
             m_material.setTexture(1, irr_driver->getRTT(tick ? RTT_SSAO1 : RTT_SSAO2));
 
@@ -573,13 +571,13 @@ void PostProcessing::render()
             {
                 gacb->setResolution(UserConfigParams::m_width,
                                     UserConfigParams::m_height);
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6V);
+                m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN6V);
                 m_material.setTexture(0, irr_driver->getRTT(curssao));
                 drv->setRenderTarget(irr_driver->getRTT(RTT_TMP3), true, false);
 
                 drawQuad(cam, m_material);
 
-                m_material.MaterialType = shaders->getShader(ES_GAUSSIAN6H);
+                m_material.MaterialType = irr_driver->getShader(ES_GAUSSIAN6H);
                 m_material.setTexture(0, irr_driver->getRTT(RTT_TMP3));
                 drv->setRenderTarget(irr_driver->getRTT(curssao), false, false);
 
@@ -613,7 +611,7 @@ void PostProcessing::render()
             // Pass 1: color edge detection
             m_material.setFlag(EMF_BILINEAR_FILTER, false);
             m_material.setFlag(EMF_TRILINEAR_FILTER, false);
-            m_material.MaterialType = shaders->getShader(ES_MLAA_COLOR1);
+            m_material.MaterialType = irr_driver->getShader(ES_MLAA_COLOR1);
             m_material.setTexture(0, in);
 
             drawQuad(cam, m_material);
@@ -626,7 +624,7 @@ void PostProcessing::render()
             // Pass 2: blend weights
             drv->setRenderTarget(irr_driver->getRTT(RTT_TMP3), true, false);
 
-            m_material.MaterialType = shaders->getShader(ES_MLAA_BLEND2);
+            m_material.MaterialType = irr_driver->getShader(ES_MLAA_BLEND2);
             m_material.setTexture(0, out);
             m_material.setTexture(1, m_areamap);
             m_material.TextureLayer[1].BilinearFilter = false;
@@ -643,7 +641,7 @@ void PostProcessing::render()
 
             m_material.setFlag(EMF_BILINEAR_FILTER, false);
             m_material.setFlag(EMF_TRILINEAR_FILTER, false);
-            m_material.MaterialType = shaders->getShader(ES_MLAA_NEIGH3);
+            m_material.MaterialType = irr_driver->getShader(ES_MLAA_NEIGH3);
             m_material.setTexture(0, irr_driver->getRTT(RTT_TMP3));
             m_material.setTexture(1, irr_driver->getRTT(RTT_COLOR));
 
@@ -661,15 +659,15 @@ void PostProcessing::render()
 
         if (irr_driver->getNormals())
         {
-            m_material.MaterialType = shaders->getShader(ES_FLIP);
+            m_material.MaterialType = irr_driver->getShader(ES_FLIP);
             m_material.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
         } else if (irr_driver->getSSAOViz())
         {
-            m_material.MaterialType = shaders->getShader(ES_FLIP);
+            m_material.MaterialType = irr_driver->getShader(ES_FLIP);
             m_material.setTexture(0, irr_driver->getRTT(curssao));
         } else
         {
-            m_material.MaterialType = shaders->getShader(ES_FLIP);
+            m_material.MaterialType = irr_driver->getShader(ES_FLIP);
             m_material.setTexture(0, in);
         }
 

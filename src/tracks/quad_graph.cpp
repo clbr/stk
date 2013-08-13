@@ -1043,19 +1043,18 @@ video::ITexture *QuadGraph::makeMiniMap(const core::dimension2du &origdimension,
         return NULL;
     }
 
-    GaussianBlurProvider * const gacb = (GaussianBlurProvider *) irr_driver->getShaders()->
-                                                        m_callbacks[ES_GAUSSIAN3H];
+    GaussianBlurProvider * const gacb = (GaussianBlurProvider *) irr_driver->getCallback(ES_GAUSSIAN3H);
     gacb->setResolution(UserConfigParams::m_width, UserConfigParams::m_height);
 
     ScreenQuad sq(irr_driver->getVideoDriver());
-    sq.getMaterial().MaterialType = irr_driver->getShaders()->getShader(ES_GAUSSIAN3H);
+    sq.getMaterial().MaterialType = irr_driver->getShader(ES_GAUSSIAN3H);
     sq.setTexture(texture);
 
     // Horizontal pass
     sq.render(irr_driver->getRTT(RTT_TMP1));
 
     // Vertical pass
-    sq.getMaterial().MaterialType = irr_driver->getShaders()->getShader(ES_GAUSSIAN3V);
+    sq.getMaterial().MaterialType = irr_driver->getShader(ES_GAUSSIAN3V);
     sq.setTexture(irr_driver->getRTT(RTT_TMP1));
 
     sq.render(texture);

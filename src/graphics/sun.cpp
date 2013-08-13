@@ -40,7 +40,7 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
 
     SMaterial &m = sq->getMaterial();
 
-    m.MaterialType = irr_driver->getShaders()->getShader(ES_SUNLIGHT);
+    m.MaterialType = irr_driver->getShader(ES_SUNLIGHT);
     m.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
     m.setTexture(1, irr_driver->getRTT(RTT_DEPTH));
     m.setTexture(2, irr_driver->getTexture((file_manager->getTextureDir() + "cloudshadow.png").c_str()));
@@ -55,7 +55,7 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
         m.TextureLayer[4].BilinearFilter =
         m.TextureLayer[5].BilinearFilter = true;
 
-        m.MaterialType = irr_driver->getShaders()->getShader(ES_SUNLIGHT_SHADOW);
+        m.MaterialType = irr_driver->getShader(ES_SUNLIGHT_SHADOW);
     }
 
     for (u32 i = 0; i < MATERIAL_MAX_TEXTURES; i++)
@@ -83,8 +83,7 @@ SunNode::~SunNode()
 
 void SunNode::render()
 {
-    SunLightProvider * const cb = (SunLightProvider *) irr_driver->getShaders()->
-                                   m_callbacks[ES_SUNLIGHT];
+    SunLightProvider * const cb = (SunLightProvider *) irr_driver->getCallback(ES_SUNLIGHT);
     cb->setColor(m_color[0], m_color[1], m_color[2]);
 
     vector3df pos = getPosition();
