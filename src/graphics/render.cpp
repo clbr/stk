@@ -358,7 +358,7 @@ void IrrDriver::renderGLSL(float dt)
             CollapseProvider * const colcb = (CollapseProvider *)
                                                  m_shaders->
                                                  m_callbacks[ES_COLLAPSE];
-            screenQuad sq(m_video_driver);
+            ScreenQuad sq(m_video_driver);
             sq.setMaterialType(m_shaders->getShader(ES_COLLAPSE));
             sq.setTexture(m_rtts->getRTT(RTT_SHADOW));
             sq.getMaterial().setFlag(EMF_BILINEAR_FILTER, false);

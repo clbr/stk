@@ -36,7 +36,7 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
                      LightNode(mgr, 10000, r, g, b)
 {
 
-    sq = new screenQuad(irr_driver->getVideoDriver());
+    sq = new ScreenQuad(irr_driver->getVideoDriver());
 
     SMaterial &m = sq->getMaterial();
 
