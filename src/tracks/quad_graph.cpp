@@ -1052,11 +1052,11 @@ video::ITexture *QuadGraph::makeMiniMap(const core::dimension2du &origdimension,
     sq.setTexture(texture);
 
     // Horizontal pass
-    sq.render(irr_driver->getRTTs()->getRTT(RTT_TMP1));
+    sq.render(irr_driver->getRTT(RTT_TMP1));
 
     // Vertical pass
     sq.getMaterial().MaterialType = irr_driver->getShaders()->getShader(ES_GAUSSIAN3V);
-    sq.setTexture(irr_driver->getRTTs()->getRTT(RTT_TMP1));
+    sq.setTexture(irr_driver->getRTT(RTT_TMP1));
 
     sq.render(texture);
 

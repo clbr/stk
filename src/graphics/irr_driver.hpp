@@ -45,6 +45,7 @@ namespace irr
 }
 using namespace irr;
 
+#include "graphics/rtts.hpp"
 #include "graphics/wind.hpp"
 #include "utils/aligned_array.hpp"
 #include "utils/no_copy.hpp"
@@ -56,8 +57,6 @@ class Camera;
 class PerCameraNode;
 class PostProcessing;
 class Shaders;
-class Wind;
-class RTT;
 class LightNode;
 class ShadowImportance;
 
@@ -286,7 +285,7 @@ public:
     // ------------------------------------------------------------------------
     inline Shaders* getShaders()  {return m_shaders;}
     // ------------------------------------------------------------------------
-    inline RTT* getRTTs()  {return m_rtts;}
+    inline video::ITexture* getRTT(TypeRTT which)  {return m_rtts->getRTT(which);}
     // ------------------------------------------------------------------------
     inline bool isGLSL() const { return m_glsl; }
     // ------------------------------------------------------------------------
