@@ -45,7 +45,7 @@ public:
     {
         mat.Lighting = false;
         mat.ZWriteEnable = false;
-        mat.MaterialType = irr_driver->getShaders()->getShader(ES_RAIN);
+        mat.MaterialType = irr_driver->getShader(ES_RAIN);
         mat.Thickness = 200;
         mat.BlendOperation = EBO_ADD;
 

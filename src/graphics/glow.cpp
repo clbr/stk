@@ -40,7 +40,7 @@ GlowNode::GlowNode(scene::ISceneManager* mgr, float radius): ISceneNode(mgr->get
     if (!sphere)
     {
         mat.Lighting = false;
-        mat.MaterialType = irr_driver->getShaders()->getShader(ES_GLOW);
+        mat.MaterialType = irr_driver->getShader(ES_GLOW);
 
         mat.setTexture(0, irr_driver->getRTT(RTT_QUARTER1));
         mat.TextureLayer[0].TextureWrapU =

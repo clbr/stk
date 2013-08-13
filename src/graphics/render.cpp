@@ -180,8 +180,7 @@ void IrrDriver::renderGLSL(float dt)
         m_scene_manager->drawAll(m_renderpass);
 
         ShadowImportanceProvider * const sicb = (ShadowImportanceProvider *)
-                                                 irr_driver->getShaders()->
-                                                 m_callbacks[ES_SHADOW_IMPORTANCE];
+                                                 irr_driver->getCallback(ES_SHADOW_IMPORTANCE);
         sicb->updateIPVMatrix();
 
         // Used to cull glowing items & lights
@@ -431,11 +430,11 @@ void IrrDriver::renderGLSL(float dt)
         const float camnear = camera->getCameraSceneNode()->getNearValue();
 
         m_scene_manager->drawAll(scene::ESNRP_CAMERA);
-        PointLightProvider * const pcb = (PointLightProvider *) irr_driver->getShaders()->
-                                            m_callbacks[ES_POINTLIGHT];
+        PointLightProvider * const pcb = (PointLightProvider *) irr_driver->
+                                            getCallback(ES_POINTLIGHT);
         pcb->updateIPVMatrix();
-        SunLightProvider * const scb = (SunLightProvider *) irr_driver->getShaders()->
-                                            m_callbacks[ES_SUNLIGHT];
+        SunLightProvider * const scb = (SunLightProvider *) irr_driver->
+                                            getCallback(ES_SUNLIGHT);
         scb->updateIPVMatrix();
 
         const u32 lightcount = m_lights.size();
