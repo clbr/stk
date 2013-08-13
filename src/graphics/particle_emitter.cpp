@@ -195,7 +195,7 @@ public:
     virtual void affect(u32 now, scene::SParticle* particlearray, u32 count)
     {
         const float time = irr_driver->getDevice()->getTimer()->getTime() / 10000.0f;
-        core::vector3df dir = irr_driver->getWind()->getWind();
+        core::vector3df dir = irr_driver->getWind();
         dir *= m_speed * std::min(noise2d(time, m_seed), -0.2f);
 
         for (u32 n = 0; n < count; n++)
