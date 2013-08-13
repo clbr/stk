@@ -24,7 +24,7 @@
 
 using namespace irr;
 
-// The actual rain node
+// The actual node
 class GlowNode: public scene::ISceneNode
 {
 public:
