@@ -1043,6 +1043,9 @@ video::ITexture *QuadGraph::makeMiniMap(const core::dimension2du &origdimension,
         return NULL;
     }
 
+    if (!irr_driver->isGLSL())
+        return texture;
+
     GaussianBlurProvider * const gacb = (GaussianBlurProvider *) irr_driver->getCallback(ES_GAUSSIAN3H);
     gacb->setResolution(UserConfigParams::m_width, UserConfigParams::m_height);
 
