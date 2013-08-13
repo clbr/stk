@@ -20,9 +20,13 @@
 #define HEADER_LIGHT_HPP
 
 #include <ISceneNode.h>
-#include <IMesh.h>
 
 using namespace irr;
+
+namespace irr
+{
+    namespace scene { class IMesh; }
+}
 
 // The actual node
 class LightNode: public scene::ISceneNode
