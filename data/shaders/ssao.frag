@@ -30,7 +30,7 @@ void main(void)
 
 	// Will we skip this pixel? (if it's the sky)
 	float len = dot(vec3(1.0), abs(cur.xyz));
-	if (len < 0.2) discard;
+	if (len < 0.2 || curdepth > 0.8) discard;
 
 	float mytotstrength = 3.0 * totStrength * curdepth * (1.0 - curdepth);
 
@@ -40,7 +40,7 @@ void main(void)
 	float bl = 0.0;
 
 	// adjust for the depth, 0.1 close, 0.01 far
-	float radD = 0.10 - (curdepth * 0.09);
+	float radD = 0.10 - 0.09 * smoothstep(0.0, 0.2, curdepth);
 
 	for(int i = 0; i < SAMPLES; ++i) {
 
@@ -57,7 +57,8 @@ void main(void)
 		float depthDifference = curdepth - occluderFragment.a;
 
 		// calculate the difference between the normals as a weight
-		float normDiff = 1.0 - dot(occNorm, norm);
+		float normDiff = 1.0 - max(dot(occNorm, norm), 0.0);
+		normDiff = smoothstep(0.1, 0.3, normDiff);
 
 		// the falloff equation, starts at falloff and is kind of 1/x^2 falling
 		bl += step(falloff, depthDifference) * normDiff * normAcceptable *
