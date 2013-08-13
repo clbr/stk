@@ -20,6 +20,7 @@
 #define HEADER_LIGHT_HPP
 
 #include <ISceneNode.h>
+#include <utils/cpp2011.h>
 
 using namespace irr;
 
@@ -35,17 +36,17 @@ public:
     LightNode(scene::ISceneManager* mgr, float radius, float r, float g, float b);
     virtual ~LightNode();
 
-    virtual void render();
+    virtual void render() OVERRIDE;
 
-    virtual const core::aabbox3d<f32>& getBoundingBox() const
+    virtual const core::aabbox3d<f32>& getBoundingBox() const OVERRIDE
     {
         return box;
     }
 
-    virtual void OnRegisterSceneNode();
+    virtual void OnRegisterSceneNode() OVERRIDE;
 
-    virtual u32 getMaterialCount() const { return 1; }
-    virtual video::SMaterial& getMaterial(u32 i) { return mat; }
+    virtual u32 getMaterialCount() const OVERRIDE { return 1; }
+    virtual video::SMaterial& getMaterial(u32 i) OVERRIDE { return mat; }
 
     float getRadius() const { return m_radius; }
     void getColor(float out[3]) const { memcpy(out, m_color, 3 * sizeof(float)); }
