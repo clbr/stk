@@ -8,11 +8,11 @@ float normalImp()
 
 float depthImp()
 {
-	const float skip = 0.7;
+/*	const float skip = 0.7;
 
 	float f = min(linearz, skip);
-	f *= 1.0/skip;
-	f = 1.0 - f;
+	f *= 1.0/skip;*/
+	float f = 1.0 - (linearz * 0.9);
 
 	return f;
 }
