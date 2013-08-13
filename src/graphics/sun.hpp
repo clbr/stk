@@ -28,7 +28,7 @@ class SunNode: public LightNode
 {
 public:
     SunNode(scene::ISceneManager* mgr, float r, float g, float b);
-    ~SunNode();
+    virtual ~SunNode();
 
     virtual void render();
 
