@@ -64,7 +64,6 @@ LightNode::LightNode(scene::ISceneManager* mgr, float radius, float r, float g, 
 
     setScale(vector3df(radius));
     m_radius = radius;
-    m_radius_sq = radius * radius;
 
     m_color[0] = r;
     m_color[1] = g;
