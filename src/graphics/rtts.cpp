@@ -1,4 +1,5 @@
 //  SuperTuxKart - a fun racing game with go-kart
+//  Copyright (C) 2013 Lauri Kasanen
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -23,21 +24,24 @@
 RTT::RTT()
 {
     using namespace video;
+    using namespace core;
 
     IVideoDriver * const drv = irr_driver->getVideoDriver();
-    const core::dimension2du res(UserConfigParams::m_width, UserConfigParams::m_height);
-    const core::dimension2du half = res/2;
-    const core::dimension2du quarter = res/4;
-    const core::dimension2du eighth = res/8;
-    const core::dimension2du sixteenth = res/16;
+    const dimension2du res(UserConfigParams::m_width, UserConfigParams::m_height);
+    const dimension2du half = res/2;
+    const dimension2du quarter = res/4;
+    const dimension2du eighth = res/8;
+    const dimension2du sixteenth = res/16;
 
-    const core::dimension2du ssaosize = UserConfigParams::m_ssao == 2 ? res : quarter;
+    const dimension2du ssaosize = UserConfigParams::m_ssao == 2 ? res : quarter;
 
     const u16 shadowside = UserConfigParams::m_shadows == 2 ? 2048 : 512;
-    const core::dimension2du shadowsize(shadowside, shadowside);
-    const core::dimension2du warpvsize(1, shadowside);
-    const core::dimension2du warphsize(shadowside, 1);
+    const dimension2du shadowsize(shadowside, shadowside);
+    const dimension2du warpvsize(1, shadowside);
+    const dimension2du warphsize(shadowside, 1);
 
+    // The last parameter stands for "has stencil". The name is used in the texture
+    // cache, and when saving textures to files as the default name.
     rtts[RTT_TMP1] = drv->addRenderTargetTexture(res, "rtt.tmp1", ECF_A8R8G8B8, true);
     rtts[RTT_TMP2] = drv->addRenderTargetTexture(res, "rtt.tmp2", ECF_A8R8G8B8, true);
     rtts[RTT_TMP3] = drv->addRenderTargetTexture(res, "rtt.tmp3", ECF_A8R8G8B8, true);
