@@ -25,10 +25,10 @@
 
 using namespace irr;
 
-class callbase: public video::IShaderConstantSetCallBack
+class CallBase: public video::IShaderConstantSetCallBack
 {
 public:
-    callbase()
+    CallBase()
     {
         firstdone = 0;
     }
@@ -45,7 +45,7 @@ protected:
 
 //
 
-class NormalMapProvider: public callbase
+class NormalMapProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -61,7 +61,7 @@ private:
 
 //
 
-class WaterShaderProvider: public callbase
+class WaterShaderProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -91,7 +91,7 @@ private:
 
 //
 
-class GrassShaderProvider: public callbase
+class GrassShaderProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -118,7 +118,7 @@ private:
 
 //
 
-class SplattingProvider: public callbase
+class SplattingProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -126,7 +126,7 @@ public:
 
 //
 
-class BubbleEffectProvider: public callbase
+class BubbleEffectProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -190,7 +190,7 @@ private:
 
 //
 
-class RainEffectProvider: public callbase
+class RainEffectProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -198,7 +198,7 @@ public:
 
 //
 
-class SnowEffectProvider: public callbase
+class SnowEffectProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -206,7 +206,7 @@ public:
 
 //
 
-class MotionBlurProvider: public callbase
+class MotionBlurProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -252,7 +252,7 @@ private:
 
 //
 
-class GaussianBlurProvider: public callbase
+class GaussianBlurProvider: public CallBase
 {
 public:
     GaussianBlurProvider()
@@ -275,7 +275,7 @@ private:
 
 //
 
-class MipVizProvider: public callbase
+class MipVizProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -283,7 +283,7 @@ public:
 
 //
 
-class ColorizeProvider: public callbase
+class ColorizeProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -301,7 +301,7 @@ private:
 
 //
 
-class GlowProvider: public callbase
+class GlowProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -318,7 +318,7 @@ private:
 
 //
 
-class ObjectPassProvider: public callbase
+class ObjectPassProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -326,7 +326,7 @@ public:
 
 //
 
-class LightBlendProvider: public callbase
+class LightBlendProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -334,7 +334,7 @@ public:
 
 //
 
-class PointLightProvider: public callbase
+class PointLightProvider: public CallBase
 {
 public:
     PointLightProvider()
@@ -400,7 +400,7 @@ private:
 
 //
 
-class SunLightProvider: public callbase
+class SunLightProvider: public CallBase
 {
 public:
     SunLightProvider()
@@ -452,7 +452,7 @@ private:
 
 //
 
-class BloomProvider: public callbase
+class BloomProvider: public CallBase
 {
 public:
     BloomProvider() { m_threshold = 0.75f; }
@@ -467,7 +467,7 @@ private:
 
 //
 
-class MLAAColor1Provider: public callbase
+class MLAAColor1Provider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -475,7 +475,7 @@ public:
 
 //
 
-class MLAABlend2Provider: public callbase
+class MLAABlend2Provider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -483,7 +483,7 @@ public:
 
 //
 
-class MLAANeigh3Provider: public callbase
+class MLAANeigh3Provider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -491,7 +491,7 @@ public:
 
 //
 
-class SSAOProvider: public callbase
+class SSAOProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -499,7 +499,7 @@ public:
 
 //
 
-class GodRayProvider: public callbase
+class GodRayProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -513,7 +513,7 @@ private:
 
 //
 
-class ShadowPassProvider: public callbase
+class ShadowPassProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -521,7 +521,7 @@ public:
 
 //
 
-class ShadowImportanceProvider: public callbase
+class ShadowImportanceProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -547,7 +547,7 @@ private:
 
 //
 
-class CollapseProvider: public callbase
+class CollapseProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
@@ -579,7 +579,7 @@ private:
 
 //
 
-class BloomPowerProvider: public callbase
+class BloomPowerProvider: public CallBase
 {
 public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
