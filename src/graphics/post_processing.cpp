@@ -249,7 +249,7 @@ void PostProcessing::render()
             }
 
             // Do we have any forced bloom nodes? If so, draw them now
-            const std::vector<IrrDriver::bloomdata_t> &blooms = irr_driver->getForcedBloom();
+            const std::vector<IrrDriver::BloomData> &blooms = irr_driver->getForcedBloom();
             const u32 bloomsize = blooms.size();
 
             if (!globalbloom && bloomsize)

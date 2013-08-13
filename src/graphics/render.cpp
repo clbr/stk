@@ -71,7 +71,7 @@ void IrrDriver::renderGLSL(float dt)
 
     // Get a list of all glowing things. The driver's list contains the static ones,
     // here we add items, as they may disappear each frame.
-    std::vector<glowdata_t> glows = m_glowing;
+    std::vector<GlowData> glows = m_glowing;
     std::vector<GlowNode *> transparent_glow_nodes;
 
     ItemManager * const items = ItemManager::get();
@@ -109,7 +109,7 @@ void IrrDriver::renderGLSL(float dt)
         scene::ISceneNode * const node = lod->getAllNodes()[level];
         node->updateAbsolutePosition();
 
-        glowdata_t dat;
+        GlowData dat;
         dat.node = node;
 
         dat.r = 1.0f;
@@ -215,7 +215,7 @@ void IrrDriver::renderGLSL(float dt)
 
             for (u32 i = 0; i < glowcount; i++)
             {
-                const glowdata_t &dat = glows[i];
+                const GlowData &dat = glows[i];
                 scene::ISceneNode * const cur = dat.node;
 
                 // Quick box-based culling
@@ -232,7 +232,7 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.Material.MaterialType = m_shaders->getShader(ES_COLORIZE_REF);
             for (u32 i = 0; i < glowcount; i++)
             {
-                const glowdata_t &dat = glows[i];
+                const GlowData &dat = glows[i];
                 scene::ISceneNode * const cur = dat.node;
 
                 // Quick box-based culling
