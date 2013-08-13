@@ -41,7 +41,7 @@ LightNode::LightNode(scene::ISceneManager* mgr, float radius, float r, float g, 
     if (!sphere)
     {
         mat.Lighting = false;
-        mat.MaterialType = irr_driver->getShaders()->getShader(ES_POINTLIGHT);
+        mat.MaterialType = irr_driver->getShader(ES_POINTLIGHT);
 
         mat.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
         mat.setTexture(1, irr_driver->getRTT(RTT_DEPTH));
@@ -76,8 +76,7 @@ LightNode::~LightNode()
 
 void LightNode::render()
 {
-    PointLightProvider * const cb = (PointLightProvider *) irr_driver->getShaders()->
-                                   m_callbacks[ES_POINTLIGHT];
+    PointLightProvider * const cb = (PointLightProvider *) irr_driver->getCallback(ES_POINTLIGHT);
     cb->setColor(m_color[0], m_color[1], m_color[2]);
     cb->setPosition(getPosition().X, getPosition().Y, getPosition().Z);
     cb->setRadius(m_radius);

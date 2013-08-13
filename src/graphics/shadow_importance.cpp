@@ -41,7 +41,7 @@ public:
     {
         mat.Lighting = false;
         mat.ZWriteEnable = false;
-        mat.MaterialType = irr_driver->getShaders()->getShader(ES_SHADOW_IMPORTANCE);
+        mat.MaterialType = irr_driver->getShader(ES_SHADOW_IMPORTANCE);
 
         mat.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
         mat.setTexture(1, irr_driver->getRTT(RTT_DEPTH));

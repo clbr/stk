@@ -46,6 +46,7 @@ namespace irr
 using namespace irr;
 
 #include "graphics/rtts.hpp"
+#include "graphics/shaders.hpp"
 #include "graphics/wind.hpp"
 #include "utils/aligned_array.hpp"
 #include "utils/no_copy.hpp"
@@ -56,7 +57,6 @@ class AbstractKart;
 class Camera;
 class PerCameraNode;
 class PostProcessing;
-class Shaders;
 class LightNode;
 class ShadowImportance;
 
@@ -283,7 +283,9 @@ public:
     // ------------------------------------------------------------------------
     inline core::vector3df getWind()  {return m_wind->getWind();}
     // ------------------------------------------------------------------------
-    inline Shaders* getShaders()  {return m_shaders;}
+    inline video::E_MATERIAL_TYPE getShader(const ShaderType num)  {return m_shaders->getShader(num);}
+    // ------------------------------------------------------------------------
+    inline video::IShaderConstantSetCallBack* getCallback(const ShaderType num)  {return m_shaders->m_callbacks[num];}
     // ------------------------------------------------------------------------
     inline video::ITexture* getRTT(TypeRTT which)  {return m_rtts->getRTT(which);}
     // ------------------------------------------------------------------------

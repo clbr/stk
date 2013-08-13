@@ -553,7 +553,7 @@ void ParticleEmitter::setParticleType(const ParticleKind* type)
         const bool flips = type->getFlips();
         if (flips)
         {
-            m_node->getMaterial(0).MaterialType = irr_driver->getShaders()->getShader(ES_SNOW);
+            m_node->getMaterial(0).MaterialType = irr_driver->getShader(ES_SNOW);
             m_node->getMaterial(0).BlendOperation = video::EBO_ADD;
         }
     }
