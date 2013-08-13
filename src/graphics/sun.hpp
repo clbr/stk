@@ -20,6 +20,7 @@
 #define HEADER_SUN_HPP
 
 #include "graphics/light.hpp"
+#include "utils/cpp2011.h"
 
 class ScreenQuad;
 
@@ -30,7 +31,7 @@ public:
     SunNode(scene::ISceneManager* mgr, float r, float g, float b);
     virtual ~SunNode();
 
-    virtual void render();
+    virtual void render() OVERRIDE;
 
 private:
     ScreenQuad *sq;
