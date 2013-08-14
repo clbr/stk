@@ -527,6 +527,9 @@ void ShadowImportanceProvider::OnSetConstants(IMaterialRendererServices *srv, in
 
     srv->setVertexShaderConstant("campos", m_campos, 3);
 
+    int low = UserConfigParams::m_shadows == 1;
+    srv->setVertexShaderConstant("low", &low, 1);
+
     if (!firstdone)
     {
         int tex = 0;

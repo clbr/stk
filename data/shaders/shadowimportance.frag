@@ -1,5 +1,6 @@
 uniform sampler2D ctex;
 uniform vec3 campos;
+uniform int low;
 
 varying vec3 wpos;
 varying vec3 normal;
@@ -8,6 +9,9 @@ varying vec2 texc;
 
 float luminanceImp()
 {
+	// A full-res fetch kills on low-end
+	if (low > 0) return 1.0;
+
 	const vec3 weights = vec3(0.2126, 0.7152, 0.0722); // ITU-R BT. 709
 	vec3 col = texture2D(ctex, texc).xyz;
 
