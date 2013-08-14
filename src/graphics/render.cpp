@@ -397,7 +397,7 @@ void IrrDriver::renderGLSL(float dt)
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
             overridemat.Material.MaterialType = m_shaders->getShader(ES_SHADOWPASS);
             overridemat.EnableFlags = video::EMF_MATERIAL_TYPE | video::EMF_TEXTURE1 |
-                                      video::EMF_TEXTURE2;
+                                      video::EMF_TEXTURE2 | video::EMF_WIREFRAME;
             overridemat.EnablePasses = scene::ESNRP_SOLID;
             overridemat.Material.setTexture(1, m_rtts->getRTT(RTT_WARPH));
             overridemat.Material.setTexture(2, m_rtts->getRTT(RTT_WARPV));
@@ -411,6 +411,7 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.Material.TextureLayer[2].TrilinearFilter = false;
             overridemat.Material.TextureLayer[1].AnisotropicFilter =
             overridemat.Material.TextureLayer[2].AnisotropicFilter = 0;
+            overridemat.Material.Wireframe = m_wireframe;
             overridemat.Enabled = true;
 
             m_scene_manager->drawAll(scene::ESNRP_SOLID);
