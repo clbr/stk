@@ -319,6 +319,12 @@ void InputManager::handleStaticAction(int key, int value)
                 irr_driver->toggleLightViz();
             }
             break;
+        case KEY_INSERT:
+            if (value)
+            {
+                irr_driver->toggleShadowViz();
+            }
+            break;
         default:
             break;
     } // switch

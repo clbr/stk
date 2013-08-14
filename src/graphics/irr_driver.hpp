@@ -139,6 +139,7 @@ private:
     bool                 m_mipviz;
     bool                 m_normals;
     bool                 m_ssaoviz;
+    bool                 m_shadowviz;
     bool                 m_lightviz;
     u32                  m_renderpass;
     u32                  m_lensflare_query;
@@ -304,6 +305,10 @@ public:
     void toggleLightViz() { m_lightviz ^= 1; }
     // ------------------------------------------------------------------------
     bool getSSAOViz() { return m_ssaoviz; }
+    // ------------------------------------------------------------------------
+    void toggleShadowViz() { m_shadowviz ^= 1; }
+    // ------------------------------------------------------------------------
+    bool getShadowViz() { return m_shadowviz; }
     // ------------------------------------------------------------------------
     u32 getRenderPass() { return m_renderpass; }
     // ------------------------------------------------------------------------
