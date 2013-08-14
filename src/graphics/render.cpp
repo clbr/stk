@@ -380,6 +380,11 @@ void IrrDriver::renderGLSL(float dt)
             sq.render(m_rtts->getRTT(RTT_COLLAPSEV));
 
             // Convert importance maps to warp maps
+            //
+            // It should be noted that while they do repeated work
+            // calculating the min, max, and total, it's several hundred us
+            // faster to do that than to do it once in a separate shader
+            // (shader switch overhead, measured).
             sq.setMaterialType(m_shaders->getShader(ES_SHADOW_WARPH));
             sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEH));
             sq.render(m_rtts->getRTT(RTT_WARPH));
