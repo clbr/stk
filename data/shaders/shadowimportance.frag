@@ -46,6 +46,8 @@ float depthImp()
 void main()
 {
 	float importance = normalImp() * depthImp() * luminanceImp();
+	importance = clamp(importance, 0.0, 1.0);
 
 	gl_FragColor = vec4(importance);
+	gl_FragDepth = 1.0 - importance;
 }
