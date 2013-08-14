@@ -1,5 +1,6 @@
 uniform sampler2D tex;
 uniform int size;
+uniform vec2 pixel;
 
 void main()
 {
@@ -9,10 +10,10 @@ void main()
 	float first = 1.0, last = 0.0;
 	float lower = 0.0;
 	float total = 0.0;
+	vec2 tc = pixel * 0.5;
+
 	for (int i = 0; i < size; i++)
 	{
-		vec2 tc = vec2(float(i) / float(size - 1));
-
 		float col = texture2D(tex, tc).x;
 
 		lower += col * step(tc.y, origtc.y);
@@ -23,6 +24,8 @@ void main()
 			first = min(first, tc.y);
 			last = max(last, tc.y);
 		}
+
+		tc += pixel;
 	}
 
 	float res = (lower / total) - origtc.y;
