@@ -31,6 +31,7 @@
 #include "utils/random_generator.hpp"
 
 #include <ISceneManager.h>
+#include <SMeshBuffer.h>
 
 using namespace video;
 using namespace scene;
@@ -56,8 +57,15 @@ public:
         count = 2500;
         area = 3500;
 
-        ind = new u16[count];
-        verts = new video::S3DVertex[count];
+        // Fill in the mesh buffer
+        buf.Vertices.clear();
+        buf.Indices.clear();
+
+        buf.Vertices.set_used(count);
+        buf.Indices.set_used(count);
+
+        buf.Primitive = EPT_POINT_SPRITES;
+        buf.setHardwareMappingHint(EHM_STATIC);
 
         u32 i;
         float x, y, z;
@@ -67,8 +75,8 @@ public:
             y = ((rand() % 2400)) / 100.0f;
             z = ((rand() % area) - area/2) / 100.0f;
 
-            ind[i] = i;
-            verts[i] = S3DVertex(x, y, z, 0, 0, 0, SColor(255, 255, 0, 0), 0, 0);
+            buf.Indices[i] = i;
+            buf.Vertices[i] = S3DVertex(x, y, z, 0, 0, 0, SColor(255, 255, 0, 0), 0, 0);
         }
 
         box.addInternalPoint(vector3df(-area/2));
@@ -77,8 +85,6 @@ public:
 
     ~RainNode()
     {
-        delete ind;
-        delete verts;
     }
 
     virtual void render()
@@ -89,8 +95,7 @@ public:
         drv->setTransform(ETS_WORLD, AbsoluteTransformation);
         drv->setMaterial(mat);
 
-        drv->drawVertexPrimitiveList(verts, count, ind, count,
-                                     EVT_STANDARD, EPT_POINT_SPRITES);
+        drv->drawMeshBuffer(&buf);
 
         glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);
     }
@@ -120,8 +125,7 @@ private:
     u32 count;
     s32 area;
 
-    video::S3DVertex *verts;
-    u16 *ind;
+    scene::SMeshBuffer buf;
 };
 
 // The rain manager
