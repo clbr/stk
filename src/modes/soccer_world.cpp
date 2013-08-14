@@ -22,6 +22,7 @@
 
 #include "audio/music_manager.hpp"
 #include "io/file_manager.hpp"
+#include "graphics/irr_driver.hpp"
 #include "karts/abstract_kart.hpp"
 #include "karts/kart.hpp"
 #include "karts/kart_model.hpp"
