@@ -319,7 +319,7 @@ void IrrDriver::renderGLSL(float dt)
             core::vector3df extent = trackbox.getExtent();
             const float w = fabsf(extent.X);
             const float h = fabsf(extent.Y);
-            const float z = box.MaxEdge.Z;
+            float z = box.MaxEdge.Z;
 
             // Snap to texels
             const float units_per_w = w / m_rtts->getRTT(RTT_SHADOW)->getSize().Width;
@@ -334,6 +334,7 @@ void IrrDriver::renderGLSL(float dt)
             right -= fmodf(right, units_per_w);
             up -= fmodf(up, units_per_h);
             down -= fmodf(down, units_per_h);
+            z -= fmodf(z, 0.5f);
 
             ortho.buildProjectionMatrixOrthoLH(left, right,
                                                up, down,
