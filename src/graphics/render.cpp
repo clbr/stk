@@ -385,6 +385,9 @@ void IrrDriver::renderGLSL(float dt)
             // calculating the min, max, and total, it's several hundred us
             // faster to do that than to do it once in a separate shader
             // (shader switch overhead, measured).
+            colcb->setResolution(m_rtts->getRTT(RTT_WARPV)->getSize().Height,
+                                 m_rtts->getRTT(RTT_WARPV)->getSize().Height);
+
             sq.setMaterialType(m_shaders->getShader(ES_SHADOW_WARPH));
             sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEH));
             sq.render(m_rtts->getRTT(RTT_WARPH));
