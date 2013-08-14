@@ -504,6 +504,9 @@ void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     const int hastex = mat.TextureLayer[0].Texture != NULL;
     srv->setVertexShaderConstant("hastex", &hastex, 1);
 
+    int viz = irr_driver->getShadowViz();
+    srv->setVertexShaderConstant("viz", &viz, 1);
+
     if (!firstdone)
     {
         int tex = 0;
