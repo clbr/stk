@@ -525,6 +525,8 @@ void ShadowImportanceProvider::OnSetConstants(IMaterialRendererServices *srv, in
     srv->setVertexShaderConstant("shadowmat", m_shadowmat.pointer(), 16);
     srv->setVertexShaderConstant("ipvmat", m_invprojview.pointer(), 16);
 
+    srv->setVertexShaderConstant("campos", m_campos, 3);
+
     if (!firstdone)
     {
         int tex = 0;
@@ -532,6 +534,9 @@ void ShadowImportanceProvider::OnSetConstants(IMaterialRendererServices *srv, in
 
         tex = 1;
         srv->setVertexShaderConstant("dtex", &tex, 1);
+
+        tex = 2;
+        srv->setVertexShaderConstant("ctex", &tex, 1);
 
         firstdone = true;
     }
