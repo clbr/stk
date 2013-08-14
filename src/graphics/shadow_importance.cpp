@@ -69,15 +69,18 @@ public:
         buf.Primitive = EPT_POINTS;
         buf.setHardwareMappingHint(EHM_STATIC);
 
+        const float halfx = 0.5f / UserConfigParams::m_width;
+        const float halfy = 0.5f / UserConfigParams::m_height;
+
         s32 x, y;
         i = 0;
         for (x = 0; x < UserConfigParams::m_width; x++)
         {
-            const float xpos = ((float) x) / UserConfigParams::m_width;
+            const float xpos = ((float) x) / UserConfigParams::m_width + halfx;
 
             for (y = 0; y < UserConfigParams::m_height; y++)
             {
-                const float ypos = ((float) y) / UserConfigParams::m_height;
+                const float ypos = ((float) y) / UserConfigParams::m_height + halfy;
 
                 buf.Indices[i] = i;
                 buf.Vertices[i] = S3DVertex(xpos, ypos, 0, 0, 0, 0,
