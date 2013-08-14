@@ -34,13 +34,13 @@ void main()
 	// Outside the edges?
 	if (origtc.x <= first)
 	{
-		r = 1.0;
+		r = origtc.x * 2.1;
 		g = 0.0;
 	}
 	else if (origtc.x >= last)
 	{
 		r = 0.0;
-		g = 1.0;
+		g = (1.0 - origtc.x) * 2.1;
 	}
 
 	gl_FragColor = vec4(r, g, 0.0, 1.0);
