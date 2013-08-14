@@ -289,7 +289,7 @@ void IrrDriver::renderGLSL(float dt)
         } // end glow
 
         // Shadows
-        if (!m_mipviz && !m_wireframe && UserConfigParams::m_shadows &&
+        if (!m_mipviz && UserConfigParams::m_shadows &&
             World::getWorld()->getTrack()->hasShadows())
         {
             m_scene_manager->setCurrentRendertime(scene::ESNRP_SOLID);
