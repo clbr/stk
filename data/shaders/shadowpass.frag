@@ -1,5 +1,6 @@
 uniform sampler2D tex;
 uniform int hastex;
+uniform int viz;
 
 vec4 encdepth(float v) {
 	vec4 enc = vec4(1.0, 255.0, 65025.0, 16581375.0) * v;
@@ -17,6 +18,9 @@ void main() {
 			discard;
 	}
 
-	gl_FragColor = encdepth(gl_FragCoord.z);
+	if (viz < 1)
+		gl_FragColor = encdepth(gl_FragCoord.z);
+	else
+		gl_FragColor = texture2D(tex, gl_TexCoord[0].xy);
 }
 
