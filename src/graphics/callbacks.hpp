@@ -535,6 +535,12 @@ public:
         // Update the IPV matrix, only once per frame since it's costly
         const video::IVideoDriver * const drv = irr_driver->getVideoDriver();
 
+        const core::vector3df &campos =
+                     irr_driver->getSceneManager()->getActiveCamera()->getAbsolutePosition();
+        m_campos[0] = campos.X;
+        m_campos[1] = campos.Y;
+        m_campos[2] = campos.Z;
+
         m_invprojview = drv->getTransform(video::ETS_PROJECTION);
         m_invprojview *= drv->getTransform(video::ETS_VIEW);
         m_invprojview.makeInverse();
@@ -547,6 +553,7 @@ public:
 
 private:
     core::matrix4 m_invprojview, m_shadowmat;
+    float m_campos[3];
 };
 
 //

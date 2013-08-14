@@ -45,6 +45,7 @@ public:
 
         mat.setTexture(0, irr_driver->getRTT(RTT_NORMAL));
         mat.setTexture(1, irr_driver->getRTT(RTT_DEPTH));
+        mat.setTexture(2, irr_driver->getRTT(RTT_COLOR));
 
         mat.setFlag(EMF_BILINEAR_FILTER, false);
 
