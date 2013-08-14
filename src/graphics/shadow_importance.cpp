@@ -27,6 +27,7 @@
 #include "graphics/rtts.hpp"
 
 #include <ISceneManager.h>
+#include <SMeshBuffer.h>
 
 using namespace video;
 using namespace scene;
@@ -57,8 +58,16 @@ public:
         }
 
         count = UserConfigParams::m_width * UserConfigParams::m_height;
-        ind = new u16[count];
-        verts = new video::S3DVertex[count];
+
+        // Fill in the mesh buffer
+        buf.Vertices.clear();
+        buf.Indices.clear();
+
+        buf.Vertices.set_used(count);
+        buf.Indices.set_used(count);
+
+        buf.Primitive = EPT_POINTS;
+        buf.setHardwareMappingHint(EHM_STATIC);
 
         s32 x, y;
         i = 0;
@@ -70,8 +79,9 @@ public:
             {
                 const float ypos = ((float) y) / UserConfigParams::m_height;
 
-                ind[i] = i;
-                verts[i] = S3DVertex(xpos, ypos, 0, 0, 0, 0, SColor(255, 255, 255, 255), 0, 0);
+                buf.Indices[i] = i;
+                buf.Vertices[i] = S3DVertex(xpos, ypos, 0, 0, 0, 0,
+                                            SColor(255, 255, 255, 255), 0, 0);
                 i++;
             }
         }
@@ -82,8 +92,6 @@ public:
 
     ~ShadowImportanceNode()
     {
-        delete ind;
-        delete verts;
     }
 
     virtual void render()
@@ -93,8 +101,7 @@ public:
 
         drv->setTransform(ETS_WORLD, IdentityMatrix);
 
-        drv->drawVertexPrimitiveList(verts, count, ind, count,
-                                     EVT_STANDARD, EPT_POINTS);
+        drv->drawMeshBuffer(&buf);
     }
 
     virtual const core::aabbox3d<f32>& getBoundingBox() const
@@ -115,8 +122,7 @@ private:
     core::aabbox3d<f32> box;
     u32 count;
 
-    video::S3DVertex *verts;
-    u16 *ind;
+    scene::SMeshBuffer buf;
 };
 
 // The ShadowImportance manager
