@@ -57,7 +57,10 @@ public:
             mat.TextureLayer[i].TextureWrapV = ETC_CLAMP_TO_EDGE;
         }
 
-        count = UserConfigParams::m_width * UserConfigParams::m_height;
+        // Low shadows only back-project every other pixel
+        const u32 incr = UserConfigParams::m_shadows < 2 ? 2 : 1;
+
+        count = (UserConfigParams::m_width * UserConfigParams::m_height) / (incr * incr);
 
         // Fill in the mesh buffer
         buf.Vertices.clear();
@@ -74,8 +77,6 @@ public:
 
         s32 x, y;
         i = 0;
-        // Low shadows only back-project every other pixel
-        const u32 incr = UserConfigParams::m_shadows < 2 ? 2 : 1;
         for (x = 0; x < UserConfigParams::m_width; x += incr)
         {
             const float xpos = ((float) x) / UserConfigParams::m_width + halfx;
