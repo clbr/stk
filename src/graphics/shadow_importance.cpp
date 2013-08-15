@@ -19,6 +19,7 @@
 #include "config/user_config.hpp"
 #include "graphics/glwrap.hpp"
 #include "graphics/irr_driver.hpp"
+#include "graphics/large_mesh_buffer.hpp"
 #include "graphics/material_manager.hpp"
 #include "graphics/material.hpp"
 #include "graphics/per_camera_node.hpp"
@@ -27,7 +28,6 @@
 #include "graphics/rtts.hpp"
 
 #include <ISceneManager.h>
-#include <SMeshBuffer.h>
 
 using namespace video;
 using namespace scene;
@@ -127,7 +127,7 @@ private:
     core::aabbox3d<f32> box;
     u32 count;
 
-    scene::SMeshBuffer buf;
+    scene::LargeMeshBuffer buf;
 };
 
 // The ShadowImportance manager
