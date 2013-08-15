@@ -53,8 +53,6 @@ void main() {
 	}
 
 	// Shadows
-	float bias = 0.002 * tan(acos(NdotL));
-	bias = clamp(bias, 0.001, 0.01);
 	vec3 shadowcoord = (shadowmat * vec4(xpos.xyz, 1.0)).xyz;
 	shadowcoord = (shadowcoord * 0.5) + vec3(0.5);
 
@@ -66,7 +64,16 @@ void main() {
 
 	float shadowmapz = decdepth(texture2D(shadowtex, shadowcoord.xy));
 
+	float moved = (abs(dx) + abs(dy)) * 0.5;
+
+	float bias = 0.002 * tan(acos(NdotL)); // According to the slope
+	bias += smoothstep(0.001, 0.4, moved) * 0.01; // According to the warping
+	bias = clamp(bias, 0.001, 0.014);
+
 	outcol *= step(shadowcoord.z, shadowmapz + bias);
+
+/*	outcol.r = (shadowcoord.z - shadowmapz) * 50.0;
+	outcol.g = moved;*/
 
 	gl_FragColor = vec4(outcol, 1.0);
 }
