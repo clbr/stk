@@ -79,6 +79,22 @@ unsigned npow(unsigned in) {
     return in + 1;
 }
 
+// Simple 8-bit hash
+u8 shash8(const u8 * const data, const u16 size) {
+
+    u32 out = data[0], i;
+
+    for (i = 1; i < size; i++) {
+        out += data[i] * ((i + 1) ^ data[i - 1]);
+    }
+
+    out %= 307; // prime
+    out %= 256; // eight bits
+
+    return out;
+}
+
+
 /*
 
 Copyright (C) 2011 by Ashima Arts (Simplex noise)
