@@ -137,6 +137,11 @@ void SplattingProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
     srv->setVertexShaderConstant("invtworldm", invtworldm.pointer(), 16);
 
+    float objectid = 0;
+    const stringc name = mat.TextureLayer[0].Texture->getName().getPath();
+    objectid = shash8((const u8 *) name.c_str(), name.size()) / 255.0f;
+    srv->setVertexShaderConstant("objectid", &objectid, 1);
+
     if (!firstdone)
     {
         s32 tex_layout = 1;
@@ -304,6 +309,14 @@ void ObjectPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
     const int haslightmap = mat.TextureLayer[1].Texture != NULL;
     srv->setVertexShaderConstant("haslightmap", &haslightmap, 1);
+
+    float objectid = 0;
+    if (hastex)
+    {
+        const stringc name = mat.TextureLayer[0].Texture->getName().getPath();
+        objectid = shash8((const u8 *) name.c_str(), name.size()) / 255.0f;
+    }
+    srv->setVertexShaderConstant("objectid", &objectid, 1);
 
     if (!firstdone)
     {
@@ -506,6 +519,14 @@ void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
     int viz = irr_driver->getShadowViz();
     srv->setVertexShaderConstant("viz", &viz, 1);
+
+    float objectid = 0;
+    if (hastex)
+    {
+        const stringc name = mat.TextureLayer[0].Texture->getName().getPath();
+        objectid = shash8((const u8 *) name.c_str(), name.size()) / 255.0f;
+    }
+    srv->setVertexShaderConstant("objectid", &objectid, 1);
 
     if (!firstdone)
     {
