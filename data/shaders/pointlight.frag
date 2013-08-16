@@ -16,7 +16,7 @@ float decdepth(vec4 rgba) {
 void main() {
 
 	vec2 texc = gl_FragCoord.xy / screen;
-	float z = decdepth(texture2D(dtex, texc));
+	float z = decdepth(vec4(texture2D(dtex, texc).xyz, 0.0));
 
 	if (z < 0.03) discard;
 
