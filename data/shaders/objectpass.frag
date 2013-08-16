@@ -5,6 +5,7 @@ uniform sampler2D lighttex;
 uniform float far;
 uniform int hastex;
 uniform int haslightmap;
+uniform float objectid;
 
 const float near = 1.0;
 
@@ -34,6 +35,6 @@ void main() {
 		gl_FragData[0] = gl_Color;
 
 	gl_FragData[1] = vec4(nor, linear_z);
-	gl_FragData[2] = encdepth(gl_FragCoord.z);
+	gl_FragData[2] = vec4(encdepth(gl_FragCoord.z).xyz, objectid);
 }
 

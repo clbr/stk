@@ -1,6 +1,7 @@
 varying vec3 nor;
 uniform sampler2D tex;
 uniform float far;
+uniform float objectid;
 
 varying vec3 eyenor;
 varying vec3 viewpos;
@@ -37,5 +38,5 @@ void main() {
 	gl_FragData[0] = detail0 * gl_Color;
 
 	gl_FragData[1] = vec4(nor, linear_z);
-	gl_FragData[2] = encdepth(gl_FragCoord.z);
+	gl_FragData[2] = vec4(encdepth(gl_FragCoord.z).xyz, objectid);
 }
