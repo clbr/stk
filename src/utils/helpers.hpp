@@ -35,4 +35,6 @@ void savetex(ITexture *tex, const char *name = NULL);
 
 float noise2d(float v1, float v2 = 0);
 
+u8 shash8(const u8 * const data, const u16 size);
+
 #endif
