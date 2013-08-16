@@ -82,9 +82,10 @@ void main() {
 	float matching = ((right + left + up + down) * 0.25) - shadowread.a;
 	matching = abs(matching);
 
-	// If the ID is different, we're in shadow
-	outcol *= step(abs(shadowread.a - depthread.a) - matching, 0.004);
-	// Otherwise, do a normal biased depth comparison
+	// If the ID is different, we're likely in shadow - cut the bias to cut peter panning
+	float off = 2.0 - step(abs(shadowread.a - depthread.a) - matching, 0.004);
+	bias /= off;
+
 	outcol *= step(shadowcoord.z, shadowmapz + bias);
 
 /*	outcol.r = (shadowcoord.z - shadowmapz) * 50.0;
