@@ -75,8 +75,12 @@ public:
         const float halfx = 0.5f / UserConfigParams::m_width;
         const float halfy = 0.5f / UserConfigParams::m_height;
 
+        list = glGenLists(1);
+
         s32 x, y;
         i = 0;
+        glNewList(list, GL_COMPILE);
+        glBegin(GL_POINTS);
         for (x = 0; x < UserConfigParams::m_width; x += incr)
         {
             const float xpos = ((float) x) / UserConfigParams::m_width + halfx;
@@ -88,9 +92,12 @@ public:
                 buf.Indices[i] = i;
                 buf.Vertices[i] = S3DVertex(xpos, ypos, 0, 0, 0, 0,
                                             SColor(255, 255, 255, 255), 0, 0);
+                glVertex2f(xpos, ypos);
                 i++;
             }
         }
+        glEnd();
+        glEndList();
 
         box.addInternalPoint(vector3df(-1));
         box.addInternalPoint(vector3df(1));
@@ -107,7 +114,11 @@ public:
 
         drv->setTransform(ETS_WORLD, IdentityMatrix);
 
-        drv->drawMeshBuffer(&buf);
+//        drv->drawMeshBuffer(&buf);
+        // Setup the env for drawing our list by drawing one point
+        drv->drawVertexPrimitiveList(buf.getVertices(), 1, buf.getIndices(), 1,
+                                     EVT_STANDARD, EPT_POINTS);
+        glCallList(list);
     }
 
     virtual const core::aabbox3d<f32>& getBoundingBox() const
@@ -127,6 +138,7 @@ private:
     video::SMaterial mat;
     core::aabbox3d<f32> box;
     u32 count;
+    GLuint list;
 
     scene::LargeMeshBuffer buf;
 };
