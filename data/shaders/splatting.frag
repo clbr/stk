@@ -1,5 +1,6 @@
 varying vec3 nor;
 uniform float far;
+uniform float objectid;
 
 uniform sampler2D tex_layout;
 uniform sampler2D tex_detail0;
@@ -43,5 +44,5 @@ void main() {
 	gl_FragData[0] = splatted;
 
 	gl_FragData[1] = vec4(nor, linear_z);
-	gl_FragData[2] = encdepth(gl_FragCoord.z);
+	gl_FragData[2] = vec4(encdepth(gl_FragCoord.z).xyz, objectid);
 }
