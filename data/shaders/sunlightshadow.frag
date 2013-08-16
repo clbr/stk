@@ -72,6 +72,9 @@ void main() {
 	bias += smoothstep(0.001, 0.4, moved) * 0.01; // According to the warping
 	bias = clamp(bias, 0.001, 0.014);
 
+	// If the ID is different, we're in shadow
+	outcol *= step(abs(shadowread.a - depthread.a), 0.004);
+	// Otherwise, do a normal biased depth comparison
 	outcol *= step(shadowcoord.z, shadowmapz + bias);
 
 /*	outcol.r = (shadowcoord.z - shadowmapz) * 50.0;
