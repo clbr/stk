@@ -12,6 +12,7 @@ uniform mat4 invprojview;
 uniform mat4 shadowmat;
 uniform int hasclouds;
 uniform vec2 wind;
+uniform float shadowoffset;
 
 float decdepth(vec4 rgba) {
 	return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0));
@@ -72,8 +73,17 @@ void main() {
 	bias += smoothstep(0.001, 0.4, moved) * 0.01; // According to the warping
 	bias = clamp(bias, 0.001, 0.014);
 
+	// This ID, and four IDs around this must match for a shadow pixel
+	float right = texture2D(shadowtex, shadowcoord.xy + vec2(shadowoffset, 0.0)).a;
+	float left = texture2D(shadowtex, shadowcoord.xy + vec2(-shadowoffset, 0.0)).a;
+	float up = texture2D(shadowtex, shadowcoord.xy + vec2(0.0, shadowoffset)).a;
+	float down = texture2D(shadowtex, shadowcoord.xy + vec2(0.0, -shadowoffset)).a;
+
+	float matching = ((right + left + up + down) * 0.25) - shadowread.a;
+	matching = abs(matching);
+
 	// If the ID is different, we're in shadow
-	outcol *= step(abs(shadowread.a - depthread.a), 0.004);
+	outcol *= step(abs(shadowread.a - depthread.a) - matching, 0.004);
 	// Otherwise, do a normal biased depth comparison
 	outcol *= step(shadowcoord.z, shadowmapz + bias);
 
