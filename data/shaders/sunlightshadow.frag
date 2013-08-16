@@ -20,7 +20,8 @@ float decdepth(vec4 rgba) {
 void main() {
 
 	vec2 texc = gl_FragCoord.xy / screen;
-	float z = decdepth(texture2D(dtex, texc));
+	vec4 depthread = texture2D(dtex, texc);
+	float z = decdepth(vec4(depthread.xyz, 0.0));
 
 	if (z < 0.03) discard;
 
@@ -62,7 +63,8 @@ void main() {
 	float dy = -movey.x + movey.y;
 	shadowcoord.xy += vec2(dx, dy);
 
-	float shadowmapz = decdepth(texture2D(shadowtex, shadowcoord.xy));
+	vec4 shadowread = texture2D(shadowtex, shadowcoord.xy);
+	float shadowmapz = decdepth(vec4(shadowread.xyz, 0.0));
 
 	float moved = (abs(dx) + abs(dy)) * 0.5;
 
