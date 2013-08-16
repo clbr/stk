@@ -15,7 +15,7 @@ float decdepth(vec4 rgba) {
 void main()
 {
 	texc = gl_Vertex.xy;
-	float z = decdepth(texture2D(dtex, texc));
+	float z = decdepth(vec4(texture2D(dtex, texc).xyz, 0.0));
 
 	vec3 tmp = vec3(texc, z);
 	tmp = tmp * 2.0 - 1.0;
