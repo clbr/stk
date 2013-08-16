@@ -1958,6 +1958,11 @@ void IrrDriver::applyObjectPassShader(scene::ISceneNode * const node, bool rimli
     if (!m_glsl)
         return;
 
+    // Don't override sky
+    if (node->getType() == scene::ESNT_SKY_DOME ||
+        node->getType() == scene::ESNT_SKY_BOX)
+        return;
+
     const u32 mcount = node->getMaterialCount();
     u32 i;
     const video::E_MATERIAL_TYPE ref = rimlit ? m_shaders->getShader(ES_OBJECTPASS_RIMLIT):
