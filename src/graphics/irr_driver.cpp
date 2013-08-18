@@ -422,8 +422,8 @@ void IrrDriver::initDevice()
         m_mrt.push_back(m_rtts->getRTT(RTT_NORMAL));
         m_mrt.push_back(m_rtts->getRTT(RTT_DEPTH));
 
-        // todo: work-around windows
-        glGenQueries(1, &m_lensflare_query);
+        irr::video::COpenGLDriver*	gl_driver = (irr::video::COpenGLDriver*)m_device->getVideoDriver();
+        gl_driver->extGlGenQueries(1, &m_lensflare_query);
 
         scene::IMesh * const sphere = m_scene_manager->getGeometryCreator()->createSphereMesh(1, 16, 16);
         m_sun_interposer = m_scene_manager->addMeshSceneNode(sphere);
