@@ -67,7 +67,8 @@ using namespace irr;
     ACT(ES_BLOOM_POWER) \
     ACT(ES_BLOOM_BLEND) \
     ACT(ES_MULTIPLY_ADD) \
-    ACT(ES_PENUMBRA)
+    ACT(ES_PENUMBRA) \
+    ACT(ES_SHADOWGEN)
 
 #define ENUM(a) a,
 #define STR(a) #a,

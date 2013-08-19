@@ -68,6 +68,7 @@ Shaders::Shaders()
     m_callbacks[ES_COLLAPSE] = new CollapseProvider();
     m_callbacks[ES_BLOOM_POWER] = new BloomPowerProvider();
     m_callbacks[ES_MULTIPLY_ADD] = new MultiplyProvider();
+    m_callbacks[ES_SHADOWGEN] = new ShadowGenProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -188,6 +189,8 @@ Shaders::Shaders()
 
     m_shaders[ES_PENUMBRA] = glslmat(std::string(""), dir + "penumbra.frag",
                                     m_callbacks[ES_GAUSSIAN3H], EMT_SOLID);
+    m_shaders[ES_SHADOWGEN] = glslmat(std::string(""), dir + "shadowgen.frag",
+                                    m_callbacks[ES_SHADOWGEN], EMT_SOLID);
 
 
     // Check that all successfully loaded

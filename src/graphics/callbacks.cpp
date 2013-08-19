@@ -603,3 +603,25 @@ void MultiplyProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+//-------------------------------------
+
+void ShadowGenProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("full", &tex, 1);
+
+        tex = 1;
+        srv->setVertexShaderConstant("halft", &tex, 1);
+
+        tex = 2;
+        srv->setVertexShaderConstant("quarter", &tex, 1);
+
+        tex = 3;
+        srv->setVertexShaderConstant("eighth", &tex, 1);
+
+        firstdone = true;
+    }
+}
