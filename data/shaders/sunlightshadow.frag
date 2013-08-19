@@ -86,10 +86,11 @@ void main() {
 	float off = 2.0 - step(abs(shadowread.a - depthread.a) - matching, 0.004);
 	bias /= off;
 
-	outcol *= step(shadowcoord.z, shadowmapz + bias);
+	float shadowed = step(shadowcoord.z, shadowmapz + bias);
 
 /*	outcol.r = (shadowcoord.z - shadowmapz) * 50.0;
 	outcol.g = moved;*/
 
-	gl_FragColor = vec4(outcol, 1.0);
+	gl_FragData[0] = vec4(outcol, 1.0);
+	gl_FragData[1] = vec4(shadowed);
 }
