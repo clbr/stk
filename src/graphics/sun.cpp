@@ -66,9 +66,6 @@ SunNode::SunNode(scene::ISceneManager* mgr, float r, float g, float b):
 
     m.TextureLayer[2].TextureWrapU = m.TextureLayer[2].TextureWrapV = ETC_REPEAT;
 
-    m.MaterialTypeParam = pack_textureBlendFunc(EBF_ONE, EBF_ONE);
-    m.BlendOperation = EBO_ADD;
-
     m.TextureLayer[2].TrilinearFilter = true;
 
     m_color[0] = r;
@@ -90,5 +87,27 @@ void SunNode::render()
     pos.normalize();
     cb->setPosition(pos.X, pos.Y, pos.Z);
 
+    array<IRenderTarget> mrt;
+    mrt.reallocate(2);
+    mrt.push_back(irr_driver->getRTT(RTT_TMP2));
+    mrt.push_back(irr_driver->getRTT(RTT_TMP3));
+    irr_driver->getVideoDriver()->setRenderTarget(mrt, true, false);
+
+    // Render the sun lighting to tmp2, shadow map to tmp3
     sq->render(false);
+
+    // Filter the shadow map for soft shadows
+
+    // Combine them back to the lighting RTT
+    ScreenQuad tmpsq(irr_driver->getVideoDriver());
+    tmpsq.setMaterialType(irr_driver->getShader(ES_MULTIPLY_ADD));
+    tmpsq.setTexture(irr_driver->getRTT(RTT_TMP2), 0);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_TMP3), 1);
+    tmpsq.getMaterial().setFlag(EMF_BILINEAR_FILTER, false);
+
+    tmpsq.getMaterial().MaterialTypeParam = pack_textureBlendFunc(EBF_ONE, EBF_ONE);
+    tmpsq.getMaterial().BlendOperation = EBO_ADD;
+
+    irr_driver->getVideoDriver()->setRenderTarget(irr_driver->getRTT(RTT_TMP1), false, false);
+    tmpsq.render(false);
 }
