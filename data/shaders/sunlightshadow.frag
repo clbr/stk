@@ -86,11 +86,15 @@ void main() {
 	float off = 2.0 - step(abs(shadowread.a - depthread.a) - matching, 0.004);
 	bias /= off;
 
-	float shadowed = step(shadowcoord.z, shadowmapz + bias);
+	const float softness = 8.0; // How soft is the light?
+	float shadowed = step(shadowmapz + bias, shadowcoord.z);
+	float dist = (shadowcoord.z / shadowmapz) - 1.0;
+	float penumbra = dist * softness / gl_FragCoord.z;
+	penumbra *= shadowed;
 
 /*	outcol.r = (shadowcoord.z - shadowmapz) * 50.0;
 	outcol.g = moved;*/
 
 	gl_FragData[0] = vec4(outcol, 1.0);
-	gl_FragData[1] = vec4(shadowed);
+	gl_FragData[1] = vec4(shadowed, penumbra, shadowed, shadowed);
 }

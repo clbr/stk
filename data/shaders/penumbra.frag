@@ -7,6 +7,7 @@ void main()
 {
 	float sum = 0.0;
 	float num = 0.0;
+	float val = 0.0;
 
 	float movesX[] = float[](pixel.x * -3.5,
 				pixel.x * -1.5,
@@ -19,6 +20,12 @@ void main()
 				pixel.y * 0.0,
 				pixel.y * 1.5,
 				pixel.y * 3.5);
+
+	float weights[] = float[](0.093313,
+				0.305481,
+				0.229473,
+				0.305481,
+				0.093313);
 
 	// Flood-fill
 	for (int i = 0; i < 5; i++)
@@ -33,11 +40,13 @@ void main()
 				sum += col.y;
 				num++;
 			}
+
+			val += col.x * weights[i] * col.x * weights[j];
 		}
 	}
 
 	if (num < 0.5)
 		discard;
 
-	gl_FragColor = vec4(1.0, sum / num, 1.0, 1.0);
+	gl_FragColor = vec4(val, sum / num, 1.0, 1.0);
 }
