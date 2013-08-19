@@ -32,7 +32,7 @@
 #include <string>
 #include <stdio.h>
 
-class Time
+class StkTime
 {
 public:
     typedef time_t TimeType;
