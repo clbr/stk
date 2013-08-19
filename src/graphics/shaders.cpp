@@ -186,6 +186,9 @@ Shaders::Shaders()
     m_shaders[ES_MULTIPLY_ADD] = glslmat(std::string(""), dir + "multiply.frag",
                                     m_callbacks[ES_MULTIPLY_ADD], EMT_ONETEXTURE_BLEND);
 
+    m_shaders[ES_PENUMBRA] = glslmat(std::string(""), dir + "penumbra.frag",
+                                    m_callbacks[ES_GAUSSIAN3H], EMT_SOLID);
+
 
     // Check that all successfully loaded
     u32 i;
