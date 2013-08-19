@@ -587,3 +587,19 @@ void BloomPowerProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     srv->setVertexShaderConstant("power", &m_power, 1);
 }
+
+//-------------------------------------
+
+void MultiplyProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("tex1", &tex, 1);
+
+        tex = 1;
+        srv->setVertexShaderConstant("tex2", &tex, 1);
+
+        firstdone = true;
+    }
+}

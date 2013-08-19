@@ -607,4 +607,12 @@ private:
     float m_power;
 };
 
+//
+
+class MultiplyProvider: public CallBase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif
