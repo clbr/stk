@@ -59,6 +59,7 @@ RTT::RTT()
 
     rtts[RTT_QUARTER1] = drv->addRenderTargetTexture(quarter, "rtt.q1", ECF_A8R8G8B8, true);
     rtts[RTT_QUARTER2] = drv->addRenderTargetTexture(quarter, "rtt.q2", ECF_A8R8G8B8, true);
+    rtts[RTT_QUARTER3] = drv->addRenderTargetTexture(quarter, "rtt.q3", ECF_A8R8G8B8, true);
 
     rtts[RTT_EIGHTH1] = drv->addRenderTargetTexture(eighth, "rtt.e1", ECF_A8R8G8B8, true);
     rtts[RTT_EIGHTH2] = drv->addRenderTargetTexture(eighth, "rtt.e2", ECF_A8R8G8B8, true);
