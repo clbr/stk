@@ -67,6 +67,7 @@ Shaders::Shaders()
     m_callbacks[ES_SHADOW_IMPORTANCE] = new ShadowImportanceProvider();
     m_callbacks[ES_COLLAPSE] = new CollapseProvider();
     m_callbacks[ES_BLOOM_POWER] = new BloomPowerProvider();
+    m_callbacks[ES_MULTIPLY_ADD] = new MultiplyProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -147,9 +148,9 @@ Shaders::Shaders()
                                     m_callbacks[ES_POINTLIGHT], EMT_ONETEXTURE_BLEND);
 
     m_shaders[ES_SUNLIGHT] = glslmat(std::string(""), dir + "sunlight.frag",
-                                    m_callbacks[ES_SUNLIGHT], EMT_ONETEXTURE_BLEND);
+                                    m_callbacks[ES_SUNLIGHT], EMT_SOLID);
     m_shaders[ES_SUNLIGHT_SHADOW] = glslmat(dir + "pass.vert", dir + "sunlightshadow.frag",
-                                    m_callbacks[ES_SUNLIGHT], EMT_ONETEXTURE_BLEND);
+                                    m_callbacks[ES_SUNLIGHT], EMT_SOLID);
 
     m_shaders[ES_MLAA_COLOR1] = glsl(dir + "mlaa_offset.vert", dir + "mlaa_color1.frag",
                                     m_callbacks[ES_MLAA_COLOR1]);
@@ -181,6 +182,9 @@ Shaders::Shaders()
                                     m_callbacks[ES_BLOOM_POWER]);
     m_shaders[ES_BLOOM_BLEND] = glslmat(std::string(""), dir + "bloomblend.frag",
                                     0, EMT_TRANSPARENT_ADD_COLOR);
+
+    m_shaders[ES_MULTIPLY_ADD] = glslmat(std::string(""), dir + "multiply.frag",
+                                    m_callbacks[ES_MULTIPLY_ADD], EMT_ONETEXTURE_BLEND);
 
 
     // Check that all successfully loaded
