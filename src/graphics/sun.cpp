@@ -100,27 +100,38 @@ void SunNode::render()
     // Note that quarter1 is reserved for glow during this time.
     // Having a separate RTT for glow would work, but be wasted VRAM due to less reuse.
     ScreenQuad tmpsq(irr_driver->getVideoDriver());
-    tmpsq.setMaterialType(irr_driver->getShader(ES_PENUMBRA));
     GaussianBlurProvider * const gcb = (GaussianBlurProvider *) irr_driver->getCallback(ES_GAUSSIAN3H);
 
-    gcb->setResolution(UserConfigParams::m_width, UserConfigParams::m_height);
+    gcb->setResolution(UserConfigParams::m_width / 2, UserConfigParams::m_height / 2);
+    tmpsq.setMaterialType(irr_driver->getShader(ES_PENUMBRAH));
     tmpsq.setTexture(irr_driver->getRTT(RTT_TMP3));
     tmpsq.render(irr_driver->getRTT(RTT_HALF1));
-
-    gcb->setResolution(UserConfigParams::m_width / 2, UserConfigParams::m_height / 2);
+    tmpsq.setMaterialType(irr_driver->getShader(ES_PENUMBRAV));
     tmpsq.setTexture(irr_driver->getRTT(RTT_HALF1));
-    tmpsq.render(irr_driver->getRTT(RTT_QUARTER2));
+    tmpsq.render(irr_driver->getRTT(RTT_HALF2));
 
     gcb->setResolution(UserConfigParams::m_width / 4, UserConfigParams::m_height / 4);
+    tmpsq.setMaterialType(irr_driver->getShader(ES_PENUMBRAH));
+    tmpsq.setTexture(irr_driver->getRTT(RTT_HALF2));
+    tmpsq.render(irr_driver->getRTT(RTT_QUARTER2));
+    tmpsq.setMaterialType(irr_driver->getShader(ES_PENUMBRAV));
     tmpsq.setTexture(irr_driver->getRTT(RTT_QUARTER2));
+    tmpsq.render(irr_driver->getRTT(RTT_QUARTER3));
+
+    gcb->setResolution(UserConfigParams::m_width / 8, UserConfigParams::m_height / 8);
+    tmpsq.setMaterialType(irr_driver->getShader(ES_PENUMBRAH));
+    tmpsq.setTexture(irr_driver->getRTT(RTT_QUARTER3));
     tmpsq.render(irr_driver->getRTT(RTT_EIGHTH1));
+    tmpsq.setMaterialType(irr_driver->getShader(ES_PENUMBRAV));
+    tmpsq.setTexture(irr_driver->getRTT(RTT_EIGHTH1));
+    tmpsq.render(irr_driver->getRTT(RTT_EIGHTH2));
 
     // Use these to generate a new soft shadow map
     tmpsq.setMaterialType(irr_driver->getShader(ES_SHADOWGEN));
     tmpsq.setTexture(irr_driver->getRTT(RTT_TMP3), 0);
-    tmpsq.setTexture(irr_driver->getRTT(RTT_HALF1), 1);
-    tmpsq.setTexture(irr_driver->getRTT(RTT_QUARTER2), 2);
-    tmpsq.setTexture(irr_driver->getRTT(RTT_EIGHTH1), 3);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_HALF2), 1);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_QUARTER3), 2);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_EIGHTH2), 3);
 
     irr_driver->getVideoDriver()->setRenderTarget(irr_driver->getRTT(RTT_HALF2), true, false);
     tmpsq.render(false);

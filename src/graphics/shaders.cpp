@@ -187,7 +187,9 @@ Shaders::Shaders()
     m_shaders[ES_MULTIPLY_ADD] = glslmat(std::string(""), dir + "multiply.frag",
                                     m_callbacks[ES_MULTIPLY_ADD], EMT_ONETEXTURE_BLEND);
 
-    m_shaders[ES_PENUMBRA] = glslmat(std::string(""), dir + "penumbra.frag",
+    m_shaders[ES_PENUMBRAH] = glslmat(std::string(""), dir + "penumbrah.frag",
+                                    m_callbacks[ES_GAUSSIAN3H], EMT_SOLID);
+    m_shaders[ES_PENUMBRAV] = glslmat(std::string(""), dir + "penumbrav.frag",
                                     m_callbacks[ES_GAUSSIAN3H], EMT_SOLID);
     m_shaders[ES_SHADOWGEN] = glslmat(std::string(""), dir + "shadowgen.frag",
                                     m_callbacks[ES_SHADOWGEN], EMT_SOLID);
