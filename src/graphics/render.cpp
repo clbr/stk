@@ -542,7 +542,7 @@ void IrrDriver::renderGLSL(float dt)
             irr::video::COpenGLDriver*	gl_driver = (irr::video::COpenGLDriver*)m_device->getVideoDriver();
 
             GLuint res;
-			gl_driver->extGlGetQueryObjectuiv(m_lensflare_query, GL_QUERY_RESULT, &res);
+            gl_driver->extGlGetQueryObjectuiv(m_lensflare_query, GL_QUERY_RESULT, &res);
             m_post_processing->setSunPixels(res);
 
             // Prepare the query for the next frame.
