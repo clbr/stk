@@ -18,7 +18,7 @@ void main()
 	{
 		if (val[i].z > 0.01)
 		{
-			q = val[i].y;
+			q = 1.0 - val[i].y;
 			break;
 		}
 	}
@@ -39,5 +39,5 @@ void main()
 		outval = 1.0 - mix(val[up].x, val[down].x, interp);
 	}
 
-	gl_FragColor = vec4(outval);
+	gl_FragColor = vec4(vec3(outval), 1.0);
 }

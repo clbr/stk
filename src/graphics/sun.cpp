@@ -97,12 +97,43 @@ void SunNode::render()
     sq->render(false);
 
     // Filter the shadow map for soft shadows
+    // Note that quarter1 is reserved for glow during this time.
+    // Having a separate RTT for glow would work, but be wasted VRAM due to less reuse.
+    ScreenQuad tmpsq(irr_driver->getVideoDriver());
+    tmpsq.setMaterialType(irr_driver->getShader(ES_PENUMBRA));
+    GaussianBlurProvider * const gcb = (GaussianBlurProvider *) irr_driver->getCallback(ES_GAUSSIAN3H);
+
+    gcb->setResolution(UserConfigParams::m_width, UserConfigParams::m_height);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_TMP3));
+    tmpsq.render(irr_driver->getRTT(RTT_HALF1));
+
+    gcb->setResolution(UserConfigParams::m_width / 2, UserConfigParams::m_height / 2);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_HALF1));
+    tmpsq.render(irr_driver->getRTT(RTT_QUARTER2));
+
+    gcb->setResolution(UserConfigParams::m_width / 4, UserConfigParams::m_height / 4);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_QUARTER2));
+    tmpsq.render(irr_driver->getRTT(RTT_EIGHTH1));
+
+    // Use these to generate a new soft shadow map
+    tmpsq.setMaterialType(irr_driver->getShader(ES_SHADOWGEN));
+    tmpsq.setTexture(irr_driver->getRTT(RTT_TMP3), 0);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_HALF1), 1);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_QUARTER2), 2);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_EIGHTH1), 3);
+
+    irr_driver->getVideoDriver()->setRenderTarget(irr_driver->getRTT(RTT_TMP4), true, false);
+    tmpsq.render(false);
+
+    tmpsq.setTexture(0, 0);
+    tmpsq.setTexture(0, 1);
+    tmpsq.setTexture(0, 2);
+    tmpsq.setTexture(0, 3);
 
     // Combine them back to the lighting RTT
-    ScreenQuad tmpsq(irr_driver->getVideoDriver());
     tmpsq.setMaterialType(irr_driver->getShader(ES_MULTIPLY_ADD));
     tmpsq.setTexture(irr_driver->getRTT(RTT_TMP2), 0);
-    tmpsq.setTexture(irr_driver->getRTT(RTT_TMP3), 1);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_TMP4), 1);
     tmpsq.getMaterial().setFlag(EMF_BILINEAR_FILTER, false);
 
     tmpsq.getMaterial().MaterialTypeParam = pack_textureBlendFunc(EBF_ONE, EBF_ONE);
