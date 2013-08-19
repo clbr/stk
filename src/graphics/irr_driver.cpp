@@ -78,11 +78,8 @@ using namespace irr;
 #include <Windows.h>
 #endif
 #if defined(__linux__) && !defined(ANDROID)
-namespace X11
-{
-    #include <X11/Xlib.h>
-    #include <X11/Xutil.h>
-}
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
 #endif
 
 /** singleton */
@@ -150,22 +147,22 @@ Returns the parent window of "window" (i.e. the ancestor of window
 that is a direct child of the root, or window itself if it is a direct child).
 If window is the root window, returns window.
 */
-X11::Window get_toplevel_parent(X11::Display* display, X11::Window window)
+Window get_toplevel_parent(Display* display, Window window)
 {
-     X11::Window parent;
-     X11::Window root;
-     X11::Window * children;
+     Window parent;
+     Window root;
+     Window * children;
      unsigned int num_children;
 
      while (true)
      {
-         if (0 == X11::XQueryTree(display, window, &root,
+         if (0 == XQueryTree(display, window, &root,
                    &parent, &children, &num_children))
          {
              Log::fatal("irr_driver", "XQueryTree error\n");
          }
          if (children) { //must test for null
-             X11::XFree(children);
+             XFree(children);
          }
          if (window == root || parent == root) {
              return window;
@@ -216,7 +213,6 @@ void IrrDriver::updateConfigIfRelevant()
             Log::warn("irr_driver", "Could not retrieve window location\n");
         }
 #elif defined(__linux__) && !defined(ANDROID)
-        using namespace X11;
         const video::SExposedVideoData& videoData =
             m_device->getVideoDriver()->getExposedVideoData();
         Display* display = (Display*)videoData.OpenGLLinux.X11Display;
@@ -458,7 +454,6 @@ void IrrDriver::initDevice()
     {
 #if defined(__linux__) && !defined(ANDROID)
         // Set class hints on Linux, used by Window Managers.
-        using namespace X11;
         const video::SExposedVideoData& videoData = m_video_driver
                                                 ->getExposedVideoData();
         XClassHint* classhint = XAllocClassHint();
@@ -572,7 +567,6 @@ bool IrrDriver::moveWindow(const int x, const int y)
         return false;
     }
 #elif defined(__linux__) && !defined(ANDROID)
-    using namespace X11;
     const video::SExposedVideoData& videoData = m_video_driver->getExposedVideoData();
     // TODO: Actually handle possible failure
     XMoveWindow((Display*)videoData.OpenGLLinux.X11Display,
