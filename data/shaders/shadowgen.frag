@@ -14,18 +14,21 @@ void main()
 	// Find the first level with a penumbra value
 	int i;
 	float q = 0.0;
-	for (i = 0; i < 4; i++)
-	{
-		if (val[i].z > 0.01)
-		{
-			q = 1.0 - val[i].y;
-			break;
-		}
-	}
-
 	float outval = 1.0;
-	if (q > 0.01)
+
+	float hasshadow = dot(vec4(1.0), vec4(val[0].z, val[1].z, val[2].z, val[3].z));
+
+	if (hasshadow > 0.7)
 	{
+		for (i = 0; i < 4; i++)
+		{
+			if (val[i].z > 0.01)
+			{
+				q = 1.0 - val[i].y;
+				break;
+			}
+		}
+
 		q *= 8.0;
 		q = max(1.0, q);
 		q = log2(q);
