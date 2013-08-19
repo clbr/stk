@@ -33,7 +33,7 @@ void main()
 		for (int j = 0; j < 5; j++)
 		{
 			vec2 tc = gl_TexCoord[0].xy + vec2(movesX[i], movesY[j]);
-			vec4 col = texture2D(tex, tc);
+			vec3 col = texture2D(tex, tc).xyz;
 
 			if (col.z > 0.8)
 			{
