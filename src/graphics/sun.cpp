@@ -134,7 +134,6 @@ void SunNode::render()
     tmpsq.setMaterialType(irr_driver->getShader(ES_MULTIPLY_ADD));
     tmpsq.setTexture(irr_driver->getRTT(RTT_TMP2), 0);
     tmpsq.setTexture(irr_driver->getRTT(RTT_HALF2), 1);
-    tmpsq.getMaterial().setFlag(EMF_BILINEAR_FILTER, false);
 
     tmpsq.getMaterial().MaterialTypeParam = pack_textureBlendFunc(EBF_ONE, EBF_ONE);
     tmpsq.getMaterial().BlendOperation = EBO_ADD;
