@@ -37,8 +37,8 @@ RTT::RTT()
 
     const u16 shadowside = UserConfigParams::m_shadows == 2 ? 2048 : 512;
     const dimension2du shadowsize(shadowside, shadowside);
-    const dimension2du warpvsize(1, shadowside);
-    const dimension2du warphsize(shadowside, 1);
+    const dimension2du warpvsize(1, 512);
+    const dimension2du warphsize(512, 1);
 
     // The last parameter stands for "has stencil". The name is used in the texture
     // cache, and when saving textures to files as the default name.
