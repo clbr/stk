@@ -27,6 +27,8 @@
 #include "graphics/screenquad.hpp"
 #include "graphics/shaders.hpp"
 #include "io/file_manager.hpp"
+#include "modes/world.hpp"
+#include "tracks/track.hpp"
 
 using namespace video;
 using namespace scene;
@@ -86,6 +88,12 @@ void SunNode::render()
     vector3df pos = getPosition();
     pos.normalize();
     cb->setPosition(pos.X, pos.Y, pos.Z);
+
+    if (!UserConfigParams::m_shadows || !World::getWorld()->getTrack()->hasShadows())
+    {
+        sq->render(false);
+        return;
+    }
 
     array<IRenderTarget> mrt;
     mrt.reallocate(2);
