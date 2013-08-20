@@ -165,7 +165,8 @@ void IrrDriver::renderGLSL(float dt)
         // Fire up the MRT
         m_video_driver->setRenderTarget(m_mrt, false, false);
 
-        Camera *camera = Camera::getCamera(cam);
+        Camera * const camera = Camera::getCamera(cam);
+        scene::ICameraSceneNode * const camnode = camera->getCameraSceneNode();
 
 #ifdef ENABLE_PROFILER
         std::ostringstream oss;
@@ -184,8 +185,8 @@ void IrrDriver::renderGLSL(float dt)
         sicb->updateIPVMatrix();
 
         // Used to cull glowing items & lights
-        const core::aabbox3df cambox = camera->getCameraSceneNode()->
-                                             getViewFrustum()->getBoundingBox();
+        const core::aabbox3df cambox = camnode->getViewFrustum()->getBoundingBox();
+
         // Render anything glowing.
         if (!m_mipviz && !m_wireframe)
         {
@@ -300,7 +301,6 @@ void IrrDriver::renderGLSL(float dt)
             core::aabbox3df trackbox(vmin->toIrrVector(), vmax->toIrrVector() -
                                                           core::vector3df(0, 30, 0));
 
-            scene::ICameraSceneNode * const camnode = camera->getCameraSceneNode();
             const float oldfar = camnode->getFarValue();
             camnode->setFarValue(std::min(100.0f, oldfar));
             camnode->render();
@@ -448,8 +448,8 @@ void IrrDriver::renderGLSL(float dt)
 
         const vector3df camcenter = cambox.getCenter();
         const float camradius = cambox.getExtent().getLength() / 2;
-        const vector3df campos = camera->getCameraSceneNode()->getPosition();
-        const float camnear = camera->getCameraSceneNode()->getNearValue();
+        const vector3df campos = camnode->getPosition();
+        const float camnear = camnode->getNearValue();
 
         m_scene_manager->drawAll(scene::ESNRP_CAMERA);
         PointLightProvider * const pcb = (PointLightProvider *) irr_driver->
