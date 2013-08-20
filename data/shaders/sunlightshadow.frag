@@ -58,10 +58,10 @@ void main() {
 	vec3 shadowcoord = (shadowmat * vec4(xpos.xyz, 1.0)).xyz;
 	shadowcoord = (shadowcoord * 0.5) + vec3(0.5);
 
-	vec2 movex = texture2D(warpx, shadowcoord.xy).xy;
-	vec2 movey = texture2D(warpy, shadowcoord.xy).xy;
-	float dx = -movex.x + movex.y;
-	float dy = -movey.x + movey.y;
+	float movex = decdepth(texture2D(warpx, shadowcoord.xy));
+	float movey = decdepth(texture2D(warpy, shadowcoord.xy));
+	float dx = movex * 2.0 - 1.0;
+	float dy = movey * 2.0 - 1.0;
 	shadowcoord.xy += vec2(dx, dy);
 
 	vec4 shadowread = texture2D(shadowtex, shadowcoord.xy);
