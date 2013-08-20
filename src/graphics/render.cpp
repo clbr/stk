@@ -362,12 +362,17 @@ void IrrDriver::renderGLSL(float dt)
             sq.setTexture(m_rtts->getRTT(RTT_SHADOW));
             sq.getMaterial().setFlag(EMF_BILINEAR_FILTER, false);
 
+            const TypeRTT oldh = tick ? RTT_COLLAPSEH : RTT_COLLAPSEH2;
+            const TypeRTT oldv = tick ? RTT_COLLAPSEV : RTT_COLLAPSEV2;
+            const TypeRTT curh = tick ? RTT_COLLAPSEH2 : RTT_COLLAPSEH;
+            const TypeRTT curv = tick ? RTT_COLLAPSEV2 : RTT_COLLAPSEV;
+
             colcb->setResolution(1, m_rtts->getRTT(RTT_WARPV)->getSize().Height);
-            sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEH_OLD), 1);
+            sq.setTexture(m_rtts->getRTT(oldh), 1);
             sq.render(m_rtts->getRTT(RTT_WARPH));
 
             colcb->setResolution(m_rtts->getRTT(RTT_WARPV)->getSize().Height, 1);
-            sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEV_OLD), 1);
+            sq.setTexture(m_rtts->getRTT(oldv), 1);
             sq.render(m_rtts->getRTT(RTT_WARPV));
 
             sq.setTexture(0, 1);
@@ -377,13 +382,11 @@ void IrrDriver::renderGLSL(float dt)
 
             sq.setMaterialType(m_shaders->getShader(ES_GAUSSIAN6H));
             sq.setTexture(m_rtts->getRTT(RTT_WARPH));
-            sq.render(m_rtts->getRTT(RTT_COLLAPSEH));
+            sq.render(m_rtts->getRTT(curh));
 
             sq.setMaterialType(m_shaders->getShader(ES_GAUSSIAN6V));
             sq.setTexture(m_rtts->getRTT(RTT_WARPV));
-            sq.render(m_rtts->getRTT(RTT_COLLAPSEV));
-
-            // Blit them to the _old ones for next frame
+            sq.render(m_rtts->getRTT(curv));
 
             // Convert importance maps to warp maps
             //
@@ -395,11 +398,11 @@ void IrrDriver::renderGLSL(float dt)
                                  m_rtts->getRTT(RTT_WARPV)->getSize().Height);
 
             sq.setMaterialType(m_shaders->getShader(ES_SHADOW_WARPH));
-            sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEH));
+            sq.setTexture(m_rtts->getRTT(curh));
             sq.render(m_rtts->getRTT(RTT_WARPH));
 
             sq.setMaterialType(m_shaders->getShader(ES_SHADOW_WARPV));
-            sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEV));
+            sq.setTexture(m_rtts->getRTT(curv));
             sq.render(m_rtts->getRTT(RTT_WARPV));
 
             // Actual shadow map
