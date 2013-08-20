@@ -84,6 +84,21 @@ RTT::RTT()
         if (!rtts[i])
             Log::fatal("RTT", "Failed to create a RTT");
     }
+
+    // Clear those that should be cleared
+    drv->beginScene(false, false);
+
+    drv->setRenderTarget(rtts[RTT_SSAO1], true, false, SColor(255, 255, 255, 255));
+    drv->setRenderTarget(rtts[RTT_SSAO2], true, false, SColor(255, 255, 255, 255));
+
+    drv->setRenderTarget(rtts[RTT_COLLAPSEV], true, false);
+    drv->setRenderTarget(rtts[RTT_COLLAPSEH], true, false);
+    drv->setRenderTarget(rtts[RTT_COLLAPSEV2], true, false);
+    drv->setRenderTarget(rtts[RTT_COLLAPSEH2], true, false);
+
+    drv->setRenderTarget(0, false, false);
+
+    drv->endScene();
 }
 
 RTT::~RTT()
