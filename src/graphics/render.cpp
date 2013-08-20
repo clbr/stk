@@ -293,6 +293,7 @@ void IrrDriver::renderGLSL(float dt)
             World::getWorld()->getTrack()->hasShadows())
         {
             m_scene_manager->setCurrentRendertime(scene::ESNRP_SOLID);
+            static u8 tick = 0;
 
             const Vec3 *vmin, *vmax;
             World::getWorld()->getTrack()->getAABB(&vmin, &vmax);
@@ -422,6 +423,9 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.EnablePasses = 0;
             overridemat.Enabled = false;
             camera->activate();
+
+            tick++;
+            tick %= 2;
         }
 
         // Lights
