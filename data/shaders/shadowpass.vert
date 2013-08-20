@@ -1,6 +1,10 @@
 uniform sampler2D warpx;
 uniform sampler2D warpy;
 
+float decdepth(vec4 rgba) {
+	return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0));
+}
+
 void main()
 {
 	vec4 pos = ftransform();
@@ -8,11 +12,11 @@ void main()
 
 	vec2 tc = pos.xy * vec2(0.5) + vec2(0.5);
 
-	vec2 movex = texture2D(warpx, tc).xy;
-	vec2 movey = texture2D(warpy, tc).xy;
+	float movex = decdepth(texture2D(warpx, tc));
+	float movey = decdepth(texture2D(warpy, tc));
 
-	float dx = -movex.x + movex.y;
-	float dy = -movey.x + movey.y;
+	float dx = movex * 2.0 - 1.0;
+	float dy = movey * 2.0 - 1.0;
 
 	dx *= 2.0;
 	dy *= 2.0;

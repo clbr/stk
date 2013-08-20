@@ -2,6 +2,13 @@ uniform sampler2D tex;
 uniform int size;
 uniform vec2 pixel;
 
+vec4 encdepth(float v) {
+	vec4 enc = vec4(1.0, 255.0, 65025.0, 16581375.0) * v;
+	enc = fract(enc);
+	enc -= enc.yzww * vec4(1.0/255.0, 1.0/255.0, 1.0/255.0, 0.0);
+	return enc;
+}
+
 void main()
 {
 	vec2 origtc = gl_TexCoord[0].xy;
@@ -30,21 +37,17 @@ void main()
 
 	float res = (lower / total) - origtc.y;
 
-	float r, g;
-	r = abs(res * step(res, 0.0));
-	g = res * step(0.0, res);
-
 	// Outside the edges?
 	if (origtc.y <= first)
 	{
-		r = origtc.y * 2.1;
-		g = 0.0;
+		res = origtc.y * -2.1;
 	}
 	else if (origtc.y >= last)
 	{
-		r = 0.0;
-		g = (1.0 - origtc.y) * 2.1;
+		res = (1.0 - origtc.y) * 2.1;
 	}
 
-	gl_FragColor = vec4(r, g, 0.0, 1.0);
+	res = res * 0.5 + 0.5;
+
+	gl_FragColor = encdepth(res);
 }
