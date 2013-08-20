@@ -83,7 +83,7 @@ void main() {
 	matching = abs(matching);
 
 	// If the ID is different, we're likely in shadow - cut the bias to cut peter panning
-	float off = 2.0 - step(abs(shadowread.a - depthread.a) - matching, 0.004);
+	float off = 4.0 - step(abs(shadowread.a - depthread.a) - matching, 0.004) * 3.0;
 	bias /= off;
 
 	const float softness = 8.0; // How soft is the light?
