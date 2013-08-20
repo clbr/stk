@@ -16,13 +16,13 @@ void main()
 
 	float hasshadow = dot(vec3(1.0), vec3(val[0].z, val[1].z, val[2].z));
 
-	if (hasshadow > 0.7)
+	if (hasshadow > 0.9)
 	{
 		for (i = 0; i < 3; i++)
 		{
-			if (val[i].z > 0.01)
+			if (val[i].z > 0.9)
 			{
-				q = 1.0 - val[i].y;
+				q = val[i].y;
 				break;
 			}
 		}
@@ -37,7 +37,7 @@ void main()
 		int up = down + 1;
 		float interp = q - float(down);
 
-		outval = 1.0 - mix(val[up].x, val[down].x, interp);
+		outval = 1.0 - mix(val[down].x, val[up].x, interp);
 	}
 
 	gl_FragColor = vec4(vec3(outval), 1.0);
