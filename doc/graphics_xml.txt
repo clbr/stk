@@ -34,6 +34,8 @@ regardless of its brightness.
 
 Example: forcedbloom="Y" inside the <object> tag, in scene.xml.
 
+Forced bloom objects may optionally include a multiplier, ranging from 0.5 to 10:
+bloompower="2.5"
 
 Glowing objects
 ---------------
