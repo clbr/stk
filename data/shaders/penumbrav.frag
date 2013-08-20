@@ -10,7 +10,7 @@ void main()
 	float X = gl_TexCoord[0].x;
 	float Y = gl_TexCoord[0].y;
 	float width = 0.0;
-	float zsum = 0.0;
+	float zsum = 0.00001;
 
 	tmp = texture2D(tex, vec2(X, Y - 5.13333 * pixel.y));
 	sum += tmp.x * 0.00640869;
@@ -47,5 +47,6 @@ void main()
 	zsum += tmp.z;
 	width += tmp.y;
 
-	gl_FragColor = vec4(sum, width / zsum, step(0.7, zsum), 1.0);
+	float hasz = step(0.7, zsum);
+	gl_FragColor = vec4(sum, (width / zsum) * hasz, hasz, 1.0);
 }
