@@ -136,10 +136,9 @@ void SunNode::render()
 
     // Use these to generate a new soft shadow map
     tmpsq.setMaterialType(irr_driver->getShader(ES_SHADOWGEN));
-    tmpsq.setTexture(irr_driver->getRTT(RTT_TMP3), 0);
-    tmpsq.setTexture(irr_driver->getRTT(RTT_HALF2), 1);
-    tmpsq.setTexture(irr_driver->getRTT(RTT_QUARTER3), 2);
-    tmpsq.setTexture(irr_driver->getRTT(RTT_EIGHTH2), 3);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_HALF2), 0);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_QUARTER3), 1);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_EIGHTH2), 2);
 
     irr_driver->getVideoDriver()->setRenderTarget(irr_driver->getRTT(RTT_HALF1), true, false);
     tmpsq.render(false);
