@@ -363,11 +363,14 @@ void IrrDriver::renderGLSL(float dt)
             sq.getMaterial().setFlag(EMF_BILINEAR_FILTER, false);
 
             colcb->setResolution(1, m_rtts->getRTT(RTT_WARPV)->getSize().Height);
+            sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEH_OLD), 1);
             sq.render(m_rtts->getRTT(RTT_WARPH));
 
             colcb->setResolution(m_rtts->getRTT(RTT_WARPV)->getSize().Height, 1);
+            sq.setTexture(m_rtts->getRTT(RTT_COLLAPSEV_OLD), 1);
             sq.render(m_rtts->getRTT(RTT_WARPV));
 
+            sq.setTexture(0, 1);
             ((GaussianBlurProvider *) m_shaders->m_callbacks[ES_GAUSSIAN3H])->setResolution(
                        m_rtts->getRTT(RTT_WARPV)->getSize().Height,
                        m_rtts->getRTT(RTT_WARPV)->getSize().Height);
@@ -379,6 +382,8 @@ void IrrDriver::renderGLSL(float dt)
             sq.setMaterialType(m_shaders->getShader(ES_GAUSSIAN6V));
             sq.setTexture(m_rtts->getRTT(RTT_WARPV));
             sq.render(m_rtts->getRTT(RTT_COLLAPSEV));
+
+            // Blit them to the _old ones for next frame
 
             // Convert importance maps to warp maps
             //
