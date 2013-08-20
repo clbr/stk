@@ -73,6 +73,8 @@ RTT::RTT()
     rtts[RTT_SHADOW] = drv->addRenderTargetTexture(shadowsize, "rtt.shadow", ECF_A8R8G8B8, true);
     rtts[RTT_COLLAPSEV] = drv->addRenderTargetTexture(warpvsize, "rtt.collapsev", ECF_A8R8G8B8, true);
     rtts[RTT_COLLAPSEH] = drv->addRenderTargetTexture(warphsize, "rtt.collapseh", ECF_A8R8G8B8, true);
+    rtts[RTT_COLLAPSEV2] = drv->addRenderTargetTexture(warpvsize, "rtt.collapsev2", ECF_A8R8G8B8, true);
+    rtts[RTT_COLLAPSEH2] = drv->addRenderTargetTexture(warphsize, "rtt.collapseh2", ECF_A8R8G8B8, true);
     rtts[RTT_WARPV] = drv->addRenderTargetTexture(warpvsize, "rtt.warpv", ECF_A8R8G8B8, true);
     rtts[RTT_WARPH] = drv->addRenderTargetTexture(warphsize, "rtt.warph", ECF_A8R8G8B8, true);
 
