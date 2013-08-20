@@ -14,6 +14,7 @@ const float invSamples = 1.0 / SAMPLES;
 void main(void)
 {
 	// A set of Random(tm) vec2's. 8 1s, 6 0.7s, 2 0.4
+	// Again not using const because of broken Intel Windows drivers
 	vec2 vecs[16] = vec2[](vec2(0.43589, -0.9), vec2(-0.9, 0.43589),
 					vec2(-0.8, -0.6), vec2(0.6, 0.8),
 					vec2(0.866025, -0.5), vec2(-0.5, 0.866025),
