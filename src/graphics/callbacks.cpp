@@ -318,7 +318,8 @@ void ObjectPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
     srv->setVertexShaderConstant("objectid", &objectid, 1);
 
-    if (!firstdone)
+    //if (!firstdone)
+    // Can't use the firstdone optimization, as this callback is used for multiple shaders
     {
         int tex = 0;
         srv->setVertexShaderConstant("tex", &tex, 1);
@@ -390,7 +391,8 @@ void SunLightProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         srv->setVertexShaderConstant("shadowmat", m_shadowmat.pointer(), 16);
     }
 
-    if (!firstdone)
+    // Can't use the firstdone optimization, as this callback is used for multiple shaders
+    //if (!firstdone)
     {
         int tex = 0;
         srv->setVertexShaderConstant("ntex", &tex, 1);
@@ -531,7 +533,8 @@ void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     }
     srv->setVertexShaderConstant("objectid", &objectid, 1);
 
-    if (!firstdone)
+    //if (!firstdone)
+    // Can't use the firstdone optimization, as this callback is used for multiple shaders
     {
         int tex = 0;
         srv->setVertexShaderConstant("tex", &tex, 1);
@@ -580,7 +583,8 @@ void CollapseProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("multi", m_multi, 2);
     srv->setVertexShaderConstant("size", &m_size, 1);
 
-    if (!firstdone)
+    //if (!firstdone)
+    // Can't use the firstdone optimization, as this callback is used for multiple shaders
     {
         int tex = 0;
         srv->setVertexShaderConstant("tex", &tex, 1);
