@@ -1,10 +1,9 @@
+uniform sampler2D ntex;
 uniform sampler2D ctex;
 uniform vec3 campos;
 uniform int low;
 
 varying vec3 wpos;
-varying vec3 normal;
-varying float linearz;
 varying vec2 texc;
 
 float luminanceImp()
@@ -24,7 +23,7 @@ float luminanceImp()
 	return f;
 }
 
-float normalImp()
+float normalImp(vec3 normal)
 {
 	vec3 camdir = normalize(campos - wpos);
 	vec3 N = normalize(normal);
@@ -35,7 +34,7 @@ float normalImp()
 	return f;
 }
 
-float depthImp()
+float depthImp(float linearz)
 {
 /*	const float skip = 0.7;
 
@@ -51,7 +50,11 @@ float depthImp()
 
 void main()
 {
-	float importance = normalImp() * depthImp() * luminanceImp();
+	vec4 ntmp = texture2D(ntex, texc);
+	vec3 normal = ntmp.xyz * 2.0 - 1.0;
+	float linearz = ntmp.a;
+
+	float importance = normalImp(normal) * depthImp(linearz) * luminanceImp();
 	importance = clamp(importance, 0.0, 1.0);
 
 	// Quantize it
