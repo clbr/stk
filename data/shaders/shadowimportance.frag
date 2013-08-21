@@ -52,6 +52,12 @@ void main()
 	float importance = normalImp() * depthImp() * luminanceImp();
 	importance = clamp(importance, 0.0, 1.0);
 
+	// Quantize it
+	const float steps = 16.0;
+	importance *= steps;
+	importance = floor(importance + 0.5);
+	importance /= steps;
+
 	gl_FragColor = vec4(importance);
 	gl_FragDepth = 1.0 - importance;
 }
