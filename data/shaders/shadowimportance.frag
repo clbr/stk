@@ -42,7 +42,9 @@ float depthImp()
 	float f = min(linearz, skip);
 	f *= 1.0/skip;*/
 
-	float f = 1.0 - (linearz * 0.9);
+	float z = log(1.0 + linearz * 9.0) / log(10.0);
+
+	float f = 1.0 - (z * 0.9);
 
 	return f;
 }
