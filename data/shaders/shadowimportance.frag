@@ -55,7 +55,7 @@ void main()
 	// Quantize it
 	const float steps = 16.0;
 	importance *= steps;
-	importance = floor(importance);
+	importance = floor(importance + 0.5);
 	importance /= steps;
 
 	gl_FragColor = vec4(importance);
