@@ -1,10 +1,7 @@
-uniform sampler2D ntex;
 uniform sampler2D dtex;
 uniform mat4 ipvmat;
 uniform mat4 shadowmat;
 
-varying float linearz;
-varying vec3 normal;
 varying vec3 wpos;
 varying vec2 texc;
 
@@ -28,10 +25,6 @@ void main()
 
 	// Now we have this pixel's world-space position. Convert to shadow space.
 	vec4 pos = shadowmat * vec4(xpos.xyz, 1.0);
-
-	vec4 ntmp = texture2D(ntex, texc);
-	normal = ntmp.xyz * 2.0 - 1.0;
-	linearz = ntmp.a;
 
 	gl_Position = pos;
 }
