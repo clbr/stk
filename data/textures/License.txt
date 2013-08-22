@@ -118,6 +118,9 @@ Under Creative Commons Attribution Share-Alike (CC-BY-SA) - http://creativecommo
 
 * lens flare
     by tbw
+
+* cloud shadow, caustics
+    by cand
     
 ===
 GPL
