@@ -642,7 +642,12 @@ void ShadowGenProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void CausticsProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
-    vector3df wind = irr_driver->getWind() * 0.003f;
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
+
+    float strength = time;
+    strength = fabsf(noise2d(strength / 10.0f)) * 0.006f;
+
+    vector3df wind = irr_driver->getWind() * strength;
     m_dir[0] += wind.X;
     m_dir[1] += wind.Z;
 
