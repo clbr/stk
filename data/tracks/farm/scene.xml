@@ -16,7 +16,7 @@
     <static-object lod_instance="true" lod_group="well" xyz="-50.31 6.00 -89.63" hpr="0.0 64.7 0.0" scale="1.91 1.91 1.91"/> <!-- writeStaticObjects 3 -->
     <static-object lod_distance="60.0" lod_group="well" model="well60.b3d" xyz="-143.85 6.00 -89.63" hpr="0.0 64.7 0.0" scale="1.91 1.91 1.91"/> <!-- writeStaticObjects 3 -->
   </track>
-  <object type="animation" model="hayBail.b3d" xyz="69.97 8.08 -107.84" hpr="-83.2 1.1 97.7" scale="1.00 1.00 1.00" shape="box" explode="y" interaction="explode">
+  <object type="animation" model="hayBail.b3d" xyz="69.97 8.08 -107.84" hpr="-83.2 1.1 97.7" scale="1.00 1.00 1.00" shape="box" flatten="y" interaction="explode">
     <curve channel="LocX" interpolation="bezier" extend="cyclic">
       <p c="60.000 115.124" h1="58.438 115.124" h2="61.562 115.124"/>
       <p c="64.000 115.124" h1="62.439 115.124" h2="64.390 115.124"/>

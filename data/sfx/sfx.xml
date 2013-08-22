@@ -56,5 +56,6 @@
    <sfx filename="ugh.ogg"              volume="1.0" positional="false" />
    <sfx filename="wee.ogg"              volume="1.0" positional="false" />
    <sfx filename="wooden_bridge.ogg"    volume="0.4" positional="true" rolloff="0.2"  />
+   <sfx filename="goal_scored.ogg"      volume="1.0" positional="false";
 </sfx-config>
 
