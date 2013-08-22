@@ -642,6 +642,9 @@ void ShadowGenProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void CausticsProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
+
+    srv->setVertexShaderConstant("dir", m_dir, 2);
+
     if (!firstdone)
     {
         int tex = 0;
