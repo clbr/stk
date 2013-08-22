@@ -628,12 +628,12 @@ public:
 class CausticsProvider: public CallBase
 {
 public:
-    CausticsProvider() { m_dir[0] = m_dir[1] = 0; }
+    CausticsProvider() { m_dir[0] = m_dir[1] = m_dir2[0] = m_dir2[1] = 0; }
 
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 
 private:
-    float m_dir[2];
+    float m_dir[2], m_dir2[2];
 };
 
 #endif
