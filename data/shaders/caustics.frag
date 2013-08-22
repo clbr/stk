@@ -8,7 +8,7 @@ void main()
 
 	vec3 col = texture2D(tex, tc).xyz;
 	float caustic = texture2D(caustictex, tc + dir).x;
-	float caustic2 = texture2D(caustictex, (tc.yx + dir.yx)).x;
+	float caustic2 = texture2D(caustictex, (tc.yx + dir.yx * vec2(-0.6, 0.3)) * vec2(0.6)).x;
 
 	col += caustic + caustic2;
 
