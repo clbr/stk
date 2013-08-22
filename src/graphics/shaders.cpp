@@ -69,6 +69,7 @@ Shaders::Shaders()
     m_callbacks[ES_BLOOM_POWER] = new BloomPowerProvider();
     m_callbacks[ES_MULTIPLY_ADD] = new MultiplyProvider();
     m_callbacks[ES_SHADOWGEN] = new ShadowGenProvider();
+    m_callbacks[ES_CAUSTICS] = new CausticsProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -194,6 +195,8 @@ Shaders::Shaders()
     m_shaders[ES_SHADOWGEN] = glslmat(std::string(""), dir + "shadowgen.frag",
                                     m_callbacks[ES_SHADOWGEN], EMT_SOLID);
 
+    m_shaders[ES_CAUSTICS] = glslmat(std::string(""), dir + "caustics.frag",
+                                    m_callbacks[ES_CAUSTICS], EMT_TRANSPARENT_ALPHA_CHANNEL);
 
     // Check that all successfully loaded
     u32 i;

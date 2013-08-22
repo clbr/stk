@@ -219,6 +219,10 @@ Material::Material(const XMLNode *node, int index, bool deprecated)
         node->get("splatting-texture-3", &m_splatting_texture_3);
         node->get("splatting-texture-4", &m_splatting_texture_4);
     }
+    else if (s == "caustics")
+    {
+        m_graphical_effect = GE_CAUSTICS;
+    }
     else if (s == "none")
     {
     }
@@ -810,6 +814,12 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
         {
             m->MaterialType = video::EMT_SOLID;
         }
+    }
+    if (m_graphical_effect == GE_CAUSTICS && irr_driver->isGLSL())
+    {
+        m->MaterialType = irr_driver->getShader(ES_CAUSTICS);
+
+        m->setTexture(1, irr_driver->getTexture((file_manager->getTextureDir() + "caustics.png").c_str()));
     }
 
 

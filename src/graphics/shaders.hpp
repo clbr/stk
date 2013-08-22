@@ -69,7 +69,8 @@ using namespace irr;
     ACT(ES_MULTIPLY_ADD) \
     ACT(ES_PENUMBRAH) \
     ACT(ES_PENUMBRAV) \
-    ACT(ES_SHADOWGEN)
+    ACT(ES_SHADOWGEN) \
+    ACT(ES_CAUSTICS)
 
 #define ENUM(a) a,
 #define STR(a) #a,

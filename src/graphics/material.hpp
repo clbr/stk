@@ -53,7 +53,8 @@ public:
                           GE_WATER_SHADER,
                           GE_SPHERE_MAP,
                           GE_SPLATTING,
-                          GE_NORMAL_MAP};
+                          GE_NORMAL_MAP,
+                          GE_CAUSTICS};
 
     enum ParticleConditions
     {
