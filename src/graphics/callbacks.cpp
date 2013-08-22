@@ -637,3 +637,19 @@ void ShadowGenProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+//-------------------------------------
+
+void CausticsProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setVertexShaderConstant("tex", &tex, 1);
+
+        tex = 1;
+        srv->setVertexShaderConstant("caustictex", &tex, 1);
+
+        firstdone = true;
+    }
+}

@@ -623,4 +623,12 @@ public:
     virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
 };
 
+//
+
+class CausticsProvider: public CallBase
+{
+public:
+    virtual void OnSetConstants(video::IMaterialRendererServices *srv, int);
+};
+
 #endif
