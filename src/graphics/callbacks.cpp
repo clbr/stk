@@ -642,6 +642,9 @@ void ShadowGenProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void CausticsProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
+    vector3df wind = irr_driver->getWind() * 0.003f;
+    m_dir[0] += wind.X;
+    m_dir[1] += wind.Z;
 
     srv->setVertexShaderConstant("dir", m_dir, 2);
 
