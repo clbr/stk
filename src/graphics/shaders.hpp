@@ -29,6 +29,7 @@ using namespace irr;
     ACT(ES_WATER) \
     ACT(ES_SPHERE_MAP) \
     ACT(ES_GRASS) \
+    ACT(ES_GRASS_REF) \
     ACT(ES_BUBBLES) \
     ACT(ES_RAIN) \
     ACT(ES_SNOW) \

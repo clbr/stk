@@ -883,8 +883,14 @@ void  Material::setMaterialProperties(video::SMaterial *m, scene::IMeshBuffer* m
                 setAmplitude(m_grass_amplitude);
 
             // Material and shaders
-            m->MaterialType = irr_driver->getShader(ES_GRASS);
-            m->BlendOperation = video::EBO_ADD;
+            if (m_alpha_testing)
+            {
+                m->MaterialType = irr_driver->getShader(ES_GRASS_REF);
+            }
+            else {
+                m->MaterialType = irr_driver->getShader(ES_GRASS);
+                m->BlendOperation = video::EBO_ADD;
+            }
 
         }
     }
