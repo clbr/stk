@@ -525,6 +525,9 @@ void ShadowPassProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     int viz = irr_driver->getShadowViz();
     srv->setVertexShaderConstant("viz", &viz, 1);
 
+    int wireframe = mat.Wireframe;
+    srv->setVertexShaderConstant("wireframe", &wireframe, 1);
+
     float objectid = 0;
     if (hastex)
     {
