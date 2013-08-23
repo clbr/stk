@@ -48,6 +48,7 @@ void main()
 	}
 
 	res = res * 0.5 + 0.5;
+	res = clamp(res, 0.01, 0.99);
 
 	gl_FragColor = encdepth(res);
 }
