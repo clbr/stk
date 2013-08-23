@@ -89,6 +89,8 @@ Shaders::Shaders()
 
     m_shaders[ES_GRASS] = glslmat(dir + "grass.vert", dir + "grass.frag",
                                   m_callbacks[ES_GRASS], EMT_TRANSPARENT_ALPHA_CHANNEL);
+    m_shaders[ES_GRASS_REF] = glslmat(dir + "grass.vert", dir + "grass.frag",
+                                  m_callbacks[ES_GRASS], EMT_TRANSPARENT_ALPHA_CHANNEL_REF);
 
     m_shaders[ES_BUBBLES] = glslmat(dir + "bubble.vert", dir + "bubble.frag",
                                     m_callbacks[ES_BUBBLES], EMT_TRANSPARENT_ALPHA_CHANNEL);
