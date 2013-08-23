@@ -37,6 +37,7 @@ Example: forcedbloom="Y" inside the <object> tag, in scene.xml.
 Forced bloom objects may optionally include a multiplier, ranging from 0.5 to 10:
 bloompower="2.5"
 
+
 Glowing objects
 ---------------
 
@@ -45,7 +46,13 @@ Any object may be marked as glowing. The glow is a RGB value.
 Example: glow="0 255 0" inside the <object> tag, in scene.xml.
 
 
+Caustics
+--------
 
+A material effect, ie GE_CAUSTICS, to mark a texture as receiving caustics. To be used
+for the ocean floor, puddle floor, etc.
+
+Example: graphics-effect="caustics" in materials.xml.
 
 
 	Per-track tags
