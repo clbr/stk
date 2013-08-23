@@ -195,7 +195,8 @@ Shaders::Shaders()
     m_shaders[ES_SHADOWGEN] = glslmat(std::string(""), dir + "shadowgen.frag",
                                     m_callbacks[ES_SHADOWGEN], EMT_SOLID);
 
-    m_shaders[ES_CAUSTICS] = glsl(std::string(""), dir + "caustics.frag", m_callbacks[ES_CAUSTICS]);
+    m_shaders[ES_CAUSTICS] = glslmat(std::string(""), dir + "caustics.frag",
+                                    m_callbacks[ES_CAUSTICS], EMT_TRANSPARENT_ALPHA_CHANNEL);
 
     // Check that all successfully loaded
     u32 i;
