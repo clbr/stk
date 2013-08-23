@@ -290,7 +290,7 @@ void IrrDriver::renderGLSL(float dt)
         } // end glow
 
         // Shadows
-        if (!m_mipviz && UserConfigParams::m_shadows &&
+        if (!m_mipviz && !m_wireframe && UserConfigParams::m_shadows &&
             World::getWorld()->getTrack()->hasShadows())
         {
             m_scene_manager->setCurrentRendertime(scene::ESNRP_SOLID);
@@ -348,6 +348,8 @@ void IrrDriver::renderGLSL(float dt)
             ortho *= m_suncam->getViewMatrix();
             ((SunLightProvider *) m_shaders->m_callbacks[ES_SUNLIGHT])->setShadowMatrix(ortho);
             sicb->setShadowMatrix(ortho);
+
+            overridemat.Enabled = 0;
 
             // Render the importance map
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
@@ -409,7 +411,7 @@ void IrrDriver::renderGLSL(float dt)
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
             overridemat.Material.MaterialType = m_shaders->getShader(ES_SHADOWPASS);
             overridemat.EnableFlags = video::EMF_MATERIAL_TYPE | video::EMF_TEXTURE1 |
-                                      video::EMF_TEXTURE2 | video::EMF_WIREFRAME;
+                                      video::EMF_TEXTURE2;
             overridemat.EnablePasses = scene::ESNRP_SOLID;
             overridemat.Material.setTexture(1, m_rtts->getRTT(RTT_WARPH));
             overridemat.Material.setTexture(2, m_rtts->getRTT(RTT_WARPV));
@@ -423,10 +425,16 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.Material.TextureLayer[2].TrilinearFilter = false;
             overridemat.Material.TextureLayer[1].AnisotropicFilter =
             overridemat.Material.TextureLayer[2].AnisotropicFilter = 0;
-            overridemat.Material.Wireframe = m_wireframe;
+            overridemat.Material.Wireframe = 1;
             overridemat.Enabled = true;
 
             m_scene_manager->drawAll(scene::ESNRP_SOLID);
+
+            if (m_shadowviz)
+            {
+                overridemat.EnableFlags |= video::EMF_WIREFRAME;
+                m_scene_manager->drawAll(scene::ESNRP_SOLID);
+            }
 
             overridemat.EnablePasses = 0;
             overridemat.Enabled = false;
