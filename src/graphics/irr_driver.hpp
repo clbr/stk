@@ -158,6 +158,8 @@ private:
 
     std::vector<BloomData> m_forcedbloom;
 
+    std::vector<scene::ISceneNode *> m_displacing;
+
 #ifdef DEBUG
     /** Used to visualise skeletons. */
     std::vector<irr::scene::IAnimatedMeshSceneNode*> m_debug_meshes;
@@ -337,6 +339,12 @@ public:
     void clearForcedBloom() { m_forcedbloom.clear(); }
     // ------------------------------------------------------------------------
     const std::vector<BloomData> &getForcedBloom() const { return m_forcedbloom; }
+    // ------------------------------------------------------------------------
+    void clearDisplacingNodes() { m_displacing.clear(); }
+    // ------------------------------------------------------------------------
+    const std::vector<scene::ISceneNode *> &getDisplacingNodes() const { return m_displacing; }
+    // ------------------------------------------------------------------------
+    void addDisplacingNode(scene::ISceneNode * const n) { m_displacing.push_back(n); }
     // ------------------------------------------------------------------------
     void applyObjectPassShader();
     void applyObjectPassShader(scene::ISceneNode * const node, bool rimlit = false);
