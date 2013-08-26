@@ -80,7 +80,7 @@ void main() {
 	float down = texture2D(shadowtex, shadowcoord.xy + vec2(0.0, -shadowoffset)).a;
 
 	float matching = ((right + left + up + down) * 0.25) - shadowread.a;
-	matching = abs(matching);
+	matching = abs(matching) * 400.0;
 
 	// If the ID is different, we're likely in shadow - cut the bias to cut peter panning
 	float off = 4.0 - step(abs(shadowread.a - depthread.a) - matching, 0.004) * 3.0;
