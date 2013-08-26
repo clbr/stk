@@ -59,6 +59,8 @@ enum TypeRTT
     RTT_WARPH,
     RTT_WARPV,
 
+    RTT_DISPLACE,
+
     RTT_COUNT
 };
 
