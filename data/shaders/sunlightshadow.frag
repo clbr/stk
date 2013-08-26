@@ -70,7 +70,7 @@ void main() {
 	float moved = (abs(dx) + abs(dy)) * 0.5;
 
 	float bias = 0.002 * tan(acos(NdotL)); // According to the slope
-	bias += smoothstep(0.001, 0.4, moved) * 0.01; // According to the warping
+	bias += smoothstep(0.001, 0.1, moved) * 0.014; // According to the warping
 	bias = clamp(bias, 0.001, 0.014);
 
 	// This ID, and four IDs around this must match for a shadow pixel
@@ -80,10 +80,10 @@ void main() {
 	float down = texture2D(shadowtex, shadowcoord.xy + vec2(0.0, -shadowoffset)).a;
 
 	float matching = ((right + left + up + down) * 0.25) - shadowread.a;
-	matching = abs(matching);
+	matching = abs(matching) * 400.0;
 
 	// If the ID is different, we're likely in shadow - cut the bias to cut peter panning
-	float off = 4.0 - step(abs(shadowread.a - depthread.a) - matching, 0.004) * 3.0;
+	float off = 7.0 - step(abs(shadowread.a - depthread.a) - matching, 0.004) * 6.0;
 	bias /= off;
 
 	const float softness = 8.0; // How soft is the light?
