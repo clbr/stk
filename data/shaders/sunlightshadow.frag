@@ -70,7 +70,7 @@ void main() {
 	float moved = (abs(dx) + abs(dy)) * 0.5;
 
 	float bias = 0.002 * tan(acos(NdotL)); // According to the slope
-	bias += smoothstep(0.001, 0.4, moved) * 0.01; // According to the warping
+	bias += smoothstep(0.001, 0.1, moved) * 0.014; // According to the warping
 	bias = clamp(bias, 0.001, 0.014);
 
 	// This ID, and four IDs around this must match for a shadow pixel
