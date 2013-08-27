@@ -374,6 +374,8 @@ private:
     bool m_godrays;
     bool m_shadows;
 
+    float m_displacement_speed;
+
     /** List of all bezier curves in the track - for e.g. camera, ... */
     std::vector<BezierCurve*> m_all_curves;
 
@@ -572,6 +574,8 @@ public:
     bool hasLensFlare() const { return m_lensflare; }
     bool hasGodRays() const { return m_godrays; }
     bool hasShadows() const { return m_shadows; }
+
+    float getDisplacementSpeed() const { return m_displacement_speed; }
 };   // class Track
 
 #endif
