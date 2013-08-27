@@ -590,8 +590,15 @@ void IrrDriver::renderGLSL(float dt)
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_DISPLACE), true, false);
 
             overridemat.Enabled = 1;
-            overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
+            overridemat.EnableFlags = video::EMF_MATERIAL_TYPE | video::EMF_TEXTURE0;
             overridemat.Material.MaterialType = m_shaders->getShader(ES_DISPLACE);
+
+            overridemat.Material.TextureLayer[0].Texture = m_rtts->getRTT(RTT_DEPTH);
+            overridemat.Material.TextureLayer[0].BilinearFilter =
+            overridemat.Material.TextureLayer[0].TrilinearFilter = false;
+            overridemat.Material.TextureLayer[0].AnisotropicFilter = 0;
+            overridemat.Material.TextureLayer[0].TextureWrapU =
+            overridemat.Material.TextureLayer[0].TextureWrapV = video::ETC_CLAMP_TO_EDGE;
 
             for (i = 0; i < displacingcount; i++)
             {
@@ -602,6 +609,7 @@ void IrrDriver::renderGLSL(float dt)
                 m_displacing[i]->render();
             }
 
+            overridemat.Enabled = 0;
             m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
         }
 

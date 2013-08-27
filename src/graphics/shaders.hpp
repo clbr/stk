@@ -72,7 +72,8 @@ using namespace irr;
     ACT(ES_PENUMBRAV) \
     ACT(ES_SHADOWGEN) \
     ACT(ES_CAUSTICS) \
-    ACT(ES_DISPLACE)
+    ACT(ES_DISPLACE) \
+    ACT(ES_PPDISPLACE)
 
 #define ENUM(a) a,
 #define STR(a) #a,

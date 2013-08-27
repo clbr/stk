@@ -676,3 +676,26 @@ void CausticsProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         firstdone = true;
     }
 }
+
+//-------------------------------------
+
+void DisplaceProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    srv->setVertexShaderConstant("screen", m_screen, 2);
+}
+
+//-------------------------------------
+
+void PPDisplaceProvider::OnSetConstants(IMaterialRendererServices *srv, int)
+{
+    if (!firstdone)
+    {
+        int tex = 0;
+        srv->setPixelShaderConstant("tex", &tex, 1);
+
+        tex = 1;
+        srv->setPixelShaderConstant("dtex", &tex, 1);
+
+        firstdone = true;
+    }
+}

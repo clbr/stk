@@ -1,6 +1,8 @@
+varying vec3 lpos;
+varying vec3 lnorm;
+
 void main() {
-	gl_TexCoord[0] = gl_MultiTexCoord0;
-	gl_TexCoord[1] = gl_MultiTexCoord1;
 	gl_Position = ftransform();
-	gl_FrontColor = gl_Color;
+	lpos = (gl_ModelViewMatrix * gl_Vertex).xyz;
+	lnorm = gl_NormalMatrix * gl_Normal;
 }
