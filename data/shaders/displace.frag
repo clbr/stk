@@ -21,19 +21,8 @@ void main()
 	const float stepmulti = 1.0 / float(steps);
 	const float maxlen = 0.25 * stepmulti;
 
-	vec2 newdir = vec2(0.0);
-
-	if (angle > 0.661) // Critical angle of reflection in water-air boundary
-	{
-		// Reflection + refraction, but we do refraction only
-		// We know that going from air to water there is no critical angle,
-		// but it looks nice.
-		newdir = normalize(refract(camdir, normal, 0.661).xy) * maxlen;
-	} else
-	{
-		// Reflection only
-		newdir = normalize(reflect(camdir, normal).xy) * maxlen;
-	}
+	// Reflection + refraction, but we do refraction only
+	vec2 newdir = normalize(refract(camdir, normal, 0.661).xy) * maxlen;
 
 	for (int i = 0; i < steps; i++)
 	{
