@@ -35,8 +35,14 @@ void main()
 		}
 	}
 
+	// Fade the edges of the screen out
+	float fade = smoothstep(0.0, 0.2, origtc.x) *
+			(1.0 - smoothstep(0.8, 1.0, origtc.x)) *
+			smoothstep(0.0, 0.2, origtc.y) *
+			(1.0 - smoothstep(0.8, 1.0, origtc.y));
+
 	vec2 offset = tc - origtc;
-	offset *= 4.0;
+	offset *= 4.0 * fade;
 
 	col.r = step(offset.x, 0.0) * -offset.x;
 	col.g = step(0.0, offset.x) * offset.x;
