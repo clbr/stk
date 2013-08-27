@@ -200,6 +200,8 @@ Shaders::Shaders()
     m_shaders[ES_CAUSTICS] = glslmat(std::string(""), dir + "caustics.frag",
                                     m_callbacks[ES_CAUSTICS], EMT_TRANSPARENT_ALPHA_CHANNEL);
 
+    m_shaders[ES_DISPLACE] = glsl(dir + "displace.vert", dir + "displace.frag", 0);
+
     // Check that all successfully loaded
     u32 i;
     for (i = 0; i < ES_COUNT; i++) {
