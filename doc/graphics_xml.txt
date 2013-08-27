@@ -123,3 +123,12 @@ God rays
 Boolean on rendering god rays when the player looks at the sun. Disabled by default.
 
 Example: god-rays="Y"
+
+
+Displacement speed
+------------------
+
+Float on the relative speed of any displacing objects in this level. Default 1.0.
+2.0 = double speed, 0.5 = half speed, etc.
+
+Example: displacement-speed="1.5"
