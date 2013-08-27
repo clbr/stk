@@ -55,6 +55,15 @@ for the ocean floor, puddle floor, etc.
 Example: graphics-effect="caustics" in materials.xml.
 
 
+Refractions/reflections
+-----------------------
+
+A per-object boolean flag, typically set for subsea windows or the ocean surface. 
+
+Example: displacing="Y" in the <object> tag in scene.xml.
+
+
+
 	Per-track tags
 	--------------
 
