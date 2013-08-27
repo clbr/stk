@@ -19,7 +19,7 @@ void main()
 	vec4 col = vec4(0.0);
 	const int steps = 8;
 	const float stepmulti = 1.0 / float(steps);
-	const float maxlen = 0.1 * stepmulti;
+	const float maxlen = 0.04 * stepmulti;
 
 	// Reflection + refraction, but we do refraction only
 	vec2 newdir = normalize(refract(camdir, normal, 0.661).xy) * maxlen;
