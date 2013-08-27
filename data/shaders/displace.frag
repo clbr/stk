@@ -19,7 +19,7 @@ void main()
 	vec4 col = vec4(0.0);
 	const int steps = 8;
 	const float stepmulti = 1.0 / float(steps);
-	const float maxlen = 0.25 * stepmulti;
+	const float maxlen = 0.1 * stepmulti;
 
 	// Reflection + refraction, but we do refraction only
 	vec2 newdir = normalize(refract(camdir, normal, 0.661).xy) * maxlen;
@@ -41,8 +41,11 @@ void main()
 			smoothstep(0.0, 0.2, origtc.y) *
 			(1.0 - smoothstep(0.8, 1.0, origtc.y));
 
+	// Fade according to distance to cam
+	fade *= 1.0 - smoothstep(1.0, 40.0, camdist);
+
 	vec2 offset = tc - origtc;
-	offset *= 4.0 * fade;
+	offset *= 10.0 * fade;
 
 	col.r = step(offset.x, 0.0) * -offset.x;
 	col.g = step(0.0, offset.x) * offset.x;
