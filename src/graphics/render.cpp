@@ -583,6 +583,28 @@ void IrrDriver::renderGLSL(float dt)
                                  scene::ESNRP_TRANSPARENT_EFFECT;
         m_scene_manager->drawAll(m_renderpass);
 
+        // Handle displacing nodes, if any
+        const u32 displacingcount = m_displacing.size();
+        if (displacingcount)
+        {
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_DISPLACE), true, false);
+
+            overridemat.Enabled = 1;
+            overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
+            overridemat.Material.MaterialType = m_shaders->getShader(ES_DISPLACE);
+
+            for (i = 0; i < displacingcount; i++)
+            {
+                m_scene_manager->setCurrentRendertime(scene::ESNRP_SOLID);
+                m_displacing[i]->render();
+
+                m_scene_manager->setCurrentRendertime(scene::ESNRP_TRANSPARENT);
+                m_displacing[i]->render();
+            }
+
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
+        }
+
         // Drawing for this cam done, cleanup
         const u32 glowrepcount = transparent_glow_nodes.size();
         for (i = 0; i < glowrepcount; i++)
