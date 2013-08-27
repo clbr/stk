@@ -23,11 +23,7 @@ void main()
 
 	vec2 newdir = vec2(0.0);
 
-	// If steep enough angle, no displacement
-	if (angle > 0.995)
-	{
-		discard;
-	} else if (angle > 0.661) // Critical angle of reflection in water-air boundary
+	if (angle > 0.661) // Critical angle of reflection in water-air boundary
 	{
 		// Reflection + refraction, but we do refraction only
 		// We know that going from air to water there is no critical angle,
