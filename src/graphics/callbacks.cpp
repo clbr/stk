@@ -681,6 +681,12 @@ void CausticsProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void DisplaceProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
+    float tick = fabsf(noise2d(time / 8.0f)) * 0.8f;
+    tick = 1.4f - tick;
+
+    srv->setVertexShaderConstant("tick", &tick, 1);
+
     srv->setVertexShaderConstant("screen", m_screen, 2);
 }
 

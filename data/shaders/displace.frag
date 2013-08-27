@@ -1,5 +1,6 @@
 uniform sampler2D dtex;
 uniform vec2 screen;
+uniform float tick;
 
 varying vec3 lpos;
 varying vec3 lnorm;
@@ -45,7 +46,7 @@ void main()
 	fade *= 1.0 - smoothstep(1.0, 40.0, camdist);
 
 	vec2 offset = tc - origtc;
-	offset *= 10.0 * fade;
+	offset *= 10.0 * fade * tick;
 
 	col.r = step(offset.x, 0.0) * -offset.x;
 	col.g = step(0.0, offset.x) * offset.x;
