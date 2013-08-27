@@ -4,7 +4,7 @@ uniform sampler2D dtex;
 void main()
 {
 	vec2 tc = gl_TexCoord[0].xy;
-	vec4 mycol = texture2D(tex, tc);
+//	vec4 mycol = texture2D(tex, tc);
 
 	vec4 shiftval = texture2D(dtex, tc) / vec4(10.0);
 	vec2 shift;
@@ -15,5 +15,6 @@ void main()
 
 	vec4 newcol = texture2D(tex, tc);
 
-	gl_FragColor = mix(mycol, newcol, 0.6);
+//	gl_FragColor = mix(mycol, newcol, 0.6);
+	gl_FragColor = newcol;
 }
