@@ -648,14 +648,14 @@ void CausticsProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
 
     float strength = time;
-    strength = fabsf(noise2d(strength / 10.0f)) * 0.006f;
+    strength = fabsf(noise2d(strength / 10.0f)) * 0.006f + 0.001f;
 
     vector3df wind = irr_driver->getWind() * strength;
     m_dir[0] += wind.X;
     m_dir[1] += wind.Z;
 
     strength = time * 0.56f + sinf(time);
-    strength = fabsf(noise2d(0.0, strength / 6.0f)) * 0.0095f;
+    strength = fabsf(noise2d(0.0, strength / 6.0f)) * 0.0095f + 0.001f;
 
     wind = irr_driver->getWind() * strength;
     wind.rotateXZBy(cosf(time));
@@ -682,10 +682,24 @@ void CausticsProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 void DisplaceProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
     const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
-    float tick = fabsf(noise2d(time / 8.0f)) * 0.8f;
-    tick = 1.4f - tick;
 
-    srv->setVertexShaderConstant("tick", &tick, 1);
+    float strength = time;
+    strength = fabsf(noise2d(strength / 10.0f)) * 0.006f + 0.002f;
+
+    vector3df wind = irr_driver->getWind() * strength;
+    m_dir[0] += wind.X;
+    m_dir[1] += wind.Z;
+
+    strength = time * 0.56f + sinf(time);
+    strength = fabsf(noise2d(0.0, strength / 6.0f)) * 0.0095f + 0.0025f;
+
+    wind = irr_driver->getWind() * strength;
+    wind.rotateXZBy(cosf(time));
+    m_dir2[0] += wind.X;
+    m_dir2[1] += wind.Z;
+
+    srv->setVertexShaderConstant("dir", m_dir, 2);
+    srv->setVertexShaderConstant("dir2", m_dir2, 2);
 
     srv->setVertexShaderConstant("screen", m_screen, 2);
 }

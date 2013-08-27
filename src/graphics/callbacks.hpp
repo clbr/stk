@@ -647,10 +647,13 @@ public:
     {
         m_screen[0] = UserConfigParams::m_width;
         m_screen[1] = UserConfigParams::m_height;
+
+        m_dir[0] = m_dir[1] = m_dir2[0] = m_dir2[1] = 0;
     }
 
 private:
     float m_screen[2];
+    float m_dir[2], m_dir2[2];
 };
 
 //

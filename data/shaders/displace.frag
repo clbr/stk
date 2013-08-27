@@ -1,52 +1,28 @@
-uniform sampler2D dtex;
+uniform sampler2D tex;
 uniform vec2 screen;
-uniform float tick;
+uniform vec2 dir;
+uniform vec2 dir2;
 
-varying vec3 lpos;
-varying vec3 lnorm;
-
-float decdepth(vec4 rgba) {
-	return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0));
-}
+varying float camdist;
 
 void main()
 {
-	vec2 tc = gl_FragCoord.xy / screen;
-	vec2 origtc = tc;
-	float camdist = length(lpos);
-	vec3 camdir = normalize(-lpos);
-	vec3 normal = normalize(lnorm);
-	float angle = dot(normal, camdir);
+	vec2 tc = gl_TexCoord[0].xy;
+
 	vec4 col = vec4(0.0);
-	const int steps = 8;
-	const float stepmulti = 1.0 / float(steps);
-	const float maxlen = 0.04 * stepmulti;
+	const float maxlen = 0.02;
 
-	// Reflection + refraction, but we do refraction only
-	vec2 newdir = normalize(refract(camdir, normal, 0.661).xy) * maxlen;
+	float horiz = texture2D(tex, tc + dir).x;
+	float vert = texture2D(tex, (tc.yx + dir2) * vec2(0.9)).x;
 
-	for (int i = 0; i < steps; i++)
-	{
-		tc += newdir;
-		float depth = decdepth(vec4(texture2D(dtex, tc).xyz, 0.0));
-
-		if (depth < gl_FragCoord.z)
-		{
-			break;
-		}
-	}
-
-	// Fade the edges of the screen out
-	float fade = smoothstep(0.0, 0.2, origtc.x) *
-			(1.0 - smoothstep(0.8, 1.0, origtc.x)) *
-			smoothstep(0.0, 0.2, origtc.y) *
-			(1.0 - smoothstep(0.8, 1.0, origtc.y));
+	vec2 offset = vec2(horiz, vert);
+	offset *= 2.0;
+	offset -= 1.0;
 
 	// Fade according to distance to cam
-	fade *= 1.0 - smoothstep(1.0, 40.0, camdist);
+	float fade = 1.0 - smoothstep(1.0, 40.0, camdist);
 
-	vec2 offset = tc - origtc;
-	offset *= 10.0 * fade * tick;
+	offset *= 10.0 * fade * maxlen;
 
 	col.r = step(offset.x, 0.0) * -offset.x;
 	col.g = step(0.0, offset.x) * offset.x;

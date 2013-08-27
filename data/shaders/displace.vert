@@ -1,8 +1,7 @@
-varying vec3 lpos;
-varying vec3 lnorm;
+varying float camdist;
 
 void main() {
 	gl_Position = ftransform();
-	lpos = (gl_ModelViewMatrix * gl_Vertex).xyz;
-	lnorm = gl_NormalMatrix * gl_Normal;
+	gl_TexCoord[0] = gl_MultiTexCoord0;
+	camdist = length((gl_ModelViewMatrix * gl_Vertex).xyz);
 }

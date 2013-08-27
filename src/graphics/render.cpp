@@ -36,6 +36,7 @@
 #include "graphics/shaders.hpp"
 #include "graphics/shadow_importance.hpp"
 #include "graphics/wind.hpp"
+#include "io/file_manager.hpp"
 #include "items/item.hpp"
 #include "items/item_manager.hpp"
 #include "modes/world.hpp"
@@ -598,12 +599,13 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.EnableFlags = video::EMF_MATERIAL_TYPE | video::EMF_TEXTURE0;
             overridemat.Material.MaterialType = m_shaders->getShader(ES_DISPLACE);
 
-            overridemat.Material.TextureLayer[0].Texture = m_rtts->getRTT(RTT_DEPTH);
+            overridemat.Material.TextureLayer[0].Texture =
+                irr_driver->getTexture((file_manager->getTextureDir() + "displace.png").c_str());
             overridemat.Material.TextureLayer[0].BilinearFilter =
-            overridemat.Material.TextureLayer[0].TrilinearFilter = false;
+            overridemat.Material.TextureLayer[0].TrilinearFilter = true;
             overridemat.Material.TextureLayer[0].AnisotropicFilter = 0;
             overridemat.Material.TextureLayer[0].TextureWrapU =
-            overridemat.Material.TextureLayer[0].TextureWrapV = video::ETC_CLAMP_TO_EDGE;
+            overridemat.Material.TextureLayer[0].TextureWrapV = video::ETC_REPEAT;
 
             for (i = 0; i < displacingcount; i++)
             {
