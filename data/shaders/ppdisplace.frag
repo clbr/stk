@@ -15,5 +15,5 @@ void main()
 
 	vec4 newcol = texture2D(tex, tc);
 
-	gl_FragColor = mix(mycol, newcol, 0.5);
+	gl_FragColor = mix(mycol, newcol, 0.6);
 }
