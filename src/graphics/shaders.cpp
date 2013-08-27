@@ -70,6 +70,8 @@ Shaders::Shaders()
     m_callbacks[ES_MULTIPLY_ADD] = new MultiplyProvider();
     m_callbacks[ES_SHADOWGEN] = new ShadowGenProvider();
     m_callbacks[ES_CAUSTICS] = new CausticsProvider();
+    m_callbacks[ES_DISPLACE] = new DisplaceProvider();
+    m_callbacks[ES_PPDISPLACE] = new PPDisplaceProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -199,6 +201,11 @@ Shaders::Shaders()
 
     m_shaders[ES_CAUSTICS] = glslmat(std::string(""), dir + "caustics.frag",
                                     m_callbacks[ES_CAUSTICS], EMT_TRANSPARENT_ALPHA_CHANNEL);
+
+    m_shaders[ES_DISPLACE] = glsl(dir + "displace.vert", dir + "displace.frag",
+                                  m_callbacks[ES_DISPLACE]);
+    m_shaders[ES_PPDISPLACE] = glsl(std::string(""), dir + "ppdisplace.frag",
+                                  m_callbacks[ES_PPDISPLACE]);
 
     // Check that all successfully loaded
     u32 i;

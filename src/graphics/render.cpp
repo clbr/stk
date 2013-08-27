@@ -36,6 +36,7 @@
 #include "graphics/shaders.hpp"
 #include "graphics/shadow_importance.hpp"
 #include "graphics/wind.hpp"
+#include "io/file_manager.hpp"
 #include "items/item.hpp"
 #include "items/item_manager.hpp"
 #include "modes/world.hpp"
@@ -585,6 +586,71 @@ void IrrDriver::renderGLSL(float dt)
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
                                  scene::ESNRP_TRANSPARENT_EFFECT;
         m_scene_manager->drawAll(m_renderpass);
+
+        // Handle displacing nodes, if any
+        const u32 displacingcount = m_displacing.size();
+        if (displacingcount)
+        {
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_DISPLACE), false, false);
+            glClearColor(0, 0, 0, 0);
+            glClear(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+            glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+            glStencilFunc(GL_ALWAYS, 1, ~0);
+            glEnable(GL_STENCIL_TEST);
+
+            overridemat.Enabled = 1;
+            overridemat.EnableFlags = video::EMF_MATERIAL_TYPE | video::EMF_TEXTURE0;
+            overridemat.Material.MaterialType = m_shaders->getShader(ES_DISPLACE);
+
+            overridemat.Material.TextureLayer[0].Texture =
+                irr_driver->getTexture((file_manager->getTextureDir() + "displace.png").c_str());
+            overridemat.Material.TextureLayer[0].BilinearFilter =
+            overridemat.Material.TextureLayer[0].TrilinearFilter = true;
+            overridemat.Material.TextureLayer[0].AnisotropicFilter = 0;
+            overridemat.Material.TextureLayer[0].TextureWrapU =
+            overridemat.Material.TextureLayer[0].TextureWrapV = video::ETC_REPEAT;
+
+            for (i = 0; i < displacingcount; i++)
+            {
+                m_scene_manager->setCurrentRendertime(scene::ESNRP_SOLID);
+                m_displacing[i]->render();
+
+                m_scene_manager->setCurrentRendertime(scene::ESNRP_TRANSPARENT);
+                m_displacing[i]->render();
+            }
+
+            overridemat.Enabled = 0;
+
+            // Blur it
+            glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+            glStencilFunc(GL_EQUAL, 1, ~0);
+
+            video::SMaterial minimat;
+            minimat.Lighting = false;
+            minimat.ZWriteEnable = false;
+            minimat.ZBuffer = video::ECFN_ALWAYS;
+            minimat.setFlag(video::EMF_TRILINEAR_FILTER, true);
+
+            minimat.TextureLayer[0].TextureWrapU =
+            minimat.TextureLayer[0].TextureWrapV = video::ETC_CLAMP_TO_EDGE;
+
+            ((GaussianBlurProvider *) m_shaders->m_callbacks[ES_GAUSSIAN3H])->setResolution(
+                       UserConfigParams::m_width,
+                       UserConfigParams::m_height);
+
+            minimat.MaterialType = m_shaders->getShader(ES_GAUSSIAN3H);
+            minimat.setTexture(0, m_rtts->getRTT(RTT_DISPLACE));
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_TMP2), true, false);
+            m_post_processing->drawQuad(cam, minimat);
+
+            minimat.MaterialType = m_shaders->getShader(ES_GAUSSIAN3V);
+            minimat.setTexture(0, m_rtts->getRTT(RTT_TMP2));
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_DISPLACE), true, false);
+            m_post_processing->drawQuad(cam, minimat);
+
+            glDisable(GL_STENCIL_TEST);
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
+        }
 
         // Drawing for this cam done, cleanup
         const u32 glowrepcount = transparent_glow_nodes.size();

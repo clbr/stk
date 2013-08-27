@@ -513,6 +513,24 @@ void PostProcessing::render()
             out = tmp;
         }
 
+        if (irr_driver->getDisplacingNodes().size()) // Displacement
+        {
+            m_material.MaterialType = irr_driver->getShader(ES_PPDISPLACE);
+            m_material.setFlag(EMF_BILINEAR_FILTER, false);
+            m_material.setTexture(0, in);
+            m_material.setTexture(1, irr_driver->getRTT(RTT_DISPLACE));
+            drv->setRenderTarget(out, true, false);
+
+            drawQuad(cam, m_material);
+
+            m_material.setTexture(1, 0);
+            m_material.setFlag(EMF_BILINEAR_FILTER, true);
+
+            ITexture *tmp = in;
+            in = out;
+            out = tmp;
+        }
+
         const TypeRTT curssao = tick ? RTT_SSAO2 : RTT_SSAO1;
 
         if (UserConfigParams::m_ssao == 1) // SSAO low
