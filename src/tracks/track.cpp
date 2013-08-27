@@ -117,6 +117,7 @@ Track::Track(const std::string &filename)
     m_clouds                = false;
     m_lensflare             = false;
     m_godrays               = false;
+    m_displacement_speed    = 1.0f;
     m_shadows               = true;
     m_sky_particles         = NULL;
     m_sky_dx                = 0.05f;
@@ -364,6 +365,7 @@ void Track::loadTrackInfo()
     root->get("lens-flare",            &m_lensflare);
     root->get("shadows",               &m_shadows);
     root->get("god-rays",              &m_godrays);
+    root->get("displacement-speed",    &m_displacement_speed);
 
     // Make the default for auto-rescue in battle mode and soccer mode to be false
     if(m_is_arena || m_is_soccer)
