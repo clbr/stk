@@ -37,11 +37,16 @@ WaterNode::WaterNode(scene::ISceneManager* mgr, IMesh *mesh, float height, float
     m_mat = mesh->getMeshBuffer(0)->getMaterial();
 
     m_mat.Lighting = false;
-    m_mat.MaterialType = irr_driver->getShader(ES_WATER);
+
+    if (m_mat.MaterialType != irr_driver->getShader(ES_WATER))
+    {
+        m_mat.MaterialType = irr_driver->getShader(ES_WATER_SURFACE);
+    } else
+    {
+        m_mat.BlendOperation = EBO_ADD;
+    }
 
     m_mat.setFlag(EMF_ZWRITE_ENABLE, false);
-
-    m_mat.BlendOperation = EBO_ADD;
 
     m_mesh = mesh;
     mesh->grab();

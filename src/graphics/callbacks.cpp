@@ -87,7 +87,8 @@ void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("speed", &speed, 1);
     srv->setVertexShaderConstant("length", &m_length, 1);
 
-    if (!firstdone)
+    // Can't use the firstdone optimization, as the callback is shared
+    //if (!firstdone)
     {
         s32 decaltex = 0;
         srv->setPixelShaderConstant("DecalTex", &decaltex, 1);
