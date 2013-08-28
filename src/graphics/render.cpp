@@ -582,6 +582,9 @@ void IrrDriver::renderGLSL(float dt)
             glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
         }
 
+        // Render the post-processed scene for solids
+        m_post_processing->renderSolid(cam);
+
         // We need to re-render camera due to the per-cam-node hack.
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_TRANSPARENT |
                                  scene::ESNRP_TRANSPARENT_EFFECT;
