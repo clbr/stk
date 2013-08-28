@@ -87,10 +87,18 @@ public:
         m_water_shader_speed_2 = 0.0f;
     }
 
+    void setSpeed(float speed) { m_speed = speed; }
+    void setHeight(float height) { m_height = height; }
+    void setLength(float length) { m_length = length; }
+
 private:
     float m_dx_1, m_dy_1, m_dx_2, m_dy_2;
     float m_water_shader_speed_1;
     float m_water_shader_speed_2;
+
+    float m_speed;
+    float m_height;
+    float m_length;
 };
 
 //

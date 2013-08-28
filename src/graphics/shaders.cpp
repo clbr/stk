@@ -85,6 +85,8 @@ Shaders::Shaders()
 
     m_shaders[ES_WATER] = glslmat(dir + "water.vert", dir + "water.frag",
                                   m_callbacks[ES_WATER], EMT_TRANSPARENT_ALPHA_CHANNEL);
+    m_shaders[ES_WATER_SURFACE] = glsl(dir + "water.vert", dir + "pass.frag",
+                                  m_callbacks[ES_WATER]);
 
     m_shaders[ES_SPHERE_MAP] = glslmat(dir + "objectpass_rimlit.vert", dir + "objectpass_spheremap.frag",
                                        m_callbacks[ES_OBJECTPASS], EMT_SOLID);

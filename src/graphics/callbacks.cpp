@@ -58,11 +58,16 @@ void NormalMapProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
-    m_dx_1 += GUIEngine::getLatestDt()*m_water_shader_speed_1;
-    m_dy_1 += GUIEngine::getLatestDt()*m_water_shader_speed_1;
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
 
-    m_dx_2 += GUIEngine::getLatestDt()*m_water_shader_speed_2;
-    m_dy_2 -= GUIEngine::getLatestDt()*m_water_shader_speed_2;
+    float strength = time;
+    strength = 1.4f - fabsf(noise2d(strength / 30.0f + 133)) * 0.8f;
+
+    m_dx_1 += GUIEngine::getLatestDt() * m_water_shader_speed_1 * strength;
+    m_dy_1 += GUIEngine::getLatestDt() * m_water_shader_speed_1 * strength;
+
+    m_dx_2 += GUIEngine::getLatestDt() * m_water_shader_speed_2 * strength;
+    m_dy_2 -= GUIEngine::getLatestDt() * m_water_shader_speed_2 * strength;
 
     if (m_dx_1 > 1.0f) m_dx_1 -= 1.0f;
     if (m_dy_1 > 1.0f) m_dy_1 -= 1.0f;
@@ -75,7 +80,15 @@ void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("delta1", d1, 2);
     srv->setVertexShaderConstant("delta2", d2, 2);
 
-    if (!firstdone)
+    const float speed = irr_driver->getDevice()->getTimer()->getTime() / m_speed;
+    const float height = m_height * strength;
+
+    srv->setVertexShaderConstant("height", &height, 1);
+    srv->setVertexShaderConstant("speed", &speed, 1);
+    srv->setVertexShaderConstant("length", &m_length, 1);
+
+    // Can't use the firstdone optimization, as the callback is shared
+    //if (!firstdone)
     {
         s32 decaltex = 0;
         srv->setPixelShaderConstant("DecalTex", &decaltex, 1);
