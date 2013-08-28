@@ -198,7 +198,8 @@ public:
                                          bool create_one_quad=false);
     scene::IMesh         *createTexturedQuadMesh(const video::SMaterial *material,
                                                  const double w, const double h);
-    scene::ISceneNode    *addWaterNode(scene::IMesh *mesh, float wave_height,
+    scene::ISceneNode    *addWaterNode(scene::IMesh *mesh, scene::IMesh **welded,
+                                       float wave_height,
                                        float wave_speed, float wave_length);
     scene::IMeshSceneNode*addOctTree(scene::IMesh *mesh);
     scene::IMeshSceneNode*addSphere(float radius,

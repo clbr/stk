@@ -1,6 +1,10 @@
 // Shader based on work by Fabien Sanglard
 // Released under the terms of CC-BY 3.0
 
+uniform float speed;
+uniform float height;
+uniform float length;
+
 uniform vec3 lightdir;
 
 varying vec3 lightVec;
@@ -9,16 +13,17 @@ varying vec3 eyeVec;
 
 void main()
 {
+	vec4 pos = gl_Vertex;
 
-	gl_TexCoord[0] =  gl_MultiTexCoord0;
+	pos.y += (sin(pos.x/length + speed) + cos(pos.z/length + speed)) * height;
+
+	vec3 vertexPosition = vec3(gl_ModelViewMatrix * pos);
 
 	// Building the matrix Eye Space -> Tangent Space
 	vec3 n = normalize (gl_NormalMatrix * gl_Normal);
 	// gl_MultiTexCoord1.xyz
 	vec3 t = normalize (gl_NormalMatrix * vec3(1.0, 0.0, 0.0)); // tangent
 	vec3 b = cross (n, t);
-
-	vec3 vertexPosition = vec3(gl_ModelViewMatrix *  gl_Vertex);
 
 	// transform light and half angle vectors by tangent basis
 	vec3 v;
@@ -44,5 +49,6 @@ void main()
 	//normalize (v);
 	halfVec = v ;
 
-	gl_Position = ftransform();
+	gl_Position = gl_ModelViewProjectionMatrix * pos;
+	gl_TexCoord[0] =  gl_MultiTexCoord0;
 }

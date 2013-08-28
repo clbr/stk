@@ -27,6 +27,7 @@ using namespace irr;
     ACT(ES_NORMAL_MAP_LIGHTMAP) \
     ACT(ES_SPLATTING) \
     ACT(ES_WATER) \
+    ACT(ES_WATER_SURFACE) \
     ACT(ES_SPHERE_MAP) \
     ACT(ES_GRASS) \
     ACT(ES_GRASS_REF) \
