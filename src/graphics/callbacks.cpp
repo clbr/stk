@@ -75,6 +75,10 @@ void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("delta1", d1, 2);
     srv->setVertexShaderConstant("delta2", d2, 2);
 
+    srv->setVertexShaderConstant("height", &m_height, 1);
+    srv->setVertexShaderConstant("speed", &m_speed, 1);
+    srv->setVertexShaderConstant("length", &m_length, 1);
+
     if (!firstdone)
     {
         s32 decaltex = 0;

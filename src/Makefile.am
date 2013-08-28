@@ -132,6 +132,8 @@ supertuxkart_SOURCES = \
  graphics/stars.hpp \
  graphics/sun.hpp \
  graphics/sun.cpp \
+ graphics/water.hpp \
+ graphics/water.cpp \
  graphics/wind.hpp \
  graphics/wind.cpp \
  guiengine/CGUISpriteBank.cpp \

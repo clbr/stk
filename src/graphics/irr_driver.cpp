@@ -33,6 +33,7 @@
 #include "graphics/shadow_importance.hpp"
 #include "graphics/sun.hpp"
 #include "graphics/rtts.hpp"
+#include "graphics/water.hpp"
 #include "graphics/wind.hpp"
 #include "guiengine/engine.hpp"
 #include "guiengine/modaldialog.hpp"
@@ -818,9 +819,19 @@ scene::ISceneNode* IrrDriver::addWaterNode(scene::IMesh *mesh,
     mesh->setMaterialFlag(video::EMF_GOURAUD_SHADING, true);
     scene::IMesh* welded_mesh = m_scene_manager->getMeshManipulator()
                                                ->createMeshWelded(mesh);
-    scene::ISceneNode* out = m_scene_manager->addWaterSurfaceSceneNode(welded_mesh,
-                                                     wave_height, wave_speed,
-                                                     wave_length);
+    scene::ISceneNode* out = NULL;
+
+    if (!m_glsl)
+    {
+        out = m_scene_manager->addWaterSurfaceSceneNode(welded_mesh,
+                                                       wave_height, wave_speed,
+                                                       wave_length);
+    } else
+    {
+        out = new WaterNode(m_scene_manager, welded_mesh, wave_height, wave_speed,
+                            wave_length);
+    }
+
     out->getMaterial(0).setFlag(video::EMF_GOURAUD_SHADING, true);
     welded_mesh->drop();  // The scene node keeps a reference
     return out;
