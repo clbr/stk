@@ -431,8 +431,11 @@ void IrrDriver::renderGLSL(float dt)
 
             m_scene_manager->drawAll(scene::ESNRP_SOLID);
 
-            overridemat.EnableFlags |= video::EMF_WIREFRAME;
-            m_scene_manager->drawAll(scene::ESNRP_SOLID);
+            if (m_shadowviz)
+            {
+                overridemat.EnableFlags |= video::EMF_WIREFRAME;
+                m_scene_manager->drawAll(scene::ESNRP_SOLID);
+            }
 
             overridemat.EnablePasses = 0;
             overridemat.Enabled = false;
