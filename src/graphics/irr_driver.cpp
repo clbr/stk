@@ -812,6 +812,7 @@ void IrrDriver::setAllMaterialFlags(scene::IMesh *mesh) const
  *  \param wave_length Lenght of a water wave.
  */
 scene::ISceneNode* IrrDriver::addWaterNode(scene::IMesh *mesh,
+                                           scene::IMesh **welded,
                                            float wave_height,
                                            float wave_speed,
                                            float wave_length)
@@ -834,6 +835,9 @@ scene::ISceneNode* IrrDriver::addWaterNode(scene::IMesh *mesh,
 
     out->getMaterial(0).setFlag(video::EMF_GOURAUD_SHADING, true);
     welded_mesh->drop();  // The scene node keeps a reference
+
+    *welded = welded_mesh;
+
     return out;
 }   // addWaterNode
 
