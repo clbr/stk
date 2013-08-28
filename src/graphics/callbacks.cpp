@@ -58,11 +58,16 @@ void NormalMapProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
-    m_dx_1 += GUIEngine::getLatestDt()*m_water_shader_speed_1;
-    m_dy_1 += GUIEngine::getLatestDt()*m_water_shader_speed_1;
+    const float time = irr_driver->getDevice()->getTimer()->getTime() / 1000.0f;
 
-    m_dx_2 += GUIEngine::getLatestDt()*m_water_shader_speed_2;
-    m_dy_2 -= GUIEngine::getLatestDt()*m_water_shader_speed_2;
+    float strength = time;
+    strength = 1.4f - fabsf(noise2d(strength / 30.0f + 133)) * 0.8f;
+
+    m_dx_1 += GUIEngine::getLatestDt() * m_water_shader_speed_1 * strength;
+    m_dy_1 += GUIEngine::getLatestDt() * m_water_shader_speed_1 * strength;
+
+    m_dx_2 += GUIEngine::getLatestDt() * m_water_shader_speed_2 * strength;
+    m_dy_2 -= GUIEngine::getLatestDt() * m_water_shader_speed_2 * strength;
 
     if (m_dx_1 > 1.0f) m_dx_1 -= 1.0f;
     if (m_dy_1 > 1.0f) m_dy_1 -= 1.0f;
