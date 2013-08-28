@@ -73,6 +73,9 @@ public:
     void         begin();
     void         update(float dt);
 
+    /** Render the post-processed scene, solids only, color to color, no stencil */
+    void         renderSolid(const u32 cam);
+
     /** Render the post-processed scene */
     void         render();
 
