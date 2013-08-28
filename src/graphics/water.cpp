@@ -46,6 +46,10 @@ WaterNode::WaterNode(scene::ISceneManager* mgr, IMesh *mesh, float height, float
     m_mesh = mesh;
     mesh->grab();
     m_box = mesh->getBoundingBox();
+
+    m_height = height;
+    m_speed = speed;
+    m_length = length;
 }
 
 WaterNode::~WaterNode()
