@@ -32,7 +32,7 @@ using namespace core;
 
 WaterNode::WaterNode(scene::ISceneManager* mgr, IMesh *mesh, float height, float speed,
                      float length):
-                     ISceneNode(mgr->getRootSceneNode(), mgr, -1)
+                     IMeshSceneNode(mgr->getRootSceneNode(), mgr, -1)
 {
     m_mat = mesh->getMeshBuffer(0)->getMaterial();
 

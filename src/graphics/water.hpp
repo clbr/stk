@@ -19,7 +19,7 @@
 #ifndef HEADER_WATER_HPP
 #define HEADER_WATER_HPP
 
-#include <ISceneNode.h>
+#include <IMeshSceneNode.h>
 #include <utils/cpp2011.h>
 
 using namespace irr;
@@ -30,7 +30,7 @@ namespace irr
 }
 
 // The actual node
-class WaterNode: public scene::ISceneNode
+class WaterNode: public scene::IMeshSceneNode
 {
 public:
     WaterNode(scene::ISceneManager* mgr, scene::IMesh *mesh, float height, float speed,
@@ -48,6 +48,15 @@ public:
 
     virtual u32 getMaterialCount() const OVERRIDE { return 1; }
     virtual video::SMaterial& getMaterial(u32 i) OVERRIDE { return m_mat; }
+
+    virtual scene::ESCENE_NODE_TYPE getType() const OVERRIDE { return scene::ESNT_MESH; }
+
+    virtual void setMesh(scene::IMesh *) OVERRIDE {}
+    virtual scene::IMesh *getMesh() OVERRIDE { return m_mesh; }
+    virtual void setReadOnlyMaterials(bool) OVERRIDE {}
+    virtual bool isReadOnlyMaterials() const OVERRIDE { return false; }
+    virtual scene::IShadowVolumeSceneNode* addShadowVolumeSceneNode
+                            (const scene::IMesh*, int, bool, f32) OVERRIDE { return NULL; }
 
 protected:
     video::SMaterial m_mat;
