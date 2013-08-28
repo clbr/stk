@@ -80,7 +80,7 @@ void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
     srv->setVertexShaderConstant("delta1", d1, 2);
     srv->setVertexShaderConstant("delta2", d2, 2);
 
-    const float speed = GUIEngine::getLatestDt() / m_speed;
+    const float speed = irr_driver->getDevice()->getTimer()->getTime() / m_speed;
 
     srv->setVertexShaderConstant("height", &m_height, 1);
     srv->setVertexShaderConstant("speed", &speed, 1);
