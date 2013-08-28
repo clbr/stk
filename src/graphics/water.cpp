@@ -50,6 +50,7 @@ WaterNode::WaterNode(scene::ISceneManager* mgr, IMesh *mesh, float height, float
 
     m_mesh = mesh;
     mesh->grab();
+    mesh->setHardwareMappingHint(EHM_STATIC);
     m_box = mesh->getBoundingBox();
 
     m_height = height;
