@@ -99,10 +99,15 @@ void WaterShaderProvider::OnSetConstants(IMaterialRendererServices *srv, int)
         bumptex = 2;
         srv->setPixelShaderConstant("BumpTex2", &bumptex, 1);
 
-        // We could calculate light direction as coming from the sun (then we'd need to
-        // transform it into camera space). But I find that pretending light
-        // comes from the camera gives good results
-        const float lightdir[] = {-0.315f, 0.91f, -0.3f};
+        // Calculate light direction as coming from the sun.
+        matrix4 normalm = srv->getVideoDriver()->getTransform(ETS_VIEW);
+        normalm.makeInverse();
+        normalm = normalm.getTransposed();
+        vector3df tmp = m_sunpos;
+        normalm.transformVect(tmp);
+        tmp.normalize();
+
+        const float lightdir[] = {tmp.X, tmp.Y, tmp.Z};
         srv->setVertexShaderConstant("lightdir", lightdir, 3);
 
         firstdone = true;
