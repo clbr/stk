@@ -32,28 +32,25 @@ void main()
 	diffuseMaterial = texture2D (DecalTex, gl_TexCoord[0].st + vec2(delta1.x, 0.0));
 	diffuseLight  = vec4(1.0, 1.0, 1.0, 1.0);
 
-	//if (lamberFactor < 0.7)
-	//{
-	//	  lamberFactor = 0.0;
-	//}
-
-	gl_FragColor =	diffuseMaterial * (0.3 + lamberFactor*0.7);
+	vec3 col = diffuseMaterial.xyz * (0.3 + lamberFactor*0.7);
 
 	// specular (phong)
 	vec3 R = normalize(reflect(lightVec, normal));
-	float specular = max(dot(R,eyeVec),0.0);
+	float specular = max(dot(R, eyeVec), 0.0);
 
-	if (specular > 0.0)
-	{
-		// weak specular
-		specular = specular*specular;
-		specular = specular*specular;
-		float specular_weak = specular*0.05;
-		gl_FragColor += vec4(specular_weak, specular_weak, specular_weak, 0.0);
+	// weak specular
+	specular = specular*specular;
+	specular = specular*specular;
+	float specular_weak = specular*0.05;
+	col += vec3(specular_weak, specular_weak, specular_weak);
 
-		// strong specular
-		specular = specular*specular;
-		float specular_strong = specular*0.3;
-		gl_FragColor += vec4(specular_strong, specular_strong, specular_strong, 0.0);
-	}
+	// strong specular
+	specular = specular*specular;
+	float specular_strong = specular*0.3;
+	col += vec3(specular_strong, specular_strong, specular_strong);
+
+	float summed = dot(vec3(1.0), col) / 3.0;
+	float alpha = 0.9 + 0.1 * smoothstep(0.0, 1.0, summed);
+
+	gl_FragColor = vec4(col, alpha);
 }
