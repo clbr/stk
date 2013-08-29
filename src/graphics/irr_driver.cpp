@@ -19,6 +19,7 @@
 #include "graphics/irr_driver.hpp"
 
 #include "config/user_config.hpp"
+#include "graphics/callbacks.hpp"
 #include "graphics/camera.hpp"
 #include "graphics/glwrap.hpp"
 #include "graphics/hardware_skinning.hpp"
@@ -2060,6 +2061,8 @@ scene::ISceneNode *IrrDriver::addLight(const core::vector3df &pos, float radius,
 
             m_suncam->setPosition(pos);
             m_suncam->updateAbsolutePosition();
+
+            ((WaterShaderProvider *) m_shaders->m_callbacks[ES_WATER])->setSunPosition(pos);
         }
 
         return light;

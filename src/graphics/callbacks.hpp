@@ -87,11 +87,19 @@ public:
         m_water_shader_speed_2 = 0.0f;
     }
 
+    void setSunPosition(const core::vector3df &in)
+    {
+        m_sunpos = in;
+        m_sunpos.normalize();
+    }
+
     void setSpeed(float speed) { m_speed = speed; }
     void setHeight(float height) { m_height = height; }
     void setLength(float length) { m_length = length; }
 
 private:
+    core::vector3df m_sunpos;
+
     float m_dx_1, m_dy_1, m_dx_2, m_dy_2;
     float m_water_shader_speed_1;
     float m_water_shader_speed_2;
