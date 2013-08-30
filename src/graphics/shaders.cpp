@@ -209,6 +209,9 @@ Shaders::Shaders()
     m_shaders[ES_PPDISPLACE] = glsl(std::string(""), dir + "ppdisplace.frag",
                                   m_callbacks[ES_PPDISPLACE]);
 
+    m_shaders[ES_PASSFAR] = glsl(dir + "farplane.vert", std::string(""),
+                                  0);
+
     // Check that all successfully loaded
     u32 i;
     for (i = 0; i < ES_COUNT; i++) {
