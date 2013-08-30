@@ -18,6 +18,13 @@
         <checkbox id="anim_gfx"/>
         <spacer width="10" height="10"/>
         <label text="Animated Scenery" I18N="Video settings"/>
+
+        <spacer width="20%" height="10"/>
+
+        <checkbox id="motionblur"/>
+        <spacer width="10" height="10"/>
+        <label text="Motion blur" I18N="Video settings"/>
+
     </div>
     
     <spacer height="4" width="10" />
@@ -54,14 +61,6 @@
     
     <spacer height="4" width="10" />
     
-    <div layout="horizontal-row" width="100%" height="fit">
-        <checkbox id="motionblur"/>
-        <spacer width="10" height="10"/>
-        <label text="Motion blur" I18N="Video settings"/>
-    </div>
-    
-    <spacer height="4" width="10" />
-
     <div layout="horizontal-row" width="100%" height="fit">
         <checkbox id="mlaa"/>
         <spacer width="10" height="10"/>
