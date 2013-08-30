@@ -289,6 +289,11 @@ void InputManager::handleStaticAction(int key, int value)
                 UserConfigParams::m_profiler_enabled =
                                          !UserConfigParams::m_profiler_enabled;
             break;
+
+        // Debug views
+        // These should be available in normal (non-artist) mode
+        // to enable easier bug reports (go there, press this key, screenshot)
+        // without requiring editing the UTF-32 config files (which is inconvenient).
         case KEY_HOME:
             if (value)
             {
@@ -323,6 +328,12 @@ void InputManager::handleStaticAction(int key, int value)
             if (value)
             {
                 irr_driver->toggleShadowViz();
+            }
+            break;
+        case KEY_SCROLL:
+            if (value)
+            {
+                irr_driver->toggleDistortViz();
             }
             break;
         default:

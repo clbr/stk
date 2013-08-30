@@ -106,7 +106,8 @@ IrrDriver::IrrDriver()
     m_shaders             = NULL;
     m_rtts                = NULL;
     m_wind                = new Wind();
-    m_mipviz = m_wireframe = m_normals = m_ssaoviz = m_lightviz = m_shadowviz = 0;
+    m_mipviz = m_wireframe = m_normals = m_ssaoviz = \
+        m_lightviz = m_shadowviz = m_distortviz = 0;
 }   // IrrDriver
 
 // ----------------------------------------------------------------------------

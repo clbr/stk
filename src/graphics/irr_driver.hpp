@@ -141,6 +141,7 @@ private:
     bool                 m_ssaoviz;
     bool                 m_shadowviz;
     bool                 m_lightviz;
+    bool                 m_distortviz;
     u32                  m_renderpass;
     u32                  m_lensflare_query;
     scene::IMeshSceneNode *m_sun_interposer;
@@ -312,6 +313,10 @@ public:
     void toggleShadowViz() { m_shadowviz ^= 1; }
     // ------------------------------------------------------------------------
     bool getShadowViz() { return m_shadowviz; }
+    // ------------------------------------------------------------------------
+    void toggleDistortViz() { m_distortviz ^= 1; }
+    // ------------------------------------------------------------------------
+    bool getDistortViz() { return m_distortviz; }
     // ------------------------------------------------------------------------
     u32 getRenderPass() { return m_renderpass; }
     // ------------------------------------------------------------------------
