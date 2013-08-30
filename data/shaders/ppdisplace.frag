@@ -6,7 +6,7 @@ void main()
 	vec2 tc = gl_TexCoord[0].xy;
 //	vec4 mycol = texture2D(tex, tc);
 
-	vec4 shiftval = texture2D(dtex, tc) / vec4(10.0);
+	vec4 shiftval = texture2D(dtex, tc) / vec4(50.0);
 	vec2 shift;
 	shift.x = -shiftval.x + shiftval.y;
 	shift.y = -shiftval.z + shiftval.w;

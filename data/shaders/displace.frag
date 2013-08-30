@@ -29,7 +29,7 @@ void main()
 		(1.0 - smoothstep(1.0 - mindist, 1.0, edger.x)) *
 		(1.0 - smoothstep(1.0 - mindist, 1.0, edger.y));
 
-	offset *= 10.0 * fade * maxlen;
+	offset *= 50.0 * fade * maxlen;
 
 	col.r = step(offset.x, 0.0) * -offset.x;
 	col.g = step(0.0, offset.x) * offset.x;
