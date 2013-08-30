@@ -433,6 +433,7 @@ void IrrDriver::initDevice()
         m_sun_interposer->getMaterial(0).Lighting = false;
         m_sun_interposer->getMaterial(0).ColorMask = video::ECP_NONE;
         m_sun_interposer->getMaterial(0).ZWriteEnable = false;
+        m_sun_interposer->getMaterial(0).MaterialType = m_shaders->getShader(ES_PASSFAR);
 
         sphere->drop();
 
