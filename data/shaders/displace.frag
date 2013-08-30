@@ -22,6 +22,13 @@ void main()
 	// Fade according to distance to cam
 	float fade = 1.0 - smoothstep(1.0, 40.0, camdist);
 
+	// Fade according to distance from the edges
+	vec2 edger = gl_TexCoord[1].xy;
+	const float mindist = 0.1;
+	fade *= smoothstep(0.0, mindist, edger.x) * smoothstep(0.0, mindist, edger.y) *
+		(1.0 - smoothstep(1.0 - mindist, 1.0, edger.x)) *
+		(1.0 - smoothstep(1.0 - mindist, 1.0, edger.y));
+
 	offset *= 10.0 * fade * maxlen;
 
 	col.r = step(offset.x, 0.0) * -offset.x;
