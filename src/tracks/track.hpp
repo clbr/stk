@@ -375,6 +375,7 @@ private:
     bool m_shadows;
 
     float m_displacement_speed;
+    float m_caustics_speed;
 
     /** List of all bezier curves in the track - for e.g. camera, ... */
     std::vector<BezierCurve*> m_all_curves;
@@ -576,6 +577,7 @@ public:
     bool hasShadows() const { return m_shadows; }
 
     float getDisplacementSpeed() const { return m_displacement_speed; }
+    float getCausticsSpeed() const { return m_caustics_speed; }
 };   // class Track
 
 #endif

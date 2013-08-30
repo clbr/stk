@@ -132,3 +132,12 @@ Float on the relative speed of any displacing objects in this level. Default 1.0
 2.0 = double speed, 0.5 = half speed, etc.
 
 Example: displacement-speed="1.5"
+
+
+Caustics speed
+--------------
+
+Float on the relative speed of any caustics objects in this level. Default 1.0.
+2.0 = double speed, 0.5 = half speed, etc.
+
+Example: caustics-speed="1.5"
