@@ -1,10 +1,11 @@
 uniform sampler2D tex;
 uniform sampler2D dtex;
 
+uniform int viz;
+
 void main()
 {
 	vec2 tc = gl_TexCoord[0].xy;
-//	vec4 mycol = texture2D(tex, tc);
 
 	vec4 shiftval = texture2D(dtex, tc) / vec4(50.0);
 	vec2 shift;
@@ -15,6 +16,11 @@ void main()
 
 	vec4 newcol = texture2D(tex, tc);
 
-//	gl_FragColor = mix(mycol, newcol, 0.6);
-	gl_FragColor = newcol;
+	if (viz < 1)
+	{
+		gl_FragColor = newcol;
+	} else
+	{
+		gl_FragColor = shiftval * vec4(50.0);
+	}
 }

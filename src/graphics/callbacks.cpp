@@ -727,6 +727,9 @@ void DisplaceProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 
 void PPDisplaceProvider::OnSetConstants(IMaterialRendererServices *srv, int)
 {
+    int viz = irr_driver->getDistortViz();
+    srv->setPixelShaderConstant("viz", &viz, 1);
+
     if (!firstdone)
     {
         int tex = 0;
