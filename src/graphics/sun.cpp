@@ -140,7 +140,7 @@ void SunNode::render()
     tmpsq.setTexture(irr_driver->getRTT(RTT_QUARTER3), 1);
     tmpsq.setTexture(irr_driver->getRTT(RTT_EIGHTH2), 2);
 
-    irr_driver->getVideoDriver()->setRenderTarget(irr_driver->getRTT(RTT_HALF1), true, false);
+    irr_driver->getVideoDriver()->setRenderTarget(irr_driver->getRTT(RTT_HALF_SOFT), true, false);
     tmpsq.render(false);
 
     tmpsq.setTexture(0, 0);
@@ -151,7 +151,7 @@ void SunNode::render()
     // Combine them back to the lighting RTT
     tmpsq.setMaterialType(irr_driver->getShader(ES_MULTIPLY_ADD));
     tmpsq.setTexture(irr_driver->getRTT(RTT_TMP2), 0);
-    tmpsq.setTexture(irr_driver->getRTT(RTT_HALF1), 1);
+    tmpsq.setTexture(irr_driver->getRTT(RTT_HALF_SOFT), 1);
 
     tmpsq.getMaterial().MaterialTypeParam = pack_textureBlendFunc(EBF_ONE, EBF_ONE);
     tmpsq.getMaterial().BlendOperation = EBO_ADD;

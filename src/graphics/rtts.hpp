@@ -60,6 +60,8 @@ enum TypeRTT
     RTT_WARPH,
     RTT_WARPV,
 
+    RTT_HALF_SOFT,
+
     RTT_DISPLACE,
 
     RTT_COUNT
