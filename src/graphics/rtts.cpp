@@ -18,6 +18,7 @@
 #include "graphics/rtts.hpp"
 
 #include "config/user_config.hpp"
+#include "graphics/glwrap.hpp"
 #include "graphics/irr_driver.hpp"
 #include "utils/log.hpp"
 
@@ -45,6 +46,8 @@ RTT::RTT()
     //
     // All RTTs are currently RGBA8 with stencil. The four tmp RTTs are the same size
     // as the screen, for use in post-processing.
+    //
+    // Optionally, the collapse ones use a smaller format.
 
     rtts[RTT_TMP1] = drv->addRenderTargetTexture(res, "rtt.tmp1", ECF_A8R8G8B8, true);
     rtts[RTT_TMP2] = drv->addRenderTargetTexture(res, "rtt.tmp2", ECF_A8R8G8B8, true);
@@ -71,14 +74,29 @@ RTT::RTT()
     rtts[RTT_SSAO2] = drv->addRenderTargetTexture(ssaosize, "rtt.ssao2", ECF_A8R8G8B8, true);
 
     rtts[RTT_SHADOW] = drv->addRenderTargetTexture(shadowsize, "rtt.shadow", ECF_A8R8G8B8, true);
-    rtts[RTT_COLLAPSEV] = drv->addRenderTargetTexture(warpvsize, "rtt.collapsev", ECF_A8R8G8B8, true);
-    rtts[RTT_COLLAPSEH] = drv->addRenderTargetTexture(warphsize, "rtt.collapseh", ECF_A8R8G8B8, true);
-    rtts[RTT_COLLAPSEV2] = drv->addRenderTargetTexture(warpvsize, "rtt.collapsev2", ECF_A8R8G8B8, true);
-    rtts[RTT_COLLAPSEH2] = drv->addRenderTargetTexture(warphsize, "rtt.collapseh2", ECF_A8R8G8B8, true);
     rtts[RTT_WARPV] = drv->addRenderTargetTexture(warpvsize, "rtt.warpv", ECF_A8R8G8B8, true);
     rtts[RTT_WARPH] = drv->addRenderTargetTexture(warphsize, "rtt.warph", ECF_A8R8G8B8, true);
 
     rtts[RTT_DISPLACE] = drv->addRenderTargetTexture(res, "rtt.displace", ECF_A8R8G8B8, true);
+
+    if (((COpenGLDriver *) drv)->queryOpenGLFeature(COpenGLDriver::IRR_ARB_texture_rg))
+    {
+        // Use optimized formats if supported
+        rtts[RTT_COLLAPSE] = drv->addRenderTargetTexture(shadowsize, "rtt.collapse", ECF_R8, true);
+
+        rtts[RTT_COLLAPSEV] = drv->addRenderTargetTexture(warpvsize, "rtt.collapsev", ECF_R8, true);
+        rtts[RTT_COLLAPSEH] = drv->addRenderTargetTexture(warphsize, "rtt.collapseh", ECF_R8, true);
+        rtts[RTT_COLLAPSEV2] = drv->addRenderTargetTexture(warpvsize, "rtt.collapsev2", ECF_R8, true);
+        rtts[RTT_COLLAPSEH2] = drv->addRenderTargetTexture(warphsize, "rtt.collapseh2", ECF_R8, true);
+    } else
+    {
+        rtts[RTT_COLLAPSE] = drv->addRenderTargetTexture(shadowsize, "rtt.collapse", ECF_A8R8G8B8, true);
+
+        rtts[RTT_COLLAPSEV] = drv->addRenderTargetTexture(warpvsize, "rtt.collapsev", ECF_A8R8G8B8, true);
+        rtts[RTT_COLLAPSEH] = drv->addRenderTargetTexture(warphsize, "rtt.collapseh", ECF_A8R8G8B8, true);
+        rtts[RTT_COLLAPSEV2] = drv->addRenderTargetTexture(warpvsize, "rtt.collapsev2", ECF_A8R8G8B8, true);
+        rtts[RTT_COLLAPSEH2] = drv->addRenderTargetTexture(warphsize, "rtt.collapseh2", ECF_A8R8G8B8, true);
+    }
 
     u32 i;
     for (i = 0; i < RTT_COUNT; i++)
