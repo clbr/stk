@@ -353,7 +353,7 @@ void IrrDriver::renderGLSL(float dt)
             overridemat.Enabled = 0;
 
             // Render the importance map
-            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_SHADOW), true, true);
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLLAPSE), true, true);
 
             m_shadow_importance->render();
 
@@ -362,7 +362,7 @@ void IrrDriver::renderGLSL(float dt)
                                                  m_callbacks[ES_COLLAPSE];
             ScreenQuad sq(m_video_driver);
             sq.setMaterialType(m_shaders->getShader(ES_COLLAPSE));
-            sq.setTexture(m_rtts->getRTT(RTT_SHADOW));
+            sq.setTexture(m_rtts->getRTT(RTT_COLLAPSE));
             sq.getMaterial().setFlag(EMF_BILINEAR_FILTER, false);
 
             const TypeRTT oldh = tick ? RTT_COLLAPSEH : RTT_COLLAPSEH2;
