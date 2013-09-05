@@ -209,7 +209,7 @@ Shaders::Shaders()
     m_shaders[ES_PPDISPLACE] = glsl(std::string(""), dir + "ppdisplace.frag",
                                   m_callbacks[ES_PPDISPLACE]);
 
-    m_shaders[ES_PASSFAR] = glsl(dir + "farplane.vert", std::string(""),
+    m_shaders[ES_PASSFAR] = glsl(dir + "farplane.vert", dir + "white.frag",
                                   0);
 
     // Check that all successfully loaded
