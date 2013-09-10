@@ -26,13 +26,9 @@
 #include "graphics/shadow_importance.hpp"
 #include "graphics/shaders.hpp"
 #include "graphics/rtts.hpp"
+#include "utils/vs.hpp"
 
 #include <ISceneManager.h>
-
-// VS workaround
-#ifndef roundf
-#  define roundf(x)  (floor(x + 0.5f))
-#endif
 
 using namespace video;
 using namespace scene;

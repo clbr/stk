@@ -21,9 +21,6 @@
 
 #include "items/flyable.hpp"
 
-#if defined(WIN32) && !defined(__CYGWIN__) && !defined(__MINGW32__)
-#  define isnan _isnan
-#endif
 #include <math.h>
 
 #include <IMeshManipulator.h>
@@ -43,6 +40,7 @@
 #include "tracks/track.hpp"
 #include "utils/constants.hpp"
 #include "utils/string_utils.hpp"
+#include "utils/vs.hpp"
 
 // static variables:
 float         Flyable::m_st_speed       [PowerupManager::POWERUP_MAX];

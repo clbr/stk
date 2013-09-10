@@ -57,6 +57,7 @@
 #include "utils/constants.hpp"
 #include "utils/log.hpp"
 #include "utils/profiler.hpp"
+#include "utils/vs.hpp"
 
 #include <irrlicht.h>
 
@@ -71,10 +72,6 @@
 #endif
 
 using namespace irr;
-
-#ifndef round
-#  define round(x)  (floor(x+0.5f))
-#endif
 
 #ifdef WIN32
 #include <Windows.h>
