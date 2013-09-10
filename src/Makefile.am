@@ -542,7 +542,8 @@ supertuxkart_SOURCES = \
  utils/utf8/core.h \
  utils/utf8/unchecked.h \
  utils/vec3.cpp \
- utils/vec3.hpp
+ utils/vec3.hpp \
+ utils/vs.hpp
 
 # Link in the specific gcc 4.1 bug work around
 supertuxkart_LDADD = \
