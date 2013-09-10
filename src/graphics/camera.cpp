@@ -442,16 +442,6 @@ void Camera::getCameraSettings(float *above_kart, float *cam_angle,
  */
 void Camera::update(float dt)
 {
-    if (UserConfigParams::m_graphical_effects)
-    {
-        if (m_rain)
-        {
-            m_rain->setPosition( getCameraSceneNode()->getPosition() );
-            m_rain->update(dt);
-        }
-    }  // UserConfigParams::m_graphical_effects
-
-
     // The following settings give a debug camera which shows the track from
     // high above the kart straight down.
     if(UserConfigParams::m_camera_debug)
@@ -495,10 +485,18 @@ void Camera::update(float dt)
         current_target += ((wanted_target-current_target)*m_target_speed)*dt;
 
         m_camera->setTarget(current_target);
-        return;
     }
+    else
+        positionCamera(dt, above_kart, cam_angle, side_way, distance, smoothing);
 
-    positionCamera(dt, above_kart, cam_angle, side_way, distance, smoothing);
+    if (UserConfigParams::m_graphical_effects)
+    {
+        if (m_rain)
+        {
+            m_rain->setPosition( getCameraSceneNode()->getPosition() );
+            m_rain->update(dt);
+        }
+    }  // UserConfigParams::m_graphical_effects
 }   // update
 
 // ----------------------------------------------------------------------------
