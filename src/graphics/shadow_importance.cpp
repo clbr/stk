@@ -29,6 +29,11 @@
 
 #include <ISceneManager.h>
 
+// VS workaround
+#ifndef roundf
+#  define roundf(x)  (floor(x + 0.5f))
+#endif
+
 using namespace video;
 using namespace scene;
 using namespace core;
