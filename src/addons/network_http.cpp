@@ -24,7 +24,6 @@
 #include <errno.h>
 #include <stdio.h>
 #include <string>
-#include <sys/time.h>
 #include <math.h>
 
 #include "addons/news_manager.hpp"
