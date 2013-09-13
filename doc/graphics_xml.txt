@@ -141,3 +141,17 @@ Float on the relative speed of any caustics objects in this level. Default 1.0.
 2.0 = double speed, 0.5 = half speed, etc.
 
 Example: caustics-speed="1.5"
+
+
+Fog
+---
+
+The density tag was removed (it was unused anyway).
+The max, height start, and height end tags were added.
+
+fog-max: float capping the amount of fog to apply, default 1.0.
+fog-start-height: minimum height of fog, default 0.0.
+fog-end-height: maximum height of fog, default 100.0.
+
+The fog scales smoothly according to both the height, and the distance from
+camera.
