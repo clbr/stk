@@ -18,7 +18,13 @@ void main() {
 	vec2 texc = gl_FragCoord.xy / screen;
 	float z = decdepth(vec4(texture2D(dtex, texc).xyz, 0.0));
 
-	if (z < 0.03) discard;
+	if (z < 0.03)
+	{
+		// Skyboxes are fully lit
+		gl_FragData[0] = vec4(1.0);
+		gl_FragData[1] = vec4(1.0);
+		return;
+	}
 
 	vec3 norm = texture2D(ntex, texc).xyz;
 	norm = (norm - 0.5) * 2.0;
