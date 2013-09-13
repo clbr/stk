@@ -270,6 +270,7 @@ void Track::cleanup()
     irr_driver->clearLights();
     irr_driver->clearForcedBloom();
     irr_driver->clearDisplacingNodes();
+    irr_driver->clearBackgroundNodes();
 
     if(UserConfigParams::logMemory())
     {

@@ -161,6 +161,8 @@ private:
 
     std::vector<scene::ISceneNode *> m_displacing;
 
+    std::vector<scene::ISceneNode *> m_background;
+
 #ifdef DEBUG
     /** Used to visualise skeletons. */
     std::vector<irr::scene::IAnimatedMeshSceneNode*> m_debug_meshes;
@@ -351,6 +353,10 @@ public:
     const std::vector<scene::ISceneNode *> &getDisplacingNodes() const { return m_displacing; }
     // ------------------------------------------------------------------------
     void addDisplacingNode(scene::ISceneNode * const n) { m_displacing.push_back(n); }
+    // ------------------------------------------------------------------------
+    void clearBackgroundNodes() { m_background.clear(); }
+    // ------------------------------------------------------------------------
+    void addBackgroundNode(scene::ISceneNode * const n) { m_background.push_back(n); }
     // ------------------------------------------------------------------------
     void applyObjectPassShader();
     void applyObjectPassShader(scene::ISceneNode * const node, bool rimlit = false);
