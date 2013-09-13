@@ -195,7 +195,7 @@ void PostProcessing::update(float dt)
 void PostProcessing::renderSolid(const u32 cam)
 {
     // Early out: do nothing if at all possible
-    if (UserConfigParams::m_ssao < 1)
+    if (UserConfigParams::m_ssao < 1 && !World::getWorld()->getTrack()->isFogEnabled())
         return;
 
     static u8 tick = 0;
@@ -209,6 +209,22 @@ void PostProcessing::renderSolid(const u32 cam)
                                                                  getCallback(ES_GAUSSIAN3H);
 
     const TypeRTT curssao = tick ? RTT_SSAO2 : RTT_SSAO1;
+
+    if (World::getWorld()->getTrack()->isFogEnabled())
+    {
+        m_material.MaterialType = irr_driver->getShader(ES_FOG);
+        m_material.setTexture(0, irr_driver->getRTT(RTT_DEPTH));
+
+        // Overlay
+        m_material.BlendOperation = EBO_ADD;
+        m_material.MaterialTypeParam = pack_textureBlendFunc(EBF_SRC_ALPHA, EBF_ONE_MINUS_SRC_ALPHA);
+
+        drv->setRenderTarget(irr_driver->getRTT(RTT_COLOR), false, false);
+        drawQuad(cam, m_material);
+
+        m_material.BlendOperation = EBO_NONE;
+        m_material.MaterialTypeParam = 0;
+    }
 
     if (UserConfigParams::m_ssao == 1) // SSAO low
     {

@@ -323,9 +323,11 @@ void Track::loadTrackInfo()
 {
     // Default values
     m_use_fog               = false;
-    m_fog_density           = 1.0f/100.0f;
+    m_fog_max               = 1.0f;
     m_fog_start             = 0.0f;
     m_fog_end               = 1000.0f;
+    m_fog_height_start      = 0.0f;
+    m_fog_height_end        = 100.0f;
     m_gravity               = 9.80665f;
     m_smooth_normals        = false;
                               /* ARGB */
@@ -1477,9 +1479,11 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
         node->get("sun-diffuse",   &m_sun_diffuse_color);
         node->get("fog",           &m_use_fog);
         node->get("fog-color",     &m_fog_color);
-        node->get("fog-density",   &m_fog_density);
+        node->get("fog-max",       &m_fog_max);
         node->get("fog-start",     &m_fog_start);
         node->get("fog-end",       &m_fog_end);
+        node->get("fog-start-height", &m_fog_height_start);
+        node->get("fog-end-height",   &m_fog_height_end);
     }
 
     loadMainTrack(*root);
@@ -1663,14 +1667,14 @@ void Track::loadTrackModel(bool reverse_track, unsigned int mode_id)
     // It's important to execute this BEFORE the code that creates the skycube,
     // otherwise the skycube node could be modified to have fog enabled, which
     // we don't want
-    if (m_use_fog && !UserConfigParams::m_camera_debug)
+    if (m_use_fog && !UserConfigParams::m_camera_debug && !irr_driver->isGLSL())
     {
         /* NOTE: if LINEAR type, density does not matter, if EXP or EXP2, start
            and end do not matter */
         irr_driver->getVideoDriver()->setFog(m_fog_color,
                                              video::EFT_FOG_LINEAR,
                                              m_fog_start, m_fog_end,
-                                             m_fog_density);
+                                             1.0f);
     }
 
     // Enable for for all track nodes if fog is used

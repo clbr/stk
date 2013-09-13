@@ -72,6 +72,7 @@ Shaders::Shaders()
     m_callbacks[ES_CAUSTICS] = new CausticsProvider();
     m_callbacks[ES_DISPLACE] = new DisplaceProvider();
     m_callbacks[ES_PPDISPLACE] = new PPDisplaceProvider();
+    m_callbacks[ES_FOG] = new FogProvider();
 
     // Ok, go
     m_shaders[ES_NORMAL_MAP] = glslmat(dir + "normalmap.vert", dir + "normalmap.frag",
@@ -211,6 +212,9 @@ Shaders::Shaders()
 
     m_shaders[ES_PASSFAR] = glsl(dir + "farplane.vert", dir + "white.frag",
                                   0);
+
+    m_shaders[ES_FOG] = glslmat(std::string(""), dir + "fog.frag",
+                                    m_callbacks[ES_FOG], EMT_ONETEXTURE_BLEND);
 
     // Check that all successfully loaded
     u32 i;

@@ -492,6 +492,9 @@ void IrrDriver::renderGLSL(float dt)
         SunLightProvider * const scb = (SunLightProvider *) irr_driver->
                                             getCallback(ES_SUNLIGHT);
         scb->updateIPVMatrix();
+        FogProvider * const fogcb = (FogProvider *) irr_driver->
+                                            getCallback(ES_FOG);
+        fogcb->updateIPVMatrix();
 
         const u32 lightcount = m_lights.size();
         for (i = 0; i < lightcount; i++)

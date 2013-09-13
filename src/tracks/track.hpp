@@ -348,9 +348,11 @@ private:
     /** True if this track supports using smoothed normals. */
     bool                m_smooth_normals;
 
-    float               m_fog_density;
+    float               m_fog_max;
     float               m_fog_start;
     float               m_fog_end;
+    float               m_fog_height_start;
+    float               m_fog_height_end;
     core::vector3df     m_sun_position;
     /** The current ambient color for each kart. */
     video::SColor       m_ambient_color;
@@ -543,6 +545,12 @@ public:
     float getFogStart()  const { return m_fog_start; }
     // ------------------------------------------------------------------------
     float getFogEnd()    const { return m_fog_end; }
+    // ------------------------------------------------------------------------
+    float getFogStartHeight()  const { return m_fog_height_start; }
+    // ------------------------------------------------------------------------
+    float getFogEndHeight()    const { return m_fog_height_end; }
+    // ------------------------------------------------------------------------
+    float getFogMax()    const { return m_fog_max; }
     // ------------------------------------------------------------------------
     video::SColor getFogColor() const { return m_fog_color; }
     // ------------------------------------------------------------------------
