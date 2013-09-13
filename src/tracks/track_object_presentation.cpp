@@ -237,14 +237,14 @@ void TrackObjectPresentationMesh::init(const XMLNode* xml_node, bool enabled)
     if (m_is_in_skybox)
     {
         // Tell the driver that this mesh is a part of the background
-        /*
         scene::IMeshSceneNode * const node =
             irr_driver->getSceneManager()->addMeshSceneNode(m_mesh);
         node->grab();
         node->setParent(NULL);
 
         irr_driver->addBackgroundNode(node);
-        */
+
+        m_node = node;
     }
     else if (animated)
     {

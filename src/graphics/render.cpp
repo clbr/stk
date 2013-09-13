@@ -163,9 +163,6 @@ void IrrDriver::renderGLSL(float dt)
 
     for(unsigned int cam = 0; cam < Camera::getNumCameras(); cam++)
     {
-        // Fire up the MRT
-        m_video_driver->setRenderTarget(m_mrt, false, false);
-
         Camera * const camera = Camera::getCamera(cam);
         scene::ICameraSceneNode * const camnode = camera->getCameraSceneNode();
 
@@ -177,6 +174,34 @@ void IrrDriver::renderGLSL(float dt)
 #endif
         camera->activate();
         rg->preRenderCallback(camera);   // adjusts start referee
+
+        const u32 bgnodes = m_background.size();
+        if (bgnodes)
+        {
+            // If there are background nodes (3d skybox), draw them now.
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, false);
+
+            m_renderpass = scene::ESNRP_SKY_BOX;
+            m_scene_manager->drawAll(m_renderpass);
+
+            const video::SOverrideMaterial prev = overridemat;
+            overridemat.Enabled = 1;
+            overridemat.EnableFlags = video::EMF_MATERIAL_TYPE;
+            overridemat.Material.MaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
+
+            for (i = 0; i < bgnodes; i++)
+            {
+                m_background[i]->setPosition(camnode->getPosition());
+                m_background[i]->updateAbsolutePosition();
+                m_background[i]->render();
+            }
+
+            overridemat = prev;
+            m_video_driver->setRenderTarget(m_rtts->getRTT(RTT_COLOR), false, true);
+        }
+
+        // Fire up the MRT
+        m_video_driver->setRenderTarget(m_mrt, false, false);
 
         m_renderpass = scene::ESNRP_CAMERA | scene::ESNRP_SOLID;
         m_scene_manager->drawAll(m_renderpass);
@@ -552,8 +577,12 @@ void IrrDriver::renderGLSL(float dt)
         if (!m_mipviz)
             m_post_processing->drawQuad(cam, lightmat);
 
-        m_renderpass = scene::ESNRP_SKY_BOX;
-        m_scene_manager->drawAll(m_renderpass);
+        if (!bgnodes)
+        {
+            // If there are no BG nodes, it's more efficient to do the skybox here.
+            m_renderpass = scene::ESNRP_SKY_BOX;
+            m_scene_manager->drawAll(m_renderpass);
+        }
 
         // Is the lens flare enabled & visible? Check last frame's query.
         const bool hasflare = World::getWorld()->getTrack()->hasLensFlare();
