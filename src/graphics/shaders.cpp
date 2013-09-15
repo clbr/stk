@@ -170,7 +170,7 @@ Shaders::Shaders()
 
     m_shaders[ES_SSAO] = glsl(std::string(""), dir + "ssao.frag", m_callbacks[ES_SSAO]);
 
-    m_shaders[ES_GODFADE] = glsl(std::string(""), dir + "godfade.frag", 0);
+    m_shaders[ES_GODFADE] = glsl(std::string(""), dir + "godfade.frag", m_callbacks[ES_COLORIZE]);
     m_shaders[ES_GODRAY] = glsl(std::string(""), dir + "godray.frag", m_callbacks[ES_GODRAY]);
 
     m_shaders[ES_SHADOWPASS] = glsl(dir + "shadowpass.vert", dir + "shadowpass.frag",
@@ -210,8 +210,8 @@ Shaders::Shaders()
     m_shaders[ES_PPDISPLACE] = glsl(std::string(""), dir + "ppdisplace.frag",
                                   m_callbacks[ES_PPDISPLACE]);
 
-    m_shaders[ES_PASSFAR] = glsl(dir + "farplane.vert", dir + "white.frag",
-                                  0);
+    m_shaders[ES_PASSFAR] = glsl(dir + "farplane.vert", dir + "colorize.frag",
+                                  m_callbacks[ES_COLORIZE]);
 
     m_shaders[ES_FOG] = glslmat(std::string(""), dir + "fog.frag",
                                     m_callbacks[ES_FOG], EMT_ONETEXTURE_BLEND);

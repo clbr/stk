@@ -526,6 +526,11 @@ void PostProcessing::render()
             drv->setRenderTarget(out, true, false);
             irr_driver->getSceneManager()->drawAll(ESNRP_SKY_BOX);
 
+            // Set the sun's color
+            ColorizeProvider * const colcb = (ColorizeProvider *) irr_driver->getCallback(ES_COLORIZE);
+            const SColor col = World::getWorld()->getTrack()->getSunColor();
+            colcb->setColor(col.getRed() / 255.0f, col.getGreen() / 255.0f, col.getBlue() / 255.0f);
+
             // The sun interposer
             IMeshSceneNode * const sun = irr_driver->getSunInterposer();
             sun->getMaterial(0).ColorMask = ECP_ALL;

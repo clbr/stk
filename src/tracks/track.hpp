@@ -554,6 +554,8 @@ public:
     // ------------------------------------------------------------------------
     video::SColor getFogColor() const { return m_fog_color; }
     // ------------------------------------------------------------------------
+    video::SColor getSunColor() const { return m_sun_diffuse_color; }
+    // ------------------------------------------------------------------------
     /** Whether this is an "internal" track. If so it won't be offered
      * in the track selection screen. */
     bool isInternal() const { return m_internal; }
