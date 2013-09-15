@@ -191,7 +191,7 @@ void IrrDriver::renderGLSL(float dt)
 
             for (i = 0; i < bgnodes; i++)
             {
-                m_background[i]->setPosition(camnode->getPosition());
+                m_background[i]->setPosition(camnode->getPosition() * 0.97f);
                 m_background[i]->updateAbsolutePosition();
                 m_background[i]->render();
             }
