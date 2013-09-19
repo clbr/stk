@@ -169,8 +169,8 @@ void RaceGUI::renderGlobal(float dt)
     {
         drawGlobalReadySetGo();
     }
-	if(world->getPhase() == World::GOAL_PHASE)
-			drawGlobalGoal();
+    if(world->getPhase() == World::GOAL_PHASE)
+            drawGlobalGoal();
 
     // Timer etc. are not displayed unless the game is actually started.
     if(!world->isRacePhase()) return;
@@ -195,7 +195,7 @@ void RaceGUI::renderGlobal(float dt)
         drawGlobalPlayerIcons(m_map_height);
     }
     
-	if(world->getTrack()->isSoccer())	drawScores();
+    if(world->getTrack()->isSoccer())   drawScores();
 }   // renderGlobal
 
 //-----------------------------------------------------------------------------
@@ -234,57 +234,56 @@ void RaceGUI::renderPlayerView(const Camera *camera, float dt)
 //-----------------------------------------------------------------------------
 void RaceGUI::drawScores()
 {
-	SoccerWorld* soccerWorld = (SoccerWorld*)World::getWorld();
-	int offsetY = 5;
-	int offsetX = 5;
-	gui::ScalableFont* font = GUIEngine::getFont();
-	static video::SColor color = video::SColor(255,255,255,255);
+    SoccerWorld* soccerWorld = (SoccerWorld*)World::getWorld();
+    int offsetY = 5;
+    int offsetX = 5;
+    gui::ScalableFont* font = GUIEngine::getFont();
+    static video::SColor color = video::SColor(255,255,255,255);
 
-	//Draw kart icons above score(denoting teams)
-	irr::video::ITexture *red_team = irr_driver->getTexture(
-		file_manager->getTextureFile("soccer_ball_red.png"));
-	irr::video::ITexture *blue_team = irr_driver->getTexture(
-		file_manager->getTextureFile("soccer_ball_blue.png"));
-	
-	core::rect<s32> indicatorPos(offsetX-6, offsetY,
-		offsetX -6 + red_team->getSize().Width/8,
-		offsetY + red_team->getSize().Height/8);
-	core::rect<s32> sourceRect(core::position2d<s32>(0,0),
-                                               red_team->getOriginalSize());
-	irr_driver->getVideoDriver()->draw2DImage(red_team,indicatorPos,sourceRect,
-		NULL,NULL,true);
-	
+    //Draw kart icons above score(denoting teams)
+    irr::video::ITexture *red_team = irr_driver->getTexture(
+        file_manager->getTextureFile("soccer_ball_red.png"));
+    irr::video::ITexture *blue_team = irr_driver->getTexture(
+        file_manager->getTextureFile("soccer_ball_blue.png"));
+    irr::video::ITexture *team_icon;
 
-	for(unsigned int i=0; i<soccerWorld->getNumKarts(); i++){
-		int j = soccerWorld->getTeamLeader(i);
-		if(j < 0) break;
+    int numLeader = 1;
+    for(unsigned int i=0; i<soccerWorld->getNumKarts(); i++){
+        int j = soccerWorld->getTeamLeader(i);
+        if(j < 0) break;
 
-		core::rect<s32> source(j*m_marker_rendered_size, 0,
-			(j+1)*m_marker_rendered_size,m_marker_rendered_size);
-		core::recti position(offsetX, offsetY,
-			offsetX + 2*m_marker_player_size, offsetY + 2*m_marker_player_size);
-		irr_driver->getVideoDriver()->draw2DImage(m_marker, position, source,
-			NULL, NULL, true);
-		core::stringw score = StringUtils::toWString(soccerWorld->getScore(i));
-		int string_height =
-			GUIEngine::getFont()->getDimension(score.c_str()).Height;
-		core::recti pos(position.UpperLeftCorner.X + 5,
-						position.LowerRightCorner.Y + offsetY,
-						position.LowerRightCorner.X,
-						position.LowerRightCorner.Y + string_height);
+        core::rect<s32> source(j*m_marker_rendered_size, 0,
+            (j+1)*m_marker_rendered_size,m_marker_rendered_size);
+        core::recti position(offsetX, offsetY,
+            offsetX + 2*m_marker_player_size, offsetY + 2*m_marker_player_size);
+        irr_driver->getVideoDriver()->draw2DImage(m_marker, position, source,
+            NULL, NULL, true);
+        core::stringw score = StringUtils::toWString(soccerWorld->getScore(i));
+        int string_height =
+            GUIEngine::getFont()->getDimension(score.c_str()).Height;
+        core::recti pos(position.UpperLeftCorner.X + 5,
+                        position.LowerRightCorner.Y + offsetY,
+                        position.LowerRightCorner.X,
+                        position.LowerRightCorner.Y + string_height);
 
-		font->draw(score.c_str(),pos,color);
-		offsetX += position.LowerRightCorner.X;
-	}
-	offsetX = 80;
-	offsetY = 5;
-	indicatorPos = core::rect<s32>(offsetX, offsetY,
-		offsetX + blue_team->getSize().Width/8,
-		offsetY + blue_team->getSize().Height/8);
-	sourceRect = core::rect<s32> (core::position2d<s32>(0,0),
-                                               blue_team->getOriginalSize());
-	irr_driver->getVideoDriver()->draw2DImage(blue_team,indicatorPos,sourceRect,
-		NULL,NULL,true);
+        font->draw(score.c_str(),pos,color);
+        
+        switch(numLeader)
+        {
+            case 1: team_icon = red_team; break;
+            case 2: team_icon = blue_team; break;
+            default: break;
+        }
+        core::rect<s32> indicatorPos(offsetX, offsetY,
+            offsetX + m_marker_player_size/1.25,
+            offsetY + m_marker_player_size/1.25);
+        core::rect<s32> sourceRect(core::position2d<s32>(0,0),
+                                                   team_icon->getOriginalSize());
+        irr_driver->getVideoDriver()->draw2DImage(team_icon,indicatorPos,sourceRect,
+            NULL,NULL,true);
+        numLeader++;
+        offsetX += position.LowerRightCorner.X;
+    }
 }
 //-----------------------------------------------------------------------------
 /** Displays the racing time on the screen.s
