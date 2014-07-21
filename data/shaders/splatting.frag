@@ -37,7 +37,7 @@ void main() {
 	vec4 splatted = (splatting.r * detail0 +
 			splatting.g * detail1 +
 			splatting.b * detail2 +
-			(1.0 - splatting.r - splatting.g - splatting.b) * detail3 +
+			max(0.0, 1.0 - splatting.r - splatting.g - splatting.b) * detail3 +
 			(1.0 - splatting.a) * detail4)
 			* gl_Color;
 
